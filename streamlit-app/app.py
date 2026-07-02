@@ -1,7 +1,7 @@
 """
 Oil & Gas Equity Monitor — Streamlit app.
 Deploy on Streamlit Community Cloud (https://share.streamlit.io) for a *.streamlit.app URL.
-Data: Financial Modeling Prep (FMP) /api/v3 endpoints (Starter-plan friendly).
+Data: Financial Modeling Prep (FMP) /stable endpoints (Starter-plan friendly).
 Set your key in .streamlit/secrets.toml as  FMP_API_KEY = "xxxx"  or paste it in the sidebar.
 """
 import datetime as dt
@@ -16,8 +16,7 @@ from universe import UNIVERSE
 
 st.set_page_config(page_title="Oil & Gas Equity Monitor", layout="wide", page_icon="🛢️")
 
-FMP3 = "https://financialmodelingprep.com/api/v3/"
-FMP4 = "https://financialmodelingprep.com/api/v4/"
+FMP = "https://financialmodelingprep.com/stable/"
 YTD_FROM = f"{dt.date.today().year - 1}-12-29"
 
 ENERGY_MAP = [("XLE", "Energy (XLE)"), ("XOP", "E&P (XOP)"), ("XES", "Equip/Svc (XES)"),
@@ -62,27 +61,28 @@ def _normq(q):
 
 @st.cache_data(ttl=1800, show_spinner=False)
 def quotes_for(symbols: tuple, key: str) -> dict:
-    """Try the (premium) batch quote first; if the plan blocks it, fall back to
-    threaded single-symbol quotes, which lower FMP plans allow."""
+    """Batch quote is premium on Starter; fall back to threaded single-symbol
+    /stable/quote?symbol= which lower plans allow."""
     import concurrent.futures as cf
     out = {}
     syms = list(symbols)
-    for i in range(0, len(syms), 50):
-        try:
-            for q in _get(FMP3 + "quote/" + ",".join(syms[i:i + 50]) + "?apikey=" + key):
+    # try premium batch first (works on higher plans / no-op on Starter)
+    try:
+        for i in range(0, len(syms), 50):
+            for q in _get(FMP + "batch-quote?symbols=" + ",".join(syms[i:i + 50]) + "&apikey=" + key):
                 out[q.get("symbol")] = _normq(q)
-        except Exception:
-            break  # batch not allowed -> fall back below
+    except Exception:
+        out = {}
     if out:
         return out
-
+    # fallback: single-symbol quotes, threaded
     def one(s):
         try:
-            d = _get(FMP3 + "quote/" + s + "?apikey=" + key)
+            d = _get(FMP + "quote?symbol=" + s + "&apikey=" + key)
             return _normq(d[0]) if d else None
         except Exception:
             return None
-    with cf.ThreadPoolExecutor(max_workers=4) as ex:
+    with cf.ThreadPoolExecutor(max_workers=5) as ex:
         for s, res in zip(syms, ex.map(one, syms)):
             if res:
                 out[s] = res
@@ -94,38 +94,52 @@ batch_quote = quotes_for  # alias used by the sector tab
 
 @st.cache_data(ttl=600, show_spinner=False)
 def probe(key: str) -> dict:
+    tests = [("single quote", "quote?symbol=XOM"),
+             ("batch quote", "batch-quote?symbols=XOM,CVX"),
+             ("history (light)", "historical-price-eod/light?symbol=XOM&from=" + YTD_FROM),
+             ("key-metrics-ttm", "key-metrics-ttm?symbol=XOM")]
     res = {}
-    for nm, url in [("batch", FMP3 + "quote/XOM,CVX?apikey=" + key),
-                    ("single", FMP3 + "quote/XOM?apikey=" + key)]:
+    for nm, path in tests:
+        sep = "&" if "?" in path else "?"
         try:
-            _get(url)
+            _get(FMP + path + sep + "apikey=" + key)
             res[nm] = "OK"
         except Exception as e:
             res[nm] = str(e)
     return res
 
 
+def _hist_rows(j):
+    if isinstance(j, list):
+        return j
+    if isinstance(j, dict):
+        return j.get("historical") or j.get("historicalStockList") or []
+    return []
+
+
 @st.cache_data(ttl=600, show_spinner=False)
 def hist(symbol: str, frm: str, full: bool, key: str) -> pd.DataFrame:
-    url = FMP3 + "historical-price-full/" + symbol + "?from=" + frm + ("" if full else "&serietype=line") + "&apikey=" + key
+    kind = "full" if full else "light"
+    url = FMP + f"historical-price-eod/{kind}?symbol={symbol}&from={frm}&apikey=" + key
     try:
         j = _get(url)
     except Exception:
         return pd.DataFrame()
-    rows = j.get("historical", []) if isinstance(j, dict) else []
-    df = pd.DataFrame(rows)
-    if df.empty:
-        return df
-    df = df.iloc[::-1].reset_index(drop=True)  # ascending by date
-    if "close" in df.columns:
+    df = pd.DataFrame(_hist_rows(j))
+    if df.empty or "date" not in df.columns:
+        return pd.DataFrame()
+    df = df.sort_values("date").reset_index(drop=True)  # ascending by date
+    if "price" not in df.columns and "close" in df.columns:
         df["price"] = df["close"]
+    if "close" not in df.columns and "price" in df.columns:
+        df["close"] = df["price"]
     return df
 
 
 @st.cache_data(ttl=600, show_spinner=False)
 def key_metrics_ttm(symbol: str, key: str) -> dict:
     try:
-        arr = _get(FMP3 + "key-metrics-ttm/" + symbol + "?limit=1&apikey=" + key)
+        arr = _get(FMP + "key-metrics-ttm?symbol=" + symbol + "&apikey=" + key)
     except Exception:
         return {}
     return arr[0] if arr else {}
@@ -134,24 +148,27 @@ def key_metrics_ttm(symbol: str, key: str) -> dict:
 @st.cache_data(ttl=600, show_spinner=False)
 def key_metrics(symbol: str, key: str, limit: int = 6) -> list:
     try:
-        return _get(FMP3 + f"key-metrics/{symbol}?period=annual&limit={limit}&apikey=" + key) or []
+        return _get(FMP + f"key-metrics?symbol={symbol}&period=annual&limit={limit}&apikey=" + key) or []
     except Exception:
         return []
 
 
 @st.cache_data(ttl=300, show_spinner=False)
 def commodities(key: str) -> dict:
-    try:
-        arr = _get(FMP3 + "quotes/commodity?apikey=" + key)
-    except Exception:
-        return {}
-    return {q.get("symbol"): q for q in arr} if arr else {}
+    for path in ("all-commodities-quotes", "batch-commodity-quotes"):
+        try:
+            arr = _get(FMP + path + "?apikey=" + key)
+            if arr:
+                return {q.get("symbol"): q for q in arr}
+        except Exception:
+            continue
+    return {}
 
 
 @st.cache_data(ttl=600, show_spinner=False)
 def stock_news(symbols: tuple, key: str, limit: int = 40) -> list:
     try:
-        return _get(FMP3 + "stock_news?tickers=" + ",".join(symbols) + f"&limit={limit}&apikey=" + key) or []
+        return _get(FMP + "news/stock?symbols=" + ",".join(symbols) + f"&limit={limit}&apikey=" + key) or []
     except Exception:
         return []
 
@@ -159,7 +176,7 @@ def stock_news(symbols: tuple, key: str, limit: int = 40) -> list:
 @st.cache_data(ttl=600, show_spinner=False)
 def general_news(key: str, limit: int = 50) -> list:
     try:
-        return _get(FMP4 + f"general_news?page=0&size={limit}&apikey=" + key) or []
+        return _get(FMP + f"news/general-latest?page=0&limit={limit}&apikey=" + key) or []
     except Exception:
         return []
 
@@ -238,7 +255,7 @@ if st.sidebar.button("🔄 Refresh data (clear cache)"):
     st.cache_data.clear()
     st.rerun()
 KEY = get_key()
-st.sidebar.caption("Data: Financial Modeling Prep · /api/v3 · educational, not investment advice.")
+st.sidebar.caption("Data: Financial Modeling Prep · /stable · educational, not investment advice.")
 
 st.title("Oil & Gas Equity Monitor")
 st.caption(f"{len(UNIVERSE)} names · live prices, technicals, sector & commodity context. Data via FMP.")
@@ -253,10 +270,12 @@ with st.spinner("Loading quotes… (first load can take ~1 min if your plan need
 
 if not QUOTES:
     p = probe(KEY)
-    st.error(f"No quotes returned. Diagnostics — **batch** `/quote/XOM,CVX`: {p.get('batch')}  ·  "
-             f"**single** `/quote/XOM`: {p.get('single')}")
-    st.info("If both show a 402/plan error, your FMP key doesn't include stock quotes on this plan. "
-            "If only *batch* fails, just reload — the app now falls back to single-symbol mode automatically.")
+    st.error("No quotes returned. Endpoint diagnostics for your FMP key (stable API):")
+    for nm, val in p.items():
+        st.write(f"- **{nm}** → {val}")
+    st.info("If **single quote** is OK, just reload — data loads via single-symbol mode. "
+            "If it shows 401/402/403, your key/plan doesn't include stock quotes (check the key, or upgrade FMP). "
+            "Endpoints that show OK here are the ones this app can use on your plan.")
     st.stop()
 
 LIVE = [u for u in UNIVERSE if QUOTES.get(u["t"], {}).get("price")]
