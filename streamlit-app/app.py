@@ -335,10 +335,18 @@ def ogtable(df, coltypes, height=None):
 
 # ----------------------------- sidebar -----------------------------
 st.sidebar.title("🛢️ Oil & Gas Monitor")
-key_in = st.sidebar.text_input("FMP API key", value=get_key(), type="password",
-                               help="Get one at financialmodelingprep.com. On Community Cloud you can instead set FMP_API_KEY in Secrets.")
-if key_in:
-    st.session_state["fmp_key"] = key_in.strip()
+try:
+    _secret_key = st.secrets.get("FMP_API_KEY", "")
+except Exception:
+    _secret_key = ""
+if _secret_key:
+    # key provided via Streamlit Secrets — use it silently, never show the field
+    st.session_state["fmp_key"] = _secret_key.strip()
+else:
+    key_in = st.sidebar.text_input("FMP API key", value="", type="password",
+                                   help="Get one at financialmodelingprep.com. Or set FMP_API_KEY in the app's Secrets to hide this box.")
+    if key_in:
+        st.session_state["fmp_key"] = key_in.strip()
 if st.sidebar.button("🔄 Refresh data (clear cache)"):
     st.cache_data.clear()
     st.rerun()
