@@ -54,20 +54,55 @@ def _get(url):
     return j
 
 
-@st.cache_data(ttl=300, show_spinner=False)
-def batch_quote(symbols: tuple, key: str) -> dict:
+def _normq(q):
+    if q.get("changePercentage") is None and q.get("changesPercentage") is not None:
+        q["changePercentage"] = q["changesPercentage"]
+    return q
+
+
+@st.cache_data(ttl=1800, show_spinner=False)
+def quotes_for(symbols: tuple, key: str) -> dict:
+    """Try the (premium) batch quote first; if the plan blocks it, fall back to
+    threaded single-symbol quotes, which lower FMP plans allow."""
+    import concurrent.futures as cf
     out = {}
     syms = list(symbols)
     for i in range(0, len(syms), 50):
-        chunk = syms[i:i + 50]
         try:
-            for q in _get(FMP3 + "quote/" + ",".join(chunk) + "?apikey=" + key):
-                if q.get("changePercentage") is None and q.get("changesPercentage") is not None:
-                    q["changePercentage"] = q["changesPercentage"]
-                out[q.get("symbol")] = q
+            for q in _get(FMP3 + "quote/" + ",".join(syms[i:i + 50]) + "?apikey=" + key):
+                out[q.get("symbol")] = _normq(q)
         except Exception:
-            pass
+            break  # batch not allowed -> fall back below
+    if out:
+        return out
+
+    def one(s):
+        try:
+            d = _get(FMP3 + "quote/" + s + "?apikey=" + key)
+            return _normq(d[0]) if d else None
+        except Exception:
+            return None
+    with cf.ThreadPoolExecutor(max_workers=4) as ex:
+        for s, res in zip(syms, ex.map(one, syms)):
+            if res:
+                out[s] = res
     return out
+
+
+batch_quote = quotes_for  # alias used by the sector tab
+
+
+@st.cache_data(ttl=600, show_spinner=False)
+def probe(key: str) -> dict:
+    res = {}
+    for nm, url in [("batch", FMP3 + "quote/XOM,CVX?apikey=" + key),
+                    ("single", FMP3 + "quote/XOM?apikey=" + key)]:
+        try:
+            _get(url)
+            res[nm] = "OK"
+        except Exception as e:
+            res[nm] = str(e)
+    return res
 
 
 @st.cache_data(ttl=600, show_spinner=False)
@@ -213,12 +248,15 @@ if not KEY:
     st.stop()
 
 # ----------------------------- load quotes -----------------------------
-with st.spinner("Loading quotes…"):
-    QUOTES = batch_quote(tuple(u["t"] for u in UNIVERSE), KEY)
+with st.spinner("Loading quotes… (first load can take ~1 min if your plan needs single-symbol mode)"):
+    QUOTES = quotes_for(tuple(u["t"] for u in UNIVERSE), KEY)
 
 if not QUOTES:
-    st.error("No quotes returned. Check that your API key is valid and your plan allows /api/v3/quote (batch). "
-             "If you see an HTTP 402, the endpoint isn't included in your plan.")
+    p = probe(KEY)
+    st.error(f"No quotes returned. Diagnostics — **batch** `/quote/XOM,CVX`: {p.get('batch')}  ·  "
+             f"**single** `/quote/XOM`: {p.get('single')}")
+    st.info("If both show a 402/plan error, your FMP key doesn't include stock quotes on this plan. "
+            "If only *batch* fails, just reload — the app now falls back to single-symbol mode automatically.")
     st.stop()
 
 LIVE = [u for u in UNIVERSE if QUOTES.get(u["t"], {}).get("price")]
