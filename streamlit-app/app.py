@@ -6,6 +6,7 @@ Set your key in .streamlit/secrets.toml as  FMP_API_KEY = "xxxx"  or paste it in
 """
 import datetime as dt
 import pathlib
+import re
 import numpy as np
 import pandas as pd
 import requests
@@ -63,6 +64,30 @@ SP_MAP = [("XLK", "Technology"), ("XLV", "Health Care"), ("XLE", "Energy"), ("XL
 GREEN, RED, GRAY = "#137a4b", "#c0392b", "#94a3b8"
 
 U_BY_T = {u["t"]: u for u in UNIVERSE}
+
+# --- briefing markdown renderer: uniform font, bold tickers, colored % returns ---
+_BRIEF_BLOCK = {"E", "EP", "AE", "AR", "DO", "HP", "GI", "SD", "PR", "INT", "SUN",
+                "WTI", "LNG", "MNR", "US", "IT", "ON", "BP", "NEX", "REX", "EC"}
+_BRIEF_TICKERS = [t for t in sorted(
+    {u["t"] for u in UNIVERSE} | {"XLE", "XOP", "XES", "USO", "BNO", "UNG", "CRAK", "SPY"},
+    key=len, reverse=True) if t not in _BRIEF_BLOCK and len(t) >= 2]
+_TICK_RE = re.compile(r'(?<![A-Za-z0-9$*])(' + "|".join(re.escape(t) for t in _BRIEF_TICKERS) + r')(?![A-Za-z0-9*])')
+_PCT_RE = re.compile(r'([+\-−]\d+(?:\.\d+)?\s?%)')
+
+
+def _pct_span(mm):
+    s = mm.group(1)
+    col = "#c0392b" if s[0] in "-−" else "#137a4b"
+    return f'<span style="color:{col};font-weight:600">{s}</span>'
+
+
+def render_brief(text):
+    lines = [(f"**{m.group(1)}**" if (m := re.match(r'^\s*#{1,6}\s+(.*)$', ln)) else ln)
+             for ln in text.split("\n")]
+    md = "\n".join(lines)
+    md = _PCT_RE.sub(_pct_span, md)
+    md = _TICK_RE.sub(lambda m: f"**{m.group(1)}**", md)
+    return md.replace("****", "**")
 
 
 # ----------------------------- API key -----------------------------
@@ -829,7 +854,7 @@ with tabs[8]:
             break
     if bpath:
         with st.expander("Morning briefing (web-search narrative from the 7am scheduled task)", expanded=True):
-            st.markdown(bpath.read_text(encoding="utf-8"))
+            st.markdown(render_brief(bpath.read_text(encoding="utf-8")), unsafe_allow_html=True)
         st.caption("Below: a live, data-driven snapshot generated on load.")
 
     # 2) Market at a glance (live, from quotes)
@@ -872,7 +897,9 @@ with tabs[8]:
     if watch:
         st.markdown("Trading furthest **below** their 200-day average (value / contrarian watch):")
         for t_, n_, d in watch:
-            st.markdown(f"- **{t_}** — {d*100:+.1f}% vs 200-day · {n_}")
+            col = "#137a4b" if d >= 0 else "#c0392b"
+            st.markdown(f"- **{t_}** — <span style='color:{col};font-weight:600'>{d*100:+.1f}%</span> vs 200-day · {n_}",
+                        unsafe_allow_html=True)
 
     # 5) Oil & gas headlines
     st.markdown("#### Oil & gas headlines")
