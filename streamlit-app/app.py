@@ -111,11 +111,14 @@ def quotes_for(symbols: tuple, key: str) -> dict:
         return out
     # fallback: single-symbol quotes, threaded
     def one(s):
-        try:
-            d = _get(FMP + "quote?symbol=" + s + "&apikey=" + key)
-            return _normq(d[0]) if d else None
-        except Exception:
-            return None
+        import time as _t
+        for attempt in range(2):
+            try:
+                d = _get(FMP + "quote?symbol=" + s + "&apikey=" + key)
+                return _normq(d[0]) if d else None
+            except Exception:
+                _t.sleep(0.4)
+        return None
     with cf.ThreadPoolExecutor(max_workers=5) as ex:
         for s, res in zip(syms, ex.map(one, syms)):
             if res:
@@ -337,7 +340,7 @@ if not QUOTES:
     st.stop()
 
 LIVE = [u for u in UNIVERSE if QUOTES.get(u["t"], {}).get("price")]
-SECTORS = sorted({u["s"] for u in LIVE})
+SECTORS = sorted({u["s"] for u in UNIVERSE})
 st.caption(f"Loaded {len(LIVE)} active names · {dt.datetime.now():%Y-%m-%d %H:%M}")
 
 tabs = st.tabs(["1 · Price", "2 · Peers", "3 · Hist. Val", "4 · Technical",
@@ -626,16 +629,31 @@ with tabs[4]:
             rc = m["price_c"].pct_change().dropna() * 100
             kk = min(len(rs), len(rc))
             c1, c2 = st.columns(2)
-            sc = go.Figure(go.Scatter(x=rc[-kk:], y=rs[-kk:], mode="markers",
-                                      marker=dict(color=("#b7791f" if use_gas else "#0e7490"), size=5)))
-            sc.update_layout(height=320, margin=dict(l=0, r=0, t=10, b=0),
+            xr, yr = rc[-kk:], rs[-kk:]
+            sc = go.Figure()
+            sc.add_trace(go.Scatter(x=xr, y=yr, mode="markers", name="history",
+                                    marker=dict(color=("#b7791f" if use_gas else "#0e7490"), size=5)))
+            sc.add_trace(go.Scatter(x=[float(xr.iloc[-1])], y=[float(yr.iloc[-1])], mode="markers", name="today",
+                                    marker=dict(color="#c0392b", size=12, line=dict(color="#ffffff", width=1.5))))
+            sc.update_layout(height=320, margin=dict(l=0, r=0, t=10, b=0), showlegend=False,
                              xaxis_title=f"{cm_name} daily %", yaxis_title=f"{t} daily %")
-            c1.caption(f"Daily-return scatter: {t} vs {cm_name}")
+            c1.caption(f"Daily-return scatter: {t} vs {cm_name} — red dot = today")
             c1.plotly_chart(sc, use_container_width=True)
 
-            ratio = (m["price_s"] / m["price_c"])
-            hh = go.Figure(go.Histogram(x=ratio, nbinsx=20, marker_color="#0b6b53"))
-            hh.update_layout(height=320, margin=dict(l=0, r=0, t=10, b=0), xaxis_title=f"{t} / {cm_name} ratio")
+            ratio = (m["price_s"] / m["price_c"]).dropna()
+            rNow = float(ratio.iloc[-1])
+            vals = ratio.values
+            mn, mx = float(vals.min()), float(vals.max())
+            nb = 20
+            edges = np.linspace(mn, mx, nb + 1)
+            counts, _ = np.histogram(vals, bins=edges)
+            centers = (edges[:-1] + edges[1:]) / 2
+            cur_bin = int(min(nb - 1, max(0, (rNow - mn) / ((mx - mn) / nb)))) if mx > mn else 0
+            barcol = ["#c0392b" if i == cur_bin else "#0b6b53" for i in range(nb)]
+            hh = go.Figure(go.Bar(x=[f"{c:.2f}" for c in centers], y=counts, marker_color=barcol,
+                                  hovertemplate="ratio ~%{x}<br>%{y} days<extra></extra>"))
+            hh.update_layout(height=320, margin=dict(l=0, r=0, t=10, b=0), bargap=0.03,
+                             xaxis_title=f"{t} / {cm_name} ratio — red bar = current ({rNow:.2f})")
             c2.caption(f"Stock / {cm_name} price-ratio histogram")
             c2.plotly_chart(hh, use_container_width=True)
 
