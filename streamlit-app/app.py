@@ -374,9 +374,29 @@ if not QUOTES:
             "Endpoints that show OK here are the ones this app can use on your plan.")
     st.stop()
 
-LIVE = [u for u in UNIVERSE if QUOTES.get(u["t"], {}).get("price")]
+# Self-prune: drop delisted/stale names — FMP still serves stale quotes for delisted
+# tickers, so keep only names whose last quote is within STALE_DAYS of the newest quote.
+STALE_DAYS = 20
+_ts_all = [(QUOTES.get(u["t"]) or {}).get("timestamp") for u in UNIVERSE]
+_ts_all = [t for t in _ts_all if t]
+_max_ts = max(_ts_all) if _ts_all else 0
+_cutoff = _max_ts - STALE_DAYS * 86400 if _max_ts else 0
+
+
+def _is_live(u):
+    q = QUOTES.get(u["t"]) or {}
+    if not q.get("price"):
+        return False
+    ts = q.get("timestamp")
+    if _max_ts and ts is not None:
+        return ts >= _cutoff
+    return True
+
+
+LIVE = [u for u in UNIVERSE if _is_live(u)]
 SECTORS = sorted({u["s"] for u in UNIVERSE})
-st.caption(f"Loaded {len(LIVE)} active names · {dt.datetime.now():%Y-%m-%d %H:%M}")
+_dropped = sum(1 for u in UNIVERSE if (QUOTES.get(u["t"]) or {}).get("price")) - len(LIVE)
+st.caption(f"Loaded {len(LIVE)} active names · {_dropped} delisted/stale removed · {dt.datetime.now():%Y-%m-%d %H:%M}")
 
 tabs = st.tabs(["1 · Price", "2 · Peers", "3 · Hist. Val", "4 · Technical",
                 "5 · Crude/Gas", "6 · News", "7 · Sector", "★ Recommend", "📰 Briefing"])
