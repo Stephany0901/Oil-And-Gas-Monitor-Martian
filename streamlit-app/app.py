@@ -5,6 +5,7 @@ Data: Financial Modeling Prep (FMP) /stable endpoints (Starter-plan friendly).
 Set your key in .streamlit/secrets.toml as  FMP_API_KEY = "xxxx"  or paste it in the sidebar.
 """
 import datetime as dt
+import pathlib
 import numpy as np
 import pandas as pd
 import requests
@@ -344,7 +345,7 @@ SECTORS = sorted({u["s"] for u in UNIVERSE})
 st.caption(f"Loaded {len(LIVE)} active names · {dt.datetime.now():%Y-%m-%d %H:%M}")
 
 tabs = st.tabs(["1 · Price", "2 · Peers", "3 · Hist. Val", "4 · Technical",
-                "5 · Crude/Gas", "6 · News", "7 · Sector", "★ Recommend"])
+                "5 · Crude/Gas", "6 · News", "7 · Sector", "★ Recommend", "📰 Briefing"])
 
 
 # ============================= 1 · PRICE =============================
@@ -813,3 +814,88 @@ with tabs[7]:
             "Price": "num", "Daily%": "pct", "EV/EBITDA": "x", "Score": "num",
         })
         st.caption("Educational screen — momentum (price vs 50/200-day MA, 52-week position) blended with TTM valuation. Not investment advice.")
+
+
+# ============================= 📰 BRIEFING =============================
+with tabs[8]:
+    st.subheader(f"Daily briefing · {dt.datetime.now():%B %d, %Y}")
+
+    # 1) Show the scheduled 7am morning briefing.md if it's in the repo
+    bpath = None
+    for cand in [pathlib.Path(__file__).with_name("briefing.md"),
+                 pathlib.Path(__file__).parent.parent / "briefing.md"]:
+        if cand.exists():
+            bpath = cand
+            break
+    if bpath:
+        with st.expander("Morning briefing (web-search narrative from the 7am scheduled task)", expanded=True):
+            st.markdown(bpath.read_text(encoding="utf-8"))
+        st.caption("Below: a live, data-driven snapshot generated on load.")
+
+    # 2) Market at a glance (live, from quotes)
+    st.markdown("#### Market at a glance")
+    bench = [("USO", "Crude (USO)"), ("BNO", "Brent (BNO)"), ("UNG", "Nat gas (UNG)"), ("SPY", "S&P 500"),
+             ("XLE", "Energy (XLE)"), ("XOP", "E&P (XOP)"), ("XES", "Equip/Svc (XES)"), ("CRAK", "Refiners (CRAK)")]
+    bq = quotes_for(tuple(s for s, _ in bench), KEY)
+    bcols = st.columns(4)
+    for i, (s, nm) in enumerate(bench):
+        q = bq.get(s, {}) or QUOTES.get(s, {})
+        bcols[i % 4].metric(nm, fnum(q.get("price")), pct(q.get("changePercentage")))
+    comm = commodities(KEY)
+    cl = (comm.get("CLUSD") or {}).get("price")
+    rb = (comm.get("RBUSD") or {}).get("price")
+    ho = (comm.get("HOUSD") or {}).get("price")
+    if cl and rb and ho:
+        st.caption(f"Spot 3-2-1 crack ≈ **{(2*rb + ho)/(3*cl):.3f}**  ·  WTI {fnum(cl)} · RBOB {fnum(rb)} · Heating oil {fnum(ho)}")
+
+    # 3) Today's movers (from the universe)
+    st.markdown("#### Today's movers")
+    mv = [(u["t"], u["n"], u["s"], QUOTES.get(u["t"], {}).get("changePercentage"))
+          for u in LIVE if QUOTES.get(u["t"], {}).get("changePercentage") is not None]
+    mv.sort(key=lambda r: r[3], reverse=True)
+    ups, downs = mv[:5], mv[-5:][::-1]
+    mc1, mc2 = st.columns(2)
+    mc1.markdown("**Top gainers**")
+    for t_, n_, s_, ch in ups:
+        mc1.markdown(f"- **{t_}** · {s_} · <span style='color:#137a4b;font-weight:600'>{ch:+.2f}%</span> — {n_}", unsafe_allow_html=True)
+    mc2.markdown("**Top decliners**")
+    for t_, n_, s_, ch in downs:
+        mc2.markdown(f"- **{t_}** · {s_} · <span style='color:#c0392b;font-weight:600'>{ch:+.2f}%</span> — {n_}", unsafe_allow_html=True)
+
+    # 4) Stocks to watch — cheap-and-out-of-favour vs momentum leaders
+    st.markdown("#### Stocks to watch")
+    below200 = [(u["t"], u["n"], QUOTES[u["t"]]["price"] / QUOTES[u["t"]]["priceAvg200"] - 1)
+                for u in LIVE
+                if QUOTES.get(u["t"], {}).get("priceAvg200") and QUOTES[u["t"]].get("price")]
+    below200.sort(key=lambda r: r[2])
+    watch = below200[:5]
+    if watch:
+        st.markdown("Trading furthest **below** their 200-day average (value / contrarian watch):")
+        for t_, n_, d in watch:
+            st.markdown(f"- **{t_}** — {d*100:+.1f}% vs 200-day · {n_}")
+
+    # 5) Oil & gas headlines
+    st.markdown("#### Oil & gas headlines")
+    OIL_KW = ("oil", "crude", "gas", "lng", "opec", "wti", "brent", "petroleum", "refin",
+              "shale", "drilling", "pipeline", "barrel", "gasoline", "diesel", "energy")
+    uni = {u["t"] for u in UNIVERSE}
+    majors = [u["t"] for u in sorted(LIVE, key=lambda u: QUOTES.get(u["t"], {}).get("marketCap") or 0, reverse=True)[:25]]
+    arr = list(stock_news(tuple(majors), KEY, 50))
+    for a in general_news(KEY, 50):
+        txt = f"{a.get('title','')} {a.get('text','')}".lower()
+        if any(k in txt for k in OIL_KW):
+            arr.append(a)
+    arr = [a for a in arr if (not a.get("symbol")) or a.get("symbol", "").upper() in uni]
+    seen, items = set(), []
+    for a in sorted(arr, key=lambda a: a.get("publishedDate", ""), reverse=True):
+        k = a.get("url") or a.get("title")
+        if k and k not in seen:
+            seen.add(k)
+            items.append(a)
+    if not items:
+        st.caption("No headlines returned (the news endpoint may not be on your FMP plan).")
+    for a in items[:12]:
+        st.markdown(f"[{a.get('title','(untitled)')}]({a.get('url','#')})  \n"
+                    f"<span style='color:#888;font-size:11px'>{a.get('site') or a.get('publisher','')} · {a.get('publishedDate','')[:16]}</span>",
+                    unsafe_allow_html=True)
+    st.caption("Live data-driven snapshot from FMP. Educational, not investment advice.")
