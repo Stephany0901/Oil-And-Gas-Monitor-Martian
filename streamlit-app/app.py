@@ -279,6 +279,30 @@ def fnum(v, d=2):
     return "–" if v is None or (isinstance(v, float) and np.isnan(v)) else f"{v:,.{d}f}"
 
 
+def ogtable(df, coltypes, height=None):
+    """Render a DataFrame as the styled HTML table (bold headers, green/red %, comma numbers)."""
+    def fmt(col, v):
+        t = coltypes.get(col, "text")
+        if v is None or (isinstance(v, float) and pd.isna(v)):
+            return "<td>–</td>"
+        if t == "pct":
+            return f'<td class="{"pos" if v >= 0 else "neg"}">{v:+.2f}%</td>'
+        if t == "num":
+            return f"<td>{v:,.2f}</td>"
+        if t == "int":
+            return f"<td>{int(v):,}</td>"
+        if t == "x":
+            return f"<td>{v:,.2f}x</td>"
+        if t == "tk":
+            return f'<td class="tk">{v}</td>'
+        return f"<td>{v}</td>"
+    head = "".join(f"<th>{c}</th>" for c in df.columns)
+    body = "".join("<tr>" + "".join(fmt(c, r[c]) for c in df.columns) + "</tr>" for _, r in df.iterrows())
+    wrap = '<div class="ogtblwrap">' if height is None else f'<div class="ogtblwrap" style="max-height:{height}px">'
+    st.markdown(f'{wrap}<table class="ogtbl"><thead><tr>{head}</tr></thead><tbody>{body}</tbody></table></div>',
+                unsafe_allow_html=True)
+
+
 # ----------------------------- sidebar -----------------------------
 st.sidebar.title("🛢️ Oil & Gas Monitor")
 key_in = st.sidebar.text_input("FMP API key", value=get_key(), type="password",
@@ -431,7 +455,10 @@ with tabs[1]:
                 })
         if data:
             st.caption(f"{t} vs same-sector peers (nearest market caps)")
-            st.dataframe(pd.DataFrame(data), use_container_width=True, hide_index=True)
+            ogtable(pd.DataFrame(data), {
+                "Ticker": "tk", "Mkt cap": "int", "EV/EBITDA": "x",
+                "FCF yld%": "pct", "NetDebt/EBITDA": "x", "ROE%": "pct",
+            })
         else:
             st.info("No key-metrics returned (your plan may not include this endpoint).")
 
@@ -461,9 +488,9 @@ with tabs[2]:
             else:
                 out.append({"Metric": nm, "Spot(TTM)": spot, "5y low": min(histvals),
                             "5y avg": sum(histvals) / len(histvals), "5y high": max(histvals)})
-        st.dataframe(pd.DataFrame(out), use_container_width=True, hide_index=True,
-                     column_config={c: st.column_config.NumberColumn(format="%.2f") for c in
-                                    ["Spot(TTM)", "5y low", "5y avg", "5y high"]})
+        ogtable(pd.DataFrame(out), {
+            "Metric": "text", "Spot(TTM)": "num", "5y low": "num", "5y avg": "num", "5y high": "num",
+        })
 
 
 # ============================= 4 · TECHNICAL =============================
@@ -757,12 +784,14 @@ with tabs[7]:
         q = QUOTES.get(top["t"], {})
         st.success(f"★ **Top idea: {top['t']}** ({top['s']}) — {top['n']} · {fnum(q.get('price'))} "
                    f"({pct(q.get('changePercentage'))}) · score {top['_comp']:.2f}")
-        st.dataframe(pd.DataFrame([{
+        ogtable(pd.DataFrame([{
             "Ticker": u["t"], "Sector": u["s"], "Name": u["n"],
             "Price": QUOTES.get(u["t"], {}).get("price"),
             "Daily%": QUOTES.get(u["t"], {}).get("changePercentage"),
             "EV/EBITDA": km_get(u.get("_m", {}), "evToEBITDATTM", "enterpriseValueOverEBITDATTM"),
             "Score": round(u["_comp"], 2),
-        } for u in short]), use_container_width=True, hide_index=True,
-            column_config={c: st.column_config.NumberColumn(format="%.2f") for c in ["Price", "Daily%", "EV/EBITDA", "Score"]})
+        } for u in short]), {
+            "Ticker": "tk", "Sector": "text", "Name": "text",
+            "Price": "num", "Daily%": "pct", "EV/EBITDA": "x", "Score": "num",
+        })
         st.caption("Educational screen — momentum (price vs 50/200-day MA, 52-week position) blended with TTM valuation. Not investment advice.")
