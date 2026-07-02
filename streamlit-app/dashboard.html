@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oil &amp; Gas Equity Monitor</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
+<style>
+:root{color-scheme:light;--bg:#f6f7f9;--card:#ffffff;--ink:#10161d;--mut:#5b6776;--line:#e4e8ee;--accent:#0b6b53;--accent2:#0e7490;--red:#c0392b;--green:#137a4b;--amber:#b7791f;--chip:#eef2f6;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+h1,h2,h3{margin:0;font-weight:650}
+.wrap{max-width:1180px;margin:0 auto;padding:18px 18px 60px}
+header.top{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+header.top h1{font-size:20px;letter-spacing:-.2px}
+.sub{color:var(--mut);font-size:12.5px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0 16px;position:sticky;top:0;background:var(--bg);padding:8px 0;z-index:5;border-bottom:1px solid var(--line)}
+.tab{padding:7px 12px;border:1px solid var(--line);background:var(--card);border-radius:999px;cursor:pointer;font-size:12.5px;color:var(--mut);white-space:nowrap}
+.tab.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+.panel{display:none;animation:f .2s ease}
+.panel.active{display:block}
+@keyframes f{from{opacity:0;transform:translateY(3px)}to{opacity:1}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:14px}
+.card h2{font-size:15px;margin-bottom:3px}
+.card .desc{color:var(--mut);font-size:12px;margin-bottom:12px}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+select,input,button{font:inherit}
+select,input{padding:7px 9px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink)}
+button.act{padding:7px 13px;border:1px solid var(--ink);background:var(--ink);color:#fff;border-radius:8px;cursor:pointer}
+button.act:disabled{opacity:.5;cursor:default}
+button.ghost{padding:6px 11px;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:8px;cursor:pointer}
+.chip{display:inline-block;padding:2px 8px;border-radius:999px;background:var(--chip);color:var(--mut);font-size:11px;margin-left:4px}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{padding:6px 8px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+th{color:var(--ink);font-weight:700;cursor:pointer;position:sticky;top:0;background:var(--card);user-select:none;box-shadow:0 1px 0 var(--line)}
+td.name{max-width:220px;overflow:hidden;text-overflow:ellipsis;color:var(--mut)}
+tbody tr:hover{background:#fafbfc}
+td.tk{font-weight:650;cursor:pointer;color:var(--accent2)}
+.pos{color:var(--green)}.neg{color:var(--red)}
+.tbl-scroll{max-height:560px;overflow:auto;border:1px solid var(--line);border-radius:10px}
+.bar{height:8px;border-radius:4px;background:#edf1f5;position:relative;overflow:hidden;min-width:60px}
+.bar>span{position:absolute;top:0;bottom:0;border-radius:4px}
+.kpi{display:flex;gap:14px;flex-wrap:wrap}
+.kpi .b{flex:1;min-width:120px;background:#fafbfc;border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.kpi .b .l{font-size:11px;color:var(--mut)}
+.kpi .b .v{font-size:18px;font-weight:680;margin-top:2px}
+.metric{display:grid;grid-template-columns:130px 1fr 70px;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
+.metric .mname{font-size:12.5px;color:var(--mut)}
+.rng{position:relative;height:26px;background:#f0f3f6;border-radius:6px}
+.rng .fill{position:absolute;top:6px;bottom:6px;background:#dbe7e2;border-radius:4px}
+.rng .dot{position:absolute;top:3px;width:3px;height:20px;background:var(--ink);border-radius:2px}
+.rng .lab{position:absolute;font-size:10px;color:var(--mut);top:-14px}
+.muted{color:var(--mut)}
+.spinner{display:inline-block;width:13px;height:13px;border:2px solid #cdd6df;border-top-color:var(--ink);border-radius:50%;animation:sp .7s linear infinite;vertical-align:-2px}
+@keyframes sp{to{transform:rotate(360deg)}}
+.prog{height:6px;background:#edf1f5;border-radius:3px;overflow:hidden;margin-top:8px;display:none}
+.prog>span{display:block;height:100%;width:0;background:var(--accent);transition:width .2s}
+.news{display:flex;flex-direction:column;gap:0}
+.news a{display:block;padding:10px 0;border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink)}
+.news a:hover{background:#fafbfc}
+.news .t{font-weight:600;font-size:13px}
+.news .m{font-size:11px;color:var(--mut);margin-top:2px}
+.rec-card{border:1px solid var(--line);border-radius:10px;padding:12px;margin-bottom:10px;background:#fafbfc}
+.rec-card.top{border:2px solid var(--accent);background:#f0f8f5}
+.rec-head{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.score{font-size:12px;color:var(--mut)}
+.pill{display:inline-block;font-size:10.5px;padding:1px 7px;border-radius:999px;margin:2px 3px 0 0}
+.pill.g{background:#e3f4ec;color:var(--green)}.pill.r{background:#fbe9e7;color:var(--red)}.pill.n{background:#eef2f6;color:var(--mut)}
+.err{color:var(--red);font-size:12px}
+.legend{font-size:11px;color:var(--mut);margin-top:6px;display:flex;gap:14px;flex-wrap:wrap}
+.legend i{display:inline-block;width:12px;height:3px;vertical-align:3px;margin-right:4px;border-radius:2px}
+canvas{max-width:100%}
+.chartbox{position:relative;height:420px}
+.small{font-size:11.5px}
+@media(max-width:640px){.metric{grid-template-columns:96px 1fr 58px}.wrap{padding:12px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <h1>Oil &amp; Gas Equity Monitor</h1>
+  <span class="sub" id="asof">Loading live data…</span>
+  <span style="flex:1"></span>
+  <span class="sub small" id="status"></span>
+</header>
+<div class="row" style="margin:2px 0 6px">
+  <label class="sub small">FMP API key</label>
+  <input id="apikey" type="password" placeholder="paste your FMP API key" style="min-width:240px">
+  <button class="act" id="savekey">Save &amp; load</button>
+  <span class="sub small" id="keynote">stored only in this browser (localStorage)</span>
+</div>
+
+<div class="tabs" id="tabs"></div>
+
+<!-- 1 PRICE FILTER -->
+<section class="panel" id="p-price">
+  <div class="card">
+    <h2>Section 1 · Price Filter</h2>
+    <div class="desc">Daily, weekly &amp; YTD returns for every name, plus YTD vs XLE and vs S&amp;P 500. Price/volume live from FMP. Daily, 52-week position and moving-average distance load instantly; weekly &amp; YTD returns load automatically in the background (progress bar below) and fill in as each name's history arrives.</div>
+    <div class="row">
+      <input id="flt" placeholder="Filter ticker / name…" style="min-width:220px">
+      <select id="flt-sec"><option value="">All sectors</option></select>
+      <label class="sub small">Rank by</label>
+      <select id="rank-by"><option value="dpc">Daily%</option><option value="wk">Weekly%</option><option value="ytd">YTD%</option></select>
+      <span class="sub small" id="ret-note"></span>
+    </div>
+    <div class="prog" id="ret-prog"><span></span></div>
+    <div class="tbl-scroll" style="margin-top:12px"><table id="price-tbl"><thead></thead><tbody></tbody></table></div>
+  </div>
+</section>
+
+<!-- 2 PEERS -->
+<section class="panel" id="p-peers">
+  <div class="card">
+    <h2>Section 2 · Peer Comparison</h2>
+    <div class="desc">Spot price and valuation (EV/EBITDA, FCF yield, Net Debt/EBITDA, ROE) for the selected stock against its peers. <b>Peers = same sector (this list's classification) + closest market caps</b> (up to 10 nearest by size). Bars show where the stock sits within the peer range.</div>
+    <div class="row"><label>Stock</label><select id="peer-pick"></select><button class="act" id="peer-go">Compare</button><span id="peer-stat" class="sub small"></span></div>
+    <div id="peer-out" style="margin-top:12px"></div>
+  </div>
+</section>
+
+<!-- 3 HISTORICAL VALUATION -->
+<section class="panel" id="p-hist">
+  <div class="card">
+    <h2>Section 3 · Historical Valuation</h2>
+    <div class="desc">Where each valuation metric sits today (spot/TTM) versus its own 5-year high, low and average.</div>
+    <div class="row"><label>Stock</label><select id="hist-pick"></select><button class="act" id="hist-go">Analyze</button><span id="hist-stat" class="sub small"></span></div>
+    <div id="hist-out" style="margin-top:12px"></div>
+  </div>
+</section>
+
+<!-- 4 TECHNICAL -->
+<section class="panel" id="p-tech">
+  <div class="card">
+    <h2>Section 4 · Technical Analysis</h2>
+    <div class="desc">Moving averages (SMA &amp; EMA), RSI, MACD, OBV, a regression trend channel and pivot-based support &amp; resistance for the selected stock.</div>
+    <div class="row">
+      <label>Stock</label><select id="tech-pick"></select>
+      <label>Window</label><select id="tech-win"><option value="180">6 months</option><option value="365" selected>1 year</option><option value="730">2 years</option><option value="1095">3 years</option><option value="1825">5 years</option><option value="3650">10 years</option></select>
+      <button class="act" id="tech-go">Run</button><span id="tech-stat" class="sub small"></span>
+    </div>
+    <div class="kpi" id="tech-kpi" style="margin-top:12px"></div>
+    <div class="chartbox" style="margin-top:10px"><canvas id="tech-cv"></canvas></div>
+    <div class="legend" id="tech-leg"></div>
+    <div id="tech-fib" class="small" style="margin-top:8px"></div>
+  </div>
+</section>
+
+<!-- 5 CRUDE / CRACK -->
+<section class="panel" id="p-macro">
+  <div class="card">
+    <h2>Section 5 · Stock vs Crude &amp; Refining Margin</h2>
+    <div class="desc">Correlation and price-ratio distribution of the selected stock against crude oil (USO, a WTI proxy) and Henry Hub natural gas (UNG proxy), plus the live spot 3-2-1 crack ratio (2·RBOB+HO)/(3·WTI) from NYMEX futures. <span class="muted">Note: commodity futures history isn't on the current FMP plan, so correlations use liquid ETF proxies and the crack is shown as a live spot value only.</span></div>
+    <div class="row"><label>Stock</label><select id="mac-pick"></select><button class="act" id="mac-go">Analyze</button><span id="mac-stat" class="sub small"></span></div>
+    <div class="kpi" id="mac-kpi" style="margin-top:12px"></div>
+    <div class="row" style="margin-top:10px;align-items:flex-start">
+      <div style="flex:1;min-width:300px"><div class="small muted" style="margin-bottom:4px">Daily-return scatter vs crude (USO) &amp; nat gas (UNG)</div><div class="chartbox" style="height:300px"><canvas id="mac-scatter"></canvas></div></div>
+      <div style="flex:1;min-width:300px"><div class="small muted" style="margin-bottom:4px">Stock / crude price-ratio histogram</div><div class="chartbox" style="height:300px"><canvas id="mac-hist"></canvas></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 NEWS -->
+<section class="panel" id="p-news">
+  <div class="card">
+    <h2>Section 6 · News Monitor &amp; Daily Briefing</h2>
+    <div class="desc">Live oil &amp; gas market headlines and per-stock news from FMP. A web-search market briefing is written to your project folder each morning by the 7am task.</div>
+    <div class="row"><label>Stock news</label><select id="news-pick"><option value="">— market only —</option></select><button class="act" id="news-go">Load</button><span id="news-stat" class="sub small"></span></div>
+    <div class="row" style="align-items:flex-start;margin-top:12px">
+      <div style="flex:1;min-width:300px"><h3 class="small" style="margin-bottom:6px">Market headlines</h3><div class="news" id="news-market"></div></div>
+      <div style="flex:1;min-width:300px"><h3 class="small" style="margin-bottom:6px" id="news-stk-h">Stock headlines</h3><div class="news" id="news-stock"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 SECTOR -->
+<section class="panel" id="p-sector">
+  <div class="card">
+    <h2>Section 7 · Sector Performance</h2>
+    <div class="desc">Top: energy-complex YTD performance (indexed to 100). Below: daily, weekly &amp; YTD return bar charts for the energy complex, and for the 10 S&amp;P 500 sector SPDRs (XLK, XLV, XLE, XLF, XLI, XLP, XLB, XLU, XLRE, XLC) — hover a bar for the ETF name.</div>
+    <div id="sector-kpi" class="kpi"></div>
+    <div class="chartbox" style="margin-top:14px;height:340px"><canvas id="sector-cv"></canvas></div>
+    <div class="legend">YTD total-price performance, indexed to 100 at 2025 year-end.</div>
+  </div>
+</section>
+
+<!-- REC -->
+<section class="panel" id="p-rec">
+  <div class="card">
+    <h2>Recommendation Engine</h2>
+    <div class="desc">Ranks names on a blend of momentum/technicals (live for all), valuation (EV/EBITDA, FCF yield, Net Debt/EBITDA, ROE — fetched for the shortlist) and latest news. Highlights the top idea with rationale.</div>
+    <div class="row">
+      <label>Sector</label><select id="rec-sec"><option value="">All</option></select>
+      <button class="act" id="rec-go">Generate recommendation</button><span id="rec-stat" class="sub small"></span>
+    </div>
+    <div class="prog" id="rec-prog"><span></span></div>
+    <div id="rec-out" style="margin-top:14px"></div>
+  </div>
+</section>
+
+<p class="sub small" style="text-align:center;margin-top:20px">Data: Financial Modeling Prep (live) · News: FMP + morning web-search briefing · Auto-refreshes each morning at 7:00am.</p>
+</div>
+
+<script>
+const UNIVERSE = [{"t":"ATW","n":"Atwood Oceanics Inc.","s":"Drilling","x":"NYSE"},{"t":"BORR","n":"Borr Drilling Limited","s":"Drilling","x":"NYSE"},{"t":"DO","n":"Diamond Offshore Drilling, Inc.","s":"Drilling","x":"NYSE"},{"t":"HP","n":"Helmerich & Payne, Inc.","s":"Drilling","x":"NYSE"},{"t":"ICD","n":"Independence Contract Drilling, Inc.","s":"Drilling","x":"NYSE"},{"t":"NBR","n":"Nabors Industries Ltd.","s":"Drilling","x":"NYSE"},{"t":"NE","n":"Noble Corporation Plc","s":"Drilling","x":"NYSE"},{"t":"ORIG","n":"Ocean Rig UDW Inc.","s":"Drilling","x":"NASDAQ"},{"t":"PDS","n":"Precision Drilling Corporation","s":"Drilling","x":"NYSE"},{"t":"PRB","n":"Peak Resources LP","s":"Drilling","x":"AMEX"},{"t":"PTEN","n":"Patterson-UTI Energy, Inc.","s":"Drilling","x":"NASDAQ"},{"t":"RIG","n":"Transocean Ltd.","s":"Drilling","x":"NYSE"},{"t":"SDRL","n":"Seadrill Limited","s":"Drilling","x":"NYSE"},{"t":"SOC","n":"Sable Offshore Corp.","s":"Drilling","x":"NYSE"},{"t":"VAL","n":"Valaris Limited","s":"Drilling","x":"NYSE"},{"t":"ALJ","n":"Alon USA Energy, Inc. common st","s":"Other","x":"NYSE"},{"t":"AZUR","n":"Azure Midstream Partners, LP Co","s":"Other","x":"AMEX"},{"t":"DLXY","n":"Delixy Holdings Limited Ordinary Shares","s":"Other","x":"NASDAQ"},{"t":"EEP","n":"Enbridge Energy Partners, L.P.","s":"Other","x":"NYSE"},{"t":"ETPC","n":"Energy Transfer LP","s":"Other","x":"NYSE"},{"t":"EXEEL","n":"Expand Energy Corporation","s":"Other","x":"NASDAQ"},{"t":"EXEEZ","n":"Expand Energy Corporation","s":"Other","x":"NASDAQ"},{"t":"GSTCQ","n":"Gastar Exploration Inc.","s":"Other","x":"NYSE"},{"t":"NKA","n":"Niska Gas Storage Partners LLC","s":"Other","x":"NYSE"},{"t":"NUAI","n":"New Era Energy & Digital, Inc.","s":"Other","x":"NASDAQ"},{"t":"PHXE","n":"Phoenix Energy One, LLC","s":"Other","x":"AMEX"},{"t":"RMP","n":"Rice Midstream Partners LP","s":"Other","x":"NYSE"},{"t":"UHN","n":"United States Diesel-Heating Oil","s":"Other","x":"NYSE"},{"t":"WBI","n":"WaterBridge Infrastructure LLC","s":"Other","x":"NYSE"},{"t":"ACDC","n":"ProFrac Holding Corp.","s":"Services","x":"NASDAQ"},{"t":"AESI","n":"Atlas Energy Solutions Inc.","s":"Services","x":"NYSE"},{"t":"APLP","n":"Archrock Partners, L.P. repres","s":"Services","x":"NASDAQ"},{"t":"AROC","n":"Archrock, Inc.","s":"Services","x":"NYSE"},{"t":"BKR","n":"Baker Hughes Company","s":"Services","x":"NASDAQ"},{"t":"BOOM","n":"DMC Global Inc.","s":"Services","x":"NASDAQ"},{"t":"CAM","n":"Cameron Intl Corp.","s":"Services","x":"NYSE"},{"t":"CCLP","n":"CSI Compressco LP","s":"Services","x":"NASDAQ"},{"t":"CELP","n":"Cypress Environmental Partners, L.P.","s":"Services","x":"NYSE"},{"t":"CETC","n":"Hongli Clean Energy Technologie","s":"Services","x":"NASDAQ"},{"t":"CHX","n":"ChampionX Corporation","s":"Services","x":"NASDAQ"},{"t":"CLB","n":"Core Laboratories N.V.","s":"Services","x":"NYSE"},{"t":"DNOW","n":"Dnow Inc.","s":"Services","x":"NYSE"},{"t":"DRQ","n":"Dril-Quip, Inc.","s":"Services","x":"NYSE"},{"t":"DTI","n":"Drilling Tools International Corp.","s":"Services","x":"NASDAQ"},{"t":"DWSN","n":"Dawson Geophysical Company","s":"Services","x":"NASDAQ"},{"t":"EFXT","n":"Enerflex Ltd.","s":"Services","x":"NYSE"},{"t":"EROK","n":"EagleRock Land LLC","s":"Services","x":"NYSE"},{"t":"EXTN","n":"Exterran Corporation","s":"Services","x":"NYSE"},{"t":"FET","n":"Forum Energy Technologies, Inc.","s":"Services","x":"NYSE"},{"t":"FLOC","n":"Flowco Holdings Inc.","s":"Services","x":"NYSE"},{"t":"FTI","n":"TechnipFMC plc","s":"Services","x":"NYSE"},{"t":"FTK","n":"Flotek Industries, Inc.","s":"Services","x":"NYSE"},{"t":"FTSI","n":"FTS International, Inc.","s":"Services","x":"NYSE"},{"t":"GEOS","n":"Geospace Technologies Corporation","s":"Services","x":"NASDAQ"},{"t":"GLF","n":"Gulfmark Offshore, Inc.","s":"Services","x":"NYSE"},{"t":"HAL","n":"Halliburton Company","s":"Services","x":"NYSE"},{"t":"HLX","n":"Helix Energy Solutions Group, Inc.","s":"Services","x":"NYSE"},{"t":"HMH","n":"HMH Holding Inc. Class A Common Stock","s":"Services","x":"NASDAQ"},{"t":"INVX","n":"Innovex International, Inc.","s":"Services","x":"NYSE"},{"t":"IO","n":"ION Geophysical Corporation","s":"Services","x":"NYSE"},{"t":"KGS","n":"Kodiak Gas Services, Inc.","s":"Services","x":"NYSE"},{"t":"KLXE","n":"KLX Energy Services Holdings, Inc.","s":"Services","x":"NASDAQ"},{"t":"LB","n":"LandBridge Company LLC","s":"Services","x":"NYSE"},{"t":"LBRT","n":"Liberty Energy Inc.","s":"Services","x":"NYSE"},{"t":"LSE","n":"Leishen Energy Holding Co., Ltd.","s":"Services","x":"NASDAQ"},{"t":"MRC","n":"MRC Global Inc.","s":"Services","x":"NYSE"},{"t":"NCSM","n":"NCS Multistage Holdings, Inc.","s":"Services","x":"NASDAQ"},{"t":"NESR","n":"National Energy Services Reunited Corp.","s":"Services","x":"NASDAQ"},{"t":"NEX","n":"NexTier Oilfield Solutions Inc.","s":"Services","x":"NYSE"},{"t":"NGS","n":"Natural Gas Services Group, Inc.","s":"Services","x":"NYSE"},{"t":"NINE","n":"Nine Energy Service, Inc.","s":"Services","x":"AMEX"},{"t":"NOA","n":"North American Construction Group Ltd.","s":"Services","x":"NYSE"},{"t":"NOV","n":"NOV Inc.","s":"Services","x":"NYSE"},{"t":"NPKI","n":"NPK International Inc.","s":"Services","x":"NYSE"},{"t":"NR","n":"Newpark Resources, Inc.","s":"Services","x":"NYSE"},{"t":"OII","n":"Oceaneering International, Inc.","s":"Services","x":"NYSE"},{"t":"OIS","n":"Oil States International, Inc.","s":"Services","x":"NYSE"},{"t":"OMSE","n":"OMS Energy Technologies Inc.","s":"Services","x":"NASDAQ"},{"t":"PFHC","n":"ProFrac Holding Corp.","s":"Services","x":"NASDAQ"},{"t":"PFIE","n":"Profire Energy, Inc.","s":"Services","x":"NASDAQ"},{"t":"PUMP","n":"ProPetro Holding Corp.","s":"Services","x":"NYSE"},{"t":"RCON","n":"Recon Technology, Ltd.","s":"Services","x":"NASDAQ"},{"t":"RES","n":"RPC, Inc.","s":"Services","x":"NYSE"},{"t":"RNGR","n":"Ranger Energy Services, Inc.","s":"Services","x":"NYSE"},{"t":"SDPI","n":"Superior Drilling Products, Inc.","s":"Services","x":"AMEX"},{"t":"SEI","n":"Solaris Energy Infrastructure, Inc.","s":"Services","x":"NYSE"},{"t":"SLB","n":"Slb N.V.","s":"Services","x":"NYSE"},{"t":"SLCA","n":"U.S. Silica Holdings, Inc.","s":"Services","x":"NYSE"},{"t":"SND","n":"Smart Sand, Inc.","s":"Services","x":"NASDAQ"},{"t":"SOI","n":"Solaris Oilfield Infrastructure, Inc.","s":"Services","x":"NYSE"},{"t":"STAK","n":"STAK Inc. Ordinary Shares","s":"Services","x":"NASDAQ"},{"t":"TDW","n":"Tidewater Inc.","s":"Services","x":"NYSE"},{"t":"TDW-WTA","n":"Tidewater Inc. Series A","s":"Services","x":"NYSE"},{"t":"TDW-WTB","n":"Tidewater Inc. Series B","s":"Services","x":"NYSE"},{"t":"TS","n":"Tenaris S.A.","s":"Services","x":"NYSE"},{"t":"TTI","n":"TETRA Technologies, Inc.","s":"Services","x":"NYSE"},{"t":"USAC","n":"USA Compression Partners, LP","s":"Services","x":"NYSE"},{"t":"USWS","n":"U.S. Well Services, Inc.","s":"Services","x":"NASDAQ"},{"t":"VLI","n":"NuStar Energy L.P.","s":"Services","x":"NYSE"},{"t":"VTOL","n":"Bristow Group Inc.","s":"Services","x":"NYSE"},{"t":"WFRD","n":"Weatherford International plc","s":"Services","x":"NASDAQ"},{"t":"WHD","n":"Cactus, Inc.","s":"Services","x":"NYSE"},{"t":"WTTR","n":"Select Water Solutions, Inc.","s":"Services","x":"NYSE"},{"t":"XPRO","n":"Expro Group Holdings N.V.","s":"Services","x":"NYSE"},{"t":"AGIG","n":"Abundia Global Impact Group Inc.","s":"E&P","x":"AMEX"},{"t":"AMPY","n":"Amplify Energy Corp.","s":"E&P","x":"NYSE"},{"t":"ANNA","n":"AleAnna, Inc.","s":"E&P","x":"NASDAQ"},{"t":"APA","n":"APA Corporation","s":"E&P","x":"NASDAQ"},{"t":"AR","n":"Antero Resources Corporation","s":"E&P","x":"NYSE"},{"t":"BATL","n":"Battalion Oil Corporation","s":"E&P","x":"AMEX"},{"t":"BBG","n":"Bill Barrett Corp","s":"E&P","x":"NYSE"},{"t":"BCEI","n":"Civitas Resources, Inc.","s":"E&P","x":"NYSE"},{"t":"BKV","n":"BKV Corporation","s":"E&P","x":"NYSE"},{"t":"BRN","n":"Barnwell Industries, Inc.","s":"E&P","x":"AMEX"},{"t":"BRU","n":"Buru Energy Limited","s":"E&P","x":"NASDAQ"},{"t":"BRY","n":"Berry Corporation","s":"E&P","x":"NASDAQ"},{"t":"BSIN","n":"U.S. Energy Corp.","s":"E&P","x":"NASDAQ"},{"t":"BSM","n":"Black Stone Minerals, L.P.","s":"E&P","x":"NYSE"},{"t":"BTE","n":"Baytex Energy Corp.","s":"E&P","x":"NYSE"},{"t":"CDEV","n":"Permian Resources Corporation","s":"E&P","x":"NASDAQ"},{"t":"CEI","n":"Camber Energy, Inc.","s":"E&P","x":"AMEX"},{"t":"CEO","n":"CNOOC Limited","s":"E&P","x":"NYSE"},{"t":"CHK","n":"Chesapeake Energy Corporation","s":"E&P","x":"NASDAQ"},{"t":"CHKEL","n":"Chesapeake Energy Corporation","s":"E&P","x":"NASDAQ"},{"t":"CHKEZ","n":"Chesapeake Energy Corporation","s":"E&P","x":"NASDAQ"},{"t":"CHRD","n":"Chord Energy Corporation","s":"E&P","x":"NASDAQ"},{"t":"CIVI","n":"Civitas Resources, Inc.","s":"E&P","x":"NYSE"},{"t":"CKX","n":"CKX Lands, Inc.","s":"E&P","x":"AMEX"},{"t":"CLR","n":"Continental Resources, Inc.","s":"E&P","x":"NYSE"},{"t":"CNQ","n":"Canadian Natural Resources Limited","s":"E&P","x":"NYSE"},{"t":"CNX","n":"CNX Resources Corporation","s":"E&P","x":"NYSE"},{"t":"COG","n":"Cabot Oil & Gas Corporation","s":"E&P","x":"NYSE"},{"t":"COP","n":"ConocoPhillips","s":"E&P","x":"NYSE"},{"t":"CPE","n":"Callon Petroleum Company","s":"E&P","x":"NYSE"},{"t":"CPG","n":"Crescent Point Energy Corp.","s":"E&P","x":"NYSE"},{"t":"CRC","n":"California Resources Corp","s":"E&P","x":"NYSE"},{"t":"CRGY","n":"Crescent Energy Company","s":"E&P","x":"NYSE"},{"t":"CRK","n":"Comstock Resources, Inc.","s":"E&P","x":"NYSE"},{"t":"CRT","n":"Cross Timbers Royalty Trust","s":"E&P","x":"NYSE"},{"t":"CTRA","n":"Coterra Energy Inc.","s":"E&P","x":"NYSE"},{"t":"DEC","n":"Diversified Energy Company PLC","s":"E&P","x":"NYSE"},{"t":"DEN","n":"Denbury Inc.","s":"E&P","x":"NYSE"},{"t":"DMLP","n":"Dorchester Minerals, L.P.","s":"E&P","x":"NASDAQ"},{"t":"DVN","n":"Devon Energy Corporation","s":"E&P","x":"NYSE"},{"t":"EGC","n":"Energy XXI Gulf Coast, Inc.","s":"E&P","x":"NASDAQ"},{"t":"EGN","n":"Energen Corporation","s":"E&P","x":"NYSE"},{"t":"EGY","n":"VAALCO Energy, Inc.","s":"E&P","x":"NYSE"},{"t":"END","n":"Endeavour International Corp","s":"E&P","x":"NYSE"},{"t":"EOG","n":"EOG Resources, Inc.","s":"E&P","x":"NYSE"},{"t":"EONR","n":"EON Resources Inc","s":"E&P","x":"AMEX"},{"t":"EP","n":"Empire Petroleum Corporation","s":"E&P","x":"AMEX"},{"t":"EPM","n":"Evolution Petroleum Corporation","s":"E&P","x":"AMEX"},{"t":"EPSN","n":"Epsilon Energy Ltd.","s":"E&P","x":"NASDAQ"},{"t":"EQT","n":"EQT Corporation","s":"E&P","x":"NYSE"},{"t":"ERF","n":"Enerplus Corporation","s":"E&P","x":"NYSE"},{"t":"ESTE","n":"Earthstone Energy, Inc.","s":"E&P","x":"NYSE"},{"t":"EVEP","n":"EV Energy Partners, L.P. repre","s":"E&P","x":"NASDAQ"},{"t":"EXE","n":"Expand Energy Corporation","s":"E&P","x":"NASDAQ"},{"t":"FANG","n":"Diamondback Energy, Inc.","s":"E&P","x":"NASDAQ"},{"t":"FLMN","n":"Falcon Minerals Corporation","s":"E&P","x":"NASDAQ"},{"t":"GDP","n":"Goodrich Petroleum Corporation","s":"E&P","x":"AMEX"},{"t":"GFR","n":"Greenfire Resources Ltd.","s":"E&P","x":"NYSE"},{"t":"GLND","n":"Greenland Energy Company Common Stock","s":"E&P","x":"NASDAQ"},{"t":"GPOR","n":"Gulfport Energy Corp","s":"E&P","x":"NYSE"},{"t":"GPRK","n":"GeoPark Limited","s":"E&P","x":"NYSE"},{"t":"GRNT","n":"Granite Ridge Resources, Inc","s":"E&P","x":"NYSE"},{"t":"GTE","n":"Gran Tierra Energy Inc.","s":"E&P","x":"AMEX"},{"t":"HES","n":"Hess Corporation","s":"E&P","x":"NYSE"},{"t":"HHRS","n":"Hammerhead Energy Inc.","s":"E&P","x":"NASDAQ"},{"t":"HNR","n":"Harvest Natural Resources, Inc.","s":"E&P","x":"NYSE"},{"t":"HPK","n":"HighPeak Energy, Inc.","s":"E&P","x":"NASDAQ"},{"t":"HUSA","n":"Houston American Energy Corp.","s":"E&P","x":"AMEX"},{"t":"IMPP","n":"Imperial Petroleum Inc.","s":"E&P","x":"NASDAQ"},{"t":"IMPTV","n":"Imperial Petroleum Inc.","s":"E&P","x":"NASDAQ"},{"t":"INDO","n":"Indonesia Energy Corporation Limited","s":"E&P","x":"AMEX"},{"t":"KGEI","n":"Kolibri Global Energy Inc.","s":"E&P","x":"NASDAQ"},{"t":"KOS","n":"Kosmos Energy Ltd.","s":"E&P","x":"NYSE"},{"t":"KRP","n":"Kimbell Royalty Partners, LP","s":"E&P","x":"NYSE"},{"t":"LEC","n":"Lafayette Energy Corp","s":"E&P","x":"AMEX"},{"t":"LONE","n":"Lonestar Resources US Inc.","s":"E&P","x":"NASDAQ"},{"t":"LPI","n":"Laredo Petroleum, Inc.","s":"E&P","x":"NYSE"},{"t":"MCF","n":"Contango Oil & Gas Company","s":"E&P","x":"AMEX"},{"t":"MEMP","n":"Memorial Production Partners LP","s":"E&P","x":"NASDAQ"},{"t":"MGY","n":"Magnolia Oil & Gas Corporation","s":"E&P","x":"NYSE"},{"t":"MNR","n":"Mach Natural Resources LP","s":"E&P","x":"NYSE"},{"t":"MNRL","n":"Brigham Minerals, Inc.","s":"E&P","x":"NYSE"},{"t":"MRO","n":"Marathon Oil Corporation","s":"E&P","x":"NYSE"},{"t":"MTDR","n":"Matador Resources Company","s":"E&P","x":"NYSE"},{"t":"MTR","n":"Mesa Royalty Trust","s":"E&P","x":"NYSE"},{"t":"MUR","n":"Murphy Oil Corporation","s":"E&P","x":"NYSE"},{"t":"MVO","n":"MV Oil Trust","s":"E&P","x":"NYSE"},{"t":"MXC","n":"Mexco Energy Corporation","s":"E&P","x":"AMEX"},{"t":"NEHC","n":"New Era Helium, Inc.","s":"E&P","x":"NASDAQ"},{"t":"NFX","n":"Newfield Exploration Company","s":"E&P","x":"NYSE"},{"t":"NOG","n":"Northern Oil and Gas, Inc.","s":"E&P","x":"NYSE"},{"t":"NRT","n":"North European Oil Royalty Trust","s":"E&P","x":"NYSE"},{"t":"OAS","n":"Oasis Petroleum Inc.","s":"E&P","x":"NASDAQ"},{"t":"OBE","n":"Obsidian Energy Ltd.","s":"E&P","x":"AMEX"},{"t":"OVV","n":"Ovintiv Inc.","s":"E&P","x":"NYSE"},{"t":"OXY","n":"Occidental Petroleum Corporation","s":"E&P","x":"NYSE"},{"t":"PDCE","n":"PDC Energy, Inc.","s":"E&P","x":"NASDAQ"},{"t":"PED","n":"PEDEVCO Corp.","s":"E&P","x":"AMEX"},{"t":"PHX","n":"PHX Minerals Inc.","s":"E&P","x":"NYSE"},{"t":"PNRG","n":"PrimeEnergy Resources Corporation","s":"E&P","x":"NASDAQ"},{"t":"PR","n":"Permian Resources Corporation","s":"E&P","x":"NYSE"},{"t":"PRT","n":"PermRock Royalty Trust","s":"E&P","x":"NYSE"},{"t":"PVAC","n":"Penn Virginia Corporation","s":"E&P","x":"NASDAQ"},{"t":"PVL","n":"Permianville Royalty Trust","s":"E&P","x":"NYSE"},{"t":"PXD","n":"Pioneer Natural Resources Company","s":"E&P","x":"NYSE"},{"t":"REI","n":"Ring Energy, Inc.","s":"E&P","x":"AMEX"},{"t":"REPX","n":"Riley Exploration Permian, Inc.","s":"E&P","x":"AMEX"},{"t":"REXX","n":"Rex Energy Corporation","s":"E&P","x":"NASDAQ"},{"t":"ROCC","n":"Ranger Oil Corporation","s":"E&P","x":"NASDAQ"},{"t":"RRC","n":"Range Resources Corporation","s":"E&P","x":"NYSE"},{"t":"RSPP","n":"RSP Permian, Inc.","s":"E&P","x":"NYSE"},{"t":"SAFX","n":"XCF Global, Inc. Class A Common Stock","s":"E&P","x":"NASDAQ"},{"t":"SBOW","n":"SilverBow Resources, Inc.","s":"E&P","x":"NYSE"},{"t":"SBR","n":"Sabine Royalty Trust","s":"E&P","x":"NYSE"},{"t":"SD","n":"SandRidge Energy, Inc.","s":"E&P","x":"NYSE"},{"t":"SJT","n":"San Juan Basin Royalty Trust","s":"E&P","x":"NYSE"},{"t":"SM","n":"SM Energy Company","s":"E&P","x":"NYSE"},{"t":"SWN","n":"Southwestern Energy Company","s":"E&P","x":"NYSE"},{"t":"TALO","n":"Talos Energy Inc.","s":"E&P","x":"NYSE"},{"t":"TBN","n":"Tamboran Resources Corp","s":"E&P","x":"NYSE"},{"t":"TELL","n":"Tellurian Inc.","s":"E&P","x":"AMEX"},{"t":"TGA","n":"TransGlobe Energy Corporation","s":"E&P","x":"NASDAQ"},{"t":"TPET","n":"Trio Petroleum Corp.","s":"E&P","x":"AMEX"},{"t":"TPL","n":"Texas Pacific Land Corporation","s":"Other","x":"NYSE"},{"t":"TXO","n":"TXO Partners, L.P.","s":"E&P","x":"NYSE"},{"t":"USEG","n":"U.S. Energy Corp.","s":"E&P","x":"NASDAQ"},{"t":"VET","n":"Vermilion Energy Inc.","s":"E&P","x":"NYSE"},{"t":"VIST","n":"Vista Energy, S.A.B. de C.V.","s":"E&P","x":"NYSE"},{"t":"VOC","n":"VOC Energy Trust","s":"E&P","x":"NYSE"},{"t":"VRN","n":"Veren Inc.","s":"E&P","x":"NYSE"},{"t":"VTLE","n":"Vital Energy, Inc.","s":"E&P","x":"NYSE"},{"t":"VTS","n":"Vitesse Energy, Inc.","s":"E&P","x":"NYSE"},{"t":"WDS","n":"Woodside Energy Group Ltd","s":"E&P","x":"NYSE"},{"t":"WHK","n":"WhiteHawk Minerals Corp.","s":"E&P","x":"NASDAQ"},{"t":"WLL","n":"Oasis Petroleum Inc","s":"E&P","x":"NYSE"},{"t":"WTI","n":"W&T Offshore, Inc.","s":"E&P","x":"NYSE"},{"t":"XEC","n":"Cimarex Energy Co.","s":"E&P","x":"NYSE"},{"t":"XOG","n":"Extraction Oil & Gas, Inc.","s":"E&P","x":"NASDAQ"},{"t":"BP","n":"BP p.l.c.","s":"Integrated","x":"NYSE"},{"t":"CGBS","n":"Crown LNG Holdings Limited","s":"Integrated","x":"NASDAQ"},{"t":"CVE","n":"Cenovus Energy Inc.","s":"Integrated","x":"NYSE"},{"t":"CVX","n":"Chevron Corporation","s":"Integrated","x":"NYSE"},{"t":"E","n":"Eni S.p.A.","s":"Integrated","x":"NYSE"},{"t":"EC","n":"Ecopetrol S.A.","s":"Integrated","x":"NYSE"},{"t":"EQNR","n":"Equinor ASA","s":"Integrated","x":"NYSE"},{"t":"IMO","n":"Imperial Oil Limited","s":"Integrated","x":"AMEX"},{"t":"INR","n":"Infinity Natural Resources, Inc.","s":"E&P","x":"NYSE"},{"t":"NFG","n":"National Fuel Gas Company","s":"Other","x":"NYSE"},{"t":"PBR","n":"Petróleo Brasileiro S.A. - Petrobras","s":"Integrated","x":"NYSE"},{"t":"PTR","n":"PetroChina Company Limited","s":"Integrated","x":"NYSE"},{"t":"RDS-B","n":"Shell plc","s":"Integrated","x":"NYSE"},{"t":"SHEL","n":"Shell plc","s":"Integrated","x":"NYSE"},{"t":"SKYQ","n":"Sky Quarry Inc.","s":"Other","x":"NASDAQ"},{"t":"SLNG","n":"Stabilis Solutions, Inc.","s":"Other","x":"NASDAQ"},{"t":"SNP","n":"China Petroleum & Chemical Corporation","s":"Integrated","x":"NYSE"},{"t":"SU","n":"Suncor Energy Inc.","s":"Integrated","x":"NYSE"},{"t":"TANNZ","n":"TravelCenters of America LLC 8% SR NT 2030","s":"Integrated","x":"NASDAQ"},{"t":"TELZ","n":"Tellurian Inc. 8.25% Senior Not","s":"Integrated","x":"AMEX"},{"t":"TGS","n":"Transportadora de Gas del Sur S.A.","s":"Midstream","x":"NYSE"},{"t":"TTE","n":"TotalEnergies SE","s":"Integrated","x":"NYSE"},{"t":"XOM","n":"Exxon Mobil Corporation","s":"Integrated","x":"NYSE"},{"t":"YPF","n":"YPF Sociedad Anónima","s":"Integrated","x":"NYSE"},{"t":"ZEST","n":"Ecoark Holdings, Inc.","s":"Integrated","x":"NASDAQ"},{"t":"AM","n":"Antero Midstream Corporation","s":"Midstream","x":"NYSE"},{"t":"BANL","n":"CBL International Limited","s":"Midstream","x":"NASDAQ"},{"t":"BKEP","n":"Blueknight Energy Partners, L.P.","s":"Midstream","x":"NASDAQ"},{"t":"BPMP","n":"BP Midstream Partners LP","s":"Midstream","x":"NYSE"},{"t":"BROG","n":"Brooge Energy Limited","s":"Midstream","x":"NASDAQ"},{"t":"CEQP","n":"Crestwood Equity Partners LP","s":"Midstream","x":"NYSE"},{"t":"CPGX","n":"Columbia Pipeline Group, Inc.","s":"Midstream","x":"NYSE"},{"t":"CQH","n":"Cheniere Energy Partners LP Holdings, LLC","s":"Midstream","x":"NYSE"},{"t":"CQP","n":"Cheniere Energy Partners, L.P.","s":"Midstream","x":"NYSE"},{"t":"DCP","n":"DCP Midstream, LP","s":"Midstream","x":"NYSE"},{"t":"DKL","n":"Delek Logistics Partners, LP","s":"Midstream","x":"NYSE"},{"t":"DSSI","n":"Diamond S Shipping Inc.","s":"Midstream","x":"NYSE"},{"t":"DTM","n":"DT Midstream, Inc.","s":"Midstream","x":"NYSE"},{"t":"EEQ","n":"Enbridge Energy Management, L.L.C.","s":"Midstream","x":"NYSE"},{"t":"ENB","n":"Enbridge Inc.","s":"Midstream","x":"NYSE"},{"t":"ENBA","n":"Enbridge Inc. 6.375 SNT18 B 78","s":"Midstream","x":"NYSE"},{"t":"ENBL","n":"Enable Midstream Partners, LP","s":"Midstream","x":"NYSE"},{"t":"ENLC","n":"EnLink Midstream, LLC","s":"Midstream","x":"NYSE"},{"t":"ENLK","n":"EnLink Midstream Partners, LP","s":"Midstream","x":"NYSE"},{"t":"EP-PC","n":"El Paso Energy Capital Trust I PFD CV TR SECS","s":"Midstream","x":"NYSE"},{"t":"EPD","n":"Enterprise Products Partners L.P.","s":"Midstream","x":"NYSE"},{"t":"EQGP","n":"EQGP Holdings, LP","s":"Midstream","x":"NYSE"},{"t":"ET","n":"Energy Transfer LP","s":"Midstream","x":"NYSE"},{"t":"ETP","n":"Energy Transfer Partners, L.P.","s":"Midstream","x":"NYSE"},{"t":"ETRN","n":"Equitrans Midstream Corporation","s":"Midstream","x":"NYSE"},{"t":"EURN","n":"Euronav N.V.","s":"Midstream","x":"NYSE"},{"t":"GEL","n":"Genesis Energy, L.P.","s":"Midstream","x":"NYSE"},{"t":"GLNG","n":"Golar LNG Limited","s":"Midstream","x":"NASDAQ"},{"t":"GLOG-PA","n":"GasLog Ltd.","s":"Midstream","x":"NYSE"},{"t":"GLOP","n":"GasLog Partners LP","s":"Midstream","x":"NYSE"},{"t":"GLOP-PA","n":"GasLog Partners LP","s":"Midstream","x":"NYSE"},{"t":"GPP","n":"Green Plains Partners LP","s":"Midstream","x":"NASDAQ"},{"t":"HEP","n":"Holly Energy Partners, L.P.","s":"Midstream","x":"NYSE"},{"t":"HESM","n":"Hess Midstream LP","s":"Midstream","x":"NYSE"},{"t":"HMLP","n":"Höegh LNG Partners LP","s":"Midstream","x":"NYSE"},{"t":"INSW","n":"International Seaways, Inc.","s":"Midstream","x":"NYSE"},{"t":"KMI","n":"Kinder Morgan, Inc.","s":"Midstream","x":"NYSE"},{"t":"KNTK","n":"Kinetik Holdings Inc.","s":"Midstream","x":"NYSE"},{"t":"LNG","n":"Cheniere Energy, Inc.","s":"Midstream","x":"NYSE"},{"t":"LPG","n":"Dorian LPG Ltd.","s":"Midstream","x":"NYSE"},{"t":"MARPS","n":"Marine Petroleum Trust","s":"Midstream","x":"NASDAQ"},{"t":"MEP","n":"Midcoast Energy Partners, L.P.","s":"Midstream","x":"NYSE"},{"t":"MMLP","n":"Martin Midstream Partners L.P.","s":"Midstream","x":"NASDAQ"},{"t":"MMP","n":"Magellan Midstream Partners, L.P.","s":"Midstream","x":"NYSE"},{"t":"MPLX","n":"MPLX Lp","s":"Midstream","x":"NYSE"},{"t":"NGL","n":"NGL Energy Partners LP","s":"Midstream","x":"NYSE"},{"t":"NNA","n":"Navios Maritime Acquisition Corporation","s":"Midstream","x":"NYSE"},{"t":"NS","n":"NuStar Energy L.P.","s":"Midstream","x":"NYSE"},{"t":"NSS","n":"NuStar Logistics, L.P. SB NT FX/FL 43","s":"Midstream","x":"NYSE"},{"t":"OKE","n":"ONEOK, Inc.","s":"Midstream","x":"NYSE"},{"t":"OMP","n":"Oasis Midstream Partners LP","s":"Midstream","x":"NASDAQ"},{"t":"PAA","n":"Plains All American Pipeline, L.P.","s":"Midstream","x":"NASDAQ"},{"t":"PAGP","n":"Plains GP Holdings LP","s":"Midstream","x":"NASDAQ"},{"t":"PBA","n":"Pembina Pipeline Corporation","s":"Midstream","x":"NYSE"},{"t":"PBFX","n":"PBF Logistics LP","s":"Midstream","x":"NYSE"},{"t":"PBT","n":"Permian Basin Royalty Trust","s":"Midstream","x":"NYSE"},{"t":"PSXP","n":"Phillips 66 Partners LP","s":"Midstream","x":"NYSE"},{"t":"PTLE","n":"PTL Limited","s":"Midstream","x":"NASDAQ"},{"t":"RBNE","n":"Robin Energy Ltd.","s":"Midstream","x":"NASDAQ"},{"t":"RTLR","n":"Rattler Midstream LP","s":"Midstream","x":"NASDAQ"},{"t":"SEAL-PB","n":"Seapeak LLC","s":"Midstream","x":"NYSE"},{"t":"SEP","n":"Spectra Energy Partners, LP","s":"Midstream","x":"NYSE"},{"t":"SHLX","n":"Shell Midstream Partners, L.P.","s":"Midstream","x":"NYSE"},{"t":"SMC","n":"Summit Midstream Corp.","s":"Midstream","x":"NYSE"},{"t":"SMLP","n":"Summit Midstream Partners, LP","s":"Midstream","x":"NYSE"},{"t":"SNMP","n":"Evolve Transition Infrastructure LP","s":"Midstream","x":"AMEX"},{"t":"SOBO","n":"South Bow Corporation","s":"Midstream","x":"NYSE"},{"t":"SUNC","n":"SunocoCorp LLC","s":"Midstream","x":"NYSE"},{"t":"TEN","n":"Tsakos Energy Navigation Limited","s":"Midstream","x":"NYSE"},{"t":"TEP","n":"Tallgrass Energy Partners, LP","s":"Midstream","x":"NYSE"},{"t":"TGP","n":"Teekay LNG Partners L.P.","s":"Midstream","x":"NYSE"},{"t":"TK","n":"Teekay Corporation","s":"Midstream","x":"NYSE"},{"t":"TNP","n":"Tsakos Energy Navigation Limited","s":"Midstream","x":"NYSE"},{"t":"TRGP","n":"Targa Resources Corp.","s":"Midstream","x":"NYSE"},{"t":"TRMD","n":"TORM plc","s":"Midstream","x":"NASDAQ"},{"t":"TRP","n":"TC Energy Corporation","s":"Midstream","x":"NYSE"},{"t":"VLP","n":"Valero Energy Partners LP","s":"Midstream","x":"NYSE"},{"t":"VNOM","n":"Viper Energy, Inc.","s":"Midstream","x":"NASDAQ"},{"t":"WES","n":"Western Midstream Partners, LP","s":"Midstream","x":"NYSE"},{"t":"WMB","n":"The Williams Companies, Inc.","s":"Midstream","x":"NYSE"},{"t":"WPZ","n":"Williams Partners L.P.","s":"Midstream","x":"NYSE"},{"t":"AE","n":"Adams Resources & Energy, Inc.","s":"Refining","x":"AMEX"},{"t":"AMTX","n":"Aemetis, Inc.","s":"Refining","x":"NASDAQ"},{"t":"APC","n":"ARKO Petroleum Corp. Class A Common Stock","s":"Refining","x":"NASDAQ"},{"t":"BPT","n":"BP Prudhoe Bay Royalty Trust","s":"Refining","x":"NYSE"},{"t":"CAPL","n":"CrossAmerica Partners LP","s":"Refining","x":"NYSE"},{"t":"CLMT","n":"Calumet Inc.","s":"Refining","x":"NASDAQ"},{"t":"CLNE","n":"Clean Energy Fuels Corp.","s":"Refining","x":"NASDAQ"},{"t":"CSAN","n":"Cosan S.A.","s":"Refining","x":"NYSE"},{"t":"CVI","n":"CVR Energy, Inc.","s":"Refining","x":"NYSE"},{"t":"CVRR","n":"CVR Refining, LP","s":"Refining","x":"NYSE"},{"t":"DINO","n":"HF Sinclair Corporation","s":"Refining","x":"NYSE"},{"t":"DK","n":"Delek US Holdings, Inc.","s":"Refining","x":"NYSE"},{"t":"GI","n":"Giant Industries, Inc.","s":"Refining","x":"NYSE"},{"t":"HFC","n":"HF Sinclair Corporation","s":"Refining","x":"NYSE"},{"t":"INT","n":"World Fuel Services Corporation","s":"Refining","x":"NYSE"},{"t":"MPC","n":"Marathon Petroleum Corporation","s":"Refining","x":"NYSE"},{"t":"NTI","n":"Northern Tier Energy LP","s":"Refining","x":"NYSE"},{"t":"PARR","n":"Par Pacific Holdings, Inc.","s":"Refining","x":"NYSE"},{"t":"PBF","n":"PBF Energy Inc.","s":"Refining","x":"NYSE"},{"t":"PSX","n":"Phillips 66","s":"Refining","x":"NYSE"},{"t":"PTXP","n":"PennTex Midstream Partners, LP","s":"Refining","x":"NASDAQ"},{"t":"REGI","n":"Renewable Energy Group, Inc.","s":"Refining","x":"NASDAQ"},{"t":"SGU","n":"Star Group, L.P.","s":"Refining","x":"NYSE"},{"t":"SHI","n":"Sinopec Shanghai Petrochemical Company Limited","s":"Petchem","x":"NYSE"},{"t":"SRLP","n":"Sprague Resources LP","s":"Refining","x":"NYSE"},{"t":"SUN","n":"Sunoco LP","s":"Refining","x":"NYSE"},{"t":"TMDE","n":"TMD Energy Limited","s":"Refining","x":"AMEX"},{"t":"UGP","n":"Ultrapar Participações S.A.","s":"Refining","x":"NYSE"},{"t":"VLO","n":"Valero Energy Corporation","s":"Refining","x":"NYSE"},{"t":"VTNR","n":"Vertex Energy, Inc.","s":"Refining","x":"NASDAQ"},{"t":"VVV","n":"Valvoline Inc.","s":"Refining","x":"NYSE"},{"t":"WKC","n":"World Kinect Corporation","s":"Refining","x":"NYSE"},{"t":"WNR","n":"Western Refining Inc. Western R","s":"Refining","x":"NYSE"},{"t":"WNRL","n":"Western Refining Logistics, LP","s":"Refining","x":"NYSE"},{"t":"DOW","n":"Dow Inc.","s":"Petchem","x":"NYSE"},{"t":"LYB","n":"LyondellBasell Industries N.V.","s":"Petchem","x":"NYSE"},{"t":"HUN","n":"Huntsman Corporation","s":"Petchem","x":"NYSE"}];
+const FMP='https://financialmodelingprep.com/stable/';
+function getKey(){return (window.__FMPKEY__||localStorage.getItem('fmp_key')||'').trim();}
+function _wk(u){return u+(u.indexOf('?')>=0?'&':'?')+'apikey='+encodeURIComponent(getKey());}
+async function jget(u){const r=await fetch(_wk(u));if(!r.ok)throw new Error('FMP HTTP '+r.status);const j=await r.json();if(j&&!Array.isArray(j)&&(j['Error Message']||j.error))throw new Error(j['Error Message']||j.error);return j;}
+async function fmp(tool,args){
+  if(!getKey())throw new Error('No FMP API key set');
+  const ep=args.endpoint;
+  if(tool==='quote'){
+    if(ep==='batch-quote'){
+      const syms=args.symbols||[];
+      try{const a=await jget(FMP+'batch-quote?symbols='+syms.join(','));if(a&&a.length)return a;}catch(e){}
+      const out=[];
+      await Promise.all(syms.map(async s=>{try{const d=await jget(FMP+'quote?symbol='+s);if(d&&d[0])out.push(d[0]);}catch(_){}}));
+      return out;
+    }
+    if(ep==='full-commodities-quotes'){try{return await jget(FMP+'all-commodities-quotes');}catch(e){return await jget(FMP+'batch-commodity-quotes');}}
+    if(ep==='quote'){return await jget(FMP+'quote?symbol='+args.symbol);}
+  }
+  if(tool==='statements'){
+    if(ep==='key-metrics-ttm')return await jget(FMP+'key-metrics-ttm?symbol='+args.symbol);
+    if(ep==='key-metrics')return await jget(FMP+'key-metrics?symbol='+args.symbol+'&period='+(args.period||'annual')+'&limit='+(args.limit||6));
+  }
+  if(tool==='chart'){
+    const kind=(ep==='historical-price-eod-light')?'light':'full';
+    let u=FMP+'historical-price-eod/'+kind+'?symbol='+args.symbol;
+    if(args.from_date)u+='&from='+args.from_date;
+    if(args.to_date)u+='&to='+args.to_date;
+    const j=await jget(u);
+    return Array.isArray(j)?j:((j&&j.historical)||[]);
+  }
+  if(tool==='news'){
+    if(ep==='general-news')return await jget(FMP+'news/general-latest?page=0&limit='+(args.limit||20));
+    if(ep==='search-stock-news')return await jget(FMP+'news/stock?symbols='+(args.symbols||[]).join(',')+'&limit='+(args.limit||20));
+  }
+  if(tool==='company')return await jget(FMP+'profile?symbol='+args.symbol);
+  return await jget(FMP+ep);
+}
+
+async function fmpRetry(tool,args,tries){for(let i=0;i<tries;i++){try{return await fmp(tool,args);}catch(e){await new Promise(r=>setTimeout(r,500*(i+1)+Math.random()*400));}}return null;}
+async function pool(items,n,fn,onP){
+  let i=0,done=0,res=[];
+  async function w(){while(i<items.length){const k=i++;try{res[k]=await fn(items[k],k);}catch(e){res[k]=null;}done++;onP&&onP(done,items.length);}}
+  await Promise.all(Array.from({length:Math.min(n,items.length)},w));return res;
+}
+const chunk=(a,n)=>{const o=[];for(let i=0;i<a.length;i+=n)o.push(a.slice(i,i+n));return o;};
+function corr(a,b){const n=Math.min(a.length,b.length);if(n<3)return null;let sa=0,sb=0;for(let i=0;i<n;i++){sa+=a[i];sb+=b[i];}const ma=sa/n,mb=sb/n;let cov=0,va=0,vb=0;for(let i=0;i<n;i++){const da=a[i]-ma,db=b[i]-mb;cov+=da*db;va+=da*da;vb+=db*db;}return va&&vb?cov/Math.sqrt(va*vb):null;}
+
+/* ---------- tabs ---------- */
+const TABS=[['p-price','1 · Price'],['p-peers','2 · Peers'],['p-hist','3 · Hist. Val'],['p-tech','4 · Technical'],['p-macro','5 · Crude/Crack'],['p-news','6 · News'],['p-sector','7 · Sector'],['p-rec','★ Recommend']];
+const tabsEl=$('#tabs');
+TABS.forEach(([id,lab],idx)=>{const b=document.createElement('div');b.className='tab'+(idx===0?' active':'');b.textContent=lab;b.onclick=()=>{document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));b.classList.add('active');document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));$('#'+id).classList.add('active');if(id==='p-sector')renderSectorBars();};tabsEl.appendChild(b);});
+$('#p-price').classList.add('active');
+
+/* populate selects */
+const sectors=[...new Set(UNIVERSE.map(u=>u.s))].sort();
+function fillPick(sel){const e=$(sel);UNIVERSE.slice().sort((a,b)=>a.t.localeCompare(b.t)).forEach(u=>{const o=document.createElement('option');o.value=u.t;o.textContent=u.t+' · '+u.n;e.appendChild(o);});}
+['#peer-pick','#hist-pick','#tech-pick','#mac-pick','#news-pick'].forEach(s=>fillPick(s));
+['#flt-sec','#rec-sec'].forEach(s=>{sectors.forEach(sec=>{const o=document.createElement('option');o.value=sec;o.textContent=sec;$(s).appendChild(o);});});
+
+/* ---------- Section 1: quotes ---------- */
+let QUOTES={};
+let LIVE=new Set();
+const STALE_DAYS=20;
+let RETURNS={};
+let BENCHYTD={};
+let priceSort={k:'dpc',dir:-1};
+async function loadQuotes(){
+  $('#status').innerHTML='<span class="spinner"></span> loading quotes…';
+  const syms=UNIVERSE.map(u=>u.t);
+  const groups=chunk(syms,50);
+  for(const g of groups){
+    try{const q=await fmp('quote',{endpoint:'batch-quote',symbols:g});(q||[]).forEach(r=>QUOTES[r.symbol]=r);}catch(e){}
+  }
+  try{const q=await fmp('quote',{endpoint:'batch-quote',symbols:['XLE','XOP','XES','SPY','USO','BNO','UNG','CRAK']});(q||[]).forEach(r=>QUOTES[r.symbol]=r);}catch(e){}
+  // self-prune: keep only names whose latest quote is recent (drops delisted/acquired tickers that FMP still serves stale prices for)
+  const tss=UNIVERSE.map(u=>QUOTES[u.t]&&QUOTES[u.t].timestamp).filter(Boolean);
+  const maxTs=tss.length?Math.max(...tss):Math.floor(Date.now()/1000);
+  const cutoff=maxTs-STALE_DAYS*86400;
+  LIVE=new Set(UNIVERSE.filter(u=>{const q=QUOTES[u.t];return q&&q.timestamp>=cutoff&&q.price>0;}).map(u=>u.t));
+  rebuildPickers();
+  const dropped=UNIVERSE.length-LIVE.size;
+  $('#asof').textContent='Live · '+new Date().toLocaleString()+' · '+LIVE.size+' active names ('+dropped+' delisted/stale removed)';
+  $('#status').textContent='';
+  renderPrice();renderSector();
+  computeReturns();   // auto-load weekly & YTD returns in the background
+}
+function rebuildPickers(){
+  const liveU=UNIVERSE.filter(u=>LIVE.has(u.t)).sort((a,b)=>a.t.localeCompare(b.t));
+  [['#peer-pick',false],['#hist-pick',false],['#tech-pick',false],['#mac-pick',false],['#news-pick',true]].forEach(([sel,blank])=>{
+    const e=$(sel);if(!e)return;const cur=e.value;e.innerHTML=blank?'<option value="">— market only —</option>':'';
+    liveU.forEach(u=>{const o=document.createElement('option');o.value=u.t;o.textContent=u.t+' · '+u.n;e.appendChild(o);});
+    if(cur&&LIVE.has(cur))e.value=cur;
+  });
+}
+function returnsCols(){return Object.keys(RETURNS).length>0;}
+function renderPrice(){
+  const f=($('#flt').value||'').toUpperCase(),sec=$('#flt-sec').value;
+  const haveRet=returnsCols();
+  const cols=[['t','Ticker'],['n','Name'],['s','Sector'],['price','Price'],['dpc','Daily%'],['wk','Weekly%'],['ytd','YTD%'],['vol','Volume']];
+  if(haveRet)cols.push(['vxle','YTD−XLE'],['vspy','YTD−SPY']);
+  cols.push(['p52','52w pos'],['v50','vs50d'],['v200','vs200d']);
+  const thead=$('#price-tbl thead');thead.innerHTML='<tr>'+cols.map(c=>`<th data-k="${c[0]}">${c[1]}</th>`).join('')+'</tr>';
+  thead.querySelectorAll('th').forEach(th=>th.onclick=()=>{const k=th.dataset.k;priceSort.dir=(priceSort.k===k)?-priceSort.dir:-1;priceSort.k=k;renderPrice();});
+  let rows=UNIVERSE.filter(u=>LIVE.has(u.t)).filter(u=>(!sec||u.s===sec)&&(!f||u.t.includes(f)||(u.n||'').toUpperCase().includes(f)));
+  const val=(u,k)=>{const q=QUOTES[u.t],r=RETURNS[u.t]||{};switch(k){case 't':return u.t;case 'n':return u.n||'';case 's':return u.s;case 'price':return q.price;case 'dpc':return q.changePercentage;case 'vol':return q.volume;case 'wk':return r.wk;case 'ytd':return r.ytd;case 'vxle':return r.ytd!=null?r.ytd-(BENCHYTD.XLE||0):null;case 'vspy':return r.ytd!=null?r.ytd-(BENCHYTD.SPY||0):null;case 'p52':return q.yearHigh!=null?(q.price-q.yearLow)/(q.yearHigh-q.yearLow)*100:null;case 'v50':return q.priceAvg50?(q.price/q.priceAvg50-1)*100:null;case 'v200':return q.priceAvg200?(q.price/q.priceAvg200-1)*100:null;}};
+  rows.sort((a,b)=>{let x=val(a,priceSort.k),y=val(b,priceSort.k);if(typeof x==='string')return x.localeCompare(y)*priceSort.dir;x=x==null?-1e15:x;y=y==null?-1e15:y;return(x-y)*priceSort.dir;});
+  const tb=$('#price-tbl tbody');
+  tb.innerHTML=rows.map(u=>{const q=QUOTES[u.t],r=RETURNS[u.t]||{};
+    const p52=q.yearHigh!=null?(q.price-q.yearLow)/(q.yearHigh-q.yearLow)*100:null;
+    const v50=q.priceAvg50?(q.price/q.priceAvg50-1)*100:null,v200=q.priceAvg200?(q.price/q.priceAvg200-1)*100:null;
+    const vxle=r.ytd!=null?r.ytd-(BENCHYTD.XLE||0):null,vspy=r.ytd!=null?r.ytd-(BENCHYTD.SPY||0):null;
+    let c=`<td class="tk" onclick="drill('${u.t}')">${u.t}</td><td class="name" title="${(u.n||'').replace(/"/g,'')}">${u.n||''}</td><td>${u.s}</td><td>${fmtN(q.price)}</td><td class="${cls(q.changePercentage)}">${pct(q.changePercentage)}</td><td class="${cls(r.wk)}">${pct(r.wk)}</td><td class="${cls(r.ytd)}">${pct(r.ytd)}</td><td>${(q.volume||0).toLocaleString()}</td>`;
+    if(haveRet)c+=`<td class="${cls(vxle)}">${pct(vxle)}</td><td class="${cls(vspy)}">${pct(vspy)}</td>`;
+    c+=`<td>${p52==null?'–':'<div class="bar"><span style="left:0;width:'+Math.max(2,Math.min(100,p52))+'%;background:'+(p52>70?'#137a4b':p52<30?'#c0392b':'#0e7490')+'"></span></div>'}</td>`;
+    c+=`<td class="${cls(v50)}">${pct(v50)}</td><td class="${cls(v200)}">${pct(v200)}</td>`;
+    return '<tr>'+c+'</tr>';}).join('');
+}
+$('#flt').oninput=renderPrice;$('#flt-sec').onchange=renderPrice;
+$('#rank-by').onchange=async()=>{const k=$('#rank-by').value;if((k==='wk'||k==='ytd')&&!returnsCols()&&!retRunning){await computeReturns();}priceSort={k,dir:-1};renderPrice();};
+let retRunning=false;
+async function computeReturns(){
+  if(retRunning)return;retRunning=true;
+  const prog=$('#ret-prog');prog.style.display='block';const bar=prog.firstElementChild;
+  $('#ret-note').textContent='';
+  for(const b of Object.keys(BENCH)){const h=await fmpRetry('chart',{endpoint:'historical-price-eod-light',symbol:b,from_date:YTD_FROM},5);if(h)BENCHYTD[b]=ytdFrom(h);}
+  const syms=UNIVERSE.filter(u=>LIVE.has(u.t)).map(u=>u.t);
+  // concurrency kept low + retry/backoff so the FMP Starter-plan rate limit doesn't drop names (which left cells blank)
+  await pool(syms,3,async(t)=>{
+    const h=await fmpRetry('chart',{endpoint:'historical-price-eod-light',symbol:t,from_date:YTD_FROM},5);
+    if(h&&h.length){RETURNS[t]={ytd:ytdFrom(h),wk:wkFrom(h)};}
+    await new Promise(r=>setTimeout(r,90));
+  },(d,n)=>{bar.style.width=(d/n*100)+'%';$('#ret-note').textContent='loading returns… '+d+' / '+n;if(d%20===0)renderPrice();});
+  retRunning=false;$('#ret-note').textContent='returns loaded · benchmarks XLE '+pct(BENCHYTD.XLE)+', SPY '+pct(BENCHYTD.SPY);
+  setTimeout(()=>prog.style.display='none',600);
+  renderPrice();
+}
+function ytdFrom(h){if(!h||!h.length)return null;const last=h[h.length-1].price,first=h[0].price;return last?(first/last-1)*100:null;}
+function wkFrom(h){if(!h||h.length<6)return null;const now=h[0].price,wk=h[5].price;return wk?(now/wk-1)*100:null;}
+
+function drill(t){['#peer-pick','#hist-pick','#tech-pick','#mac-pick','#news-pick'].forEach(s=>{if($(s))$(s).value=t;});
+  document.querySelectorAll('.tab')[1].click();$('#peer-go').click();}
+
+/* ---------- Section 2: peers ---------- */
+function metricRow(name,val,arr,fmt,goodHigh){
+  const vals=arr.filter(x=>x!=null&&!isNaN(x));if(!vals.length||val==null)return `<div class="metric"><div class="mname">${name}</div><div class="muted small">n/a</div><div></div></div>`;
+  const mn=Math.min(...vals),mx=Math.max(...vals),med=vals.slice().sort((a,b)=>a-b)[Math.floor(vals.length/2)];
+  const span=mx-mn||1,pos=(val-mn)/span*100;
+  const better=goodHigh?(val>=med):(val<=med);
+  return `<div class="metric"><div class="mname">${name}</div><div class="rng"><div class="fill" style="left:0;width:100%"></div><div class="dot" style="left:${Math.max(1,Math.min(98,pos))}%;background:${better?'#137a4b':'#b7791f'}"></div><div class="lab" style="left:0">${fmt(mn)}</div><div class="lab" style="right:0">${fmt(mx)}</div></div><div style="text-align:right;font-weight:650">${fmt(val)}</div></div>`;
+}
+$('#peer-go').onclick=async()=>{
+  const t=$('#peer-pick').value;$('#peer-stat').innerHTML='<span class="spinner"></span>';$('#peer-out').innerHTML='';
+  try{
+    // peers = same sector (our classification) + comparable market cap (nearest by size)
+    const meU=UNIVERSE.find(u=>u.t===t);const sec=meU?meU.s:null;const mc=(QUOTES[t]||{}).marketCap||0;
+    let cand=UNIVERSE.filter(u=>LIVE.has(u.t)&&u.t!==t&&u.s===sec&&QUOTES[u.t]&&QUOTES[u.t].marketCap>0);
+    if(mc>0)cand=cand.map(u=>({u,d:Math.abs(Math.log(QUOTES[u.t].marketCap/mc))})).sort((a,b)=>a.d-b.d).map(x=>x.u);
+    const set=[t,...cand.slice(0,10).map(u=>u.t)];
+    const km=await pool(set,4,async s=>{const r=await fmpRetry('statements',{endpoint:'key-metrics-ttm',symbol:s},4);return{s,m:r&&r[0]};});
+    const data=km.filter(x=>x&&x.m);
+    const get=(o,k)=>o&&o.m?o.m[k]:null;
+    const evb=data.map(o=>get(o,'evToEBITDATTM')),fcf=data.map(o=>get(o,'freeCashFlowYieldTTM')*100),nd=data.map(o=>get(o,'netDebtToEBITDATTM')),roe=data.map(o=>get(o,'returnOnEquityTTM')*100);
+    const me=data.find(o=>o.s===t);const q=QUOTES[t]||{};
+    const capB=v=>v?'$'+(v>=1e9?(v/1e9).toFixed(1)+'B':(v/1e6).toFixed(0)+'M'):'–';
+    const peerCaps=data.filter(o=>o.s!==t).map(o=>(QUOTES[o.s]||{}).marketCap).filter(Boolean);
+    const capRange=peerCaps.length?capB(Math.min(...peerCaps))+' – '+capB(Math.max(...peerCaps)):'–';
+    let html=`<div class="kpi"><div class="b"><div class="l">Spot price</div><div class="v">${fmtN(q.price)} <span class="small ${cls(q.changePercentage)}">${pct(q.changePercentage)}</span></div></div><div class="b"><div class="l">Sector</div><div class="v">${sec||'–'}</div></div><div class="b"><div class="l">Market cap</div><div class="v">${capB(q.marketCap)}</div></div><div class="b"><div class="l">Same-sector peers</div><div class="v">${data.length-1}</div></div><div class="b"><div class="l">Peer cap range</div><div class="v" style="font-size:14px">${capRange}</div></div></div>`;
+    html+='<div class="card" style="margin-top:12px;background:#fafbfc"><h3 class="small" style="margin-bottom:8px">'+t+' valuation vs peer range (marker = '+t+')</h3>';
+    html+=metricRow('EV / EBITDA',get(me,'evToEBITDATTM'),evb,v=>fmtN(v,1)+'x',false);
+    html+=metricRow('FCF yield',get(me,'freeCashFlowYieldTTM')*100,fcf,v=>fmtN(v,1)+'%',true);
+    html+=metricRow('Net Debt / EBITDA',get(me,'netDebtToEBITDATTM'),nd,v=>fmtN(v,1)+'x',false);
+    html+=metricRow('ROE',get(me,'returnOnEquityTTM')*100,roe,v=>fmtN(v,1)+'%',true);
+    html+='</div>';
+    html+='<div class="tbl-scroll"><table><thead><tr><th>Ticker</th><th>Mkt cap</th><th>EV/EBITDA</th><th>FCF yld</th><th>NetDebt/EBITDA</th><th>ROE</th></tr></thead><tbody>'+
+      data.map(o=>{const qq=QUOTES[o.s]||{};return `<tr><td class="tk">${o.s}${o.s===t?' ★':''}</td><td>${capB(qq.marketCap)}</td><td>${fmtN(get(o,'evToEBITDATTM'),1)}x</td><td>${fmtN(get(o,'freeCashFlowYieldTTM')*100,1)}%</td><td>${fmtN(get(o,'netDebtToEBITDATTM'),1)}x</td><td>${fmtN(get(o,'returnOnEquityTTM')*100,1)}%</td></tr>`;}).join('')+'</tbody></table></div>';
+    $('#peer-out').innerHTML=html;$('#peer-stat').textContent='';
+  }catch(e){$('#peer-stat').innerHTML='<span class="err">'+e.message+'</span>';}
+};
+
+/* ---------- Section 3: historical valuation ---------- */
+$('#hist-go').onclick=async()=>{
+  const t=$('#hist-pick').value;$('#hist-stat').innerHTML='<span class="spinner"></span>';$('#hist-out').innerHTML='';
+  try{
+    const ann=await fmp('statements',{endpoint:'key-metrics',symbol:t,period:'annual',limit:6});
+    const ttm=(await fmp('statements',{endpoint:'key-metrics-ttm',symbol:t}))[0]||{};
+    const defs=[['EV / EBITDA','evToEBITDA','evToEBITDATTM',v=>fmtN(v,1)+'x'],['FCF yield','freeCashFlowYield','freeCashFlowYieldTTM',v=>fmtN(v*100,1)+'%'],['Net Debt / EBITDA','netDebtToEBITDA','netDebtToEBITDATTM',v=>fmtN(v,1)+'x'],['ROE','returnOnEquity','returnOnEquityTTM',v=>fmtN(v*100,1)+'%']];
+    const yrs=(ann||[]).slice(0,5);
+    let html=`<div class="kpi"><div class="b"><div class="l">Spot price</div><div class="v">${fmtN((QUOTES[t]||{}).price)}</div></div><div class="b"><div class="l">Years of history</div><div class="v">${yrs.length}</div></div><div class="b"><div class="l">Latest FY</div><div class="v">${yrs[0]?yrs[0].fiscalYear:'–'}</div></div></div>`;
+    html+='<div class="card" style="margin-top:12px;background:#fafbfc"><h3 class="small" style="margin-bottom:8px">TTM spot vs 5-year range</h3>';
+    defs.forEach(([nm,k,tk,fmt])=>{
+      const hist=yrs.map(y=>y[k]).filter(x=>x!=null&&!isNaN(x));
+      const spot=ttm[tk];
+      if(!hist.length||spot==null){html+=`<div class="metric"><div class="mname">${nm}</div><div class="muted small">n/a</div><div></div></div>`;return;}
+      const mn=Math.min(...hist),mx=Math.max(...hist),avg=hist.reduce((a,b)=>a+b,0)/hist.length;
+      const span=mx-mn||1,pos=(spot-mn)/span*100,apos=(avg-mn)/span*100;
+      html+=`<div class="metric"><div class="mname">${nm}</div><div class="rng"><div class="fill" style="left:0;width:100%"></div><div class="dot" style="left:${Math.max(0,Math.min(100,apos))}%;background:#9aa7b3;width:2px" title="5y avg"></div><div class="dot" style="left:${Math.max(1,Math.min(98,pos))}%;background:#10161d" title="spot"></div><div class="lab" style="left:0">L ${fmt(mn)}</div><div class="lab" style="right:0">H ${fmt(mx)}</div></div><div style="text-align:right"><div style="font-weight:650">${fmt(spot)}</div><div class="small muted">avg ${fmt(avg)}</div></div></div>`;
+    });
+    html+='<div class="legend"><span><i style="background:#10161d"></i>Spot (TTM)</span><span><i style="background:#9aa7b3"></i>5-yr average</span></div></div>';
+    $('#hist-out').innerHTML=html;$('#hist-stat').textContent='';
+  }catch(e){$('#hist-stat').innerHTML='<span class="err">'+e.message+'</span>';}
+};
+
+/* ---------- Section 4: technical ---------- */
+let techChart,rsiChart,macdChart,obvChart;
+function sma(arr,p){const o=Array(arr.length).fill(null);let s=0;for(let i=0;i<arr.length;i++){s+=arr[i];if(i>=p)s-=arr[i-p];if(i>=p-1)o[i]=s/p;}return o;}
+function emaArr(arr,p){const k=2/(p+1);const o=[];let e;for(let i=0;i<arr.length;i++){e=i===0?arr[i]:arr[i]*k+e*(1-k);o.push(e);}return o;}
+function rsiArr(cl,p){const o=Array(cl.length).fill(null);if(cl.length<=p)return o;let g=0,l=0;for(let i=1;i<=p;i++){const ch=cl[i]-cl[i-1];if(ch>=0)g+=ch;else l-=ch;}let ag=g/p,al=l/p;o[p]=al===0?100:100-100/(1+ag/al);for(let i=p+1;i<cl.length;i++){const ch=cl[i]-cl[i-1];ag=(ag*(p-1)+(ch>0?ch:0))/p;al=(al*(p-1)+(ch<0?-ch:0))/p;o[i]=al===0?100:100-100/(1+ag/al);}return o;}
+function macdArr(cl,f,s,sig){const ef=emaArr(cl,f),es=emaArr(cl,s);const line=cl.map((_,i)=>ef[i]-es[i]);const signal=emaArr(line,sig);const histo=line.map((v,i)=>v-signal[i]);return{line,signal,histo};}
+function obvArr(cl,vol){const o=[0];for(let i=1;i<cl.length;i++){const d=cl[i]-cl[i-1];o.push(o[i-1]+(d>0?vol[i]:d<0?-vol[i]:0));}return o;}
+function lreg(a){const n=a.length;if(n<2)return 0;let sx=0,sy=0,sxy=0,sxx=0;for(let i=0;i<n;i++){sx+=i;sy+=a[i];sxy+=i*a[i];sxx+=i*i;}return (n*sxy-sx*sy)/(n*sxx-sx*sx);}
+function findSR(high,low,cur,lr){const Rs=[],Ss=[];for(let i=lr;i<high.length-lr;i++){let ph=true,pl=true;for(let j=i-lr;j<=i+lr;j++){if(high[j]>high[i])ph=false;if(low[j]<low[i])pl=false;}if(ph)Rs.push(high[i]);if(pl)Ss.push(low[i]);}const res=Rs.filter(v=>v>cur).sort((a,b)=>a-b)[0];const sup=Ss.filter(v=>v<cur).sort((a,b)=>b-a)[0];return{sup:sup!=null?sup:Math.min(...low),res:res!=null?res:Math.max(...high)};}
+function ensureTechExtra(){if($('#tech-extra'))return;const host=$('#tech-fib').parentNode;const d=document.createElement('div');d.id='tech-extra';d.innerHTML='<div class="row" style="margin-top:14px;align-items:flex-start"><div style="flex:1;min-width:250px"><div class="small muted" style="margin-bottom:4px">RSI (14)</div><div class="chartbox" style="height:150px"><canvas id="rsi-cv"></canvas></div></div><div style="flex:1;min-width:250px"><div class="small muted" style="margin-bottom:4px">MACD (12,26,9)</div><div class="chartbox" style="height:150px"><canvas id="macd-cv"></canvas></div></div><div style="flex:1;min-width:250px"><div class="small muted" style="margin-bottom:4px">On-Balance Volume</div><div class="chartbox" style="height:150px"><canvas id="obv-cv"></canvas></div></div></div><div id="tech-analysis" style="margin-top:14px"></div>';host.appendChild(d);}
+$('#tech-go').onclick=async()=>{
+  const t=$('#tech-pick').value,win=+$('#tech-win').value;$('#tech-stat').innerHTML='<span class="spinner"></span>';
+  try{
+    ensureTechExtra();
+    const from=new Date(Date.now()-win*864e5).toISOString().slice(0,10);
+    let h=await fmp('chart',{endpoint:'historical-price-eod-full',symbol:t,from_date:from});
+    h=(h||[]).slice().reverse();
+    const labels=h.map(d=>d.date),close=h.map(d=>d.close),high=h.map(d=>d.high!=null?d.high:d.close),low=h.map(d=>d.low!=null?d.low:d.close),vol=h.map(d=>d.volume||0);
+    if(close.length<30)throw new Error('not enough history');
+    const n=close.length,cur=close[n-1];
+    const m20=sma(close,20),m50=sma(close,50),m200=sma(close,200),e21=emaArr(close,21);
+    const RS=rsiArr(close,14),MD=macdArr(close,12,26,9),OB=obvArr(close,vol),SR=findSR(high,low,cur,5);
+    let sx=0,sy=0,sxy=0,sxx=0;for(let i=0;i<n;i++){sx+=i;sy+=close[i];sxy+=i*close[i];sxx+=i*i;}
+    const rslope=(n*sxy-sx*sy)/(n*sxx-sx*sx),inter=(sy-rslope*sx)/n;
+    const trend=close.map((_,i)=>rslope*i+inter);
+    let maxDev=0;close.forEach((c,i)=>{maxDev=Math.max(maxDev,Math.abs(c-trend[i]));});
+    const upper=trend.map(v=>v+maxDev),lower=trend.map(v=>v-maxDev);
+    $('#tech-kpi').innerHTML=`<div class="b"><div class="l">Last</div><div class="v">${fmtN(cur)}</div></div><div class="b"><div class="l">vs 50d MA</div><div class="v ${cls(m50[n-1]?(cur/m50[n-1]-1)*100:null)}">${m50[n-1]?pct((cur/m50[n-1]-1)*100):'–'}</div></div><div class="b"><div class="l">vs 200d MA</div><div class="v ${cls(m200[n-1]?(cur/m200[n-1]-1)*100:null)}">${m200[n-1]?pct((cur/m200[n-1]-1)*100):'–'}</div></div><div class="b"><div class="l">RSI(14)</div><div class="v">${fmtN(RS[n-1],0)}</div></div><div class="b"><div class="l">Trend</div><div class="v ${cls(rslope)}">${rslope>0?'Up':'Down'}</div></div>`;
+    const openA=h.map(d=>d.open!=null?d.open:d.close);
+    const upC='#137a4b',dnC='#c0392b';
+    const barCol=close.map((c,i)=>c>=openA[i]?upC:dnC);
+    const body=close.map((c,i)=>[Math.min(openA[i],c),Math.max(openA[i],c)]);
+    const wick=high.map((hh,i)=>[low[i],hh]);
+    const ds=[
+      {type:'bar',label:'Wick',data:wick,backgroundColor:barCol,borderColor:barCol,grouped:false,barThickness:1.4,order:6},
+      {type:'bar',label:t,data:body,backgroundColor:barCol,borderColor:barCol,grouped:false,barPercentage:0.9,categoryPercentage:0.9,order:5},
+      {type:'line',label:'MA20',data:m20,borderColor:'#0e7490',borderWidth:1.1,pointRadius:0,fill:false,order:2},
+      {type:'line',label:'MA50',data:m50,borderColor:'#0b6b53',borderWidth:1.1,pointRadius:0,fill:false,order:2},
+      {type:'line',label:'MA200',data:m200,borderColor:'#9333ea',borderWidth:1.1,pointRadius:0,fill:false,order:2},
+      {type:'line',label:'EMA21',data:e21,borderColor:'#e11d48',borderWidth:1.1,borderDash:[3,2],pointRadius:0,fill:false,order:2},
+      {type:'line',label:'Resistance',data:Array(n).fill(SR.res),borderColor:'rgba(192,57,43,.65)',borderWidth:1,borderDash:[7,4],pointRadius:0,fill:false,order:3},
+      {type:'line',label:'Support',data:Array(n).fill(SR.sup),borderColor:'rgba(19,122,75,.65)',borderWidth:1,borderDash:[7,4],pointRadius:0,fill:false,order:3},
+      {type:'line',label:'Trend',data:trend,borderColor:'#94a3b8',borderWidth:1,borderDash:[6,3],pointRadius:0,fill:false,order:4},
+      {type:'line',label:'Channel +',data:upper,borderColor:'rgba(148,163,184,.3)',borderWidth:1,pointRadius:0,fill:false,order:4},
+      {type:'line',label:'Channel −',data:lower,borderColor:'rgba(148,163,184,.3)',borderWidth:1,pointRadius:0,fill:'-1',backgroundColor:'rgba(148,163,184,.05)',order:4},
+    ];
+    if(techChart)techChart.destroy();
+    techChart=new Chart($('#tech-cv'),{type:'bar',data:{labels,datasets:ds},options:{responsive:true,maintainAspectRatio:false,interaction:{intersect:false,mode:'index'},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>{if(c.dataset.label===t){const i=c.dataIndex;return 'O '+fmtN(openA[i])+'  H '+fmtN(high[i])+'  L '+fmtN(low[i])+'  C '+fmtN(close[i]);}if(c.dataset.label==='Wick')return null;return c.dataset.label+': '+fmtN(Array.isArray(c.raw)?c.raw[1]:c.parsed.y);}}}},scales:{x:{ticks:{maxTicksLimit:8,font:{size:10}}},y:{ticks:{font:{size:10}}}}}});
+    $('#tech-leg').innerHTML='<span><i style="background:#137a4b"></i>Up candle (C≥O)</span><span><i style="background:#c0392b"></i>Down candle (C&lt;O)</span><span><i style="background:#0e7490"></i>MA20</span><span><i style="background:#0b6b53"></i>MA50</span><span><i style="background:#9333ea"></i>MA200</span><span><i style="background:#e11d48"></i>EMA21</span><span><i style="background:#c0392b"></i>Resistance</span><span><i style="background:#137a4b"></i>Support</span>';
+    $('#tech-fib').innerHTML='<b>Support &amp; Resistance</b> are the nearest <b>swing pivots</b> over a ±5-bar window: a pivot high (a bar whose high tops every high 5 bars either side) marks resistance, a pivot low marks support. The plotted lines are the lowest pivot high above price and the highest pivot low below it (falling back to the window extremes if none).';
+    if(rsiChart)rsiChart.destroy();
+    rsiChart=new Chart($('#rsi-cv'),{type:'line',data:{labels,datasets:[{label:'RSI',data:RS,borderColor:'#0e7490',borderWidth:1.3,pointRadius:0,spanGaps:true,fill:false},{label:'70',data:Array(n).fill(70),borderColor:'rgba(192,57,43,.5)',borderWidth:1,borderDash:[4,3],pointRadius:0,fill:false},{label:'30',data:Array(n).fill(30),borderColor:'rgba(19,122,75,.5)',borderWidth:1,borderDash:[4,3],pointRadius:0,fill:false}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{display:false},y:{min:0,max:100,ticks:{stepSize:25,font:{size:9}}}}}});
+    if(macdChart)macdChart.destroy();
+    macdChart=new Chart($('#macd-cv'),{type:'bar',data:{labels,datasets:[{type:'bar',label:'Hist',data:MD.histo,backgroundColor:MD.histo.map(v=>v>=0?'rgba(19,122,75,.5)':'rgba(192,57,43,.5)')},{type:'line',label:'MACD',data:MD.line,borderColor:'#10161d',borderWidth:1.2,pointRadius:0,fill:false},{type:'line',label:'Signal',data:MD.signal,borderColor:'#e11d48',borderWidth:1.2,pointRadius:0,fill:false}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{display:false},y:{ticks:{font:{size:9}}}}}});
+    if(obvChart)obvChart.destroy();
+    obvChart=new Chart($('#obv-cv'),{type:'line',data:{labels,datasets:[{label:'OBV',data:OB,borderColor:'#7c3aed',borderWidth:1.3,pointRadius:0,fill:true,backgroundColor:'rgba(124,58,237,.08)'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{display:false},y:{ticks:{font:{size:9},callback:v=>Math.abs(v)>=1e9?(v/1e9).toFixed(1)+'B':Math.abs(v)>=1e6?(v/1e6).toFixed(0)+'M':v}}}}});
+    const maSig=m200[n-1]?(cur>m200[n-1]?1:-1):0;
+    const cross=(m50[n-1]&&m200[n-1])?(m50[n-1]>=m200[n-1]?'golden (50≥200)':'death (50<200)'):'n/a';
+    const emaSig=e21[n-1]?(cur>e21[n-1]?1:-1):0,emaUp=lreg(e21.slice(-20))>0;
+    const rv=RS[n-1];const rsiScore=rv>70?-0.6:rv<30?0.6:(rv-50)/30;const rsiBadge=rv>70?-1:rv<30?1:(rv>=55?1:rv<=45?-1:0);
+    const macdSig=MD.line[n-1]>=MD.signal[n-1]?1:-1,histUp=MD.histo[n-1]>MD.histo[n-2];
+    const obvSlope=lreg(OB.slice(-20)),prcSlope=lreg(close.slice(-20)),obvSig=obvSlope>0?1:obvSlope<0?-1:0;
+    const diverge=(obvSlope>0&&prcSlope<0)?'bullish divergence vs price':(obvSlope<0&&prcSlope>0)?'bearish divergence vs price':'confirming the price move';
+    const distSup=(cur/SR.sup-1)*100,distRes=(SR.res/cur-1)*100;
+    const card=(nm,rd,tx,s)=>`<div class="rec-card"><div class="rec-head"><div><b>${nm}</b> <span class="pill ${s>0?'g':s<0?'r':'n'}">${s>0?'Bullish':s<0?'Bearish':'Neutral'}</span></div><div class="small muted">${rd}</div></div><div class="small" style="margin-top:6px">${tx}</div></div>`;
+    let a='<h3 class="small" style="margin:2px 0 8px">Indicator analysis</h3>';
+    a+='<div class="small muted" style="margin-bottom:8px">Trend</div>';
+    a+=card('Moving Averages (20/50/200)',`Px ${fmtN(cur)} · MA50 ${fmtN(m50[n-1])} · MA200 ${fmtN(m200[n-1])} · ${cross}`,`Price is ${cur>(m200[n-1]||cur)?'above':'below'} its 200-day and ${cur>(m50[n-1]||cur)?'above':'below'} its 50-day average. The ${cross} alignment signals a ${maSig>0?'constructive':'weak'} medium-term trend; the MAs also act as dynamic support/resistance.`,maSig);
+    a+=card('EMA (21)',`EMA21 ${fmtN(e21[n-1])} · ${emaUp?'rising':'falling'}`,`The 21-day EMA weights recent prices more heavily, so it turns faster than the SMAs. Price is ${emaSig>0?'above':'below'} it and the EMA is ${emaUp?'rising — near-term momentum is supportive':'falling — a near-term headwind'}.`,emaSig);
+    a+='<div class="small muted" style="margin:10px 0 8px">Momentum</div>';
+    a+=card('RSI (14)',`${fmtN(rv,0)} / 100`,`RSI is ${rv>70?'above 70 (overbought) — momentum is strong but pullback risk is elevated':rv<30?'below 30 (oversold) — selling may be stretched, watch for a bounce':'in the neutral 30–70 zone, tilting '+(rv>=55?'bullish':rv<=45?'bearish':'flat')}.`,rsiBadge);
+    a+=card('MACD (12,26,9)',`MACD ${fmtN(MD.line[n-1],2)} · Signal ${fmtN(MD.signal[n-1],2)} · Hist ${fmtN(MD.histo[n-1],2)}`,`MACD is ${macdSig>0?'above':'below'} its signal line with a ${MD.histo[n-1]>=0?'positive':'negative'} histogram that is ${histUp?'expanding':'contracting'}. Momentum is ${macdSig>0&&histUp?'accelerating to the upside':macdSig<0&&!histUp?'accelerating to the downside':'in transition'}.`,macdSig);
+    a+='<div class="small muted" style="margin:10px 0 8px">Volume</div>';
+    a+=card('On-Balance Volume',`Slope ${obvSlope>0?'up':'down'} · ${diverge}`,`OBV adds volume on up days and subtracts it on down days to gauge accumulation. Flow is currently ${obvSlope>0?'accumulating (buyers in control)':'distributing (sellers in control)'} and is ${diverge}${diverge.indexOf('divergence')>=0?' — a caution flag to watch.':'.'}`,obvSig);
+    a+='<div class="small muted" style="margin:10px 0 8px">Price · Support &amp; Resistance</div>';
+    a+=card('Support &amp; Resistance',`Support ${fmtN(SR.sup)} (${fmtN(distSup,1)}% away) · Resistance ${fmtN(SR.res)} (${fmtN(distRes,1)}% away)`,`Nearest pivot support is ${fmtN(SR.sup)} (~${fmtN(distSup,1)}% below) and nearest resistance ${fmtN(SR.res)} (~${fmtN(distRes,1)}% above). Price is ${distRes<distSup?'closer to resistance — near-term upside looks more capped':'closer to support — the floor is nearby'}.`,0);
+    const score=maSig+emaSig+rsiScore+macdSig+obvSig;
+    const stance=score>=1.5?'Bullish':score<=-1.5?'Bearish':'Neutral / mixed';
+    const sc=score>=1.5?'g':score<=-1.5?'r':'n';
+    a+=`<div class="rec-card top" style="margin-top:12px"><div class="rec-head"><div><h3>Overall conclusion · <span class="pill ${sc}">${stance}</span></h3></div><div class="small muted">signal score ${score>0?'+':''}${score.toFixed(1)}</div></div><div class="small" style="margin-top:8px">${t} presents a net <b>${stance.toLowerCase()}</b> technical picture over this window. Trend (MA/EMA) is ${maSig>0?'up':'down'}, momentum (RSI/MACD) is ${(rsiScore+macdSig)>0.3?'positive':(rsiScore+macdSig)<-0.3?'negative':'mixed'}, and volume flow (OBV) is ${obvSig>0?'accumulating':obvSig<0?'distributing':'flat'}. Key levels to watch: resistance ${fmtN(SR.res)}, support ${fmtN(SR.sup)}. <em>Educational technical read, not investment advice.</em></div></div>`;
+    $('#tech-analysis').innerHTML=a;
+    $('#tech-stat').textContent='';
+  }catch(e){$('#tech-stat').innerHTML='<span class="err">'+e.message+'</span>';}
+};
+
+/* ---------- Section 5: crude / crack ---------- */
+let scatterChart,histChart;
+async function hist1y(sym){const from=new Date(Date.now()-365*864e5).toISOString().slice(0,10);const h=await fmp('chart',{endpoint:'historical-price-eod-light',symbol:sym,from_date:from});const m={};(h||[]).forEach(d=>m[d.date]=d.price);return m;}
+async function hist5y(sym){const from=new Date(Date.now()-365*5*864e5).toISOString().slice(0,10);const h=await fmp('chart',{endpoint:'historical-price-eod-light',symbol:sym,from_date:from});const m={};(h||[]).forEach(d=>m[d.date]=d.price);return m;}
+async function spotCrack(){try{const q=await fmp('quote',{endpoint:'full-commodities-quotes'});const m={};(q||[]).forEach(r=>m[r.symbol]=r);const cl=m.CLUSD&&m.CLUSD.price,rb=m.RBUSD&&m.RBUSD.price,ho=m.HOUSD&&m.HOUSD.price;if(cl&&rb&&ho)return{crack:(2*rb+ho)/(3*cl),cl,rb,ho};}catch(e){}return null;}
+let ratioChart;
+function ensureMacExtra(){if($('#mac-extra'))return;const host=$('#mac-kpi').parentNode;const d=document.createElement('div');d.id='mac-extra';d.innerHTML='<div class="small muted" style="margin:14px 0 4px" id="mac-ratio-cap">5-year price ratio</div><div class="chartbox" style="height:280px"><canvas id="mac-ratio"></canvas></div>';host.appendChild(d);}
+$('#mac-go').onclick=async()=>{
+  const t=$('#mac-pick').value;$('#mac-stat').innerHTML='<span class="spinner"></span>';
+  try{
+    ensureMacExtra();
+    const ret=a=>a.slice(1).map((v,i)=>(v/a[i]-1)*100);
+    const [S,O,G,SC]=await Promise.all([hist1y(t),hist1y('USO'),hist1y('UNG'),spotCrack()]);
+    const od=Object.keys(S).filter(d=>O[d]).sort();const cO=corr(ret(od.map(d=>S[d])),ret(od.map(d=>O[d])));
+    const gd=Object.keys(S).filter(d=>G[d]).sort();const cG=corr(ret(gd.map(d=>S[d])),ret(gd.map(d=>G[d])));
+    const useGas=(cG!=null)&&(cO==null||Math.abs(cG)>Math.abs(cO));
+    const cmSym=useGas?'UNG':'USO',cmName=useGas?'nat gas':'crude',cmLabel=useGas?'nat gas (UNG)':'crude (USO)',cmCol=useGas?'rgba(183,121,31,.55)':'rgba(14,116,144,.5)',cmLine=useGas?'#b7791f':'#0e7490';
+    const cd=useGas?gd:od;if(cd.length<10)throw new Error('insufficient overlap');
+    const csp=cd.map(d=>S[d]),ccp=cd.map(d=>(useGas?G:O)[d]);
+    const csr=ret(csp),ccr=ret(ccp);
+    const ratio=cd.map((d,i)=>csp[i]/ccp[i]);const rNow=ratio[ratio.length-1];
+    const crackStr=SC?fmtN(SC.crack,3):'–';const crackSub=SC?'(2·'+fmtN(SC.rb)+'+'+fmtN(SC.ho)+') / (3·'+fmtN(SC.cl)+')':'live futures';
+    const [S5,C5]=await Promise.all([hist5y(t),hist5y(cmSym)]);
+    const rdt=Object.keys(S5).filter(d=>C5[d]).sort();const rvals=rdt.map(d=>S5[d]/C5[d]);
+    const rAvg5=rvals.length?rvals.reduce((a,b)=>a+b,0)/rvals.length:null;
+    $('#mac-kpi').innerHTML=`<div class="b"><div class="l">Corr vs crude (USO)</div><div class="v ${useGas?'':'pos'}">${cO==null?'–':cO.toFixed(2)}</div></div><div class="b"><div class="l">Corr vs nat gas (UNG)</div><div class="v ${useGas?'pos':''}">${cG==null?'–':cG.toFixed(2)}</div></div><div class="b"><div class="l">Stronger link</div><div class="v">${cmName}</div></div><div class="b"><div class="l">Spot 3-2-1 CRACK</div><div class="v">${crackStr}</div><div class="small muted">${crackSub}</div></div><div class="b"><div class="l">Px / ${cmName} now</div><div class="v">${fmtN(rNow,3)}</div></div><div class="b"><div class="l">Ratio 5y avg</div><div class="v">${rAvg5==null?'–':fmtN(rAvg5,3)}</div></div>`;
+    const scCap=$('#mac-scatter').parentNode.previousElementSibling;if(scCap)scCap.textContent='Daily-return scatter: '+t+' vs '+cmLabel;
+    const hCap=$('#mac-hist').parentNode.previousElementSibling;if(hCap)hCap.textContent='Stock / '+cmName+' price-ratio histogram (1y)';
+    const rCap=$('#mac-ratio-cap');if(rCap)rCap.textContent='5-year price ratio: '+t+' / '+cmLabel;
+    if(scatterChart)scatterChart.destroy();
+    scatterChart=new Chart($('#mac-scatter'),{type:'scatter',data:{datasets:[{label:t+' vs '+cmLabel,data:ccr.map((x,i)=>({x,y:csr[i]})),pointRadius:2.5,backgroundColor:cmCol}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{title:{display:true,text:cmName+' daily %',font:{size:10}},ticks:{font:{size:10}}},y:{title:{display:true,text:t+' daily %',font:{size:10}},ticks:{font:{size:10}}}}}});
+    const mn=Math.min(...ratio),mx=Math.max(...ratio),bins=18,w=(mx-mn)/bins||1,counts=Array(bins).fill(0);
+    ratio.forEach(r=>{let b=Math.floor((r-mn)/w);if(b>=bins)b=bins-1;if(b<0)b=0;counts[b]++;});
+    const labels=counts.map((_,i)=>fmtN(mn+w*(i+.5),2));
+    if(histChart)histChart.destroy();
+    histChart=new Chart($('#mac-hist'),{type:'bar',data:{labels,datasets:[{data:counts,backgroundColor:labels.map(l=>Math.abs(+l-rNow)<w?'#c0392b':'#0b6b53')}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{title:c=>'ratio ~'+c[0].label,label:c=>c.parsed.y+' days'}}},scales:{x:{ticks:{maxTicksLimit:8,font:{size:9}}},y:{ticks:{font:{size:10}}}}}});
+    if(ratioChart)ratioChart.destroy();
+    ratioChart=new Chart($('#mac-ratio'),{type:'line',data:{labels:rdt,datasets:[{label:'Px ratio',data:rvals,borderColor:cmLine,borderWidth:1.4,pointRadius:0,fill:false},{label:'5y avg',data:rdt.map(()=>rAvg5),borderColor:'#94a3b8',borderWidth:1,borderDash:[6,3],pointRadius:0,fill:false}]},options:{responsive:true,maintainAspectRatio:false,interaction:{intersect:false,mode:'index'},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.dataset.label+': '+fmtN(c.parsed.y,3)}}},scales:{x:{ticks:{maxTicksLimit:8,font:{size:9}}},y:{ticks:{font:{size:9}}}}}});
+    $('#mac-stat').textContent='red bar = current ratio bucket';
+  }catch(e){$('#mac-stat').innerHTML='<span class="err">'+e.message+'</span>';}
+};
+
+/* ---------- Section 6: news ---------- */
+function renderNews(el,items){if(!items||!items.length){el.innerHTML='<div class="muted small" style="padding:10px 0">No headlines.</div>';return;}el.innerHTML=items.slice(0,18).map(a=>`<a href="${a.url}" target="_blank" rel="noopener"><div class="t">${a.title}</div><div class="m">${a.site||a.publisher||''} · ${(a.publishedDate||a.date||'').slice(0,16)}</div></a>`).join('');}
+const OILKW=/(oil|crude|natural ?gas|natgas|\bgas\b|lng|opec|wti|brent|petroleum|petrochem|refin|shale|drilling|rig count|pipeline|barrel|upstream|midstream|downstream|gasoline|diesel|\bfuel\b|energy)/i;
+async function loadMarketNews(){
+  try{
+    const uni=new Set(UNIVERSE.map(u=>u.t.toUpperCase()));
+    // company-specific news for the largest live names in our list
+    const majors=UNIVERSE.filter(u=>LIVE.has(u.t)).sort((a,b)=>((QUOTES[b.t]||{}).marketCap||0)-((QUOTES[a.t]||{}).marketCap||0)).slice(0,30).map(u=>u.t);
+    let arr=[];
+    try{const s=await fmp('news',{endpoint:'search-stock-news',symbols:majors,limit:60});(s||[]).forEach(a=>arr.push(a));}catch(e){}
+    // general market news, kept only when oil & gas relevant
+    try{const g=await fmp('news',{endpoint:'general-news',limit:60});(g||[]).forEach(a=>{if(OILKW.test((a.title||'')+' '+(a.text||'')))arr.push(a);});}catch(e){}
+    // company-tagged items: keep only tickers that are in our universe
+    arr=arr.filter(a=>{const sym=(a.symbol||'').toUpperCase();return sym?uni.has(sym):true;});
+    // dedupe, newest first
+    const seen=new Set();
+    arr=arr.filter(a=>{const k=a.url||a.title;if(!k||seen.has(k))return false;seen.add(k);return true;});
+    arr.sort((a,b)=>(b.publishedDate||'').localeCompare(a.publishedDate||''));
+    renderNews($('#news-market'),arr);
+  }catch(e){$('#news-market').innerHTML='<span class="err">'+e.message+'</span>';}
+}
+$('#news-go').onclick=async()=>{
+  const t=$('#news-pick').value;$('#news-stat').innerHTML='<span class="spinner"></span>';
+  await loadMarketNews();
+  if(t){$('#news-stk-h').textContent=t+' headlines';try{const s=await fmp('news',{endpoint:'search-stock-news',symbols:[t],limit:18});renderNews($('#news-stock'),s);}catch(e){$('#news-stock').innerHTML='<span class="err">'+e.message+'</span>';}}
+  else{$('#news-stk-h').textContent='Stock headlines';$('#news-stock').innerHTML='<div class="muted small" style="padding:10px 0">Pick a stock to see its news.</div>';}
+  $('#news-stat').textContent='';
+};
+
+/* ---------- Section 7: sector ---------- */
+let sectorChart,secBars={},sectorBarsInit=false;
+function ensureSectorExtra(){
+  if($('#sec-extra'))return;
+  const host=$('#sector-kpi').parentNode;
+  const d=document.createElement('div');d.id='sec-extra';
+  const box=(id,cap)=>'<div style="flex:1;min-width:300px"><div class="small muted" style="margin-bottom:4px">'+cap+'</div><div class="chartbox" style="height:230px"><canvas id="'+id+'"></canvas></div></div>';
+  d.innerHTML='<h3 class="small" style="margin:18px 0 6px">Energy complex — returns</h3><div class="row" style="align-items:flex-start">'+box('sec-en-d','Daily %')+box('sec-en-w','Weekly %')+box('sec-en-y','YTD %')+'</div><h3 class="small" style="margin:18px 0 6px">S&amp;P 500 sectors — returns</h3><div class="row" style="align-items:flex-start">'+box('sec-sp-d','Daily %')+box('sec-sp-w','Weekly %')+box('sec-sp-y','YTD %')+'</div><div class="legend" style="margin-top:10px">'+[['XLK','Technology'],['XLV','Health Care'],['XLE','Energy'],['XLF','Financials'],['XLI','Industrials'],['XLP','Consumer Staples'],['XLB','Materials'],['XLU','Utilities'],['XLRE','Real Estate'],['XLC','Communication Services']].map(x=>'<span><b>'+x[0]+'</b> · '+x[1]+'</span>').join('')+'</div>';
+  host.appendChild(d);
+}
+async function retBars(syms){
+  const need=syms.filter(s=>!QUOTES[s]);
+  if(need.length){try{const q=await fmp('quote',{endpoint:'batch-quote',symbols:need});(q||[]).forEach(r=>QUOTES[r.symbol]=r);}catch(e){}}
+  const hs=await pool(syms,4,async s=>{const h=await fmpRetry('chart',{endpoint:'historical-price-eod-light',symbol:s,from_date:YTD_FROM},4);return{s,h:h?h.slice().reverse():[]};});
+  const out={};
+  hs.forEach(({s,h})=>{const q=QUOTES[s]||{};let w=null,y=null;if(h&&h.length){const last=h[h.length-1].price,base=h[0].price;y=base?(last/base-1)*100:null;if(h.length>=6){const wk=h[h.length-6].price;w=wk?(last/wk-1)*100:null;}}out[s]={d:q.changePercentage!=null?q.changePercentage:null,w,y};});
+  return out;
+}
+function drawBar(id,mp,key,store){
+  const items=mp.map(([s,nm])=>({s,nm,v:(store[s]||{})[key]}));
+  const data=items.map(i=>i.v==null?null:i.v);
+  if(secBars[id])secBars[id].destroy();
+  secBars[id]=new Chart($('#'+id),{type:'bar',data:{labels:items.map(i=>i.s),datasets:[{data,backgroundColor:data.map(v=>v==null?'#cbd5e1':v>=0?'#137a4b':'#c0392b')}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{title:c=>{const it=items[c[0].dataIndex];return it.s+' · '+it.nm;},label:c=>pct(c.parsed.y)}}},scales:{x:{ticks:{font:{size:9}}},y:{ticks:{font:{size:9},callback:v=>v+'%'}}}}});
+}
+async function renderSectorBars(){
+  try{
+    ensureSectorExtra();
+    if(!sectorBarsInit){
+      const enMap=[['XLE','Energy (XLE)'],['XOP','E&P (XOP)'],['XES','Equip/Svc (XES)'],['USO','Crude (USO)'],['BNO','Brent (BNO)'],['UNG','Nat gas (UNG)'],['CRAK','Refiners (CRAK)'],['SPY','S&P 500']];
+      const spMap=[['XLK','Technology'],['XLV','Health Care'],['XLE','Energy'],['XLF','Financials'],['XLI','Industrials'],['XLP','Consumer Staples'],['XLB','Materials'],['XLU','Utilities'],['XLRE','Real Estate'],['XLC','Communication Svcs']];
+      const all=[...new Set([...enMap.map(x=>x[0]),...spMap.map(x=>x[0])])];
+      const store=await retBars(all);
+      drawBar('sec-en-d',enMap,'d',store);drawBar('sec-en-w',enMap,'w',store);drawBar('sec-en-y',enMap,'y',store);
+      drawBar('sec-sp-d',spMap,'d',store);drawBar('sec-sp-w',spMap,'w',store);drawBar('sec-sp-y',spMap,'y',store);
+      sectorBarsInit=true;
+    } else { Object.values(secBars).forEach(c=>{try{c&&c.resize();}catch(e){}}); }
+    if(sectorChart){try{sectorChart.resize();}catch(e){}}
+  }catch(e){}
+}
+async function renderSector(){
+  const map=[['XLE','Energy (XLE)'],['XOP','E&P (XOP)'],['XES','Equip/Svc (XES)'],['USO','Crude (USO)'],['BNO','Brent (BNO)'],['UNG','Nat gas (UNG)'],['CRAK','Refiners (CRAK)'],['SPY','S&P 500']];
+  $('#sector-kpi').innerHTML=map.map(([s,n])=>{const q=QUOTES[s];if(!q)return '';return `<div class="b"><div class="l">${n}</div><div class="v ${cls(q.changePercentage)}">${fmtN(q.price)}</div><div class="small ${cls(q.changePercentage)}">${pct(q.changePercentage)} today</div></div>`;}).join('');
+  try{
+    const series=await Promise.all(map.map(async([s])=>{try{const h=await fmp('chart',{endpoint:'historical-price-eod-light',symbol:s,from_date:YTD_FROM});return h?h.slice().reverse():[];}catch(e){return[];}}));
+    const colors=['#0b6b53','#0e7490','#9333ea','#c0392b','#b7791f','#2563eb','#db2777','#64748b'];
+    const allDates=[...new Set(series.flat().map(d=>d.date))].sort();
+    const datasets=series.map((ser,i)=>{const m={};ser.forEach(d=>m[d.date]=d.price);const base=ser.length?ser[0].price:null;return{label:map[i][1],data:allDates.map(d=>m[d]&&base?m[d]/base*100:null),borderColor:colors[i],borderWidth:1.4,pointRadius:0,spanGaps:true,fill:false};});
+    if(sectorChart)sectorChart.destroy();
+    sectorChart=new Chart($('#sector-cv'),{type:'line',data:{labels:allDates,datasets},options:{responsive:true,maintainAspectRatio:false,interaction:{intersect:false,mode:'index'},plugins:{legend:{position:'bottom',labels:{boxWidth:12,font:{size:10}}}},scales:{x:{ticks:{maxTicksLimit:8,font:{size:9}}},y:{ticks:{font:{size:10}}}}}});
+  }catch(e){}
+  renderSectorBars();
+}
+
+/* ---------- Recommendation ---------- */
+$('#rec-go').onclick=async()=>{
+  const sec=$('#rec-sec').value;$('#rec-stat').innerHTML='<span class="spinner"></span> scoring…';
+  const prog=$('#rec-prog');prog.style.display='block';const bar=prog.firstElementChild;
+  try{
+    let pool0=UNIVERSE.filter(u=>LIVE.has(u.t)&&(!sec||u.s===sec));
+    const techScore=u=>{const q=QUOTES[u.t];const p52=q.yearHigh!=null?(q.price-q.yearLow)/(q.yearHigh-q.yearLow):.5;const v50=q.priceAvg50?q.price/q.priceAvg50-1:0;const v200=q.priceAvg200?q.price/q.priceAvg200-1:0;return p52*0.4+Math.max(-.3,Math.min(.3,v50))*1.2+Math.max(-.3,Math.min(.3,v200))*1.0;};
+    pool0.forEach(u=>u._ts=techScore(u));
+    const short=pool0.slice().sort((a,b)=>b._ts-a._ts).slice(0,14);
+    const km=await pool(short.map(s=>s.t),5,async(t)=>{try{return{t,m:(await fmp('statements',{endpoint:'key-metrics-ttm',symbol:t}))[0]};}catch(e){return{t,m:null};}},(d,n)=>bar.style.width=(d/n*100)+'%');
+    const mmap={};km.forEach(x=>x&&(mmap[x.t]=x.m));
+    const valScore=t=>{const m=mmap[t];if(!m)return 0;let s=0;if(m.evToEBITDATTM>0)s+=Math.max(-1,Math.min(1,(8-m.evToEBITDATTM)/8));if(m.freeCashFlowYieldTTM!=null)s+=Math.max(-1,Math.min(1,m.freeCashFlowYieldTTM*10));if(m.netDebtToEBITDATTM!=null)s+=Math.max(-1,Math.min(1,(1.5-m.netDebtToEBITDATTM)/2));if(m.returnOnEquityTTM!=null)s+=Math.max(-1,Math.min(1,m.returnOnEquityTTM*4));return s/4;};
+    short.forEach(u=>{u._vs=valScore(u.t);u._comp=u._ts*0.5+u._vs*0.9;});
+    short.sort((a,b)=>b._comp-a._comp);
+    let topNews='';try{const nw=await fmp('news',{endpoint:'search-stock-news',symbols:[short[0].t],limit:3});if(nw&&nw.length)topNews=nw.map(a=>'<a href="'+a.url+'" target="_blank" rel="noopener" style="color:var(--accent2);text-decoration:none">• '+a.title+'</a>').join('<br>');}catch(e){}
+    const q0=QUOTES[short[0].t];const m0=mmap[short[0].t]||{};
+    let html=`<div class="rec-card top"><div class="rec-head"><div><h3>★ Top idea: ${short[0].t} <span class="chip">${short[0].s}</span></h3><div class="small muted">${short[0].n}</div></div><div style="text-align:right"><div class="v" style="font-size:20px;font-weight:680">${fmtN(q0.price)}</div><div class="small ${cls(q0.changePercentage)}">${pct(q0.changePercentage)}</div></div></div>`;
+    html+=`<div style="margin-top:8px">${badges(short[0],m0)}</div>`;
+    html+=`<div class="small" style="margin-top:8px"><b>Why:</b> ${rationale(short[0],m0)}</div>`;
+    if(topNews)html+=`<div class="small" style="margin-top:8px"><b>Latest news:</b><br>${topNews}</div>`;
+    html+='</div>';
+    html+='<h3 class="small" style="margin:14px 0 6px">Ranked shortlist</h3>';
+    short.slice(1,8).forEach(u=>{const q=QUOTES[u.t],m=mmap[u.t]||{};html+=`<div class="rec-card"><div class="rec-head"><div><b>${u.t}</b> <span class="chip">${u.s}</span> <span class="small muted">${u.n}</span></div><div class="small">${fmtN(q.price)} <span class="${cls(q.changePercentage)}">${pct(q.changePercentage)}</span> · score ${(u._comp).toFixed(2)}</div></div><div style="margin-top:6px">${badges(u,m)}</div></div>`;});
+    html+='<p class="small muted" style="margin-top:10px">Educational screen, not investment advice. Valuation uses TTM key metrics; momentum uses price vs 50/200-day MA and 52-week position.</p>';
+    $('#rec-out').innerHTML=html;$('#rec-stat').textContent='';setTimeout(()=>prog.style.display='none',500);
+  }catch(e){$('#rec-stat').innerHTML='<span class="err">'+e.message+'</span>';}
+};
+function badges(u,m){const q=QUOTES[u.t];let b=[];const v200=q.priceAvg200?(q.price/q.priceAvg200-1)*100:null;
+  if(v200!=null)b.push(`<span class="pill ${v200>0?'g':'r'}">${v200>0?'above':'below'} 200d ${pct(v200)}</span>`);
+  if(m&&m.evToEBITDATTM>0)b.push(`<span class="pill ${m.evToEBITDATTM<7?'g':'n'}">EV/EBITDA ${fmtN(m.evToEBITDATTM,1)}x</span>`);
+  if(m&&m.freeCashFlowYieldTTM!=null)b.push(`<span class="pill ${m.freeCashFlowYieldTTM>0.06?'g':'n'}">FCF yld ${fmtN(m.freeCashFlowYieldTTM*100,1)}%</span>`);
+  if(m&&m.netDebtToEBITDATTM!=null)b.push(`<span class="pill ${m.netDebtToEBITDATTM<1.5?'g':'r'}">NetDebt/EBITDA ${fmtN(m.netDebtToEBITDATTM,1)}x</span>`);
+  if(m&&m.returnOnEquityTTM!=null)b.push(`<span class="pill ${m.returnOnEquityTTM>0.12?'g':'n'}">ROE ${fmtN(m.returnOnEquityTTM*100,1)}%</span>`);
+  return b.join(' ');}
+function rationale(u,m){const q=QUOTES[u.t];let parts=[];const v200=q.priceAvg200?(q.price/q.priceAvg200-1)*100:null;
+  if(v200>0)parts.push('trading above its 200-day average (positive trend)');else if(v200!=null)parts.push('below its 200-day average (value/contrarian)');
+  if(m&&m.evToEBITDATTM>0&&m.evToEBITDATTM<7)parts.push('inexpensive on EV/EBITDA');
+  if(m&&m.freeCashFlowYieldTTM>0.06)parts.push('a strong free-cash-flow yield');
+  if(m&&m.netDebtToEBITDATTM<1.5)parts.push('a conservative balance sheet');
+  if(m&&m.returnOnEquityTTM>0.12)parts.push('high return on equity');
+  return parts.length?('It combines '+parts.join(', ')+'.'):'It scores well on the blended momentum and valuation screen.';}
+
+/* ---------- boot ---------- */
+async function boot(){
+  if(!getKey()){ $('#status').innerHTML='<span class="err">Enter your FMP API key above, then Save &amp; load.</span>'; return; }
+  $('#status').innerHTML='<span class="spinner"></span> testing FMP connection…';
+  try{
+    const test=await fmp('quote',{endpoint:'batch-quote',symbols:['XOM']});
+    if(!Array.isArray(test)||!test.length||test[0].price==null){ throw new Error('empty/blocked response — likely CORS or an invalid key/plan'); }
+    $('#status').textContent='';
+    loadQuotes().then(()=>{loadMarketNews();});
+  }catch(e){
+    const msg=(e&&e.message)||String(e);
+    $('#status').innerHTML='<span class="err">Load failed: '+msg+' — open DevTools (F12) → Console. If it mentions CORS/“Failed to fetch”, run it from a local server (see notes).</span>';
+  }
+}
+(function(){ const inp=$('#apikey'); if(inp){ inp.value=getKey(); const sv=$('#savekey'); if(sv) sv.onclick=()=>{ localStorage.setItem('fmp_key',(inp.value||'').trim()); location.reload(); }; inp.addEventListener('keydown',e=>{ if(e.key==='Enter'){ localStorage.setItem('fmp_key',(inp.value||'').trim()); location.reload(); } }); } boot(); })();
+</script>
+</body>
+</html>
