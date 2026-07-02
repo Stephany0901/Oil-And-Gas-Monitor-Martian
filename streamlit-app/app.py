@@ -82,6 +82,7 @@ def _pct_span(mm):
 
 
 def render_brief(text):
+    text = text.replace("$", "\\$")  # escape $ so Streamlit doesn't render $...$ as LaTeX math
     lines = [(f"**{m.group(1)}**" if (m := re.match(r'^\s*#{1,6}\s+(.*)$', ln)) else ln)
              for ln in text.split("\n")]
     md = "\n".join(lines)
