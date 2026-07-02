@@ -16,6 +16,30 @@ from universe import UNIVERSE
 
 st.set_page_config(page_title="Oil & Gas Equity Monitor", layout="wide", page_icon="🛢️")
 
+st.markdown("""
+<style>
+:root{--bg:#f6f7f9;--card:#ffffff;--ink:#10161d;--mut:#5b6776;--line:#e4e8ee;--accent:#0b6b53;}
+html, body, [class*="css"]{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+.stApp{background:var(--bg);}
+.block-container{max-width:1200px;padding-top:1.1rem;padding-bottom:3rem;}
+h1{font-size:26px !important;letter-spacing:-.3px;color:var(--ink);font-weight:700;}
+h2,h3{color:var(--ink);font-weight:650;}
+div[data-baseweb="tab-list"]{gap:6px;flex-wrap:wrap;border-bottom:1px solid var(--line);}
+button[data-baseweb="tab"]{background:#fff;border:1px solid var(--line) !important;border-radius:999px;padding:6px 14px;margin:0 2px 0 0;color:var(--mut);font-size:12.5px;}
+button[data-baseweb="tab"][aria-selected="true"]{background:var(--ink);color:#fff;border-color:var(--ink) !important;}
+div[data-baseweb="tab-highlight"],div[data-baseweb="tab-border"]{display:none !important;}
+div[data-testid="stMetric"]{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;}
+div[data-testid="stMetricLabel"] p{color:var(--mut);font-size:11px;}
+div[data-testid="stMetricValue"]{font-size:20px;font-weight:680;}
+.stButton>button{background:var(--ink);color:#fff;border:1px solid var(--ink);border-radius:8px;font-weight:600;}
+.stButton>button:hover{background:var(--accent);border-color:var(--accent);color:#fff;}
+div[data-testid="stDataFrame"]{border:1px solid var(--line);border-radius:10px;overflow:hidden;}
+section[data-testid="stSidebar"]{background:#ffffff;border-right:1px solid var(--line);}
+section[data-testid="stSidebar"] .stButton>button{width:100%;}
+div[data-testid="stAlert"]{border-radius:10px;}
+</style>
+""", unsafe_allow_html=True)
+
 FMP = "https://financialmodelingprep.com/stable/"
 YTD_FROM = f"{dt.date.today().year - 1}-12-29"
 
