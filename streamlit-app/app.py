@@ -37,6 +37,16 @@ div[data-testid="stDataFrame"]{border:1px solid var(--line);border-radius:10px;o
 section[data-testid="stSidebar"]{background:#ffffff;border-right:1px solid var(--line);}
 section[data-testid="stSidebar"] .stButton>button{width:100%;}
 div[data-testid="stAlert"]{border-radius:10px;}
+.ogtblwrap{max-height:560px;overflow:auto;border:1px solid var(--line);border-radius:10px;}
+.ogtbl{width:100%;border-collapse:collapse;font-size:12.5px;}
+.ogtbl th{position:sticky;top:0;background:#fff;font-weight:700;text-align:right;padding:6px 9px;border-bottom:1px solid var(--line);box-shadow:0 1px 0 var(--line);color:var(--ink);white-space:nowrap;}
+.ogtbl th:first-child,.ogtbl td:first-child{text-align:left;}
+.ogtbl td{padding:6px 9px;text-align:right;border-bottom:1px solid #eef2f6;white-space:nowrap;}
+.ogtbl tbody tr:hover{background:#fafbfc;}
+.ogtbl .pos{color:#137a4b;font-weight:600;}
+.ogtbl .neg{color:#c0392b;font-weight:600;}
+.ogtbl .tk{font-weight:650;color:#0e7490;}
+.ogtbl .ognm{max-width:220px;overflow:hidden;text-overflow:ellipsis;color:var(--mut);}
 </style>
 """, unsafe_allow_html=True)
 
@@ -313,10 +323,12 @@ tabs = st.tabs(["1 · Price", "2 · Peers", "3 · Hist. Val", "4 · Technical",
 # ============================= 1 · PRICE =============================
 with tabs[0]:
     st.subheader("Price filter")
-    c1, c2, c3 = st.columns([2, 2, 2])
+    c1, c2, c3, c4 = st.columns([2, 2, 2, 2])
     flt = c1.text_input("Filter ticker / name", "")
     sec = c2.selectbox("Sector", ["All"] + SECTORS)
-    want_ret = c3.checkbox("Compute weekly & YTD (slower)", value=False)
+    sort_opts = ["Daily%", "52w pos%", "vs50d%", "vs200d%", "Volume", "Ticker"]
+    sort_by = c3.selectbox("Sort by", sort_opts)
+    want_ret = c4.checkbox("Compute weekly & YTD (slower)", value=False)
 
     rows = []
     for u in LIVE:
@@ -359,12 +371,36 @@ with tabs[0]:
         df["Weekly%"] = wk
         df["YTD%"] = ytd
 
-    st.dataframe(
-        df.sort_values("Daily%", ascending=False, na_position="last"),
-        use_container_width=True, hide_index=True, height=560,
-        column_config={c: st.column_config.NumberColumn(format="%.2f") for c in
-                       ["Price", "Daily%", "52w pos%", "vs50d%", "vs200d%", "Weekly%", "YTD%"] if c in df.columns},
-    )
+    if sort_by == "Ticker":
+        df = df.sort_values("Ticker")
+    else:
+        df = df.sort_values(sort_by, ascending=False, na_position="last")
+
+    cols = ["Ticker", "Name", "Sector", "Price", "Daily%", "Volume", "52w pos%", "vs50d%", "vs200d%"]
+    if want_ret:
+        cols += ["Weekly%", "YTD%"]
+    pctcols = {"Daily%", "52w pos%", "vs50d%", "vs200d%", "Weekly%", "YTD%"}
+
+    def cell(col, v):
+        if v is None or (isinstance(v, float) and pd.isna(v)):
+            return "<td>–</td>"
+        if col in pctcols:
+            return f'<td class="{"pos" if v >= 0 else "neg"}">{v:+.2f}%</td>'
+        if col == "Price":
+            return f"<td>{v:,.2f}</td>"
+        if col == "Volume":
+            return f"<td>{int(v):,}</td>"
+        if col == "Ticker":
+            return f'<td class="tk">{v}</td>'
+        if col == "Name":
+            return f'<td class="ognm" title="{str(v).replace(chr(34), "")}">{v}</td>'
+        return f"<td>{v}</td>"
+
+    head = "".join(f"<th>{c}</th>" for c in cols)
+    body = "".join("<tr>" + "".join(cell(c, r[c]) for c in cols) + "</tr>" for _, r in df.iterrows())
+    st.markdown(f'<div class="ogtblwrap"><table class="ogtbl"><thead><tr>{head}</tr></thead><tbody>{body}</tbody></table></div>',
+                unsafe_allow_html=True)
+    st.caption(f"{len(df)} names")
 
 
 # ============================= 2 · PEERS =============================
