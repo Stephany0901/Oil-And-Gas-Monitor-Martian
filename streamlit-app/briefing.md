@@ -1,23 +1,23 @@
-# Oil & Gas Equity Monitor — July 2, 2026
+# Oil & Gas Equity Monitor — July 3, 2026
 
 ## Market
 
-Crude steadied after its steepest quarterly decline since 2020: Brent held just above $73 and WTI near $70, capping a quarter down more than 23% for Brent. The pressure remains supply-driven — Iran says it has shipped 40M+ barrels since the US lifted its naval blockade, Russian exports hit record levels, and barrels are accumulating at sea. Markets are watching US–Iran peace talks in Doha aimed at easing Strait of Hormuz tensions. Seven core OPEC+ members agreed to raise July targets by 188k b/d (down from 206k b/d in prior months), though with the Hormuz corridor still constrained, the paper increase adds little physical supply. Natural gas slipped ~1.7% to $3.22/MMBtu; record LNG feedgas (~17.4 Bcf/d in June) and heat-wave power demand are offset by Lower-48 production of 110 Bcf/d and above-normal inventories — EIA sees Henry Hub averaging ~$3.34 in 2H26. Company-wise, analysts expect XOM Q2 earnings to roughly double and CVX profits to more than triple sequentially on higher realized prices, and Texas Pacific Land signed a land/water deal with Chevron for a large power project.
+Crude slid to its lowest level since late February: Brent fell ~0.8% to around $70.60 and WTI traded near $68, as Strait of Hormuz shipments kept recovering — a US official said flows through the waterway topped 10M b/d with American military support — and investors welcomed progress in indirect US–Iran talks. Iranian exports have exceeded 40M barrels since the naval blockade was lifted, Russian shipments are at records, and seaborne inventories are building; combined with emergency reserve releases and ad hoc Saudi sales to Asia, the market has tipped into surplus. OPEC+'s 188k b/d July target hike remains largely symbolic while Gulf export capacity normalizes (Iraq is still pumping ~1.4M b/d vs 4M+ pre-war). Natural gas eased ~1.3% to $3.18/MMBtu — record LNG feedgas (~17.4 Bcf/d) and a 100°F East Coast heat wave support demand, but 110 Bcf/d Lower-48 supply and an expected +83 Bcf storage build (vs +64 5-yr avg) cap prices. Company news: XOM is buying back $20B of stock; CVX (+2.1% today) targets $3–4B in cost cuts and recently signed a 20-year gas-power deal with Microsoft for a West Texas data-center campus.
 
 ## Today's movers
 
-Refiners led: MPC +3.6%, VLO +3.5%, PSX +3.2% — cheaper crude is a margin tailwind. Downside: TRGP −3.9%, BKR −3.0%, SLB −3.0%, with oil services broadly weak (XES −3.6%) on capex-cut fears at ~$70 WTI. ETFs mixed: XLE −0.6%, XOP −0.3%.
+Upside: CVX +2.1%, OXY +2.0%, EOG +1.7%. Downside: BKR −1.9%, VLO −0.6%, HAL −0.2% — services stayed weak (XES −1.3%) while XLE +0.8% and XOP +0.6% bounced.
 
 ## Stocks to watch
 
-- **MPC** — leading the refiner rally, near its 52-week high on crack-spread strength.
-- **VLO** — same margin story, +3.5% and pressing its 52-week high.
-- **SLB** — services washout; now sitting right at its 200-day average.
-- **TRGP** — worst large-cap mover today (−3.9%) despite trading well above its 200-day.
-- **DVN** — below its 200-day with the group's lowest valuation (see below).
+- **CVX** — best large-cap mover (+2.1%) on cost-cut execution and the Microsoft power deal; still below its 200-day.
+- **OXY** — +2.0% bounce but under its 200-day at 5.3x EV/EBITDA, second-cheapest in the group.
+- **BKR** — worst mover (−1.9%), extending the services slump on ~$70-WTI capex fears.
+- **VLO** — faded −0.6% after tagging a 52-week high; watch whether the refiner rally cools with crude at 4-month lows.
+- **DVN** — cheapest name in the screen and still below its 200-day (see below).
 
 ## Screen idea
 
-DVN now trades below its 200-day average ($40.25 vs $40.89) with the cheapest EV/EBITDA of the value screen at 4.5x TTM (vs OXY 5.2x, COP 5.9x, CVX 8.9x, SLB 10.3x) — a classic "cheap and out of favor" setup worth studying; yesterday's pick OXY remains second-cheapest. Educational observation, not investment advice — low multiples can reflect real risks rather than mispricing.
+DVN again screens best: below its 200-day average ($40.47 vs $40.92) with the group's lowest EV/EBITDA at 4.5x TTM (vs OXY 5.3x, COP 5.9x, SLB 10.4x, BKR 10.5x), net debt/EBITDA under 1x and a ~10.7% FCF yield. Educational observation, not investment advice — low multiples can reflect real risks rather than mispricing.
 
-*Sources: TradingEconomics, EIA Short-Term Energy Outlook, OilPrice.com, Argus Media, CNBC, FMP market data. Data as of the latest session.*
+*Sources: TradingEconomics, EIA Short-Term Energy Outlook, OilPrice.com, CNBC, FMP market data. Data as of the latest session.*
