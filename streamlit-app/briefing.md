@@ -1,23 +1,25 @@
-# Oil & Gas Equity Monitor — July 3, 2026
+# Oil & Gas Equity Monitor — July 6, 2026
+
+*Monday pre-open; quotes below are Thursday July 2's close (markets were shut Friday for the July 4 holiday). First live session of the week begins today.*
 
 ## Market
 
-Crude slid to its lowest level since late February: Brent fell ~0.8% to around $70.60 and WTI traded near $68, as Strait of Hormuz shipments kept recovering — a US official said flows through the waterway topped 10M b/d with American military support — and investors welcomed progress in indirect US–Iran talks. Iranian exports have exceeded 40M barrels since the naval blockade was lifted, Russian shipments are at records, and seaborne inventories are building; combined with emergency reserve releases and ad hoc Saudi sales to Asia, the market has tipped into surplus. OPEC+'s 188k b/d July target hike remains largely symbolic while Gulf export capacity normalizes (Iraq is still pumping ~1.4M b/d vs 4M+ pre-war). Natural gas eased ~1.3% to $3.18/MMBtu — record LNG feedgas (~17.4 Bcf/d) and a 100°F East Coast heat wave support demand, but 110 Bcf/d Lower-48 supply and an expected +83 Bcf storage build (vs +64 5-yr avg) cap prices. Company news: XOM is buying back $20B of stock; CVX (+2.1% today) targets $3–4B in cost cuts and recently signed a 20-year gas-power deal with Microsoft for a West Texas data-center campus.
+Crude opens the week at 4-month lows: WTI near $68, Brent near $71, back at pre-war levels as Strait of Hormuz shipping keeps normalizing — total flows are back above 10M b/d, with the UAE over 3.9M b/d and Saudi ramping exports to Asia. Sentiment leans bearish on supply recovery: U.S.–Iran talks are reportedly progressing, IEA-coordinated strategic releases continue, and Chinese imports are soft. The weekend's main news: OPEC+ met online Sunday and approved another 188K b/d quota increase for August (Saudi, Russia, Iraq, Kuwait, Kazakhstan, Algeria, Oman). June OPEC output jumped 3.3M b/d m/m to 19.43M b/d, though that mostly reflects restarted shut-in barrels, not new supply. Natural gas holds at ~$3.24/MMBtu (+1.5% Friday): heat-wave power burn and record LNG feedgas vs. an 87 Bcf injection that left storage ~6.2% above average. Also notable: Russia is reportedly preparing to import jet fuel amid its refining crisis.
 
 ## Today's movers
 
-Upside: CVX +2.1%, OXY +2.0%, EOG +1.7%. Downside: BKR −1.9%, VLO −0.6%, HAL −0.2% — services stayed weak (XES −1.3%) while XLE +0.8% and XOP +0.6% bounced.
+Last session (Thu Jul 2): up CVX +2.1%, OXY +2.0%, EOG +1.7%; down BKR −1.9%, VLO −0.6%, HAL −0.2%. XLE +0.8%, XOP +0.6%, XES −1.3%.
 
 ## Stocks to watch
 
-- **CVX** — best large-cap mover (+2.1%) on cost-cut execution and the Microsoft power deal; still below its 200-day.
-- **OXY** — +2.0% bounce but under its 200-day at 5.3x EV/EBITDA, second-cheapest in the group.
-- **BKR** — worst mover (−1.9%), extending the services slump on ~$70-WTI capex fears.
-- **VLO** — faded −0.6% after tagging a 52-week high; watch whether the refiner rally cools with crude at 4-month lows.
-- **DVN** — cheapest name in the screen and still below its 200-day (see below).
+- **CVX** — Thursday's best large-cap mover, still ~2% below its 200-day; earnings July 31.
+- **DVN** — cheapest name in the screen; Coterra merger integration continues.
+- **BKR** — services weakness persists (XES −1.3%); watch for follow-through as trading resumes.
+- **VLO** — at 52-week highs into July 30 earnings despite soft crude.
+- **LNG** — record export feedgas through the heat wave.
 
 ## Screen idea
 
-DVN again screens best: below its 200-day average ($40.47 vs $40.92) with the group's lowest EV/EBITDA at 4.5x TTM (vs OXY 5.3x, COP 5.9x, SLB 10.4x, BKR 10.5x), net debt/EBITDA under 1x and a ~10.7% FCF yield. Educational observation, not investment advice — low multiples can reflect real risks rather than mispricing.
+DVN again screens best: below its 200-day ($40.47 vs $40.95) with the group's lowest EV/EBITDA at 4.5x TTM (vs OXY 5.3x, COP 5.9x, SLB 10.4x, BKR 10.5x), net debt/EBITDA ~1x, ~10.7% FCF yield. Educational observation, not investment advice — low multiples can reflect real risk.
 
-*Sources: TradingEconomics, EIA Short-Term Energy Outlook, OilPrice.com, CNBC, FMP market data. Data as of the latest session.*
+*Sources: [CNBC — OPEC+ August increase](https://www.cnbc.com/amp/2026/07/05/opec-set-to-approve-another-oil-output-increase.html), [TradingEconomics — crude](https://tradingeconomics.com/commodity/crude-oil), [TradingEconomics — natgas](https://tradingeconomics.com/commodity/natural-gas), [Forbes — oil prices](https://www.forbes.com/advisor/investing/oil-prices-today/), [OilPrice — OPEC output](https://oilprice.com/Latest-Energy-News/World-News/OPEC-Oil-Production-Jumps-But-Gulf-Supply-Is-Still-Far-From-Normal.html), [EIA](https://www.eia.gov/outlooks/steo/natgas.php). Quotes/metrics: FMP.*
