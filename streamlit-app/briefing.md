@@ -1,25 +1,23 @@
-# Oil & Gas Equity Monitor — July 6, 2026
-
-*Monday pre-open; quotes below are Thursday July 2's close (markets were shut Friday for the July 4 holiday). First live session of the week begins today.*
+# Oil & Gas Equity Monitor — July 7, 2026
 
 ## Market
 
-Crude opens the week at 4-month lows: WTI near $68, Brent near $71, back at pre-war levels as Strait of Hormuz shipping keeps normalizing — total flows are back above 10M b/d, with the UAE over 3.9M b/d and Saudi ramping exports to Asia. Sentiment leans bearish on supply recovery: U.S.–Iran talks are reportedly progressing, IEA-coordinated strategic releases continue, and Chinese imports are soft. The weekend's main news: OPEC+ met online Sunday and approved another 188K b/d quota increase for August (Saudi, Russia, Iraq, Kuwait, Kazakhstan, Algeria, Oman). June OPEC output jumped 3.3M b/d m/m to 19.43M b/d, though that mostly reflects restarted shut-in barrels, not new supply. Natural gas holds at ~$3.24/MMBtu (+1.5% Friday): heat-wave power burn and record LNG feedgas vs. an 87 Bcf injection that left storage ~6.2% above average. Also notable: Russia is reportedly preparing to import jet fuel amid its refining crisis.
+Crude stays under pressure. Brent traded below $72 Monday, near its lowest since late February, with WTI in the $68–69 range. The drag remains supply normalization: recovering flows through the Strait of Hormuz after the June 17 US–Iran interim deal, and OPEC+'s fifth consecutive monthly hike — seven members led by Saudi Arabia and Russia adding 188K b/d from August. Saudi exports are back near pre-war levels and the UAE has restored shipments, so the risk premium keeps deflating while traders wait on the fragile ceasefire. Natural gas slipped to ~$3.20–3.22/MMBtu: last week's larger-than-expected 87 Bcf injection left storage ~6.2% above the five-year average, and near-record ~110 Bcf/d Lower 48 production plus moderating temperature forecasts for July 7–16 are overwhelming heat-driven power burn, even with LNG feedgas strong at ~17.3 Bcf/d. Sector tone: refiners and integrateds slightly positive, E&P flat, services soft. Q2 earnings loom — consensus sees XOM's Q2 EPS roughly doubling y/y on the war-era price spike.
 
 ## Today's movers
 
-Last session (Thu Jul 2): up CVX +2.1%, OXY +2.0%, EOG +1.7%; down BKR −1.9%, VLO −0.6%, HAL −0.2%. XLE +0.8%, XOP +0.6%, XES −1.3%.
+Up: TRGP +1.8%, SLB +1.3%, MPC +1.0%. Down: KMI −1.2%, COP −1.1%, EOG −1.1%. ETFs: XLE −0.2%, XOP −0.4%, XES −0.9%.
 
 ## Stocks to watch
 
-- **CVX** — Thursday's best large-cap mover, still ~2% below its 200-day; earnings July 31.
-- **DVN** — cheapest name in the screen; Coterra merger integration continues.
-- **BKR** — services weakness persists (XES −1.3%); watch for follow-through as trading resumes.
-- **VLO** — at 52-week highs into July 30 earnings despite soft crude.
-- **LNG** — record export feedgas through the heat wave.
+- **DVN** — cheapest of the group at 4.5x EV/EBITDA, sitting just below its 200-day.
+- **MPC / VLO** — refiners pushing 52-week highs (+1.0% each) into late-July earnings.
+- **TRGP** — today's top mover; NGL volume growth intact.
+- **SLB** — bid despite XES weakness; watch rig-activity commentary into earnings.
+- **OXY** — 5.3x EV/EBITDA, ~1% below its 200-day; leveraged to any crude bounce.
 
 ## Screen idea
 
-DVN again screens best: below its 200-day ($40.47 vs $40.95) with the group's lowest EV/EBITDA at 4.5x TTM (vs OXY 5.3x, COP 5.9x, SLB 10.4x, BKR 10.5x), net debt/EBITDA ~1x, ~10.7% FCF yield. Educational observation, not investment advice — low multiples can reflect real risk.
+Of the five names below their 200-day averages (CVX, COP, OXY, DVN, BKR), Devon Energy again screens best: $40.36 vs $40.95 200-day, lowest EV/EBITDA at 4.5x TTM (vs OXY 5.3x, COP 5.9x, CVX 9.0x, BKR 10.6x), net debt/EBITDA ~1x, ~10.7% FCF yield. Educational observation, not investment advice — low multiples can reflect real risk.
 
-*Sources: [CNBC — OPEC+ August increase](https://www.cnbc.com/amp/2026/07/05/opec-set-to-approve-another-oil-output-increase.html), [TradingEconomics — crude](https://tradingeconomics.com/commodity/crude-oil), [TradingEconomics — natgas](https://tradingeconomics.com/commodity/natural-gas), [Forbes — oil prices](https://www.forbes.com/advisor/investing/oil-prices-today/), [OilPrice — OPEC output](https://oilprice.com/Latest-Energy-News/World-News/OPEC-Oil-Production-Jumps-But-Gulf-Supply-Is-Still-Far-From-Normal.html), [EIA](https://www.eia.gov/outlooks/steo/natgas.php). Quotes/metrics: FMP.*
+*Sources: [TradingEconomics — crude](https://tradingeconomics.com/commodity/crude-oil), [Fortune — oil price July 6](https://fortune.com/article/price-of-oil-07-06-2026/), [Al Jazeera — OPEC+ increase](https://www.aljazeera.com/economy/2026/7/6/opec-countries-say-they-will-expand-monthly-oil-production), [AGBI — OPEC+ supply](https://www.agbi.com/oil-and-gas/2026/07/opec-poised-to-raise-output-as-supply-fears-ease/), [TradingEconomics — natgas](https://tradingeconomics.com/commodity/natural-gas), [TradingKey — natgas movers](https://www.tradingkey.com/news/market-movers/262011826-market-movers-natgas-f-20260706), [EIA STEO](https://www.eia.gov/outlooks/steo/natgas.php), [CNN — big oil earnings](https://www.cnn.com/2026/05/01/business/big-oil-earnings). Quotes/metrics: FMP.*
