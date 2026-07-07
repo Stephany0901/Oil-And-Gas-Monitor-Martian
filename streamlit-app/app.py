@@ -441,7 +441,8 @@ if _no_quote:
         st.write(", ".join(_no_quote))
 
 tabs = st.tabs(["1 · Price", "2 · Peers", "3 · Hist. Val", "4 · Technical",
-                "5 · Crude/Gas", "6 · News", "7 · Sector", "★ Recommend", "📰 Briefing"])
+                "5 · Crude/Gas", "6 · News", "7 · Sector", "★ Recommend", "📰 Briefing",
+                "🔎 Screeners"])
 
 
 # ============================= 1 · PRICE =============================
@@ -1009,3 +1010,327 @@ with tabs[8]:
                     f"<span style='color:#888;font-size:11px'>{a.get('site') or a.get('publisher','')} · {a.get('publishedDate','')[:16]}</span>",
                     unsafe_allow_html=True)
     st.caption("Live data-driven snapshot from FMP. Educational, not investment advice.")
+
+
+# ============================= 🔎 SCREENERS =============================
+H_FROM = (dt.date.today() - dt.timedelta(days=460)).isoformat()
+
+
+def _cross_up(line, signal, within):
+    """Bars since the most recent line-over-signal upward cross within `within` sessions; -1 if none."""
+    a, b = np.asarray(line, float), np.asarray(signal, float)
+    n = min(len(a), len(b))
+    for k in range(within):
+        i = n - 1 - k
+        if i < 1:
+            break
+        if not (np.isnan(a[i]) or np.isnan(b[i]) or np.isnan(a[i - 1]) or np.isnan(b[i - 1])):
+            if a[i] > b[i] and a[i - 1] <= b[i - 1]:
+                return k
+    return -1
+
+
+@st.cache_data(ttl=600, show_spinner=False)
+def dividend_screen_list(key: str) -> dict:
+    """symbol -> lastAnnualDividend from the FMP company screener (Energy + Basic Materials)."""
+    out = {}
+    for sec in ("Energy", "Basic Materials"):
+        try:
+            arr = _get(FMP + f"company-screener?sector={sec.replace(' ', '%20')}"
+                             f"&dividendMoreThan=0.01&isActivelyTrading=true&limit=1000&apikey=" + key) or []
+            for c in arr:
+                if c.get("symbol"):
+                    out[c["symbol"]] = c.get("lastAnnualDividend")
+        except Exception:
+            continue
+    return out
+
+
+@st.cache_data(ttl=600, show_spinner=False)
+def dividends_paid(symbol: str, key: str, limit: int = 60) -> list:
+    try:
+        return _get(FMP + f"dividends?symbol={symbol}&limit={limit}&apikey=" + key) or []
+    except Exception:
+        return []
+
+
+@st.cache_data(ttl=600, show_spinner=False)
+def latest_ma(key: str, limit: int = 100) -> list:
+    for path in ("mergers-acquisitions-latest?page=0", "latest-mergers-acquisitions?page=0"):
+        try:
+            arr = _get(FMP + path + f"&limit={limit}&apikey=" + key)
+            if arr:
+                return arr
+        except Exception:
+            continue
+    return []
+
+
+@st.cache_data(ttl=600, show_spinner=False)
+def stock_news_from(symbols: tuple, frm: str, key: str, limit: int = 100) -> list:
+    try:
+        return _get(FMP + "news/stock?symbols=" + ",".join(symbols)
+                    + f"&from={frm}&limit={limit}&apikey=" + key) or []
+    except Exception:
+        return []
+
+
+def _mcap(t):
+    return (QUOTES.get(t) or {}).get("marketCap") or 0
+
+
+def _daily(t):
+    return (QUOTES.get(t) or {}).get("changePercentage")
+
+
+def scr_momentum(prog):
+    """Above 200d MA + RSI(14) 40–60 + MACD bullish crossover within 10 sessions."""
+    cand = [u for u in LIVE if (QUOTES.get(u["t"]) or {}).get("priceAvg200")
+            and QUOTES[u["t"]].get("price") and QUOTES[u["t"]]["price"] > QUOTES[u["t"]]["priceAvg200"]]
+    above = len(cand)
+    cand.sort(key=lambda u: (QUOTES[u["t"]].get("price") or 0) * (QUOTES[u["t"]].get("volume") or 0), reverse=True)
+    cand = cand[:60]
+    res = []
+    for i, u in enumerate(cand):
+        prog((i + 1) / max(1, len(cand)))
+        h = hist(u["t"], H_FROM, True, KEY)
+        if h.empty or len(h) < 60:
+            continue
+        cl = h["close"].astype(float)
+        r = float(rsi(cl).iloc[-1])
+        if not (40 <= r <= 60):
+            continue
+        line, signal, histo = macd(cl)
+        if line.iloc[-1] <= signal.iloc[-1]:
+            continue
+        k = _cross_up(line.values, signal.values, 10)
+        if k < 0:
+            continue
+        q = QUOTES[u["t"]]
+        res.append({"Ticker": u["t"], "Name": u["n"], "Sector": u["s"], "Price": q.get("price"),
+                    "Daily%": _daily(u["t"]), "vs 200d %": (q["price"] / q["priceAvg200"] - 1) * 100,
+                    "RSI(14)": r, "Cross (d ago)": k, "MACD hist": float(histo.iloc[-1])})
+    res.sort(key=lambda x: (x["Cross (d ago)"], -x["vs 200d %"]))
+    note = (f"{len(res)} pass out of the 60 most liquid above-200d names scanned ({above} names trade above "
+            f"their 200-day). RSI(14) must sit in 40–60 and the MACD(12,26,9) line must have crossed above "
+            f"its signal within the last 10 sessions and still be above it.")
+    return (pd.DataFrame(res[:10]), {"Ticker": "tk", "Name": "text", "Sector": "text", "Price": "num",
+                                     "Daily%": "pct", "vs 200d %": "pct", "RSI(14)": "num",
+                                     "Cross (d ago)": "int", "MACD hist": "num"}, note)
+
+
+def scr_dividend(prog):
+    """Yield > 3% + long-term payout uptrend; royalty trusts / MLPs excluded."""
+    dm = dividend_screen_list(KEY)
+    noroy = re.compile(r"royalty|trust|partners|\bl\.?p\.?\b", re.I)
+    cand = []
+    for u in LIVE:
+        d = dm.get(u["t"])
+        q = QUOTES.get(u["t"]) or {}
+        if d and d > 0 and q.get("price") and not noroy.search(u["n"] or ""):
+            y = d / q["price"] * 100
+            if y > 3:
+                cand.append((u, q, d, y))
+    cand.sort(key=lambda x: x[3], reverse=True)
+    cand = cand[:45]  # history-check the 45 highest yielders so steady growers aren't crowded out
+    res = []
+    for i, (u, q, d, y) in enumerate(cand):
+        prog((i + 1) / max(1, len(cand)))
+        dv = dividends_paid(u["t"], KEY)
+        if len(dv) < 8:
+            continue
+        by = {}
+        for row in dv:
+            yr = str(row.get("date", ""))[:4]
+            if yr.isdigit():
+                by[int(yr)] = by.get(int(yr), 0) + (row.get("adjDividend") or row.get("dividend") or 0)
+        now_y = dt.date.today().year
+        yrs = sorted(k for k in by if now_y - 10 <= k < now_y)
+        if len(yrs) < 4:
+            continue
+        first, last = by[yrs[0]], by[yrs[-1]]
+        a3 = sum(by[k] for k in yrs[:3]) / min(3, len(yrs))
+        b3 = sum(by[k] for k in yrs[-3:]) / min(3, len(yrs))
+        if not (b3 > a3 and last >= first):
+            continue
+        cagr = ((last / first) ** (1 / (len(yrs) - 1)) - 1) * 100 if first > 0 else None
+        res.append({"Ticker": u["t"], "Name": u["n"], "Sector": u["s"], "Price": q.get("price"),
+                    "Yield %": y, "Div/sh (ann.)": d, "Payout CAGR %": cagr, "History (yrs)": len(yrs)})
+    res.sort(key=lambda x: x["Yield %"], reverse=True)
+    note = ("Yield = last indicated annual dividend ÷ current price, must exceed 3%. Royalty trusts, royalty "
+            "partners and MLPs/LPs are excluded — their distributions are pass-through rather than a managed "
+            "corporate dividend. Payout-history test on the 45 highest-yielding qualifiers: the recent 3-year "
+            "average payout must exceed the earliest 3-year average and the latest full year must be ≥ the "
+            "first, over up to 10 full years (payout growth is a sturdier test than a rising yield, which can "
+            "just reflect a falling share price).")
+    return (pd.DataFrame(res[:10]), {"Ticker": "tk", "Name": "text", "Sector": "text", "Price": "num",
+                                     "Yield %": "pct", "Div/sh (ann.)": "num", "Payout CAGR %": "pct",
+                                     "History (yrs)": "int"}, note)
+
+
+def scr_value(prog):
+    """TTM EV/EBITDA at the low end of own 10y range AND FCF yield at the high end."""
+    cand = [u for u in LIVE if _mcap(u["t"]) > 1e9]
+    cand.sort(key=lambda u: _mcap(u["t"]), reverse=True)
+    cand = cand[:60]
+    res = []
+    for i, u in enumerate(cand):
+        prog((i + 1) / max(1, len(cand)))
+        ann = key_metrics(u["t"], KEY, limit=10)
+        ttm = key_metrics_ttm(u["t"], KEY)
+        if len(ann) < 5 or not ttm:
+            continue
+        ev_h = [km_get(y, "evToEBITDA", "enterpriseValueOverEBITDA") for y in ann]
+        ev_h = [v for v in ev_h if v is not None and np.isfinite(v) and v > 0]
+        fc_h = [y.get("freeCashFlowYield") for y in ann]
+        fc_h = [v for v in fc_h if v is not None and np.isfinite(v)]
+        ev = km_get(ttm, "evToEBITDATTM", "enterpriseValueOverEBITDATTM")
+        fc = km_get(ttm, "freeCashFlowYieldTTM")
+        if len(ev_h) < 5 or len(fc_h) < 5 or not ev or ev <= 0 or fc is None:
+            continue
+        p_e = max(0, min(1, (ev - min(ev_h)) / ((max(ev_h) - min(ev_h)) or 1)))
+        p_f = max(0, min(1, (fc - min(fc_h)) / ((max(fc_h) - min(fc_h)) or 1)))
+        res.append({"Ticker": u["t"], "Name": u["n"], "Sector": u["s"], "Mkt cap $B": _mcap(u["t"]) / 1e9,
+                    "EV/EBITDA": ev, "EV pos %": p_e * 100, "FCF yield %": fc * 100, "FCF pos %": p_f * 100,
+                    "Screen": "pass" if (p_e <= 0.35 and p_f >= 0.65) else "near",
+                    "_score": (p_e <= 0.35 and p_f >= 0.65, p_f - p_e)})
+    res.sort(key=lambda x: x["_score"], reverse=True)
+    np_pass = sum(1 for r in res if r["Screen"] == "pass")
+    for r in res:
+        r.pop("_score", None)
+    note = (f"{np_pass} strict passes: TTM EV/EBITDA in the bottom 35% of the stock's own 10-year range AND "
+            f"TTM FCF yield in the top 35% of its range. pos = where today sits in that 10-year range "
+            f"(0% = decade low, 100% = decade high). 'Near' rows fill remaining slots ranked by "
+            f"(FCF pos − EV pos). Scanned the 60 largest names (>$1B cap, ≥5 yrs of history).")
+    return (pd.DataFrame(res[:10]), {"Ticker": "tk", "Name": "text", "Sector": "text", "Mkt cap $B": "num",
+                                     "EV/EBITDA": "x", "EV pos %": "num", "FCF yield %": "num",
+                                     "FCF pos %": "num", "Screen": "text"}, note)
+
+
+def scr_event(prog):
+    """Order wins / M&A in the past month: news keyword scan + SEC M&A filings, ranked by hits."""
+    frm = (dt.date.today() - dt.timedelta(days=31)).isoformat()
+    uni = {u["t"] for u in LIVE}
+    ma = latest_ma(KEY)
+    ma_hits = [m for m in ma if str(m.get("transactionDate", "")) >= frm
+               and (m.get("symbol") in uni or m.get("targetedSymbol") in uni)]
+    majors = sorted(LIVE, key=lambda u: _mcap(u["t"]), reverse=True)[:60]
+    kw = re.compile(r"(awarded|award|wins |win |secures|contract|order (worth|valued|book)|merger|acquisition"
+                    r"|acquires|to acquire|agrees to buy|to buy|takeover|buyout|bid for|combine|all-stock"
+                    r"|\bFID\b|final investment decision|supply agreement|offtake|charter)", re.I)
+    news = []
+    groups = [majors[i:i + 20] for i in range(0, len(majors), 20)]
+    for gi, g in enumerate(groups):
+        prog((gi + 1) / (len(groups) + 1))
+        news.extend(stock_news_from(tuple(u["t"] for u in g), frm, KEY))
+    hits = [a for a in news if a and a.get("symbol") in uni and kw.search(a.get("title") or "")]
+    by_t = {}
+    for a in hits:
+        by_t.setdefault(a["symbol"], {"items": [], "ma": None})["items"].append(a)
+    for m in ma_hits:
+        t = m.get("symbol") if m.get("symbol") in uni else m.get("targetedSymbol")
+        by_t.setdefault(t, {"items": [], "ma": None})["ma"] = m
+    prog(1.0)
+    ranked = sorted(by_t.items(), key=lambda kv: (3 if kv[1]["ma"] else 0) + len(kv[1]["items"]), reverse=True)
+    res = []
+    for t, d in ranked[:10]:
+        u = U_BY_T.get(t, {})
+        it = d["items"][0] if d["items"] else None
+        m = d["ma"]
+        if it:
+            head = f'<a href="{it.get("url", "#")}" target="_blank" rel="noopener">{it.get("title", "")}</a>'
+            date = str(it.get("publishedDate", ""))[:10]
+        elif m:
+            head = (f'<a href="{m.get("link", "#")}" target="_blank" rel="noopener">SEC filing: '
+                    f'{m.get("companyName", "")} / {m.get("targetedCompanyName", "")}</a>')
+            date = m.get("transactionDate", "")
+        else:
+            head, date = "–", ""
+        res.append({"Ticker": t, "Sector": u.get("s", ""), "Daily%": _daily(t),
+                    "Event": "M&A" if m else "order/news", "Headline / filing": head, "Date": date})
+    note = ("Scans the past 31 days: stock news for the 60 largest names plus SEC M&A filings, keyword-filtered "
+            "and ranked by keyword hits (an SEC M&A filing counts as +3). Unlike the artifact version there is "
+            "no AI significance pass here, so expect a little more noise.")
+    return (pd.DataFrame(res), {"Ticker": "tk", "Sector": "text", "Daily%": "pct", "Event": "text",
+                                "Headline / filing": "text", "Date": "text"}, note)
+
+
+def scr_leader(prog):
+    """Sector leader + cost leader + low leverage + cheap vs own 10y history."""
+    secs = sorted({u["s"] for u in LIVE if u["s"] != "Other"})
+    cand = []
+    for s in secs:
+        top = sorted([u for u in LIVE if u["s"] == s and _mcap(u["t"]) > 0],
+                     key=lambda u: _mcap(u["t"]), reverse=True)[:4]
+        cand.extend((u, i + 1) for i, u in enumerate(top))
+    res = []
+    for i, (u, rank) in enumerate(cand):
+        prog((i + 1) / max(1, len(cand)))
+        ann = key_metrics(u["t"], KEY, limit=10)
+        ttm = key_metrics_ttm(u["t"], KEY)
+        ev = km_get(ttm, "evToEBITDATTM", "enterpriseValueOverEBITDATTM")
+        es = km_get(ttm, "evToSalesTTM")
+        nd = km_get(ttm, "netDebtToEBITDATTM")
+        if not ev or ev <= 0:
+            continue
+        margin = es / ev * 100 if es and es > 0 else None
+        p_e = None
+        if len(ann) >= 5:
+            h = [km_get(y, "evToEBITDA", "enterpriseValueOverEBITDA") for y in ann]
+            h = [v for v in h if v is not None and np.isfinite(v) and v > 0]
+            if len(h) >= 5:
+                p_e = max(0, min(1, (ev - min(h)) / ((max(h) - min(h)) or 1)))
+        res.append({"u": u, "rank": rank, "ev": ev, "nd": nd, "margin": margin, "p_e": p_e})
+    by_sec = {}
+    for r in res:
+        by_sec.setdefault(r["u"]["s"], []).append(r)
+    for r in res:
+        ms = sorted(x["margin"] for x in by_sec[r["u"]["s"]] if x["margin"] is not None)
+        med = ms[len(ms) // 2] if ms else None
+        r["cost"] = r["margin"] is not None and med is not None and r["margin"] >= med
+        r["score"] = ((1 if r["rank"] == 1 else 0.6 if r["rank"] == 2 else 0.35)
+                      + (0.8 if r["cost"] else 0)
+                      + (0 if r["nd"] is None else 0.6 if r["nd"] < 1 else 0.4 if r["nd"] < 1.5
+                         else 0 if r["nd"] < 2.5 else -0.5)
+                      + ((1 - r["p_e"]) if r["p_e"] is not None else 0.3))
+        r["pass"] = (r["rank"] <= 2 and r["cost"] and r["nd"] is not None and r["nd"] < 1.5
+                     and r["p_e"] is not None and r["p_e"] <= 0.4)
+    res.sort(key=lambda r: (r["pass"], r["score"]), reverse=True)
+    np_pass = sum(1 for r in res if r["pass"])
+    rows = [{"Ticker": r["u"]["t"], "Name": r["u"]["n"], "Sector rank": f'{r["u"]["s"]} #{r["rank"]}',
+             "Mkt cap $B": _mcap(r["u"]["t"]) / 1e9,
+             "EBITDA margin %": r["margin"], "Cost leader": "✓" if r["cost"] else "",
+             "NetDebt/EBITDA": r["nd"], "EV/EBITDA": r["ev"],
+             "EV pos %": r["p_e"] * 100 if r["p_e"] is not None else None,
+             "Screen": "pass" if r["pass"] else "near"} for r in res[:10]]
+    note = (f"{np_pass} strict passes. Candidates = top 4 by market cap in each sub-sector. Pass = top-2 "
+            f"sector leader + EBITDA margin at/above cohort median (cost leadership) + Net Debt/EBITDA < 1.5x "
+            f"+ EV/EBITDA in the bottom 40% of its own 10-yr range (EV pos: 0% = decade-low multiple). "
+            f"EBITDA margin is derived as EV/Sales ÷ EV/EBITDA.")
+    return (pd.DataFrame(rows), {"Ticker": "tk", "Name": "text", "Sector rank": "text", "Mkt cap $B": "num",
+                                 "EBITDA margin %": "num", "Cost leader": "text", "NetDebt/EBITDA": "x",
+                                 "EV/EBITDA": "x", "EV pos %": "num", "Screen": "text"}, note)
+
+
+with tabs[9]:
+    st.subheader("Screeners")
+    st.caption("Five systematic screens over the live universe, each listing its top 10. The momentum screen "
+               "computes RSI and MACD from daily price history; valuation screens compare today's TTM metrics "
+               "with each stock's own 10-year range; the dividend screen tests payout history; the event screen "
+               "scans a month of news and SEC M&A filings.")
+    _SCREENS = {"1 · Momentum": scr_momentum, "2 · High Dividend": scr_dividend, "3 · Value": scr_value,
+                "4 · Event-Driven": scr_event, "5 · Quality Leader": scr_leader}
+    _pick = st.radio("Screen", list(_SCREENS), horizontal=True, key="scr_pick", label_visibility="collapsed")
+    if st.button("Run screen", key="scr_go"):
+        _bar = st.progress(0.0)
+        try:
+            with st.spinner("Screening… (first run fetches per-name data and can take a minute)"):
+                _df, _cols, _note = _SCREENS[_pick](lambda f: _bar.progress(min(1.0, f)))
+        finally:
+            _bar.empty()
+        if _df.empty:
+            st.info("No names pass this screen today (or the required FMP endpoints aren't on your plan).")
+        else:
+            st.markdown(f"**{_pick} — top 10**")
+            ogtable(_df, _cols)
+        st.caption(_note + " Educational screen, not investment advice.")
