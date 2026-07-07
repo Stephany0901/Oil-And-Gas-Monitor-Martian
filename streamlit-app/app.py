@@ -104,7 +104,18 @@ def get_key() -> str:
 
 # ----------------------------- FMP fetchers -----------------------------
 def _get(url):
-    r = requests.get(url, timeout=30)
+    import time as _t
+    for attempt in range(3):
+        r = requests.get(url, timeout=30)
+        if r.status_code != 429:
+            break
+        try:
+            wait = min(float(r.headers.get("Retry-After") or 1.5), 6)
+        except ValueError:
+            wait = 1.5
+        _t.sleep(wait)
+    if r.status_code == 429:
+        raise RuntimeError("FMP rate limit (HTTP 429) — too many calls this minute; retry shortly.")
     if r.status_code in (401, 402, 403):
         raise RuntimeError(f"FMP plan/auth error HTTP {r.status_code} — your key/plan may not cover this endpoint.")
     r.raise_for_status()
@@ -120,8 +131,7 @@ def _normq(q):
     return q
 
 
-@st.cache_data(ttl=1800, show_spinner=False)
-def quotes_for(symbols: tuple, key: str) -> dict:
+def _fetch_quotes(symbols: tuple, key: str) -> dict:
     """Batch quote is premium on Starter; fall back to threaded single-symbol
     /stable/quote?symbol= which lower plans allow."""
     import concurrent.futures as cf
@@ -153,6 +163,23 @@ def quotes_for(symbols: tuple, key: str) -> dict:
     return out
 
 
+@st.cache_data(ttl=1800, show_spinner=False)
+def _quotes_cached(symbols: tuple, key: str) -> dict:
+    out = _fetch_quotes(symbols, key)
+    # Never cache a failed/mostly-failed fetch (e.g. rate-limited): raising
+    # prevents st.cache_data from storing it, so the next rerun retries.
+    if len(out) < max(1, int(len(symbols) * 0.8)):
+        raise RuntimeError(f"quotes incomplete: {len(out)}/{len(symbols)} — likely FMP rate limit")
+    return out
+
+
+def quotes_for(symbols: tuple, key: str) -> dict:
+    try:
+        return _quotes_cached(symbols, key)
+    except Exception:
+        return {}
+
+
 batch_quote = quotes_for  # alias used by the sector tab
 
 
@@ -160,6 +187,9 @@ batch_quote = quotes_for  # alias used by the sector tab
 def probe(key: str) -> dict:
     tests = [("single quote", "quote?symbol=XOM"),
              ("batch quote", "batch-quote?symbols=XOM,CVX"),
+             ("ETF quote (XLE)", "quote?symbol=XLE"),
+             ("ETF quote (USO)", "quote?symbol=USO"),
+             ("commodities", "all-commodities-quotes"),
              ("history (light)", "historical-price-eod/light?symbol=XOM&from=" + YTD_FROM),
              ("key-metrics-ttm", "key-metrics-ttm?symbol=XOM")]
     res = {}
@@ -218,7 +248,7 @@ def key_metrics(symbol: str, key: str, limit: int = 6) -> list:
 
 
 @st.cache_data(ttl=300, show_spinner=False)
-def commodities(key: str) -> dict:
+def _commodities_cached(key: str) -> dict:
     for path in ("all-commodities-quotes", "batch-commodity-quotes"):
         try:
             arr = _get(FMP + path + "?apikey=" + key)
@@ -226,7 +256,14 @@ def commodities(key: str) -> dict:
                 return {q.get("symbol"): q for q in arr}
         except Exception:
             continue
-    return {}
+    raise RuntimeError("no commodities data — don't cache the failure")
+
+
+def commodities(key: str) -> dict:
+    try:
+        return _commodities_cached(key)
+    except Exception:
+        return {}
 
 
 @st.cache_data(ttl=600, show_spinner=False)
@@ -396,7 +433,12 @@ def _is_live(u):
 LIVE = [u for u in UNIVERSE if _is_live(u)]
 SECTORS = sorted({u["s"] for u in UNIVERSE})
 _dropped = sum(1 for u in UNIVERSE if (QUOTES.get(u["t"]) or {}).get("price")) - len(LIVE)
+_no_quote = sorted(u["t"] for u in UNIVERSE if not (QUOTES.get(u["t"]) or {}).get("price"))
 st.caption(f"Loaded {len(LIVE)} active names · {_dropped} delisted/stale removed · {dt.datetime.now():%Y-%m-%d %H:%M}")
+if _no_quote:
+    with st.expander(f"⚠ {len(_no_quote)} names returned no quote this load — a fetch failure (rate limit) or a dead ticker. "
+                     f"Use 🔄 Refresh in the sidebar to retry."):
+        st.write(", ".join(_no_quote))
 
 tabs = st.tabs(["1 · Price", "2 · Peers", "3 · Hist. Val", "4 · Technical",
                 "5 · Crude/Gas", "6 · News", "7 · Sector", "★ Recommend", "📰 Briefing"])
@@ -772,6 +814,9 @@ with tabs[6]:
     @st.cache_data(ttl=300, show_spinner=False)
     def sector_returns(symbols: tuple, key: str) -> dict:
         q = batch_quote(symbols, key)
+        if not q:
+            # don't cache a failed fetch — caller catches and shows a retry hint
+            raise RuntimeError("no sector quotes — likely FMP rate limit")
         out = {}
         for s in symbols:
             h = hist(s, YTD_FROM, False, key)
@@ -797,8 +842,13 @@ with tabs[6]:
         return fig
 
     with st.spinner("Loading sector data…"):
-        en_store = sector_returns(tuple(s for s, _ in ENERGY_MAP), KEY)
-        sp_store = sector_returns(tuple(s for s, _ in SP_MAP), KEY)
+        try:
+            en_store = sector_returns(tuple(s for s, _ in ENERGY_MAP), KEY)
+            sp_store = sector_returns(tuple(s for s, _ in SP_MAP), KEY)
+        except Exception:
+            en_store, sp_store = {}, {}
+            st.warning("Sector quotes unavailable right now — most likely the FMP per-minute "
+                       "rate limit after the initial load. Wait ~1 min and reload; nothing is cached from this failure.")
 
     st.markdown("**Energy complex — returns**")
     c = st.columns(3)
@@ -891,6 +941,10 @@ with tabs[8]:
     bench = [("USO", "Crude (USO)"), ("BNO", "Brent (BNO)"), ("UNG", "Nat gas (UNG)"), ("SPY", "S&P 500"),
              ("XLE", "Energy (XLE)"), ("XOP", "E&P (XOP)"), ("XES", "Equip/Svc (XES)"), ("CRAK", "Refiners (CRAK)")]
     bq = quotes_for(tuple(s for s, _ in bench), KEY)
+    if not bq:
+        st.warning("Benchmark quotes unavailable — most likely the FMP per-minute rate limit "
+                   "after loading the universe. Wait ~1 min and reload; this failure is not cached. "
+                   "If it persists, check the ETF-quote rows in the key diagnostics (clear key and reload to see them).")
     bcols = st.columns(4)
     for i, (s, nm) in enumerate(bench):
         q = bq.get(s, {}) or QUOTES.get(s, {})
