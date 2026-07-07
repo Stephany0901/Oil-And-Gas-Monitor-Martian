@@ -441,7 +441,7 @@ if _no_quote:
         st.write(", ".join(_no_quote))
 
 tabs = st.tabs(["1 · Price", "2 · Peers", "3 · Hist. Val", "4 · Technical",
-                "5 · Crude/Gas", "6 · News", "7 · Sector", "★ Recommend", "📰 Briefing",
+                "5 · Crude/Gas", "6 · News", "7 · Sector", "📰 Briefing",
                 "🔎 Screeners"])
 
 
@@ -865,64 +865,8 @@ with tabs[6]:
     st.caption(" · ".join(f"**{s}** {nm}" for s, nm in SP_MAP))
 
 
-# ============================= ★ RECOMMEND =============================
-with tabs[7]:
-    st.subheader("Recommendation engine")
-    sec = st.selectbox("Sector", ["All"] + SECTORS, key="rec")
-    if st.button("Generate", key="rec_go"):
-        pool = [u for u in LIVE if sec == "All" or u["s"] == sec]
-
-        def tscore(u):
-            q = QUOTES.get(u["t"], {})
-            price = q.get("price") or 0
-            yh, yl = q.get("yearHigh") or 0, q.get("yearLow") or 0
-            p52 = (price - yl) / (yh - yl) if yh > yl else 0.5
-            v50 = price / q["priceAvg50"] - 1 if q.get("priceAvg50") else 0
-            v200 = price / q["priceAvg200"] - 1 if q.get("priceAvg200") else 0
-            return p52 * 0.4 + max(-.3, min(.3, v50)) * 1.2 + max(-.3, min(.3, v200)) * 1.0
-
-        for u in pool:
-            u["_ts"] = tscore(u)
-        short = sorted(pool, key=lambda u: u["_ts"], reverse=True)[:14]
-        with st.spinner("Scoring valuation…"):
-            for u in short:
-                m = key_metrics_ttm(u["t"], KEY)
-                s = 0.0
-                ev = km_get(m, "evToEBITDATTM", "enterpriseValueOverEBITDATTM")
-                fcf = km_get(m, "freeCashFlowYieldTTM")
-                nd = km_get(m, "netDebtToEBITDATTM")
-                roe = km_get(m, "returnOnEquityTTM", "roeTTM")
-                if ev and ev > 0:
-                    s += max(-1, min(1, (8 - ev) / 8))
-                if fcf is not None:
-                    s += max(-1, min(1, fcf * 10))
-                if nd is not None:
-                    s += max(-1, min(1, (1.5 - nd) / 2))
-                if roe is not None:
-                    s += max(-1, min(1, roe * 4))
-                u["_vs"] = s / 4
-                u["_m"] = m
-                u["_comp"] = u["_ts"] * 0.5 + u["_vs"] * 0.9
-        short.sort(key=lambda u: u["_comp"], reverse=True)
-        top = short[0]
-        q = QUOTES.get(top["t"], {})
-        st.success(f"★ **Top idea: {top['t']}** ({top['s']}) — {top['n']} · {fnum(q.get('price'))} "
-                   f"({pct(q.get('changePercentage'))}) · score {top['_comp']:.2f}")
-        ogtable(pd.DataFrame([{
-            "Ticker": u["t"], "Sector": u["s"], "Name": u["n"],
-            "Price": QUOTES.get(u["t"], {}).get("price"),
-            "Daily%": QUOTES.get(u["t"], {}).get("changePercentage"),
-            "EV/EBITDA": km_get(u.get("_m", {}), "evToEBITDATTM", "enterpriseValueOverEBITDATTM"),
-            "Score": round(u["_comp"], 2),
-        } for u in short]), {
-            "Ticker": "tk", "Sector": "text", "Name": "text",
-            "Price": "num", "Daily%": "pct", "EV/EBITDA": "x", "Score": "num",
-        })
-        st.caption("Educational screen — momentum (price vs 50/200-day MA, 52-week position) blended with TTM valuation. Not investment advice.")
-
-
 # ============================= 📰 BRIEFING =============================
-with tabs[8]:
+with tabs[7]:
     st.subheader(f"Daily briefing · {dt.datetime.now():%B %d, %Y}")
 
     # 1) Show the scheduled 7am morning briefing.md if it's in the repo
@@ -1312,7 +1256,7 @@ def scr_leader(prog):
                                  "EV/EBITDA": "x", "EV pos %": "num", "Screen": "text"}, note)
 
 
-with tabs[9]:
+with tabs[8]:
     st.subheader("Screeners")
     st.caption("Five systematic screens over the live universe, each listing its top 10. The momentum screen "
                "computes RSI and MACD from daily price history; valuation screens compare today's TTM metrics "
