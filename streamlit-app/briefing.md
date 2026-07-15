@@ -1,24 +1,27 @@
-# Oil & Gas Briefing — July 14, 2026
+# Oil & Gas Briefing — July 15, 2026
 
 ## Market
 
-Crude ripped higher as the Middle East risk premium reasserted itself. Brent jumped roughly 4% to about $79 and WTI traded near $78 after Iran formally announced a closure of the Strait of Hormuz "until further notice," with the U.S. and Iran exchanging missile strikes over the weekend. The strait carries close to 20% of the world's seaborne oil, so the market has restored a physical-supply-disruption premium that has overwhelmed the bearish pull of higher OPEC+ output. The move lifted essentially the entire energy complex, with XLE +3.0% and XOP +4.2% on the day.
+Crude extended its geopolitical rally. Brent is up more than 10% on the week and traded above $85/bbl Tuesday after President Trump moved to reimpose a US blockade on Iranian vessels using the Strait of Hormuz and demanded a 20% reimbursement on other cargoes transiting the waterway. WTI has lagged the front-month premium, opening near $71–72 earlier in the week before the latest leg higher, as the US and Iran kept exchanging strikes around regional energy infrastructure. Supply signals are mixed: OPEC+ approved a fifth straight monthly quota hike, adding 188,000 bbl/d for August (Saudi Arabia, Russia, Iraq, Kuwait, Kazakhstan, Algeria, Oman), yet the IEA notes actual Gulf output remains well below pre-war levels even after June's 4.1 mb/d rebound to 98.8 mb/d. OPEC also trimmed its 2026 demand-growth forecast to 800,000 bbl/d.
 
-Natural gas remains the weak spot. Henry Hub is hovering near $3.0/MMBtu after sliding more than 6% to a six-week low, weighed by record U.S. production, storage running about 6.6% above the five-year average, and reduced feedgas demand as Freeport LNG runs pre-treatment and liquefaction maintenance (July 10 through late August). EIA still models Henry Hub averaging roughly $3.70/MMBtu for 2026. Company news is light ahead of Q2 earnings in early August, so the tape was driven almost entirely by the crude spike — refiners and E&Ps led, gas-levered and midstream names lagged.
+Natural gas keeps sliding. Henry Hub fell to about $2.88/MMBtu, a two-month low, on a milder weather outlook, reduced LNG feedgas (Freeport began a major maintenance turnaround July 10 running through end-August), and storage sitting 6.6% above the five-year average.
+
+Today the crude spike lifted refiners hardest — wider crack spreads and firm product demand carried Marathon, Valero and Phillips 66 to fresh 52-week highs, while gas-levered and midstream names lagged.
 
 ## Today's movers
 
-Refiners led as crack spreads widened on the crude gap-up: **VLO +5.4%**, **PSX +5.3%**, **MPC +4.6%**. E&Ps followed with **FANG +4.5%** and **EOG +4.1%**. The only decliners in the group were oilfield-services name **SLB (−0.8%)** and gas-levered midstream **WMB (−0.7%)**; nearly everything else finished up 2–5%. (HES quote was stale/untraded at check time.)
+Biggest gainers: **MPC +2.2%**, **WMB +2.0%**, **VLO +1.9%**. Biggest decliners: **EPD −1.5%**, **EOG −1.1%**, **COP −0.9%**. Refiners led; upstream E&P and a couple of midstream MLPs slipped despite the crude rally. (HES quote was stale/untraded at check time.)
 
 ## Screen idea
 
-Note: today's rally pushed every monitored name *above* its 200-day average, so the strict "below 200-day + cheap" filter returns nothing. Among names still trading below their 50-day average, **Devon Energy (DVN)** screens cheapest on trailing EV/EBITDA at ~4.8x (vs. OXY 5.8x, COP 6.3x, HAL 8.6x, SLB 10.8x), with net-debt/EBITDA under 1.0x and a ~10% free-cash-flow yield — the most attractively valued laggard rather than a true technical dip. A low multiple can reflect commodity or balance-sheet risk rather than a bargain. Educational observation, not investment advice.
+The strict "below 200-day average AND cheap on EV/EBITDA" filter returns nothing today — the geopolitical rally has pushed every monitored name above its 200-day moving average. On valuation alone, **DVN** is the cheapest of the group at ~4.8x trailing EV/EBITDA (vs. OXY ~5.8x, COP ~6.3x, EOG ~6.4x, VLO ~10.5x), with net-debt/EBITDA under 1.0x and a ~10% free-cash-flow yield — the most attractively valued name rather than a true technical dip. A low multiple can reflect commodity or balance-sheet risk rather than a bargain. Educational observation, not investment advice.
 
 ## Stocks to watch
 
-- **VLO / PSX / MPC** — refiners; widening crack spreads as crude gaps up on Hormuz risk.
-- **DVN** — cheapest E&P on EV/EBITDA, low leverage, still below its 50-day.
+- **MPC** — refiner at a 52-week high as crack spreads widen on the crude spike.
+- **VLO** — same refining tailwind; screens cheap at ~0.8x EV/sales on throughput.
 - **LNG (Cheniere)** — LNG export leverage; watch Freeport maintenance and feedgas dynamics.
-- **SLB** — sole large-cap laggard today; gauge whether services weakness persists.
+- **DVN** — cheapest upstream name on EV/EBITDA, low leverage, high FCF yield.
+- **XLE** — broad sector gauge, holding near the top of its range as energy outperforms.
 
-*Data: FMP quotes/key-metrics (July 14) and web news (July 14, 2026).*
+*Data: FMP quotes/key-metrics (as of last close) and web news (July 15, 2026). Not investment advice.*
