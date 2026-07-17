@@ -1,27 +1,27 @@
-# Oil & Gas Briefing — July 16, 2026
+# Oil & Gas Briefing — July 17, 2026
 
 ## Market
 
-Crude held its geopolitical premium. Brent traded around $86/bbl and WTI near $78 as the US launched a fresh wave of strikes on Iran and reinstated its naval blockade of Iranian ports near the Strait of Hormuz. Continued Ukrainian drone attacks on Russian refineries and export tankers reinforced supply-tightness worries, and EIA data showed US crude inventories drew down 1.7 million barrels last week. Capping the upside, OPEC cut its 2026 demand-growth forecast for a third straight month, and OPEC+ June output rose roughly 3 mb/d to 36.28 mb/d as Gulf producers restored barrels.
+Crude is holding near a one-month high. Brent traded around $84–86 and WTI near $79 as escalating Middle East tensions kept a supply-risk premium in the market — renewed US strikes on Iran, a reinstated naval blockade near the Strait of Hormuz, and reports that Washington is weighing seizure of Iran's Kharg Island export terminal. Continued Ukrainian attacks on Russian fuel facilities and tankers added to tightness worries, and a 1.7M-barrel draw in US crude inventories lent support. On supply, seven OPEC+ members (Saudi Arabia, Russia, Iraq, Kuwait, Kazakhstan, Algeria, Oman) agreed to a modest 188k b/d hike for August — the fifth straight monthly increase — though actual output remains constrained by Hormuz shipping disruptions. Global supply did rebound ~4.1M b/d to 98.8M b/d in June as Gulf flows partially resumed.
 
-Natural gas stayed heavy, easing to about $2.9/MMBtu near a two-month low. Lower-48 production above 110 bcf/d, storage ~6.6% over the five-year average, and softer LNG feedgas during Freeport's maintenance turnaround (July 10 through end-August) all weighed.
+Natural gas is the outlier, sliding to a two-month low near $2.85/MMBtu. Ample US supply — a larger-than-expected 41 Bcf storage build, Lower-48 production around 110 Bcf/d, and Freeport LNG offline for maintenance until late August — is insulating the domestic market from export pressure.
 
-Despite steady crude, the equity complex traded broadly lower today, led down by refiners and LNG names — a reminder that product margins and gas dynamics, not just the crude tape, drive these stocks.
+Equities skewed higher today, led decisively by refiners on strong crack spreads, while oilfield services lagged ahead of Q2 earnings. Halliburton reports July 21 (consensus ~$0.54 EPS, down slightly YoY) and recently won a multi-year Aramco unconventional-gas contract.
 
 ## Today's movers
 
-Almost uniformly red. Biggest decliners: **LNG −3.5%**, **VLO −2.9%**, **PSX −2.6%**, with **WMB −2.1%** close behind. There was effectively no upside leadership — **SLB (+0.02%)** was the sole gainer among the 20 monitored names. (HES quote was stale/untraded at check time.)
+Up: **PSX +2.6%**, **VLO +2.6%**, **MPC +2.2%** — refiners at fresh 52-week highs on wide margins. Down: **BKR −1.2%**, **SLB −1.0%**, **HAL −0.6%** (services ETF **XES −1.4%**) — equipment & services soft into earnings. (HES quote was stale/untraded at check time.)
 
 ## Screen idea
 
-The strict "below 200-day average AND cheap on EV/EBITDA" filter again returns nothing — every monitored name sits above its 200-day moving average after this year's rally. On valuation alone, **DVN** is the cheapest of the group at ~4.7x trailing EV/EBITDA (vs. OXY ~5.7x, COP ~6.3x, HAL ~8.6x, BKR ~11.4x), with net-debt/EBITDA under 1.0x and a ~10% free-cash-flow yield — the most attractively valued name rather than a true technical dip. It trades only ~4% above its 200-day, the closest to support among the majors. A low multiple can reflect commodity or balance-sheet risk rather than a bargain. Educational observation, not investment advice.
+The strict "below 200-day average AND cheap on EV/EBITDA" filter again returns nothing — every monitored name sits above its 200-day after this year's rally, a broadly bullish tape. On valuation alone, **DVN** is the cheapest of the group at ~4.7x trailing EV/EBITDA (vs. OXY ~5.7x, HES ~7.5x, SLB ~10.8x, BKR ~11.3x), with net-debt/EBITDA ~1.0x and a ~10% free-cash-flow yield. It trades only ~4% above its 200-day ($41.26) — the closest to support among the cheap names. A low multiple can reflect commodity or balance-sheet risk rather than a bargain. Educational observation, not investment advice.
 
 ## Stocks to watch
 
-- **XOM** — guided to a ~$3.7B Q2 profit lift from higher crude plus ~$3.3B in refining/chemical margin gains; EPS beat ($1.16 vs $1.01).
-- **VLO / PSX** — refiners sold off hardest today; watch crack spreads for the driver.
-- **LNG (Cheniere)** — down 3.5%; Freeport maintenance and soft gas pressuring sentiment.
+- **VLO / MPC / PSX** — refiners at 52-week highs on wide crack spreads; momentum into earnings.
+- **HAL** — reports July 21; watch North America completions commentary and the Aramco ramp.
+- **LNG (Cheniere)** — up ~1.2%; leverage to tight global gas/LNG demand despite soft Henry Hub.
 - **DVN** — cheapest upstream name on EV/EBITDA, low leverage, high FCF yield.
-- **OXY** — high-beta crude proxy, off 1.5% on the pullback.
+- **SLB** — services laggard down ~1%; a value/turnaround watch ahead of sector earnings.
 
-*Data: FMP quotes/key-metrics (as of last close) and web news (July 15–16, 2026). Not investment advice.*
+*Data: FMP quotes/key-metrics (as of last close) and web news (July 16–17, 2026). Not investment advice.*
