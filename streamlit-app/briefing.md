@@ -40,7 +40,6 @@ FMP live batch quotes are unavailable on the current (Starter) plan, so moves be
 
 ## Stocks to watch
 
-- **XOM** — Reported one of its largest Q2 profits in a decade (~$9.24B, $2.14/sh) on surging Guyana and Permian volumes; sets the tone for the sector.
 - **OXY** — High crude beta to the Iran/Hormuz headline; cheap on EV/EBITDA (~6.0x TTM).
 - **DVN** — Cheapest large-cap E&P on EV/EBITDA (~4.9x TTM) with a ~9% FCF yield.
 - **VLO / MPC** — Refiners to watch as a crude spike compresses crack spreads; both softened while producers rallied.
@@ -54,7 +53,6 @@ FMP live batch quotes are unavailable on the current (Starter) plan, so moves be
 - [Oil rises as Rubio says Iran 'not serious' about peace talks — CNBC](https://www.cnbc.com/2026/07/22/oil-prices-iran-war-macro-rubio-brent-wti.html)
 - [Natural gas price — Trading Economics](https://tradingeconomics.com/commodity/natural-gas)
 - [OPEC+ August output increase — Al Jazeera](https://www.aljazeera.com/economy/2026/7/6/opec-countries-say-they-will-expand-monthly-oil-production)
-- [Exxon Q2 profit rises on Pioneer, surging production — Barchart](https://www.barchart.com/story/news/27784178/exxon-mobil-second-quarter-profit-rises-on-pioneer-acquisition-and-surging-production)
 - [EIA Short-Term Energy Outlook](https://www.eia.gov/outlooks/steo/)
 - [Kinder Morgan Q2 2026 results & raised guidance — Seeking Alpha](https://seekingalpha.com/news/4617101-kinder-morgan-targets-full-year-adjusted-eps-at-least-12-percent-above-budget-while)
 - Earnings calendar & estimates: FMP earnings-calendar
