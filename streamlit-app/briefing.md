@@ -1,60 +1,62 @@
-# Oil & Gas Briefing — July 23, 2026
+# Oil & Gas Equity Monitor — Friday, July 24, 2026
 
 ## Market
 
-Crude extended its geopolitical rally. Brent settled around **$94.07/bbl** and WTI near **$86.83/bbl** on July 22, with prices up more than **20% month-to-date** as U.S.–Iran tensions flared again — Secretary of State Rubio said Tehran is "not serious" about peace talks, undercutting hopes that the mid-June ceasefire framework and the reopening of the Strait of Hormuz would fully normalize flows. Elevated marine insurance rates show the market still prices real risk to Gulf shipping. Pushing the other way, OPEC+ approved another modest supply hike of **~188,000 bpd** for August — its fifth straight monthly increase, adding roughly 940,000 bpd of quota since the conflict began — which caps upside if Hormuz exports keep recovering. Natural gas was firmer but subdued, rising ~2.6% to about **$2.94/MMBtu**; record Lower-48 output (~110.5 bcfd) and inventories ~6% above the five-year average keep a lid on prices, with Freeport LNG maintenance trimming export demand.
+Crude is spiking on a fresh geopolitical shock. WTI jumped roughly 5–6% toward ~$90/bbl and Brent surged more than 5–7% to around $99–101/bbl — the highest since late May — after Iran-backed Houthi forces launched missile and drone attacks on two Saudi oil tankers in the Red Sea, widening disruption beyond the Strait of Hormuz. The move extends a rally that has carried Brent roughly 30% off its July lows as the interim US–Iran truce unraveled, the US resumed its blockade of Iranian ports, and Kazakhstan suspended crude flows through the Caspian Pipeline Consortium terminal after drone attacks. The supply-side backdrop is otherwise loosening: OPEC+ approved another modest quota hike (seven core members adding ~188 kb/d for July, the fifth straight monthly increase unwinding the 2023 cuts), and the IEA noted global supply rebounded 4.1 mb/d in June to 98.8 mb/d as Gulf output partially recovered. The tension in the tape is a tight, war-risk-driven crude market sitting on top of a fundamentally well-supplied one — leaving prices highly headline-sensitive.
+
+Natural gas is the mirror image: Henry Hub slipped to about $2.85–2.86/MMBtu, a two-month low, on ample domestic supply and mild demand. Refined-product margins remain exceptionally strong, a theme confirmed by TotalEnergies' results and reflected in the outperformance of refiner and integrated equities through the recent run.
+
+Equities have tracked crude higher over the prior sessions, with integrated majors, LNG, and E&P names leading and refiners giving back some gains on July 23 as product cracks wobbled. Movers below were derived from daily closes (July 23 vs. July 22) via the FMP simple-moving-average endpoint, since live-quote endpoints are gated on the current plan; they reflect the last completed session, not intraday July 24 action.
 
 ## Earnings
 
-*Covers all oil & gas names in the monitor (E&P, integrated, services, midstream, refining, drilling), not just the watchlist.*
+**Reported in the last ~24h (July 23):**
 
-**Reported yesterday (Jul 22) — with actuals**
+- **TotalEnergies (TTE)** — EPS $2.68 vs. $2.66 est. (in-line); revenue $57.1B vs. $55.1B est. (beat). Adjusted net income jumped ~68% YoY to ~$6.0B on ~$97 Brent and exceptionally strong refining margins; CFFO ~$9.8B. Management flagged an "extremely volatile" operating backdrop around the Strait of Hormuz. *Takeaway: war-driven refining boom is padding integrated earnings even as the environment gets riskier.*
+- **Dow (DOW)** — EPS $1.44 vs. $1.25 est. (beat); revenue $12.09B vs. $12.03B est. (beat). *Takeaway: chemicals margins holding up better than feared.*
+- **Ovintiv (OVV)** — EPS $1.74 vs. $1.94 est. (miss); revenue $3.01B vs. $2.37B est. (rev beat, EPS light). *Takeaway: volumes/revenue strong but per-share profit pressured — likely cost/hedging drag.*
+- **World Kinect (WKC)** — EPS $1.29 vs. $0.75 est. (beat); revenue $13.59B vs. $10.50B est. (beat). *Takeaway: fuel-distribution margins benefiting from price volatility.*
 
-- **KMI** (midstream) — **Beat.** Adjusted EPS **$0.37** vs $0.32 est; revenue **$4.48B** vs ~$4.28B est. Raised full-year outlook to >12% above budget on adjusted EPS (~$1.52+), citing natural-gas/LNG demand tailwinds; hiked the dividend to $0.2975/qtr. The marquee print in the watchlist and a clean bullish read on gas infrastructure.
-- **EQNR** (integrated) — **Slight miss.** EPS **$1.33** vs $1.38 est.
-- **OII** (Oceaneering, services) — **Big beat.** EPS **$0.65** vs $0.46 est — a bright spot against the softer services tape.
-- **LBRT** (Liberty, services) — **Beat.** EPS **$0.09** vs $0.085 est.
-- **MMLP** (Martin Midstream) — EPS **$0.07**.
+**Reporting today (July 24, pending):**
 
-**Reporting today (Jul 23) — results pending**
+- **SLB (Schlumberger)** — EPS est. $0.51, revenue est. $8.67B (reports pre-market). Consensus looks for ~30% YoY EPS decline; watch for Middle East disruption headwinds (guided ~$0.06–0.08 EPS hit) and digital/international outlook. SLB has beaten in each of the last four quarters.
 
-TotalEnergies **TTE** (integrated, est ~$2.68), Ovintiv **OVV** (E&P, ~$1.94), Dow **DOW** (petchem, ~$1.25), World Kinect **WKC** (refining/distribution, ~$0.75).
+**Upcoming — next 7 days (by date):**
 
-**Upcoming — next 7 days (Jul 24–30)**
+- **Jul 26/27:** BKR (Baker Hughes; FMP lists Sun Jul 26 — likely pre-market Mon Jul 27), est. EPS $0.49 / rev $6.51B
+- **Jul 27:** NE (Noble, $0.18), RNGR (Ranger Energy, $0.31)
+- **Jul 28:** DINO (HF Sinclair, $4.20), EXE (Expand Energy, $1.16), NBR (Nabors, -$1.30), NOV ($0.16), PDS (Precision Drilling, $0.35), XPRO (Expro, $0.21)
+- **Jul 29:** AR (Antero, $0.84), AM (Antero Midstream, $0.27), CLB (Core Labs, $0.08), CRK (Comstock, $0.02), CVI (CVR Energy, $0.49), E (Eni, $1.66), NFG (National Fuel Gas, $1.44), PTEN (Patterson-UTI, -$0.04), PUMP (ProPetro, -$0.01), VET (Vermilion, $0.20), WHD (Cactus, $0.64)
+- **Jul 30:** CVE (Cenovus, $1.11), DTM (DT Midstream, $1.14), EPD (Enterprise Products, $0.74), PBF (PBF Energy, $3.83), TRP (TC Energy, $0.59), VLO (Valero, $10.13)
+- **Jul 31:** CVX (Chevron, $5.42), XOM (Exxon Mobil, $3.61), IMO (Imperial Oil, $3.61)
 
-- **Jul 24:** Schlumberger **SLB** (services, ~$0.51), Eni **E** (integrated, ~$1.66)
-- **Jul 26:** Baker Hughes **BKR** (services, ~$0.49)
-- **Jul 27:** Noble **NE** (drilling, ~$0.18), Ranger Energy RNGR (services)
-- **Jul 28:** HF Sinclair **DINO** (refining, ~$4.20), Expand Energy **EXE** (E&P gas, ~$1.16), NOV (services), Nabors NBR (drilling), Precision Drilling PDS, Expro XPRO
-- **Jul 29:** Antero **AR** (E&P gas), CVR Energy **CVI** (refining), National Fuel **NFG**, Patterson-UTI **PTEN**, Cactus **WHD**, Core Labs **CLB**, Comstock **CRK**, Vermilion **VET**, Antero Midstream **AM**, ProPetro PUMP
-- **Jul 30:** Cenovus **CVE** (integrated), **EPD** (midstream, ~$0.74), **VLO** (refining, ~$10.13), TC Energy **TRP**, DT Midstream **DTM**
-
-*The majors and large E&Ps report just after this window — XOM & CVX ~Jul 31; FANG Aug 3; DVN, EOG Aug 4; OXY, APA Aug 5; COP, CNQ Aug 6.*
+*Note on the majors/large E&Ps:* Chevron and Exxon land on July 31, at the very edge of the window. Most large E&Ps (COP, EOG, OXY, DVN, FANG) and several midstream/services peers report in the first two weeks of August — outside this window. (KMI reported Q1 in April; HAL reported July 21.)
 
 ## Today's movers
 
-FMP live batch quotes are unavailable on the current (Starter) plan, so moves below are computed from daily closes for the priced subset of the watchlist. The pattern is textbook for a crude spike — producers up, refiners squeezed on weaker margins:
+*(July 23 closes vs. July 22; watchlist + XLE/XOP/XES. Live quotes gated on current plan, so derived from daily closes.)*
 
-- **Up:** DVN +1.8%, OXY +1.8%, FANG +1.6%
-- **Down:** MPC −1.2%, VLO −1.2%, PSX −0.4%
+**Up:**
+- **LNG (Cheniere)** +1.7% — LNG demand/pricing pull from tight global supply
+- **XOM (Exxon Mobil)** +1.6% — integrated major bid ahead of July 31 earnings
+- **FANG (Diamondback)** +1.2% — Permian E&P leveraged to the crude spike
+
+**Down:**
+- **PSX (Phillips 66)** −2.1% — refiner pullback as product cracks wobbled
+- **VLO (Valero)** −1.8% / **XES (services ETF)** −1.8% — refiner de-rate and services softness
+- **MPC (Marathon Petroleum)** −1.1% — continued refiner give-back
 
 ## Stocks to watch
 
-- **OXY** — High crude beta to the Iran/Hormuz headline; cheap on EV/EBITDA (~6.0x TTM).
-- **DVN** — Cheapest large-cap E&P on EV/EBITDA (~4.9x TTM) with a ~9% FCF yield.
-- **VLO / MPC** — Refiners to watch as a crude spike compresses crack spreads; both softened while producers rallied.
+- **SLB** — reports pre-market today; setup for a beat given a 4-quarter streak, but Middle East disruption is a known headwind. Sits just above its 200-day.
+- **HAL (Halliburton)** — only major name trading below its 200-day (~2.3%) at the cheapest EV/EBITDA in the group; a read-through candidate from SLB's print today.
+- **VLO / PSX** — refiners that led July 23 losses; TTE and WKC results confirm product margins are still historically fat, so watch VLO's July 30 print for confirmation or divergence.
+- **LNG (Cheniere)** — cleanest beneficiary of tight global gas/LNG pricing amid the supply scare, insulated from domestic Henry Hub weakness.
+- **XOM / CVX** — bellwether integrateds reporting July 31; both riding the crude rally and strong refining into the print.
 
 ## Screen idea
 
-*Educational, not investment advice.* The screen looks for a name **below its 200-day average yet cheap on EV/EBITDA**. Today it returns no hit: after the 20%+ oil rally, every monitored name trades *above* its 200-day SMA (e.g., DVN 44.88 vs 41.47; OXY 57.50 vs 49.82; even lagging refiners VLO 311 vs 214, MPC 316 vs 217). The cheapest on EV/EBITDA is **DVN (~4.9x)**, but it — like the whole group — sits above trend, so the mean-reversion setup the screen wants isn't present. Takeaway: in a momentum-driven, geopolitics-led tape, "cheap AND below trend" can come up empty — a sign the sector is extended rather than a buy list.
+*Educational, not investment advice.* Screening the watchlist for names **below their 200-day moving average** that are also cheap on **EV/EBITDA**: only two names are below their 200-day — **HAL** (close $32.71 vs. 200-day ~$33.48, ~2.3% below) and **BKR** ($56.09 vs. ~$56.16, fractionally below). HAL is the cleaner fit — EV/EBITDA ~8.6x (TTM) versus BKR at ~11.2x and SLB at ~10.8x — so it combines technical-laggard status with the lowest valuation among the oilfield-services majors. The catch: services earnings face Middle East disruption headwinds this quarter (SLB reports today; HAL already reported July 21), so the "cheap + below trend" signal comes with a fundamental reason attached. Worth understanding *why* it screens cheap before treating cheapness as opportunity.
 
-## Sources
-
-- [Oil rises as Rubio says Iran 'not serious' about peace talks — CNBC](https://www.cnbc.com/2026/07/22/oil-prices-iran-war-macro-rubio-brent-wti.html)
-- [Natural gas price — Trading Economics](https://tradingeconomics.com/commodity/natural-gas)
-- [OPEC+ August output increase — Al Jazeera](https://www.aljazeera.com/economy/2026/7/6/opec-countries-say-they-will-expand-monthly-oil-production)
-- [EIA Short-Term Energy Outlook](https://www.eia.gov/outlooks/steo/)
-- [Kinder Morgan Q2 2026 results & raised guidance — Seeking Alpha](https://seekingalpha.com/news/4617101-kinder-morgan-targets-full-year-adjusted-eps-at-least-12-percent-above-budget-while)
-- Earnings calendar & estimates: FMP earnings-calendar
-
-*Data: FMP fundamentals/technicals (live quotes gated on Starter plan; movers derived from daily closes) + web market news.*
+---
+*Movers and valuations derived from FMP daily closes and key-metrics-TTM (live quote/batch endpoints gated on the Starter plan). Prices reflect the July 23 close. Not investment advice.*
