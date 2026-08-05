@@ -1,76 +1,130 @@
-# Oil & Gas Equity Monitor — Tuesday, August 4, 2026
+# Oil & Gas Equity Monitor — Wednesday, August 5, 2026
+
+*Educational market notes, not investment advice. Prices are August 4 closes; the August 5 session had not closed at time of writing.*
 
 ## Market
 
-Monday delivered the crude repricing the previous briefing flagged as pending, and it was violent. Brent settled near $83.80/bbl, down roughly 4.7% on the day, and WTI near $79.60, down about 6.0% — the largest single-session decline of the year and the moment the entire Strait of Hormuz risk premium finished bleeding out. Two catalysts stacked. First, seven OPEC+ producers (Saudi Arabia, Russia, Iraq, Kuwait, Kazakhstan, Algeria and Oman) confirmed on Sunday, August 2 a further 188,000 b/d increase for September, completing the phased rollback of the April 2023 voluntary cuts. Notably, the communiqué said nothing about the fourth quarter despite pre-meeting reporting that a pause was likely — the market read that silence as permission to sell. Second, President Trump declined to authorise a new strike on Iran, postponing military action in favour of pursuing a deal on Tehran's nuclear programme and keeping Hormuz open. With Iranian barrels already flowing again under the temporarily lifted sanctions and Kpler tracking more than 20m bbl of Iranian crude afloat, the supply picture flipped from shortage to prospective glut in a single session.
+Crude kept falling, and the second day was worse than the first. WTI settled around $75.12/bbl, down 6.47%, and Brent fell 6.06% to roughly $78.69 — Brent's first close below $80 in weeks and back-to-back sessions of 6%-scale declines. Oil is now down roughly 10% on the week. Yesterday's briefing described the Hormuz risk premium as "finished bleeding out"; that proved premature only in the sense that there was more of it to bleed.
 
-What is more interesting than the crude move is what equities did with it. Energy did not follow oil down anywhere near one-for-one: XLE fell just 1.28% against a 6% WTI decline, and ExxonMobil closed down 0.24%. That is a tape that either believes the strip holds in the low $80s or is simply unwilling to give back a sector that has been the best-performing corner of the market all year — every name on the watchlist except Halliburton still trades above its 200-day average, most by 10–40%. Refiners took the worst of it (MPC, PSX, VLO all down 1.7–3.0%), which is the counterintuitive part given lower feedstock costs, and suggests the selling was about crack-spread mean reversion after an exceptional quarter rather than crude per se. Natural gas remains a separate, duller story: September NYMEX was last at $2.686/MMBtu (July 31) with storage 6.4% above the five-year average and record dry gas production capping rallies. EIA still models Q3 Henry Hub at $3.37.
+Tuesday's catalyst was diplomacy, not supply. Treasury Secretary Scott Bessent said a deal to reopen the Strait of Hormuz could land "today or tomorrow," and Qatar confirmed a de-escalation resolution was circulating among the parties — both cautioning nothing is signed. Crude had actually traded up toward $81.80 intraday on conflicting signals before reversing hard into the close. Iran continues to deny direct talks with Washington and insists on controlling maritime traffic through the strait, holding that only discussions with Oman on shipping routes are progressing. So the premium is compressed, not extinguished: a failed negotiation reprices this violently in the other direction, and the market's willingness to sell an unsigned deal is worth noting as positioning, not conviction.
+
+Supporting bearish news stacked up. OPEC+ approved another modest increase, completing the restoration of the 2023 cuts. Turkey and Iraq extended their pipeline agreement a further year and Kazakhstan resumed Caspian Pipeline Consortium flows after a brief outage — both strengthening non-Hormuz export routes precisely when the market is handicapping Hormuz.
+
+Natural gas fell for unrelated domestic reasons, down 3.36% to about $2.69/MMBtu on strong production, comfortable storage and mixed cooling demand. Gas is down 17% over the past month while crude is up 9.6% — an unusually wide divergence between the two hydrocarbons.
+
+Equities again refused to follow oil down. A broad risk-on session (S&P 500 +1.9% to record highs) helped, but the dispersion was the real signal: XLE fell only 0.46% against WTI's 6.5% drop, XOP fell 1.34%, and oilfield services actually rallied, with XES up 3.05%.
 
 ## Earnings
 
-**Reported since the last session (Monday, August 3, mostly after the close)**
+### Reported in the last ~24 hours (Tuesday, August 4)
 
-- **ONEOK (OKE)** — EPS $1.53 vs $1.46 est., revenue $8.63bn vs $8.95bn est. **BEAT on EPS, miss on revenue.** Net income $967m and adjusted EBITDA $2.12bn, up 13% and 7% respectively, on record quarterly NGL volumes and higher gas processing and refined products throughput. Quarterly dividend held at $1.07 ($4.28 annualised). Volume-led, not price-led — the right composition for a lower crude deck.
-- **Diamondback (FANG)** — EPS $6.48 vs $6.08 est., revenue $5.56bn vs $4.89bn est. **BEAT.** Revenue up ~51% year over year, operating cash flow $3.59bn, free cash flow $2.33bn, production above 1.0m boe/d. Raised full-year oil guidance to 520+ MBO/d (from 500–510) and total production to 972+ MBOE/d without touching the ~$3.9bn capital budget. Pro forma net debt down to $12.7bn with the $10bn target pulled forward, plans to call $750m of 2026 notes. Shares still fell 2.07% with the group.
-- **Williams (WMB)** — EPS $0.50 vs $0.502 est., revenue $3.05bn vs $2.83bn est. **IN LINE on adjusted EPS, beat on revenue.** GAAP net income $827m ($0.68/diluted share). The news was strategic rather than operational: Williams is acquiring Momentum Midstream for up to $5.5bn and lifted the 2026 adjusted EBITDA guidance midpoint to $8.4bn. Gathering and processing consolidation in the Haynesville, aimed squarely at Gulf Coast LNG feedgas demand.
-- **Black Stone Minerals (BSM)** $0.47 vs $0.23 — **BEAT** (revenue $150m vs $110m est.). **Kosmos (KOS)** $0.11 vs $0.093 — **BEAT** (revenue $620m vs $480m est.). **Hess Midstream (HESM)** $0.75 vs $0.672 — **BEAT.** **Gulfport (GPOR)** $3.91 vs $3.91 — **IN LINE.** **Viper Energy (VNOM)** $0.76 vs $0.764 — **IN LINE**, revenue beat at $680m vs $640m. **Tidewater (TDW)** $0.43 vs $0.456 — **MISS**, the only clear miss in the batch and a soft print for offshore services sentiment.
+**Beats:**
 
-**Reporting today, Tuesday August 4 (pending)**
+- **Marathon Petroleum (MPC)** — EPS $17.73 vs $14.27 est.; revenue $52.34bn vs $40.87bn est. **BIG BEAT**, ~24% on the bottom line. Shares +1.82%. Refining margins remain the standout profit pool in the sector, and this print argues yesterday's refiner weakness was mispriced.
+- **EOG Resources (EOG)** — EPS $5.07 vs $4.97 est.; revenue $8.62bn vs $8.04bn est. **BEAT**, but shares fell 1.48% — the crude tape simply overwhelmed the print.
+- **Devon (DVN)** — EPS $1.57 vs $1.40 est.; revenue $7.42bn vs $6.01bn est. **BEAT**, 12% on EPS and 23% on revenue. Stock still -1.17% with the group.
+- **Energy Transfer (ET)** — EPS $0.59 vs $0.38 est.; revenue $34.33bn vs $27.71bn est. **BIG BEAT**. Shares +0.25%, which is the point: midstream fee-based cash flow is largely insulated from spot crude.
+- **Suncor (SU)** — EPS $2.28 vs $2.14 est.; revenue $11.90bn vs $11.68bn est. **BEAT**. A clean integrated result.
+- **Par Pacific (PARR)** — EPS $10.10 vs $8.22 est.; revenue $2.97bn vs $2.40bn est. **BIG BEAT**, ~23%. Confirms MPC's read: this is a sector-wide refining quarter, not a single-company story.
+- **Talos (TALO)** $0.57 vs $0.37 · **NGL Energy (NGL)** $0.48 vs $0.11 · **Select Water (WTTR)** $0.17 vs $0.13 · **USA Compression (USAC)** $0.31 vs $0.28 — all **BEAT**.
 
-BP (est. $1.87 EPS / $57.89bn rev) · EOG ($4.97 / $8.04bn) · Marathon Petroleum (MPC, $14.27 / $40.87bn) · Devon (DVN, $1.40 / $6.01bn) · Energy Transfer (ET, $0.380 / $27.71bn) · Suncor (SU, $2.14 / $11.68bn) · Sunoco (SUN, $2.50) · MPLX ($1.06) · Par Pacific (PARR, $8.22) · Archrock (AROC, $0.448) · Talos (TALO, $0.372) · USA Compression (USAC, $0.278) · Select Water (WTTR, $0.133). Coterra (CTRA, est. $0.633 / $2.04bn) was scheduled for the 3rd and has not yet posted an actual — treat it as pending.
+**Misses:**
 
-This is the densest day of the window and the first proper test of the post-OPEC+ narrative: EOG and DVN give the E&P read on capital discipline against an $80 WTI strip, while MPC on a $14.27 estimate is the single largest EPS print in the sector this week and the direct read-through to yesterday's refiner weakness.
+- **Sunoco LP (SUN)** — EPS $0.94 vs $2.50 est. **BIG MISS**, despite revenue of $14.26bn well ahead of the $11.05bn estimate. Revenue up, earnings down by that much is a margin and mix problem, not a volume one — worth checking against the otherwise-excellent downstream results.
+- **Archrock (AROC)** — EPS $0.38 vs $0.45 est.; revenue $371m vs $393m est. **MISS**. Compression demand softer than modeled, which sits awkwardly against USAC's beat in the same niche.
+- **Bristow (VTOL)** — EPS $0.70 vs $0.89 est. on revenue slightly ahead. **MISS**.
 
-**Upcoming, next seven days**
+**Takeaway:** an unusually strong slate — 11 beats against 3 misses — and the market largely ignored it. Only MPC was rewarded. That is what a commodity-driven tape looks like: fundamentals reported, macro priced.
 
-- **Wed Aug 5** — Occidental (OXY, $1.83 est.), Phillips 66 (PSX, $7.50), APA ($1.90), Chord (CHRD, $6.55), Matador (MTDR, $2.08), SM Energy ($1.96), Murphy (MUR, $1.57), Permian Resources (PR, $0.585), Delek (DK, $2.67), Delek Logistics (DKL, $0.928), Western Midstream (WES, $0.907), Helmerich & Payne (HP, $0.095), Transocean (RIG, $0.010), Valaris (VAL, $0.31), Helix (HLX, $0.078), DHT ($1.15), MEG Energy ($0.077), W&T Offshore (WTI, $0.035), Riley Permian (REPX, $1.63), Amplify (AMPY), Warrior Met (HCC), Natural Resource Partners (NRP), CrossAmerica (CAPL)
-- **Thu Aug 6** — ConocoPhillips (COP, $2.90 / $18.79bn), Cheniere (LNG, $3.08 / $4.84bn), Targa (TRGP, $2.83 / $4.86bn), Canadian Natural (CNQ, $1.43 / $9.40bn), Cheniere Partners (CQP, $0.975), Kodiak Gas (KGS, $0.674), Green Plains (GPRE, $0.541), Genesis (GEL, $0.02), Granite Ridge (GRNT, $0.06), NGL Energy ($0.11), VAALCO (EGY, $0.065), Dorchester Minerals (DMLP), Overseas Shipholding (OSG, −$0.01)
-- **Fri Aug 7** — Plains (PAA, $0.382 / $12.80bn), Plains GP (PAGP, $0.457), PPL ($0.341), Kimbell Royalty (KRP, $0.231), Alpha Metallurgical (AMR, −$0.431)
-- **Mon Aug 10** — California Resources (CRC, $1.36), International Seaways (INSW, $5.50), Seadrill (SDRL, $0.315)
-- **Tue Aug 11** — Sable Offshore (SOC, $0.366), SES AI (−$0.05)
+### Reporting today (Wednesday, August 5) — pending, with estimates
 
-Coverage note: the integrateds and large-cap services names sit outside this window — ExxonMobil, Chevron, Shell and Imperial Oil all reported the week of July 27–31, and SLB, Halliburton, Baker Hughes and Kinder Morgan reported in July. Of the remaining majors, only BP (today) and Suncor/Canadian Natural land inside the next week. That leaves EOG, DVN, OXY and COP as the marquee E&P prints of the next four sessions.
+| Symbol | EPS est. | Revenue est. |
+|---|---|---|
+| **PSX** | $7.50 | $43.60bn |
+| **OXY** | $1.83 | $7.07bn |
+| CHRD | $6.55 | $1.62bn |
+| APA | $1.90 | $2.46bn |
+| DK | $2.67 | $3.44bn |
+| MTDR | $2.08 | $1.06bn |
+| SM | $1.96 | $2.02bn |
+| MUR | $1.57 | $0.89bn |
+| REPX | $1.63 | $0.16bn |
+| DHT | $1.15 | $0.25bn |
+| MGY | $0.93 | $0.46bn |
+| DKL | $0.93 | $0.29bn |
+| WES | $0.91 | $1.13bn |
+| TS | $0.78 | $2.93bn |
+| VVV | $0.50 | $0.54bn |
+| CAPL | $0.38 | $0.73bn |
+| EE | $0.35 | $0.34bn |
+| VAL | $0.31 | $0.49bn |
+| KNTK | $0.26 | $0.45bn |
+| HP | $0.09 | $0.99bn |
+| HLX | $0.08 | $0.31bn |
+| AMPY | $0.08 | $0.04bn |
+| REI | $0.07 | $0.09bn |
+| WTI | $0.04 | $0.16bn |
+| RIG | $0.01 | $0.96bn |
+| KLXE | -$0.82 | $0.17bn |
+
+The two that matter: **PSX** is the direct read-through on whether MPC's and PARR's refining blowout is sector-wide (the evidence says it is). **OXY** is the large-cap E&P print of the day and the one most exposed to a deflating Hormuz premium.
+
+### Upcoming — next 7 days
+
+**Thu Aug 6:** COP ($2.90 est.), Cheniere/LNG ($3.08), TRGP ($2.83), CNQ ($1.43), CQP ($0.98), NOG ($1.17), KGS ($0.67), DNOW ($0.09), GEL ($0.02), SPH (-$0.17), ACDC (-$0.29), DMLP, GEOS
+
+**Fri Aug 7:** PAGP ($0.46), PAA ($0.38), KRP ($0.23), CLMT ($0.07), TUSK
+
+**Mon Aug 10:** INSW ($5.50), CRC ($1.36), SDRL ($0.31), HPK ($0.03), BATL (-$0.21)
+
+**Tue Aug 11:** SOC ($0.37), BORR (-$0.11), SND
+
+**Note on the majors and large E&Ps:** XOM, CVX, SLB, HAL, BKR, VLO, EPD, KMI and OKE all reported in late July or on Aug 3 and fall outside this window. **COP on Aug 6 is the last US large-cap E&P to report this cycle** — after that the sector runs on macro alone until Q3. FANG's next report is Nov 2. Note also that HES no longer returns data (absorbed into Chevron) and has effectively dropped out of the watchlist.
 
 ## Today's movers
 
-**Data note:** FMP's live quote endpoints (`quote`, `batch-quote`, `quote-short`) are gated to Premium on the current Starter plan and return ACCESS DENIED. The figures below are therefore derived from daily closes returned by the 200-day simple-moving-average endpoint for the priced subset of the watchlist. The latest close available is **Monday, August 3, 2026**. Hess (HES) returns no data — it was absorbed into Chevron and is no longer a live listing; it should be dropped from the watchlist.
+FMP live quote endpoints (quote / batch-quote / quote-short) are gated to Premium on the current Starter plan. Daily changes below are therefore **derived from daily closes** returned by the 200-day SMA endpoint — Aug 4 close vs. Aug 3 close — for the priced subset of the watchlist.
 
-Twenty-one of the twenty-two priced names fell. Only one closed higher.
+**Up:**
 
-**Up**
-
-| Ticker | Close (8/3) | 1-day |
+| Symbol | Close | Change |
 |---|---|---|
-| BKR | $60.81 | +0.53% |
+| SLB | $50.81 | **+3.04%** |
+| MPC | $312.61 | **+1.82%** |
+| WMB | $71.51 | **+1.53%** |
 
-There is no second or third gainer — Baker Hughes was the sole advancer on the day.
+*(BKR $61.73 +1.51% and HAL $32.36 +1.47% just behind.)*
 
-**Down**
+**Down:**
 
-| Ticker | Close (8/3) | 1-day |
+| Symbol | Close | Change |
 |---|---|---|
-| MPC | $307.03 | −2.98% |
-| OXY | $55.47 | −2.80% |
-| PSX | $206.19 | −2.59% |
+| FANG | $191.87 | **-3.46%** |
+| EOG | $143.52 | **-1.48%** |
+| CVX | $190.40 | **-1.44%** |
 
-Next in line: TRGP −2.13%, LNG −2.08%, FANG −2.07%, EOG −2.02%. Sector ETFs: XLE −1.28%, XOP −1.76%, XES −0.69%. The mildest declines were XOM −0.24%, ET −0.39% and EPD −0.47% — mega-cap and fee-based midstream absorbed the crude move almost entirely.
+**ETFs:** XES $113.77 **+3.05%** · XLE $58.52 **-0.46%** · XOP $171.95 **-1.34%**
+
+The composition is the story. On a day WTI fell 6.5%, the entire up-list is services (SLB, BKR, HAL, XES) and downstream (MPC), the entire down-list is upstream (FANG, EOG, CVX), and midstream sat flat (ET +0.25%, EPD +0.66%, KMI -0.06%). Services and refining earnings key off activity levels and crack spreads; E&P cash flow keys directly off the barrel. **XES outperforming XOP by 4.4 percentage points in one session** is about as clean an expression of that as the tape produces.
+
+Two names deserve a footnote. **WMB's** two-day strength follows Monday's announced acquisition of Momentum Midstream for up to $5.5bn and a raised 2026 EBITDA guidance midpoint of $8.4bn — Haynesville gathering consolidation aimed at Gulf Coast LNG feedgas, a thesis independent of crude. And **FANG** is now down roughly 5.5% over two sessions despite Monday's beat, raised full-year oil guidance (520+ MBO/d) and an unchanged ~$3.9bn capex budget. A Permian bellwether beating, guiding higher, and falling that hard is the sharpest disconnect on the board.
 
 ## Stocks to watch
 
-- **MPC** — reports today on a $14.27 EPS estimate, the largest print of the week, and led the sector lower yesterday; the clearest read on whether refining margins are normalising.
-- **EOG** — reports today at $4.97 est.; sits 17% above its 200-day and just took a 2% hit, so the guidance framing against an $80 WTI deck matters more than the quarter.
-- **HAL** — the only watchlist name trading below its 200-day average (−5.6%); a services laggard while the rest of the sector runs is either a warning about 2027 activity budgets or a dislocation.
-- **WMB** — $5.5bn Momentum Midstream acquisition and a raised $8.4bn EBITDA midpoint make it the most consequential capital-allocation story in midstream this week.
-- **FANG** — beat and raised production guidance without raising capex, yet fell 2%; a test of whether operational execution can offset a falling strip.
+- **PSX** — reports today at $7.50 est., immediately after MPC beat by 24% and PARR by 23%. The cleanest near-term test of whether refining margins are a durable 2026 profit pool or a one-quarter artifact.
+- **FANG** — beat on both lines, raised guidance, and fell 5.5% in two days anyway. The gap between print and reaction is the thing to understand before deciding it is an opportunity.
+- **SLB** — up 3% into a 6.5% crude drop, and the large-cap where international and digital revenue mix decouples most from spot crude. Middle East softness remains the offsetting concern.
+- **OXY** — reports today; at 5.8x EV/EBITDA it is the cheapest large-cap integrated screened, but carries the most balance-sheet sensitivity if the risk premium keeps deflating.
+- **HAL** — the only watchlist name below its 200-day average, in a services group that just outperformed. Either a lagging cheap name or the market disagreeing with the group.
 
 ## Screen idea
 
-Screen for names trading *below* their 200-day moving average while carrying a below-median EV/EBITDA — the intersection of technical weakness and cheap cash-flow valuation, which is where genuine dislocations and genuine value traps both live. Across the watchlist, only **Halliburton (HAL)** currently passes the technical leg: it closed at $31.89 against a 200-day average of $33.78 (−5.6%), on TTM EV/EBITDA of 7.9x with net debt/EBITDA of 1.5x and a 6.5% free-cash-flow yield. Everything else on the list sits above its 200-day, several by more than 30%.
+**Below the 200-day, cheap on EV/EBITDA.** Of the 19 watchlist names with live price data (HES excluded), exactly one closed below its 200-day simple moving average: **HAL at $32.36 vs a 200-day of $33.83 — 4.3% below.** Everything else is above trend, several substantially: MPC and VLO trade ~40% above their 200-day, XOM ~10%, a reminder of how far this sector has already run.
 
-Worth noting that HAL is not the cheapest name in the group on EV/EBITDA — **Devon (DVN)** is, at 4.9x with 0.96x net debt/EBITDA and a 9.5% FCF yield, followed by **Occidental (OXY)** at 5.8x and **ConocoPhillips (COP)** at 6.6x. So the screen produces a fork: HAL is the only technical laggard but is the most expensive of the four on EV/EBITDA, while DVN is the cheapest but is trading 6.4% above its 200-day. The honest read is that this screen currently has no clean single winner, which is itself information — after a year-long sector run there is very little that is both cheap and out of favour.
+HAL satisfies the technical leg but not the value leg. At **8.0x EV/EBITDA TTM** it is the most expensive of the five names screened. The cheapest is **DVN at 4.8x**, with a 9.6% free cash flow yield and 1.0x net debt/EBITDA — but DVN trades about 5% above its 200-day. **OXY at 5.8x** and **COP at 6.6x** follow; ET screens at 10.1x, reflecting its 5.1x net debt/EBITDA structure.
 
-*Educational and informational only. Nothing here is investment advice or a recommendation to buy or sell any security.*
+So there is no clean overlap this morning: the one name below trend is not the cheap one, and the cheap one is not below trend. That absence is itself the finding. A sector where eighteen of nineteen names sit above their 200-day *after* two consecutive 6% declines in the underlying commodity is a sector priced for the geopolitical premium to hold. If the Hormuz deal actually lands, that positioning gets tested quickly — and the screen would likely produce far more candidates a week later.
 
 ---
 
-**Sources:** [Forbes Advisor — crude oil prices Aug 3](https://www.forbes.com/advisor/investing/oil-prices-today/) · [Trading Economics — Brent](https://tradingeconomics.com/commodity/brent-crude-oil) · [Trading Economics — WTI](https://tradingeconomics.com/commodity/crude-oil) · [CNBC — OPEC+ agrees September hike](https://www.cnbc.com/2026/08/02/opec-agrees-september-oil-hike-completing-rollback-of-voluntary-cuts.html) · [Egypt Oil & Gas — September output increase](https://egyptoil-gas.com/news/opec-agrees-september-output-increase-of-188000-bbl-d/) · [Al Jazeera — Hormuz reopened, glut?](https://www.aljazeera.com/news/2026/7/2/with-hormuz-reopened-has-the-oil-shortage-turned-into-a-glut) · [StockStory — Diamondback Q2 CY2026](https://markets.financialcontent.com/stocks/article/stockstory-2026-8-3-diamondback-energys-nasdaqfang-q2-cy2026-beats-on-revenue) · [MarketScreener — Williams Q2](https://www.marketscreener.com/news/williams-companies-q2-adjusted-earnings-revenue-rise-ce7f50d9dc80f423) · [ONEOK Q2 2026 results](https://www.manilatimes.net/2026/08/04/tmt-newswire/globenewswire/oneok-announces-higher-second-quarter-2026-earnings-net-income-up-13-adjusted-ebitda-up-7/2397468) · [EIA Short-Term Energy Outlook](https://www.eia.gov/outlooks/steo/) · Price, earnings-calendar and key-metrics data via Financial Modeling Prep.
+*Sources: Trading Economics (WTI, Brent, Henry Hub closes and news stream), CNBC and The National (Iran/Hormuz reporting), Financial Modeling Prep (earnings calendar, daily closes, TTM key metrics), prior day's briefing (OKE, WMB, FANG detail). Movers derived from daily closes as noted above. Nothing here is a recommendation to buy or sell any security.*
