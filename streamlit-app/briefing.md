@@ -1,102 +1,96 @@
-# Oil & Gas Equity Monitor — Thursday, August 6, 2026
+# Oil & Gas Equity Monitor — Friday, August 7, 2026
 
-*Prices and moves reflect the last completed session (Wednesday, August 5). Educational research notes, not investment advice.*
+*Prices and moves reflect the last completed session (Thursday, August 6). Educational research notes, not investment advice.*
 
 ## Market
 
-The dominant story remains the unwinding of the Strait of Hormuz risk premium. Iran reached an agreement with Oman on a proposed shipping route through the Strait, and reporting indicates the US, Iran and Oman are close to a 60-day interim deal to reopen the waterway without tolls. Crude has now fallen three straight sessions on that news flow. WTI settled down 5.7% at $75.77/bbl on Tuesday and drifted to roughly $75.69 Wednesday; Brent settled 5.3% lower at $79.36 and closed near $79.26. Both benchmarks are still up sharply on longer horizons — WTI is roughly +10% over the past month and +18% year-over-year — so what is deflating is the war premium, not the underlying tightness. The caution worth holding: the Strait is still largely closed in practice, tankers are still being turned back, and the market is arguably pricing the best-case reopening. Any logistical slippage or renewed escalation reprices this quickly in the other direction.
+The three-session slide in crude reversed. WTI rose about 3.4% to roughly $77.75/bbl on Thursday after Iran-aligned Houthi forces in Yemen claimed a strike on a Saudi oil tanker in the Gulf of Aden and threatened further vessels in the Red Sea. That single headline was enough to put a chunk of the risk premium back on, because it undercuts the premise the market had been trading all week — that the Iran–Oman shipping arrangement for the Strait of Hormuz marks a durable de-escalation. Brent moved in the same direction, though source prints for the session vary meaningfully (roughly $81 to $83.6 across intraday quotes versus a $79.26 close on Aug 5), so treat the precise Brent level as approximate.
 
-Natural gas is trading on entirely different fundamentals and going the other way. Henry Hub slipped below $2.70/MMBtu to about $2.69, a three-month low, on milder weather forecasts and record supply — Lower 48 production averaged 110.7 Bcf/d in July. Storage is running roughly 6.6% above the five-year average for the week ended July 31. EIA still models Henry Hub averaging near $3.70 for 2026, which implies a meaningful second-half recovery that the strip is not yet paying for.
+The underlying setup has not changed: the Iran–Oman route is a proposed corridor expected to run two to four months, and Tehran has been explicit that it does not constitute a reopening of the Strait. Thursday demonstrated the asymmetry — de-escalation headlines drain the premium slowly over several sessions, while a single security incident restores a large share of it in one.
 
-Sector earnings are the offsetting positive. Energy is posting the highest Q2 earnings growth of all eleven S&P sectors at 128% year-over-year versus 37.9% for the index, led by refining & marketing (+249%) and integrated (+166%).
+On supply, OPEC+ met August 2 and seven core members agreed to add 188,000 bbl/d in September, completing the phased rollback of the 1.65 mb/d cut agreed in 2023, then to pause through Q4. That is a small, well-telegraphed increment and it was not the driver of Thursday's move.
+
+Natural gas continues to trade on its own, weaker fundamentals. Henry Hub slipped to about $2.67/MMBtu, down 0.84% on the day and roughly 18% over the past month, after a heavy storage injection left inventories about 6.4% above the five-year seasonal average. Lower 48 production is running near a record 110.6 Bcf/d. Crude strength and gas weakness pulling in opposite directions is the defining feature of the tape right now.
 
 ## Earnings
 
-**Reported in the last ~24 hours (Aug 5 session and after the close)**
+**Reported in the last ~24 hours (Thursday, August 6)**
 
 | Symbol | EPS act / est | Revenue act / est | Tag |
 |---|---|---|---|
-| OXY | 2.40 / 1.83 | $8.07B / $7.07B | Beat |
-| PSX | 9.41 / 7.50 | $42.1B / $43.6B | Beat (EPS) |
-| APA | 1.89 / 1.90 | $2.40B / $2.46B | In line / slight miss |
-| CHRD | 6.44 / 6.55 | $2.17B / $1.62B | Mixed |
-| MTDR | 2.61 / 2.08 | $1.19B / $1.06B | Beat |
-| SM | 2.19 / 1.96 | $2.50B / $2.02B | Beat |
-| PR | 0.69 / 0.59 | $1.86B / $1.66B | Beat |
-| MUR | 1.55 / 1.57 | $928M / $889M | Mixed |
-| TPL | 2.23 / 2.18 | $246M / $250M | Slight beat |
-| DK | 5.48 / 2.67 | $4.09B / $3.44B | Big beat |
-| VAL | 0.72 / 0.31 | $539M / $489M | Beat |
-| RIG | 0.03 / 0.01 | $966M / $957M | Slight beat |
-| HP | −0.11 / 0.09 | $1.03B / $988M | EPS miss |
-| WES | 0.99 / 0.91 | $1.22B / $1.13B | Beat |
-| DKL | 0.54 / 0.93 | $385M / $294M | EPS miss |
-| TS | 0.47 / 0.78 | $2.97B / $2.93B | EPS miss |
-| ATO | 1.43 / 1.35 | $879M / $901M | Mixed |
-| NRP | 1.85 / 0.30 | $40.3M / $37.7M | Big beat |
-| HCC | 1.65 / 1.40 | $510M / $488M | Beat |
-| SR | −0.26 / −0.32 | $420M / $395M | Beat |
-| DHT | 1.22 / 1.15 | $255M / $247M | Beat |
+| COP | 3.24 / 2.90 | $19.52B / $18.79B | Beat |
+| CQP | 2.14 / 1.01 | $2.58B / $2.64B | Big EPS beat |
+| CNQ | 1.58 / 1.43 | n/a / $9.40B | Beat |
+| LNG | 3.02 / 3.08 | $5.73B / $4.92B | Mixed (rev beat) |
+| TRGP | 2.79 / 2.83 | $4.44B / $4.90B | Miss |
+| NOG | 1.13 / 1.17 | $745M / $594M | Mixed (rev beat) |
+| KGS | 0.55 / 0.67 | $391M / $386M | EPS miss |
+| GEL | 0.26 / 0.02 | $532M / $445M | Big beat |
+| GPRE | 0.83 / 0.54 | $446M / $542M | Mixed |
+| HLX | 0.10 / 0.078 | $304M / $315M | Mixed |
+| GRNT | 0.09 / 0.075 | $149M / $139M | Beat |
+| ACDC | −0.30 / −0.30 | $498M / $484M | In line |
+| GEOS | −0.75 / n/a | n/a | No estimate |
+| PBR / PBR-A | pending / 1.36, 1.43 | est ~$31.5B | Not yet reported |
 
-Takeaways. **PSX** is the marquee print — $9.41 adjusted against a $6.76–7.50 consensus range, GAAP $3.85B versus $207M in Q1, plus record NGL fractionation and LPG export volumes and $6.6B of debt reduction taking net debt to $16.5B. Refining margins are the direct beneficiary of Middle East supply disruption. **OXY** beat EPS by 31% on a $1B revenue upside. **EOG** (Aug 4 tape date, call Aug 5) beat at $5.07 vs $4.97 on $8.62B revenue against $8.04B — and still fell 6.5%, repeating the Q1 pattern where a headline beat was undercut by cautious NGL pricing and production guidance. That divergence between print quality and share reaction is the single thing worth watching this week. Note **KMI** is not in this window: it reported July 22 ($0.37 vs $0.32, revenue $4.48B vs $4.22B, a beat) and next reports Oct 28.
+Takeaways. **COP** is the cleanest print of the day and the one that mattered most for group sentiment. Adjusted EPS of $3.24 beat by roughly 12–14% depending on which consensus you use, revenue grew about 32% year-over-year, production hit 2.248 MMboe/d above the high end of guidance on record Permian volumes, realizations averaged $62.33/boe (+36% y/y), free cash flow was $4.2B, and $3.0B went back to shareholders ($2.0B buyback, $1.0B dividend). Critically, management reaffirmed all full-year guidance — no cut to offset the beat, which is exactly what the group needed after EOG's Aug 5 experience of selling off 6.5% on a headline beat.
 
-**Reporting today, Thursday August 6 (estimates)**
+**LNG (Cheniere)** is the more nuanced one. Headline EPS came in a fraction light at $3.02 versus $3.08, but revenue of $5.73B blew past a $4.92B estimate, LNG loaded rose 13% to 396 TBtu, and the company raised full-year consolidated adjusted EBITDA guidance to $7.90–8.40B from $7.25–7.75B. Worth flagging that a large portion of the EBITDA beat — roughly $526M — came from non-cash derivative gains on long-term IPM contracts, so the quality of the beat is lower than the headline suggests even though the guidance raise is real. **TRGP** was the day's disappointment on both lines, and **CQP** posted a very large EPS beat alongside a slight revenue shortfall.
 
-- COP — EPS est 2.90, revenue est $18.79B
-- LNG (Cheniere) — EPS est 3.08, revenue est $4.84B
-- TRGP — EPS est 2.83, revenue est $4.90B
-- CNQ — EPS est 1.43, revenue est $9.40B
-- PBR / PBR-A — EPS est 1.36 / 1.43, revenue est ~$31.5B
-- CQP — EPS est 0.98, revenue est $2.61B
-- NOG — EPS est 1.17, revenue est $594M
-- KGS — EPS est 0.67, revenue est $386M
-- GEL — EPS est 0.02, revenue est $445M
-- ACDC — EPS est −0.30, revenue est $484M
-- DMLP, GEOS — no published estimates
+**Reporting today, Friday August 7 (estimates)**
+
+- PAA — EPS est 0.38, revenue est $12.72B
+- PAGP — EPS est 0.46, revenue est $12.87B
+- PPL — EPS est 0.34, revenue est $2.19B
+- CLMT — EPS est 0.07, revenue est $1.12B
+- KRP — EPS est 0.23, revenue est $93M
+- AMR — EPS est −0.43, revenue est $522M
+- DWSN — EPS est −0.13, revenue est $39.6M
 
 **Upcoming, next 7 days**
 
-- **Fri Aug 7** — PAA (est 0.38), PAGP (est 0.46), KRP (est 0.23), PPL (est 0.34), AMR (est −0.43), DWSN (est −0.13)
-- **Mon Aug 10** — CRC (est 1.36), INSW (est 5.50), SDRL (est 0.31), BATL (est −0.21)
+- **Mon Aug 10** — CRC (est 1.36), INSW (est 5.50), SDRL (est 0.31), HNRG (est −0.12), BATL (est −0.21)
 - **Tue Aug 11** — BORR (est −0.11), SOC (est 0.37), USEG (est −0.05)
-- **Thu Aug 13** — GLNG (est 0.56), PVL (est 0.01), EP
+- **Thu Aug 13** — GLNG (est 0.56), ARX (est 0.16), PVL (est 0.01), EP
 
-**Majors and large E&Ps outside the window.** XOM reported July 31 ($3.52 vs $3.56 est on $116.0B revenue vs $109.9B — revenue beat, small EPS miss) and next reports Oct 30. EQT reported July 21 ($0.39 vs $0.41) and next reports Oct 20. DVN and MPC reported Aug 4; DVN next reports Nov 4, MPC Nov 3. EOG next reports Nov 5. The heavy calendar for the watchlist is effectively done after today's COP/LNG/TRGP prints; the next dense cluster is late October.
+**Majors and large E&Ps outside the window.** The Q2 cycle for the watchlist is now essentially finished. XOM reported July 31 and next reports Oct 30; CVX reported July 31 ($6.06 vs $5.55 est on $70.1B revenue vs $62.7B — a clear double beat) and next reports Oct 30; TRGP next reports Oct 29; KMI reported July 22 and next reports Oct 28; EQT reported July 21, next Oct 20; DVN and MPC reported Aug 4 (next Nov 4 and Nov 3); EOG reported Aug 4/5, next Nov 5; OXY, PSX and APA reported Aug 5. What remains over the next seven days is midstream, small-cap E&P and coal/shipping — nothing that will reset the group's narrative. The next dense cluster is late October.
 
 ## Today's movers
 
-FMP live quote endpoints are gated on the current Starter plan, so these one-day percentage changes were derived from daily closes in the 200-day simple-moving-average series (Aug 5 close vs Aug 4 close) for the priced subset of the watchlist. HES returned no data and is excluded — it is no longer separately traded following the Chevron acquisition.
-
-**Biggest decliners**
-
-1. **EOG −6.47%** ($134.23) — Q2 beat, sold off hard on guidance; the day's worst watchlist performer by a wide margin
-2. **MPC −4.75%** ($297.75) — giving back part of a very strong Aug 4 print ($17.73 vs $14.27 est) as crack-spread expectations reset with crude
-3. **DVN −4.45%** ($42.09) — same pattern: beat on Aug 4 ($1.57 vs $1.40), faded on Aug 5
+FMP live quote endpoints remain gated on the current Starter plan, so these one-day percentage changes were derived from daily closes in the 200-day simple-moving-average series (Aug 6 close versus Aug 5 close) for the priced subset of the watchlist. HES is excluded — it no longer trades separately following the Chevron acquisition.
 
 **Biggest gainers**
 
-1. **WMB +0.42%** ($71.81)
-2. **ET +0.05%** ($20.34)
-3. **BKR −0.10%** ($61.67)
+1. **LNG +4.32%** ($265.77) — Q2 revenue beat plus a full-year EBITDA guidance raise to $7.90–8.40B
+2. **OXY +4.14%** ($56.04) — high-beta crude proxy, and the strongest follow-through from Wednesday's earnings beat
+3. **SLB +3.27%** ($51.54) — services led on the crude rebound; **TRGP +3.12%** ($268.23) rose despite the double miss
 
-Worth stating plainly: only two of the 22 priced names finished higher. This was a broad sector de-rating tracking crude, not a stock-picking day. XLE fell 2.07%, XOP 3.93%, XES 2.00% — E&P beta led the decline, while midstream (WMB, ET, EPD, KMI, all up or down less than 1.1%) held up best, which is what you would expect when the move is commodity-price-driven rather than volume- or demand-driven.
+**Biggest decliners**
+
+1. **WMB −0.07%** ($71.76) — the only watchlist name down on the day
+2. **VLO +0.20%** ($302.99) — refiners lagged; a crude rally compresses crack spreads
+3. **MPC +0.50%** ($299.25) — same dynamic
+
+The shape of the session is the point. Twenty-one of 22 priced names finished higher and the one decliner fell less than a tenth of a percent, so this was a broad, commodity-driven re-rating rather than a stock-picking day — the mirror image of Wednesday. Note the internal rotation: E&P and services led (XOP +1.13%, XES +2.04%) while refiners brought up the rear, because rising crude is a cost input for MPC, VLO and PSX rather than a revenue tailwind. XLE gained 1.48%. Midstream was mixed, with TRGP and ET strong but WMB, KMI and EPD barely moving — consistent with a move driven by price rather than volumes.
 
 ## Stocks to watch
 
-- **COP** — reports today with a $2.90 EPS estimate; the first large-cap E&P print since the Hormuz de-escalation began, so the guidance language sets the tone for the group
-- **EOG** — a 6.5% drop on a beat is either an overreaction or a signal that NGL realizations matter more than headline oil price; the transcript is the place to resolve that
-- **PSX** — best-in-class quarter and $6.6B of debt paydown, but refining margins are the most direct casualty if Hormuz reopens and crude keeps falling
-- **HAL** — the only watchlist name trading below its 200-day average, and the services group is the most levered to a capex cycle that softening crude would delay
-- **LNG (Cheniere)** — reports today into $2.69 Henry Hub and record 110.7 Bcf/d production; cheap feedgas is a tailwind that the gas-price weakness partly obscures
+- **COP** — beat by ~12%, exceeded production guidance and reaffirmed full-year targets; the cleanest large-cap E&P print of the cycle and the benchmark others get measured against
+- **LNG (Cheniere)** — raised EBITDA guidance and loaded 13% more LNG, but ~$526M of the beat was non-cash derivative gains; the gap between reported and cash earnings is the thing to check in the filing
+- **TRGP** — missed on both lines yet rallied 3.1% with the group, which means the print was largely ignored; worth watching whether that holds once the tape calms
+- **HAL** — still the only watchlist name below its 200-day average despite gaining 2.2%; services leverage cuts both ways and this is the clearest test of whether the crude rebound sticks
+- **VLO / MPC** — both barely participated in a strong sector day; if crude keeps climbing on security headlines, refining margin compression is the mechanical consequence
 
 ## Screen idea
 
-*Below the 200-day average and cheap on EV/EBITDA.* Only one watchlist name currently trades below its 200-day simple moving average: **HAL at $31.82, about 6.1% below its 200-day of $33.88, at 7.9x TTM EV/EBITDA** with net debt/EBITDA of 1.5x and a 6.5% free-cash-flow yield. Everything else on the list sits above its long-term trend — the group ranges from KMI at +2.0% to VLO at +37.0% above the 200-day, a useful reminder of how much the sector has already re-rated on the Middle East premium.
+*Below the 200-day average and cheap on EV/EBITDA.* For a second straight session, exactly one watchlist name trades below its 200-day simple moving average: **HAL at $32.51, about 4.2% below its 200-day of $33.93, at 8.0x TTM EV/EBITDA** with net debt/EBITDA of 1.5x, a 6.4% free-cash-flow yield and 15.1% return on equity. Thursday's 2.2% gain narrowed the gap from 6.1% to 4.2%, so the setup is closing rather than deepening.
 
-Cheaper names exist but none are in a technical drawdown: OXY at 4.0x and DVN at 4.2x EV/EBITDA are both below HAL on valuation while sitting above their 200-day lines (OXY +6.7%, DVN +0.2% — DVN close enough to the line to be worth monitoring). SLB screens at 11.8x and KMI at 12.6x. The educational point is the tension the screen exposes: the one name that is technically weak is not the cheapest, and the cheapest names have already recovered. A screen ranking on a single factor would pick differently than one requiring both conditions.
+Cheaper names exist and none of them are in a technical drawdown. **OXY is the cheapest on the watchlist at 3.7x EV/EBITDA** — with net cash on a TTM basis (net debt/EBITDA of −0.30x), a 13.0% earnings yield and 26.1% ROE — but it sits 11.0% above its 200-day after a 4.1% day. DVN is next at 4.6x and only 2.5% above its line, making it the closest thing to a name satisfying both conditions. FANG screens at 9.4x, SLB at 12.1x.
+
+The educational point is unchanged from yesterday and sharper after a broad rally: a two-condition screen (cheap *and* technically weak) is nearly empty in this sector right now, because the group has re-rated hard on the Middle East premium. A single-factor value screen would hand you OXY; a single-factor momentum-reversal screen would hand you HAL; requiring both leaves you with DVN by default rather than by conviction. That is a signal about the screen's construction, not about the stocks.
 
 ---
 
-**Data notes.** Quotes derived from FMP daily closes (200-day SMA series) for Aug 4–5, 2026 because live quote endpoints require a Premium plan. Earnings figures from the FMP earnings calendar, filtered to oil & gas and adjacent energy symbols. Commodity prices and narrative from public reporting cited below. Consensus estimates vary by provider — PSX consensus appeared as both $6.76 and $7.50 across sources, so the beat magnitude depends on which is used.
+**Data notes.** Quotes derived from FMP daily closes (200-day SMA series) for Aug 5–6, 2026 because live quote endpoints require a Premium plan; batch-quote returned ACCESS DENIED and was not retried. Earnings figures from the FMP earnings calendar (Aug 6–14 window), filtered programmatically to oil & gas and adjacent energy symbols across E&P, integrated, services, midstream, refining and drilling. Valuation metrics from FMP key-metrics-ttm. Commodity prices and narrative from public reporting cited below. Consensus estimates vary by provider — COP's beat reads as 12% or 14% depending on whether $2.90 or $2.85 is used as the estimate, and reported Brent levels for Aug 6 differ across sources.
 
-**Sources:** [Bloomberg — Oil Holds Three-Day Drop as Iran, Oman Reach Hormuz Agreement](https://www.bloomberg.com/news/articles/2026-08-05/latest-oil-market-news-and-analysis-for-aug-6) · [The National — Oil prices fall on potential US-Iran deal to open Strait of Hormuz](https://www.thenationalnews.com/business/energy/2026/08/03/oil-prices-slump-on-potential-us-iran-deal-to-open-strait-of-hormuz/) · [Trading Economics — Crude Oil](https://tradingeconomics.com/commodity/crude-oil) · [Trading Economics — Natural Gas](https://tradingeconomics.com/commodity/natural-gas) · [EIA Short-Term Energy Outlook](https://www.eia.gov/outlooks/steo/) · [Yahoo Finance — Stock Market News for Aug 5, 2026](https://finance.yahoo.com/markets/stocks/articles/stock-market-news-aug-5-100300808.html) · [Alphastreet — Phillips 66 Blows Past Q2 2026 Forecasts at $9.41/Share](https://news.alphastreet.com/phillips-66-blows-past-q2-2026-forecasts-at-9-41-share/) · [Benzinga — Phillips 66 Cashes In on Refining Boom](https://www.benzinga.com/markets/earnings/26/08/60961237/phillips-66-cashes-in-on-refining-boom-sparked-by-middle-east-supply-disruptions) · [CNBC — Investors scored on Iran war's oil market boom](https://www.cnbc.com/2026/08/02/oil-prices-iran-war-energy-market.html) · [Investing.com — EOG Resources Q1 2026 earnings call transcript](https://www.investing.com/news/transcripts/earnings-call-transcript-eog-resources-q1-2026-beats-estimates-stock-dips-93CH-4684977)
+**Sources:** [Trading Economics — Crude Oil](https://tradingeconomics.com/commodity/crude-oil) · [Trading Economics — Natural Gas](https://tradingeconomics.com/commodity/natural-gas) · [CNBC — Oil prices move higher after Yemen's Iran-backed Houthis claim Saudi tanker strike](https://www.cnbc.com/amp/2026/08/05/oil-prices-iran-war-houthis-saudi-tanker.html) · [Globe and Mail — Oil prices ease on Hormuz reopening hopes, despite Houthi threats](https://www.theglobeandmail.com/investing/article-oil-prices-rebound-after-houthis-say-they-attacked-saudi-tanker/) · [Fortune — Current price of oil as of August 6, 2026](https://fortune.com/article/price-of-oil-08-06-2026/) · [World Oil — OPEC+ approves final production quota increase of 2026](https://worldoil.com/news/2026/8/2/opec-approves-final-production-quota-increase-of-2026/) · [OPEC — Press release, 2 August 2026](https://www.opec.org/pr-detail/1854611-2-august-2026.html) · [Cheniere — Reports Second Quarter 2026 Results and Raises Full Year 2026 Financial Guidance](https://lngir.cheniere.com/news-events/press-releases/detail/343/cheniere-reports-second-quarter-2026-results-and-raises) · [StockTitan — ConocoPhillips Q2 Earnings: $3.23 EPS, $0.84 Dividend](https://www.stocktitan.net/news/COP/conoco-phillips-announces-second-quarter-2026-results-and-quarterly-nxal591seygo.html) · [MarketScreener — Earnings Flash (COP) ConocoPhillips Posts Q2 Revenue $19.52B vs FactSet Est $18.79B](https://www.marketscreener.com/news/earnings-flash-cop-conocophillips-posts-q2-total-revenue-and-other-income-19-52b-vs-factset-est-ce7f50dddb8df72d) · [Investing.com — ConocoPhillips Q2 2026 slides: earnings surge on higher prices](https://ca.investing.com/news/company-news/conocophillips-q2-2026-slides-earnings-surge-on-higher-prices-93CH-4783792) · [EIA Short-Term Energy Outlook](https://www.eia.gov/outlooks/steo/)
