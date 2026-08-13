@@ -1,83 +1,97 @@
-# Oil & Gas Equity Monitor — Wednesday, August 12, 2026
+# Oil & Gas Equity Monitor — Thursday, August 13, 2026
 
-*Educational market notes, not investment advice. Prices are last completed session (Tuesday, Aug 11 close) — Aug 12 trading had not settled at the time of writing.*
+*Educational market summary. Not investment advice.*
 
 ## Market
 
-Crude spent Tuesday grinding higher for a fourth straight session, with WTI pushing above $83/bbl intraday before settling near the $82 handle and Brent around $88. The move is almost entirely geopolitical: the market is trading headlines around a possible US–Iran deal to end the conflict and reopen the Strait of Hormuz. That framing cuts both ways — the risk premium that has carried crude all year unwinds fast if a deal lands, but any breakdown in talks puts a large share of seaborne barrels back in play. Expect two-way volatility rather than a clean trend until the outcome is clearer.
+Crude is pulling back today after a six-session run. Brent traded down to roughly $87.92/bbl, off about 1.2%, having pushed toward $89.50 intraday on Aug 12 when WTI reached about $84.14 (+2.4%) — the highest level this month. WTI settled around $83 on Aug 12.
 
-Supply-side, OPEC+ is set to deliver a final quota increase of roughly 188,000 b/d in September, which completes the unwind of the voluntary cuts. The group has signalled it may pause after that but has deliberately kept flexibility to respond to conditions. Today brings a dense calendar: the OPEC Monthly Oil Market Report, the IEA monthly, July US CPI, and Cushing inventories — four separate catalysts for a market already sensitive to both the Fed path and the supply picture.
+Two opposing forces are setting the tone. On the bullish side, the IEA's monthly report released Aug 12 sharply widened its supply-deficit view: global oil supply is now seen falling about 4.3 mb/d (~4%) in 2026, leaving supply roughly 1.27 mb/d below demand, versus an 860 kb/d deficit implied by the July forecast. The agency cites the Strait of Hormuz shutdown, the US blockade of Iranian exports, attacks in the Bab el-Mandeb, and reduced Kazakh CPC Blend flows. The US–Iran ceasefire signed earlier in the summer broke down last month; tanker attacks in Hormuz have resumed and no reopening agreement has emerged. Notably, the IEA simultaneously cut its 2026 demand forecast by about 1.6 mb/d as high fuel prices bite — a reminder that a supply-driven deficit is also demand-destroying.
 
-Natural gas is the mirror image of crude — weak and well supplied. Henry Hub futures fell nearly 15% through July, from roughly $3.22/MMBtu to $2.75, on record dry gas production and softer LNG feedgas demand. EIA still models an average near $3.37/MMBtu for Q3 2026 and $3.67 for the full year, implying a recovery it has not yet delivered; Rystad is more bearish at $3.31 for 2026. High storage and record production remain the constraint.
+On the bearish side, the EIA weekly report on Aug 12 showed a 17.4 million-barrel build in US crude inventories for the week ended Aug 7, against a consensus expectation of a 1.7 million-barrel draw — a very large miss. Total crude stocks sit at 424.4 million barrels, roughly 2% below the five-year average. Imports jumped 1.14 mb/d to 7.3 mb/d. Gasoline drew 1.0 million barrels; distillates were roughly flat with production at 5.3 mb/d.
 
-The equity story continues to be downstream, not upstream. The 3-2-1 crack spread has run to a record near $70/bbl, and Gulf Coast refiners sourcing WTI have captured the widest share of that expansion because their feedstock costs have risen more slowly than Brent-linked alternatives. That is why the refiners, not the E&Ps, dominate the movers list below.
+Natural gas remains the quiet corner. Henry Hub spot was about $2.77/MMBtu on Aug 12, essentially unchanged. Lower-48 production is running at a record ~111.2 bcfd in August versus 110.7 in July, and the storage surplus is expected to narrow only slightly to about 6.6% above normal. Strong output and mild weather have kept inventories above the five-year average since March.
+
+On supply policy, seven OPEC+ countries (Saudi Arabia, Russia, Iraq, Kuwait, Kazakhstan, Algeria, Oman) agreed to a 188,000 b/d increase for August — the fifth consecutive monthly step-up, following nearly 800 kb/d of quota increases from April to July. This effectively completes the rollback of the April 2023 voluntary cuts. The incremental barrels are modest against the disruption the IEA describes.
 
 ## Earnings
 
-**Reported in the last ~24h**
+**Reported in the last ~24 hours (Aug 12):**
 
-- **Venture Global (VG)** — Q2 2026. Adjusted EPS **$0.51 vs $0.48 est (beat)**; revenue **$4.58B vs $4.69B est (miss)**, though up 48% y/y. Adjusted EBITDA $2.5B (+79% y/y), net income $1.3B (+266%), 127 cargoes exported, and FY26 adjusted EBITDA guidance raised to $8.7–9.1B from $8.2–8.5B. Despite the raise, shares fell roughly 7% as rising costs and the revenue shortfall overshadowed the beat. *Takeaway: volumes and guidance are strong; the market is policing cost inflation.*
-- **Evolve Transition (EROC)** — EPS -$0.06 vs -$0.24 est (beat); revenue $40M vs $20M est (beat).
-- **Smart Sand (SND)** — EPS $0.25, revenue $115M (no consensus on file). Proppant demand holding up better than the rig count would imply.
-- **Stabilis Solutions (SLNG)** — EPS -$0.25 vs -$0.08 est (miss); revenue $12M vs $11M est.
-- **Westport Fuel Systems (WPRT)** — EPS -$0.53 vs -$0.35 est (miss).
-- **KLX Energy (KLXE)**, reported Aug 10 — EPS -$0.64 vs -$0.82 est (beat); revenue $167M vs $168M est (in line). *Small-cap pressure pumping still loss-making but narrowing.*
-- **HighPeak Energy (HPK)**, reported Aug 10 — EPS -$0.03 vs $0.02 est (miss); revenue $272M vs $240M est (beat).
+- **BATL** (Battalion Oil) — EPS -$0.11 vs -$0.21 est (**beat**); revenue $47.98M vs $38.05M est (**beat**). Small-cap Delaware Basin producer; the revenue beat is outsized relative to the EPS line, consistent with stronger realized pricing.
+- **MXC** (Mexco Energy) — EPS $0.24, no published estimate. Micro-cap royalty/working-interest producer.
+- **EPSN** (Epsilon Energy) — EPS -$0.03, revenue $18.26M; no comparable estimates on the calendar.
+- **USGO** (US GoldMining) — EPS -$0.36, no estimate. Included only for completeness; not an oil & gas operator.
+- **TRAW** (Traws Pharma, reported Aug 13) — flagged by the calendar but not energy-related.
 
-**Reporting today (Aug 12, pending)**
+There were **no large- or mid-cap oil & gas reports** in this window. Q2 season for the sector wrapped in late July / early August.
 
-- **North American Construction Group (NOA)** — est EPS $0.234, revenue ~$247M. Oil sands contract mining; a read on Canadian heavy oil activity levels.
+**Reporting today (Aug 13) — pending:**
 
-No US large-cap oil & gas name is scheduled today.
+- **GLNG** (Golar LNG) — EPS est $0.547, revenue est $131.3M. The most consequential name of the day; FLNG operator, watch for commentary on contract coverage and the Hormuz-driven LNG freight environment.
+- **GMLPF** (Golar LNG Partners) — EPS est $0.271, revenue est $71.6M.
+- **ESEA** (Euroseas) — EPS est $4.09, revenue est $56.0M. Container shipping, but a useful read on Red Sea / Bab el-Mandeb routing costs.
+- **PED** (PEDEVCO) — EPS est $0.355, revenue est $38.0M.
+- **PVL** (Permianville Royalty Trust) — EPS est $0.01, revenue est $8.7M.
+- **PBT** (Permian Basin Royalty Trust), **ENSV** (Enservco), **EP** — on the calendar with no published estimates.
 
-**Upcoming, next 7 days**
+**Upcoming, next 7 days:**
 
-- **Thu Aug 13** — Golar LNG (GLNG, est EPS $0.56 / rev $131M); Golar LNG Partners (GMLPF, est $0.27 / $72M); PEDEVCO (PED, est $0.36 / $38M); Permianville Royalty Trust (PVL, est $0.01); Permian Basin Royalty Trust (PBT); Empire Petroleum (EP); Enservco (ENSV).
-- **Fri Aug 14** — PrimeEnergy (PNRG, est EPS $5.90 / rev $50M); Cosan (CSAN, est $0.01 / $1.0B); Zion Oil & Gas (ZNOG).
-- **Wed Aug 19** — Flex LNG (FLNG, est EPS $0.62 / rev $93M).
+- **Fri Aug 14** — **PNRG** (PrimeEnergy Resources, EPS est $5.90, rev est $50.4M); **KEGX** (Key Energy Services, EPS est -$1.64, rev est $43.6M); **OILCF / OILCD** (Oilco, EPS est -$0.46).
+- **Mon Aug 17 – Thu Aug 20** — the calendar shows no oil & gas names of consequence. The Aug 17–20 stretch (636 total reports) is dominated by non-energy small caps and OTC listings.
 
-*Note on the majors:* Q2 reporting for the integrateds and large E&Ps is finished — XOM, CVX, COP, EOG, OXY, SLB, HAL, MPC, VLO, PSX and the large midstream names all reported in late July / early August and fall outside this window. Q3 prints begin in late October. What is left over the next fortnight is small-cap, royalty trust, and LNG shipping — thin, low-signal reporting. The sector's Q2 was exceptional: energy posted the highest earnings growth of all 11 S&P sectors at roughly 128% y/y against a 37.9% index average.
+**Note on the majors:** XOM, CVX, COP, EOG, OXY, SLB, HAL, BKR, MPC, VLO, PSX, KMI and the large midstream names all reported Q2 in late July / early August and fall outside this window; the next scheduled reports are the Q3 prints in late October. KMI in particular has no event in the current window, so there is no fresh guidance to react to there.
 
 ## Today's movers
 
-Live quote endpoints are Premium-gated on the current FMP Starter plan, so **1-day changes below were derived from daily closes returned by the 200-day SMA endpoint** — Tuesday Aug 11 close vs Monday Aug 10 close, for the priced subset of the watchlist. HES returned no data (Hess was absorbed into Chevron and no longer trades independently) and is excluded.
+**Important methodology note:** FMP live quote endpoints (quote / batch-quote / quote-short) are gated to the Premium plan and returned ACCESS DENIED on the current Starter subscription. The percentages below are therefore **derived from daily closes** returned by the technical-indicators (200-day SMA) endpoint, and represent the **Aug 12 close vs the Aug 11 close** — the last completed session — not intraday action on Aug 13. HES returned no data, consistent with Chevron having closed its acquisition of Hess.
 
-**Biggest gainers**
+**Up:**
 
-| Ticker | Close | 1-day |
-|---|---|---|
-| MPC | $336.42 | **+5.03%** |
-| PSX | $224.36 | **+4.10%** |
-| VLO | $323.92 | **+2.85%** |
+| Ticker | Close (Aug 12) | 1-day | vs 200-day |
+|---|---|---|---|
+| MPC | $348.25 | **+3.52%** | +53.4% |
+| VLO | $330.21 | **+1.94%** | +47.0% |
+| WMB | $73.70 | **+1.92%** | +7.0% |
 
-Refining swept the board. MPC and VLO ran on the record crack spread; PSX had a company-specific catalyst — it announced, with Kinder Morgan and HF Sinclair, a final investment decision on the **Western Gateway Pipeline**, a 1,300-mile, 230,000 b/d refined products system from St. Louis and the Gulf Coast into Arizona and California. Enterprise value is ~$5.0B, with PSX at 49.9% ownership (~$2.5B contribution), KMI at 35.1% (~$250M) and HF Sinclair at 15% (~$750M). Targeted completion is 2029, underpinned largely by 10-year take-or-pay contracts. Notably KMI, the smallest cash contributor, barely moved (+0.29%) — the market read this as a PSX story.
+**Down:**
 
-**Biggest decliners**
+| Ticker | Close (Aug 12) | 1-day | vs 200-day |
+|---|---|---|---|
+| SLB | $52.61 | **-1.99%** | +10.8% |
+| HAL | $33.29 | **-1.51%** | -2.3% |
+| DVN | $44.86 | **-1.19%** | +6.1% |
 
-| Ticker | Close | 1-day |
-|---|---|---|
-| EPD | $37.86 | **-0.34%** |
-| TRGP | $265.45 | **-0.29%** |
-| LNG | $265.43 | **-0.09%** |
-
-Worth noting how shallow the downside was: nothing on the watchlist fell more than 0.34%, and the three decliners are all gas-levered midstream/LNG. That is consistent with weak Henry Hub and the softer LNG feedgas demand backdrop, plus sympathy pressure from Venture Global's cost-driven selloff. Breadth was otherwise strongly positive — 19 of 22 priced names higher, XLE +1.25%, XOP +1.39%, XES +1.23%.
+The split is the story: refiners led while oilfield services lagged. The sector ETFs barely moved — XLE +0.16%, XOP +0.12%, XES -0.11% — which understates how much dispersion sat underneath. Of the 22 priced names, **HAL is the only one trading below its 200-day moving average.**
 
 ## Stocks to watch
 
-- **MPC** — the purest listed expression of the record 3-2-1 crack spread, and the clearest beneficiary if WTI-linked feedstock discounts persist. Also the most exposed if an Iran deal compresses the spread.
-- **PSX** — Western Gateway converts a chunk of refining cash flow into contracted, fee-based midstream EBITDA; watch whether the market rerates the multiple or penalises the $2.5B outlay.
-- **VG** — a live test of whether LNG investors will pay for volume growth and a raised EBITDA guide when unit costs are climbing. The 7% drawdown on a beat-and-raise is the tell.
-- **HAL** — the only name on the watchlist trading *below* its 200-day moving average, at a mid-single-digit EV/EBITDA. A laggard in a sector at highs is either a value setup or a signal about North American activity.
-- **LNG / TRGP** — the gas-levered midstream complex is the one part of the sector not participating. Worth watching whether that is a Henry Hub problem or the start of broader rotation out of energy.
+- **MPC** — Best single-day performer and 53% above its 200-day. The 3-2-1 crack spread has reached roughly $70/bbl, an all-time high, and MPC posted 787% adjusted EPS growth last quarter. Watch whether the crude build pressures the input side of that spread.
+- **VLO** — Same driver, similar setup: quarterly earnings up 374% on operating margins that more than doubled year over year. Gulf Coast WTI-linked crude sourcing is the structural advantage.
+- **HAL** — The sole watchlist name below its 200-day and the cheapest of the services trio on EV/EBITDA. Services are being left behind by the commodity rally, which is either a valuation gap or a signal about forward activity.
+- **SLB** — Biggest decliner and the most expensive large-cap service name at 12.3x EV/EBITDA. Worth watching as the read-through on international activity.
+- **GLNG** — Reports today into an LNG freight market distorted by Hormuz and Red Sea routing. The clearest single-name catalyst on the calendar.
 
 ## Screen idea
 
-**Below the 200-day + cheap on EV/EBITDA.** Screening the watchlist on both filters, exactly one name qualifies: **Halliburton (HAL)** — closed at $33.80 vs a 200-day SMA of $34.06 (**-0.8%**), at **8.3x EV/EBITDA TTM**, with net debt/EBITDA of 1.5x, ROIC of 9.7% and a ~6.1% free cash flow yield. Every other name on the list is above its 200-day, most by double digits (MPC +48.7%, VLO +44.7%, PSX +37.7%).
+**Below the 200-day + cheap on EV/EBITDA → Halliburton (HAL).**
 
-For context on the cheap side, **Devon (DVN)** is the cheapest name on the list outright at **4.8x EV/EBITDA** with a 7.7% earnings yield, but it sits 7.5% *above* its 200-day and so fails the technical filter. Rounding out the valuation comparison: ET 9.7x, SLB 12.5x, BKR 13.7x.
+Screening the 20 watchlist names plus the three sector ETFs, exactly one is trading below its 200-day moving average: HAL, at $33.29 against a 200-day of $34.09 (-2.3%). Cross-referencing TTM EV/EBITDA across the plausibly-cheap cohort:
 
-The construct to think through: HAL screens cheap and technically weak at the same moment the sector is at highs. That combination usually means either the market is discounting a North American completions slowdown that the multiple has not fully priced, or the name is a genuine laggard. Distinguishing between the two requires the activity data, not the screen — the screen only tells you where to look.
+| Ticker | EV/EBITDA (TTM) | Net debt/EBITDA | vs 200-day |
+|---|---|---|---|
+| DVN | 4.77x | 1.22x | +6.1% |
+| OXY | 4.91x | 0.75x | +15.2% |
+| **HAL** | **8.19x** | **1.48x** | **-2.3%** |
+| SLB | 12.32x | 1.41x | +10.8% |
+| BKR | 13.55x | 0.11x | +12.4% |
+
+HAL is the only name satisfying both conditions. It is not the cheapest name on the list in absolute terms — DVN at 4.77x and OXY at 4.91x are materially cheaper — but both E&Ps are trading comfortably above trend, so the "cheap *and* out of favour" intersection resolves to HAL alone. Within services, HAL at 8.19x is a meaningful discount to SLB (12.32x) and BKR (13.55x).
+
+The obvious counterpoint: services stocks are lagging for a reason. A supply deficit driven by geopolitical disruption of *existing* production does not necessarily translate into higher drilling and completion activity, and US operators have held capital discipline through this cycle. HAL's 6.2% free-cash-flow yield and 1.48x net debt/EBITDA give it room, but the screen is identifying relative unpopularity, not a thesis. Worth understanding *why* the market is discounting it before treating the gap as an opportunity.
 
 ---
 
-*Data: Financial Modeling Prep (daily closes, key metrics TTM, earnings calendar) as of the Aug 11, 2026 close; news via web search. Live quote endpoints unavailable on the current plan.*
+**Data notes:** Quotes derived from Aug 12 daily closes via the FMP technical-indicators endpoint (live quote endpoints are Premium-gated). Valuation metrics are TTM from FMP key-metrics-ttm. Earnings calendar filtered from FMP earnings-calendar, Aug 12–20 window. Commodity prices and news via web search.
+
+**Sources:** [Trading Economics — Brent](https://tradingeconomics.com/commodity/brent-crude-oil) · [Trading Economics — Natural Gas](https://tradingeconomics.com/commodity/natural-gas) · [CNBC — IEA cuts 2026 oil demand forecast on Hormuz disruption](https://www.cnbc.com/2026/08/12/iea-oil-demand-hormuz.html) · [Hydrocarbon Processing — IEA: 2026 supply shortfall to deepen](https://www.hydrocarbonprocessing.com/news/2026/08/iea-global-2026-oil-supply-shortfall-to-deepen-as-hormuz-reopening-remains-elusive/) · [Oil & Gas Journal — EIA: US crude inventories up 17.4 million bbl](https://www.ogj.com/general-interest/news/55397675/eia-us-crude-inventories-up-174-million-bbl) · [Enerdata — OPEC+ confirms 188 kb/d increase for August 2026](https://www.enerdata.net/publications/daily-energy-news/opec-confirms-188-kbd-production-increase-august-2026.html) · [Forbes — Refining stocks soar as crack spread hits record high](https://www.forbes.com/sites/garthfriesen/2026/07/23/refining-stocks-soar-as-crack-spread-hits-record-high-in-2026/) · [Investrade — Mid-Morning Look: August 12, 2026](https://investrade.com/mid-morning-look-august-12-2026/) · [EIA Short-Term Energy Outlook: Natural Gas](https://www.eia.gov/outlooks/steo/report/natgas.php)
