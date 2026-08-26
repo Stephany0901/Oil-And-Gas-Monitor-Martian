@@ -1,71 +1,73 @@
-# Oil & Gas Equity Monitor — Tuesday, August 25, 2026
+# Oil & Gas Equity Monitor — Wednesday, August 26, 2026
 
-*Educational market summary, not investment advice. Prices reflect the last completed session (Monday, Aug 24, 2026).*
+*Educational market summary, not investment advice. Prices reflect the last completed session (Tuesday, Aug 25, 2026).*
 
 ## Market
 
-Crude gave back a chunk of a two-week rally on Monday. WTI fell roughly 2.5% to about $84.89/bbl and Brent lost about 2.5% to roughly $92.06/bbl — a profit-taking session that, notably, came *despite* the Treasury unveiling its most aggressive Iran sanctions package to date. Scott Bessent rolled out "Operation Economic Outcast," a secondary-sanctions framework aimed at Iran's "enablers" — buyers and transporters of its crude, financial facilitators, and counterparties to seaborne transfers — with the administration explicitly signaling that China is not exempt. That the tape sold off on sanctions headlines is the tell: the market is now trading the *Hormuz reopening* variable, not the sanctions variable. Crossings through the Strait are reportedly up more than 400% over the past two weeks, and sell-side work circulating Monday argued that recovery to just 50–60% of pre-war throughput would be enough to flip the 2026 balance back to oversupplied. Iran, for its part, warned of ship seizures and its assembly advanced a plan to levy Hormuz transit fees — so the risk premium is not going away cleanly.
+The Hormuz-reopening trade took over on Tuesday and crude broke down. WTI fell roughly 3% to about $82.5/bbl and Brent lost about 3% to roughly $89.5/bbl, extending Monday's 2.4% loss and taking the two-session drawdown to well over 5%. The driver is diplomatic, not fundamental: intermediaries from Pakistan, Oman and the U.S. are reported to be making progress with Tehran on de-escalation and on reopening the Strait, with Iran's foreign ministry saying an Iran–Oman commercial-shipping agreement is in its final drafting stages and Washington and European capitals leaning on Muscat to accept a temporary arrangement. Traders now appear to be pricing a U.S.–Iran meeting before month-end.
 
-Natural gas remains the opposite story: well supplied and going nowhere. The EIA's August Short-Term Energy Outlook cut the Henry Hub forecast to roughly $2.87/MMBtu for Q3 2026 and $3.44 for the full year, citing softer LNG feedgas demand and record dry-gas production that should leave storage at its highest pre-winter level since 2016. A persistent southern heat dome is supporting cooling demand and slowing injections at the margin, but it is not enough to change the shape of the curve. On supply, OPEC+ continues its measured unwind — the eight core producers approved a 188,000 bbl/d increase effective August, the fifth consecutive monthly step up.
+The physical picture has barely improved, though: only eight vessels transited Hormuz on Monday against roughly 130 a day before the February 28 outbreak of the U.S.–Israel–Iran war. The market is discounting a resolution that has not happened, which cuts both ways. Crude also shrugged off Treasury's "Operation Economic Outcast" sanctions package on Monday — confirmation that sanctions no longer set the price.
 
-Context for positioning: Brent is still tracking a monthly gain near 6% after a 5.95% weekly rise the prior week, and the group remains sharply extended. Every one of the 22 watchlist names and ETFs closed above its 200-day moving average on Monday.
+Natural gas fell with the complex to about $2.74/MMBtu (−1.4%), but for its own reasons as much as sympathy: Lower-48 output has averaged a record 111.5 Bcf/d in August against 110.7 in July, inventories sit 6.7% above the five-year seasonal average, and feedgas to the nine major LNG terminals has eased to 17.1 Bcf/d from 17.2. U.S. gas has little short-run exposure to Hormuz, so the move was mostly the broader energy beta.
+
+On supply, OPEC+ is done adding for the year: the seven-country group approved a final 188,000 bbl/d increase on August 2 for September delivery, completing the unwind of the 2023 voluntary cuts, with delegates signalling flat quotas thereafter. Separately, U.S. refiners have run near maximum capacity for the longest sustained stretch in over 25 years chasing war-inflated cracks — which is why the refiners remain the most extended part of the group.
 
 ## Earnings
 
-**Reported in the last ~24h.** Effectively nothing of consequence in the domestic oil & gas complex — Q2 season wrapped in late July/early August. The only watchlist-adjacent print was **GasLog Partners** (GLOP preferred units, Aug 24): EPS $0.86 actual vs. $0.31 estimated and revenue $89.5M vs. $78.8M estimated — a **beat** on both lines, though as a preferred-unit LNG shipping vehicle it carries little read-through to the broader group. A scattering of energy microcaps also crossed (ENSV, IMPP, KEGX, USDP, AREC, TOPS, PXS), none with meaningful actuals posted yet.
+**Reported in the last ~24h.** **Woodside Energy (WDS)** was the only name of consequence, posting H1 2026 on Aug 24–25: EPS **$0.88 actual vs. $0.777 estimated** and operating revenue **$7,446M vs. $3,613M estimated** — a **beat** on EPS, with the revenue "miss-to-beat" gap mostly an artifact of a half-year figure against a quarterly-style consensus. NPAT rose 27% y/y to $1,672M on revenue up 13%, and the interim dividend was lifted 8% to 57 US cents (80% of underlying NPAT, ~5.9% annualised yield). Production fell 13% to 86.5 MMboe (478 Mboe/d) but a realised price of $74.0/boe (+20%) more than covered it. The takeaway: **price, not volume, is carrying the LNG producers, and the project book de-risked** — Scarborough is 98% complete and still guiding first cargo in Q4 2026, with Trion at 64% and Louisiana LNG at 28%.
 
-**Reporting today (Aug 25, pending).**
+A handful of energy microcaps were also dated Aug 25 — AREC, ENSV, IMPP, KEGX, USDP, TOPS, PXS — none with actuals posted as of the pull.
 
-- **WDS** — Woodside Energy, H1 2026 results. Consensus EPS $0.777; Q2 operating revenue already disclosed at $4,185M (+28% y/y) on a realized $85/boe, against a $3,613M estimate. Production of 41.3 MMboe was down 18% y/y as gas and liquids volumes fell. FY guidance narrowed to 174–185 MMboe with capex held at $4.0–4.5B. Scarborough LNG is ~98% complete with first LNG targeted Q4 2026; Trion 64% and Louisiana LNG 28%. The Scarborough timeline is the swing factor for the print.
-- **GASS** — StealthGas. Consensus EPS $0.53 on ~$44.9M revenue.
+**Reporting today (Aug 26, pending).** All shipping, no domestic E&P or integrated.
 
-**Upcoming, next 7 days.** The window is unusually thin — it is almost entirely shipping and international, with no U.S. E&P, integrated, services, midstream, or refining names on the calendar.
+- **TRMD** — Torm, est. EPS $3.31 on ~$499M revenue
+- **SFL Corp** — est. EPS $0.14 on ~$180M
+- **GASS** — StealthGas, est. EPS $0.53 on ~$44.9M
 
-- **Wed Aug 26** — TRMD (Torm, est. EPS $3.33 / rev ~$500M), SFL Corp (est. $0.14 / ~$180M), EOPSF
-- **Thu Aug 27** — CMBT (Climb/CMB.Tech, est. $0.875 / ~$575M), NAT (Nordic American Tankers, est. $0.247 / ~$97M), PDSSF, NRGFF
-- **Fri Aug 28** — FRO (Frontline, est. $2.74 / ~$759M), HAFN (Hafnia, est. $0.549 / ~$392M), BWLP (BW LPG, est. $1.25 / ~$328M), plus LNGPF, XNGSF, GGAZF
-- **Mon Sep 1** — SSL (Sasol, est. $1.53 / ~$8.5B), OILFF
+**Upcoming, next 7 days.** The calendar is unusually thin and remains almost entirely tanker, LPG/LNG shipping and international — there is no U.S. E&P, integrated, services, midstream, refining or drilling name in the window.
 
-**Note on the majors and large E&Ps.** All of them sit well outside this window. XOM, CVX, COP, EOG, OXY, DVN, FANG, SLB, HAL, BKR, MPC, VLO, PSX, WMB, KMI, LNG and TRGP reported Q2 between late July and early August; the next cluster of prints is Q3, which begins in mid-to-late October (SLB typically opens the season, followed by the majors in the final week of October). Expect a quiet five weeks on company-specific catalysts, which leaves crude and Hormuz headlines as the dominant driver of the group into the fall.
+- **Thu Aug 27** — CMBT (CMB.Tech, est. $0.875 / ~$575M), NAT (Nordic American Tankers, est. $0.247 / ~$97M), PDSSF (Precision Drilling), NRGFF
+- **Fri Aug 28** — FRO (Frontline, est. $2.74 / ~$759M), HAFN (Hafnia, est. $0.548 / ~$393M), BWLP (BW LPG, est. $1.25 / ~$328M), plus LNGPF, XNGSF, GGAZF
+- **Sat–Mon Aug 29–31** — nothing energy-relevant
+- **Tue Sep 1** — SSL (Sasol, est. $1.53 / ~$8.5B), OILFF
+- **Wed Sep 2** — INDO (Indonesia Energy), REX (REX American Resources), XNGIF
 
-**Delisted / no-data.** Hess (HES) remains off the watchlist following Chevron's closed acquisition; FMP returns no data for it and it is not being queried.
+**Note on the majors and large E&Ps.** All sit well outside this window. XOM, CVX, COP, EOG, OXY, DVN, FANG, SLB, HAL, BKR, MPC, VLO, PSX, WMB, EPD, ET, KMI, LNG and TRGP all reported Q2 between late July and early August. The next cluster is Q3, beginning mid-to-late October — SLB typically opens the season, with the majors in the final week of October. Woodside's next scheduled print is Feb 23, 2027. That leaves roughly seven weeks with no company-specific catalysts, so crude and Hormuz headlines are the dominant driver of the group into the fall.
+
+**Delisted / no-data.** Hess (HES) remains off the watchlist following Chevron's closed acquisition; FMP returns no data for it and it is not being queried. No other watchlist ticker returned "not_found" this run.
 
 ## Today's movers
 
-**Data note:** FMP's live quote endpoints (quote / batch-quote / quote-short) are gated to Premium and returned ACCESS DENIED on the current Starter plan. Daily percentage changes below were derived from consecutive daily closes returned by the technicalIndicators simple-moving-average endpoint (200-period, 1-day timeframe) for the full priced set of 19 watchlist names plus the 3 sector ETFs. Changes are Monday Aug 24 close vs. Friday Aug 21 close.
+**Data note:** FMP's live quote endpoints (quote / batch-quote / quote-short) are gated to Premium and returned ACCESS DENIED on the current Starter plan. Daily percentage changes below were derived from consecutive daily closes returned by the technicalIndicators simple-moving-average endpoint (200-period, 1-day timeframe) for the full priced set of 19 watchlist names plus the 3 sector ETFs. Changes are Tuesday Aug 25 close vs. Monday Aug 24 close.
 
-**Up:**
-
-| Ticker | 1D | Close |
-|---|---|---|
-| LNG (Cheniere) | +1.18% | $280.79 |
-| EPD | +0.92% | $38.36 |
-| WMB | +0.68% | $70.97 |
-
-**Down:**
+**Up.** Only one name in the entire 22-symbol set closed green — this was a near-uniform down day.
 
 | Ticker | 1D | Close |
 |---|---|---|
-| XES (oil services ETF) | −2.54% | $117.84 |
-| FANG | −2.43% | $205.60 |
-| HAL | −2.01% | $34.63 |
+| WMB | +0.15% | $71.08 |
+| *(next-best: KMI)* | −0.19% | $30.94 |
+| *(then EPD)* | −0.23% | $38.27 |
 
-The split is instructive: gas-levered midstream and LNG infrastructure (LNG, EPD, WMB, plus KMI at +0.06%) held green while everything with direct crude-price beta sold off. Oil services took the worst of it — XES −2.54%, HAL −2.01%, with SLB the lone services name up (+0.24%). Refiners were mixed but resilient (MPC +0.50%, PSX −0.37%, VLO −0.82%), consistent with lower crude helping crack spreads. XLE closed −0.83%, XOP −1.74%.
+**Down (three biggest decliners):**
+
+| Ticker | 1D | Close |
+|---|---|---|
+| OXY | −2.83% | $58.41 |
+| FANG | −2.78% | $199.89 |
+| DVN | −2.74% | $46.91 |
+
+The shape of the tape is the signal: oil-price-levered E&P (OXY, FANG, DVN, EOG −2.25%) and gathering/processing with commodity exposure (TRGP −2.50%) took the brunt, while fee-based midstream (WMB, KMI, EPD, ET, all within ±0.3%) barely moved. XLE fell 1.66%, XOP 1.88%, XES 0.74%.
 
 ## Stocks to watch
 
-- **WDS (Woodside)** — reports H1 today; Scarborough LNG at ~98% complete with first cargo guided to Q4 2026 makes the project timeline the single most price-relevant disclosure in the group this week.
-- **HAL (Halliburton)** — down 2.01% and now sitting just 0.7% above its 200-day, the tightest gap in the entire watchlist; the first name that would break trend if crude keeps sliding.
-- **OXY (Occidental)** — cheapest large-cap in the group at 5.0x EV/EBITDA with the highest earnings yield (12.1%), yet fell 1.94% Monday; a clean test of whether valuation or crude beta wins.
-- **LNG (Cheniere)** — the day's best performer and 18.5% above its 200-day; benefits from the same soft Henry Hub that hurts the gas E&Ps, since cheap feedgas widens liquefaction margins.
-- **KMI (Kinder Morgan)** — up marginally but only 0.5% above its 200-day, making it the second-most vulnerable chart in the group despite the defensive midstream profile.
+- **HAL** (−2.40%, $33.80) — the only name in the entire watchlist now trading *below* its 200-day moving average (−1.8%); North American completions exposure makes it the most direct read on whether a Hormuz resolution compresses activity budgets.
+- **OXY** (−2.83%, $58.41) — biggest decliner and, at 4.9x EV/EBITDA, by far the cheapest name in the group; high oil beta cuts both ways from here.
+- **WMB** (+0.15%, $71.08) — sole green close; a clean illustration of fee-based midstream decoupling from crude, and only 2.2% above its 200-day, so it is not extended.
+- **MPC** (−2.11%, $354.88) — 51% above its 200-day, the most stretched name on the board, riding refining margins that depend on the war-driven capacity crunch persisting.
+- **WDS** — post-print, the LNG project book is now the story; a Scarborough slip past Q4 2026 would be the sector's most consequential single-asset headline this fall.
 
 ## Screen idea
 
-**No watchlist name is currently trading below its 200-day moving average** — the closest are HAL (+0.7%), KMI (+0.5%) and WMB (+2.1%), while the refiners are extraordinarily extended (MPC +55.2%, VLO +49.4%, PSX +44.5%). So the "cheap and below trend" screen returns an empty set today.
+**Below the 200-day *and* reasonably valued: HAL is the only candidate.** Screening the 19 priced watchlist names for a close beneath the 200-day SMA returned exactly one hit — Halliburton, at $33.80 vs. a 200-day of $34.43 (−1.8%) — and it carries an EV/EBITDA of 8.3x against SLB at 12.5x and BKR at 13.0x, so the cheapest services name is also the only one that has already given back its trend. Everything else in the group remains above trend, several of them dramatically so (MPC +51%, VLO +47%, PSX +41%). For reference, the cheapest name on EV/EBITDA overall is OXY at 4.9x, followed by DVN at 7.1x — but both are still 9–13% above their 200-day, so they screen cheap without screening oversold. The intended lesson is that "cheap" and "washed out" are separate tests, and right now this sector passes them in different names.
 
-On valuation alone, screening the five cheapest-looking names on TTM EV/EBITDA: **OXY 5.0x**, DVN 7.2x, HAL 8.5x, ET 9.7x, KMI 12.5x, BKR 13.1x. **Occidental is the cheapest in the group at 5.0x**, with net debt/EBITDA of 0.75x, an 8.9% free-cash-flow yield and a 12.1% earnings yield — but it is 16.5% above its own 200-day and has been the best 2026 performer in the peer set (+46% YTD versus +43% for both COP and EOG), so the low multiple reflects a depressed forward-crude assumption rather than a beaten-down chart. The educational point: in a sector this extended, a low EV/EBITDA is telling you what the market thinks about *forward* commodity prices, not that the stock is out of favor. A more honest version of this screen would wait for a genuine crude drawdown — a meaningful Hormuz reopening being the obvious catalyst — and re-run it then.
-
----
-
-*Sources: CNBC, CNN, Al Jazeera, EIA Short-Term Energy Outlook, Argus, Woodside Energy investor materials, Financial Modeling Prep (quotes derived from SMA endpoint closes; earnings calendar; TTM key metrics).*
+*Educational only. Nothing here is a recommendation to buy or sell any security.*
