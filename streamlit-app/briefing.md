@@ -1,103 +1,63 @@
-# Oil & Gas Equity Monitor — Monday, August 31, 2026
+# Oil & Gas Equity Monitor — Tuesday, September 1, 2026
+
+*Prices reflect the Monday, August 31 close (the most recent complete session). FMP live quote endpoints are gated to Premium on this account, so 1-day percentage changes were derived from daily closes returned by the 200-day SMA endpoint for the priced subset of the watchlist. Educational commentary only — not investment advice.*
 
 ## Market
 
-Crude gapped higher into the Monday open after US Central Command said the US military struck Iranian rocket launchers that were preparing to lay mines in the Strait of Hormuz on Sunday, ending several weeks of relative calm. Brent for November traded above $90/bbl and WTI near $86, reversing most of last week's decline. That decline had been substantial: crude fell below $83 on Friday and booked a second straight weekly loss of roughly 5%, as traders re-framed the Iran standoff as an economic and sanctions confrontation rather than an imminent threat to physical barrels, helped by improving Hormuz throughput and talk of an Iran–Oman bypass corridor. The weekend strike undoes that logic, at least temporarily. For context, analysts estimate the conflict has removed roughly 8 million b/d of the ~20 million b/d that historically transited Hormuz, so the market is pricing the marginal risk of further degradation rather than a fresh closure.
+Geopolitics, not fundamentals, drove Monday's tape. The first direct exchange of fire between US and Iranian forces in roughly a month pushed Brent back above $90 — settling near $90.7, up about 2.9% — while WTI gained roughly 2.6–4% to trade above $85. This is the latest flare-up in a conflict that has run since February and has kept Strait of Hormuz transit depressed all summer; the IEA has been warning that global stockpiles are drawing down faster than usual while the waterway stays constricted. Roughly a quarter of seaborne crude and about a fifth of LNG normally moves through the strait, so the market is pricing an escalation premium rather than an actual barrel loss so far. Equities diverged: the broad market edged lower on the oil move while energy names rallied hard, with XLE +2.0% and XOP +1.6%.
 
-Supply policy remains a slow headwind. The eight-country OPEC+ group met virtually on August 2 and approved a 188,000 b/d increase to be implemented in September — the fifth consecutive monthly step in the unwind of the 2023 voluntary cuts, led by Saudi Arabia and Russia at 62,000 b/d each. The group's next review is expected in early September.
+The supply-side backdrop is looser than the price action suggests. OPEC+ approved a final 188,000 bpd increase for September at its August 2 meeting, completing the rollback of the 1.65 mmbpd voluntary cut and, cumulatively, about 3.5 mmbpd of 2023-era curtailments. Delegates have signalled quotas hold flat through year-end. That means spare capacity is now largely deployed — which is precisely why a Hormuz headline moves crude this much.
 
-Natural gas is the opposite story: comfortable. Lower-48 dry gas output has averaged a record 111.4 Bcf/d in August versus 110.7 in July, and September Henry Hub futures have been grinding around the $2.70–2.75/MMBtu area after defending a technical floor mid-month. A Southern heat dome is slowing storage injections but has not moved the front of the curve much. LNG feedgas has been temporarily soft on export-terminal maintenance — Freeport alone off roughly 2 Bcf/d — which the EIA expects to wrap up in late August. The EIA cut its 2026 Henry Hub forecast more than 6% in the August STEO, to $3.44/MMBtu from $3.67.
-
-Rigs were flat: Baker Hughes put the US count at 588, with oil down 5 to 447 and gas up 5 to 132.
-
-Company news was dominated by Venezuela. Chevron and Halliburton are reported to be close to agreements to invest billions in Venezuelan oil fields — Chevron potentially adding two heavy-oil fields to the three JVs it already runs with PdVSA, and Halliburton in separate talks to supply equipment and services. Executives are expected in Caracas next week to sign, reportedly with Energy Secretary Chris Wright travelling as well. Most of the acreage on offer is undeveloped and lacks power and basic infrastructure, so the capital requirement is large and the payback is long-dated.
+Natural gas remains the weak leg. EIA's August STEO trimmed the Henry Hub forecast to roughly $3.20/MMBtu for Q3 and $3.44 for the full year, citing record production and softer LNG feedgas demand, with inventories heading into winter at their highest since 2016. The gas-levered E&Ps have not participated in the crude rally to the same degree. Refiners, meanwhile, enter the seasonal maintenance window in September–October, which typically pulls crude runs and utilization lower.
 
 ## Earnings
 
-**Data note:** the FMP earnings-calendar was pulled for Aug 28 – Sep 7 (1,111 entries) and filtered to energy names. Q2 reporting for the US oil & gas complex is essentially finished, so this window contains only shipping, small-cap E&P and services names. No watchlist member reports in it.
+**Reported in the last ~24 hours (Aug 31):** No US-listed oil & gas name of consequence reported. Lukoil (LUKOY) was carried on the calendar with no EPS or revenue figures published. The Aug 31 calendar was otherwise almost entirely OTC and foreign micro-caps.
 
-**Reported in the last ~24h (Fri Aug 28):**
+**Reporting today (Sep 1):** Sasol (SSL) — consensus EPS $1.53, revenue ~$8.53B. The South African integrated energy and chemicals group is the only sizeable energy name on the tape today. Nothing else in the watchlist or peer set reports.
 
-- **FRO (Frontline)** — EPS $2.96 actual vs $2.74 est → **beat**; revenue $753.3M vs $758.9M est (slight miss). Tanker rates remain the clearest financial beneficiary of Hormuz disruption and lengthened voyage distances.
-- **HAFN (Hafnia)** — EPS $0.56 vs $0.544 est → **beat**; revenue $372.9M vs $394.6M est → revenue **miss**. Product-tanker economics still firm but softer than modelled.
-- **BWLP (BW LPG)** — EPS $0.79 vs $1.17 est → **miss**; revenue $274.9M vs $318.0M est → **miss**. VLGC rates the weak link in an otherwise strong shipping tape.
+**Upcoming over the next 7 days, by date:**
 
-**Reporting today (Mon Aug 31) — pending, with estimates:**
+- **Sep 2** — Indonesia Energy (INDO), StealthGas (GASS). Nothing large-cap.
+- **Sep 3** — no oil & gas names of note.
+- **Sep 4** — Knot Offshore Partners (KNOP), shuttle-tanker MLP.
+- **Sep 7** — no oil & gas names of note.
+- **Sep 8** — Dynagas LNG Partners (DLNG), consensus EPS $0.28, revenue ~$36.3M.
 
-- **IMPP (Imperial Petroleum)** — est. EPS $0.728, revenue $72.1M
-- **USDP (USD Partners)** — est. EPS $0.26, revenue $35.6M
-- **PXS (Pyxis Tankers)** — est. EPS $0.20, revenue $10.3M
-- **SICP (Sino-Global / Singularity)** — est. EPS $0.51, revenue $30.9M
-- **KEGX (Key Energy Services)** — est. EPS −$1.64, revenue $43.6M
-- **AREC (American Resources)** — est. EPS −$0.083
-- **FTXP (Foothills Exploration)** — est. revenue $0.14M
-- **ENSV (Enservco)**, **TOPS (Top Ships)**, **EONR (EON Resources)** — no published estimates
-
-**Upcoming, next 7 days (by date):**
-
-- **Tue Sep 1** — SSL (Sasol, est. EPS $1.53, revenue $8.53B — the only large-cap energy name in the window); HMR (est. $0.05); ZENA (est. −$0.165)
-- **Wed Sep 2** — MTRX (Matrix Service, est. $0.17, revenue $247.0M); GASS (StealthGas, est. $0.53); INDO (Indonesia Energy, est. $0.12); NCEL (est. −$0.53); SANW (est. −$0.20)
-- **Thu Sep 3** — TIOG (Tioga Energy, est. −$0.05); CTRM (Castor Maritime, no estimate)
-- **Fri Sep 4** — KNOP (KNOT Offshore Partners, est. $0.06, revenue $93.5M)
-- **Mon Sep 7** — PNXGF (Phoenix Group, est. $0.45)
-
-**When the majors report next:** all of the watchlist reported Q2 in late July / early August and fall well outside this window. Q3 season restarts in mid-to-late October, with SLB and the services group typically first (mid-October), followed by the integrateds and large E&Ps (XOM, CVX, COP, EOG, OXY, FANG) in the last week of October and the first days of November. Midstream (KMI, WMB, EPD, ET, TRGP) and refiners (MPC, VLO, PSX) cluster in the same late-October window.
+**Note on the majors:** Q2 season closed in early August, so the entire watchlist sits well outside this window. Next reports cluster in mid-to-late October — SLB opens the season on **Oct 16** (consensus EPS $0.62, revenue ~$9.27B), with ExxonMobil on **Oct 30** (consensus EPS $3.50, revenue ~$106.8B) and the rest of the integrateds and large E&Ps in the same late-October/early-November block. Expect a quiet three weeks.
 
 ## Today's movers
 
-**Method note:** FMP's live quote endpoints (quote / batch-quote / quote-short) return ACCESS DENIED on the current Starter plan, so 1-day percentage changes below were derived from daily closes returned by the 200-day simple-moving-average endpoint. That means they reflect the **last completed session, Friday August 28 (close vs Thursday August 27 close)** — not intraday Monday action. All 22 tickers in the watchlist and ETF set priced successfully.
+Derived from Aug 31 vs Aug 28 closes (see note above).
 
 **Up:**
 
-| Ticker | Close (8/28) | 1-day |
-|---|---|---|
-| SLB | $57.33 | **+4.22%** |
-| HAL | $36.18 | **+1.94%** |
-| PSX | $244.01 | **+1.75%** |
+1. **SLB +4.83%** ($57.33 → $60.10) — announced a $3.4B acquisition of Kelvion, a thermal-management and heat-exchanger business, on volume roughly double its recent average.
+2. **LNG (Cheniere) +3.32%** ($282.33 → $291.69) — announced substantial completion of the Corpus Christi Stage 3 project and its 5,000th cargo export.
+3. **XOM +2.72%** ($156.71 → $160.98) — crude beta, largest weight in the complex.
 
 **Down:**
 
-| Ticker | Close (8/28) | 1-day |
-|---|---|---|
-| FANG | $197.67 | **−1.42%** |
-| EOG | $143.35 | **−0.80%** |
-| WMB | $73.73 | **−0.62%** |
+Only one watchlist name finished lower: **EPD −0.51%** ($39.02 → $38.82). The next weakest were **ET +0.94%** and **PSX +1.05%** — i.e. the day was a near-uniform sector rally, with the midstream MLPs simply lagging the crude-levered names rather than actually declining.
 
-The split is informative: services (SLB, HAL) and refiners (PSX +1.75%, VLO +1.66%, MPC +1.46%) led on the Venezuela headline and on weak crude helping crack spreads, while oil-weighted E&Ps (FANG, EOG) and gas-levered midstream lagged with the crude tape. Sector ETFs were quiet — XLE +0.63%, XOP +0.25%, XES −0.31%.
-
-Rest of the watchlist, Friday: CVX +1.05%, COP +0.64%, LNG +0.54%, DVN +0.49%, BKR +0.48%, XOM +0.17%, KMI +0.06%, EPD −0.08%, OXY −0.12%, ET −0.33%, TRGP −0.39%.
-
-**Coverage note:** Hess (HES) remains off the watchlist following the close of Chevron's acquisition; FMP returns no data for it. No other watchlist ticker returned "not_found" this run.
+Sector ETFs: **XLE +2.04%**, **XES +2.06%**, **XOP +1.62%**.
 
 ## Stocks to watch
 
-- **HAL** — reported to be in talks to supply equipment and services to Venezuelan producers; already the second-best watchlist performer Friday (+1.94%) and the most operationally levered name to any actual restart of activity there.
-- **CVX** — the only large US operator already inside Venezuela (three PdVSA JVs); a signed heavy-oil expansion would be a rare long-cycle resource addition, though undeveloped acreage with no power infrastructure is a multi-year, capital-heavy proposition.
-- **OXY** — cheapest name in the group on EV/EBITDA at 4.9x with net debt/EBITDA of 0.75x, and the highest-beta large-cap to Brent moving back above $90.
-- **SLB** — Friday's largest gainer (+4.22%) on international-activity read-through; also the first watchlist name to report Q3, in mid-October, which makes it the sector's next scheduled information event.
-- **LNG (Cheniere)** — Freeport maintenance ending should restore roughly 2 Bcf/d of feedgas demand into a market running record 111.4 Bcf/d of supply; the volume recovery is the thing to check rather than the Henry Hub print.
+- **SLB** — the Kelvion deal pushes the company further into non-oilfield thermal and data-center-adjacent end markets; watch whether the multiple re-rates or the market treats it as diworsification. Reports Oct 16.
+- **LNG (Cheniere)** — CCL Stage 3 substantially complete removes execution risk and steps up contracted export capacity into a market where US gas is cheap and international spreads are wide.
+- **EPD** — the only decliner and the cheapest large midstream on EV/EBITDA at 11.1x; a lagging tape day in a sector melt-up is worth understanding before assuming it's noise.
+- **HAL** — cheapest name in the complex on EV/EBITDA (8.9x) with modest leverage (1.48x net debt/EBITDA), and closest of the group to its own 200-day average.
+- **VLO / MPC** — refiners are 45–57% above their 200-day averages heading into seasonal maintenance and a rising crude cost curve; crack spreads are doing a lot of work here.
 
 ## Screen idea
 
-The screen as specified — below the 200-day moving average **and** cheap on EV/EBITDA — returns nothing this morning. **Every one of the 22 watchlist and ETF tickers closed above its 200-day SMA on August 28**, in most cases by a wide margin (XOM $156.71 vs 143.65; MPC $368.83 vs 237.01; PSX $244.01 vs 169.55). The sector has been in a sustained uptrend, so there is no technical-value overlap to work with.
+**Nothing in the watchlist is trading below its 200-day moving average** — the entire complex is extended, ranging from KMI at +4.1% above to MPC at +56.9% above. The screen as specified returns an empty set, which is itself the signal: this is a sector-wide momentum regime, not a value setup.
 
-Taking the valuation leg alone, **OXY is the cheapest of the group screened on EV/EBITDA TTM at 4.9x**, ahead of DVN at 7.1x, VLO at 7.9x, ET at 9.8x and EPD at 11.1x. OXY also carries the lowest leverage of that set (net debt/EBITDA 0.75x) and the highest earnings yield (12.3%). The obvious caveat: a low multiple on a commodity producer at a high point in the price cycle is often a warning that the market expects trailing EBITDA to fall, not a discount — and OXY is up roughly 46% year-to-date, which is not what a value screen normally surfaces.
+The nearest thing to it is **HAL**, which combines the lowest EV/EBITDA in the group (8.9x TTM) with the second-smallest premium to its 200-day (+6.5%) and the cleanest balance sheet of the cheap names (1.48x net debt/EBITDA vs KMI 3.99x, EPD 3.18x, WMB 4.10x). Runner-up on valuation is **EPD** at 11.1x, +7.4% above its 200-day.
 
-*This briefing is for educational and informational purposes only. It is not investment advice, and nothing here is a recommendation to buy or sell any security.*
+A more useful variant of this screen right now would flip the sort: look for names whose premium to the 200-day is *not* justified by earnings revisions — MPC (+56.9%), VLO (+52.2%) and PSX (+45.0%) all screen as stretched relative to the E&Ps and integrateds, which sit in the +11% to +19% band.
 
 ---
 
-### Sources
-
-- [Crude Oil Price Today — Forbes Advisor](https://www.forbes.com/advisor/investing/oil-prices-today/)
-- [Brent crude oil — Trading Economics](https://tradingeconomics.com/commodity/brent-crude-oil)
-- [Oil Jumps at Week's Open as US Military Hits Iranian Launchers — Bloomberg](https://www.bloomberg.com/news/articles/2026-08-30/latest-oil-market-news-and-analysis-for-aug-31)
-- [Brent Holds Gains on Iran Rhetoric — Trading Economics](https://tradingeconomics.com/commodity/brent-crude-oil/news/533061)
-- [OPEC+ confirms 188 kb/d production increase for August 2026 — Enerdata](https://www.enerdata.net/publications/daily-energy-news/opec-confirms-188-kbd-production-increase-august-2026.html)
-- [OPEC press release, 2 August 2026](https://www.opec.org/pr-detail/1854611-2-august-2026.html)
-- [Natural Gas Market Indicators, August 20, 2026 — American Gas Association](https://www.aga.org/research-policy/resource-library/natural-gas-market-indicators-august-20-2026/)
-- [Short-Term Energy Outlook — EIA](https://www.eia.gov/outlooks/steo/)
-- [Sector Update: Energy Stocks Mixed Late Afternoon — MarketScreener](https://www.marketscreener.com/news/sector-update-energy-stocks-mixed-late-afternoon-ce7858dfd08afe22)
-- [Chevron, Halliburton Near Deals to Invest Billions of Dollars in Venezuelan Oil — MarketScreener](https://www.marketscreener.com/news/chevron-halliburton-near-deals-to-invest-billions-of-dollars-in-venezuelan-oil-ce7858dfdf80f427)
-- [Chevron and Halliburton nearing deals to invest in Venezuelan oil fields — Yahoo Finance](https://finance.yahoo.com/energy/articles/chevron-halliburton-nearing-deals-invest-171420298.html)
-- Prices, earnings calendar and valuation metrics: Financial Modeling Prep (Starter plan; daily closes via 200-day SMA endpoint, earnings via earnings-calendar, multiples via key-metrics-ttm)
+*Data note: Hess (HES) remains off the watchlist following Chevron's completed acquisition; FMP returns no data for it. No other watchlist ticker returned "not_found" this run. All 19 watchlist names and all 3 sector ETFs priced successfully.*
