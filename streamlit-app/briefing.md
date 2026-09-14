@@ -1,75 +1,67 @@
-# Oil & Gas Equity Monitor — Friday, September 4, 2026
+# Oil & Gas Equity Monitor — Monday, September 14, 2026
 
 ## Market
 
-Crude eased Thursday but stayed at war-premium levels. Brent settled near $95/bbl, off roughly 0.4–0.6% on the session, while WTI held above $90 after slipping about 0.4%. The anchor remains the Strait of Hormuz: the waterway has been effectively shut to routine commercial traffic since late July, with convoy transits running around 10 vessels a day against a pre-crisis baseline of roughly 88–130. The IEA has characterized the episode as the largest supply disruption in the history of the oil market. Talks continue — Iran's foreign minister has said Tehran and Oman are close to an agreement, but conditions Iran attaches to reopening (sanctions relief, reparations) have kept a deal out of reach. That standoff, rather than any demand-side data, is what oil is trading on.
+Crude enters the week with a live supply shock. Friday saw a relief selloff — WTI settled down 2.4% at $100.05 and Brent down 2.8% at $104.61 — after Iranian state media signalled Tehran would meet Gulf states in Oman to formalise a Strait of Hormuz shipping corridor. That trade unwound over the weekend. Saudi Arabia shut its East-West pipeline, the ~5-7 mb/d line that moves Gulf-region barrels to Red Sea terminals and has been the main workaround for Hormuz disruption, after a series of attacks. A vessel was struck in the Strait on Saturday and a second tanker was hit Sunday with a severe onboard fire. The Muscat/Salalah signing was postponed. The single most important fact for Monday: the bypass route that had been capping the risk premium is offline, so Friday's de-escalation discount looks premature.
 
-Supply policy is now a non-event by comparison. OPEC+ approved a final 188,000 bpd quota increase for September at its August 2 virtual meeting, completing the unwind of the 1.65 mb/d voluntary cuts first agreed in 2023. A separate ~2 mb/d tranche from 2022 stays in place through year-end, and the group has signaled quotas hold steady for the rest of 2026. With the group effectively out of announced spare-capacity moves, the marginal barrel now depends on whether Hormuz reopens.
+Context matters for positioning. Both benchmarks are already trading far above consensus — the EIA still models Brent averaging $87 for 2026, and Goldman's December targets sit at $85 Brent / $80 WTI, with a $120 scenario reserved for 2027 if Gulf output stays ~4 mb/d below prewar. In other words, the strip is pricing disruption that most published forecasts do not yet carry, which cuts both ways.
 
-Natural gas is the mirror image — no war premium at all. EIA sees Henry Hub averaging about $2.87/MMBtu in Q3 2026, with the strip staying below $3.00 through September. End-October inventories are projected at a record 3,985 Bcf, roughly 5% above the five-year average. The bearish storage overhang is why gas-levered E&Ps have lagged the crude-levered names badly this year, and why the equity leadership has sat with refiners and integrateds rather than with the gassy Appalachian producers.
-
-**Note on data:** FMP live quote endpoints are gated to Premium on this plan, so the moves below were derived from daily closes returned by the 200-day SMA endpoint. The latest available close is **Wednesday, September 3**; percentage changes are Sep 3 vs. Sep 2. Hess (HES) remains off the watchlist post-Chevron close.
+Natural gas is the opposite story: no war premium, ample supply. Henry Hub front-month is hovering near $2.77-2.79/MMBtu after failing a test of $3, with record production and storage heading into winter well above the five-year average. OPEC+ is a non-event here — the group completed its 1.65 mb/d rollback with a 188 kb/d September increase and is signalled to hold quotas flat through year-end. US rig count rose for the first time in four weeks (Baker Hughes, Sept 11).
 
 ## Earnings
 
-**Reported in the last ~24h (Sep 3):**
+**Reported in the last ~24h:** Nothing. No oil & gas name on the watchlist or the wider E&P/integrated/services/midstream/refining/drilling peer set reported between Friday and this morning.
 
-- **EnQuest (ENQUF)** — revenue $628.1M vs. $492.0M est. **BEAT** on the top line; EPS estimate was -$0.013 and no actual was posted. North Sea and Malaysia volumes carrying a small-cap E&P through a high-price tape.
-- **KNOT Offshore Partners (KNOP)** — EPS $0.10 vs. $0.06 est. **BEAT**. Shuttle-tanker MLP; charter coverage is holding up even as Gulf transit volumes stay depressed.
-- **PBTHF** — EPS -$0.0245 vs. +$0.0215 est., revenue $82.7M vs. $107.5M est. **MISS** on both lines (OTC-listed energy small cap; thin coverage).
-- **ECELF** — EPS $0.081, revenue $272.0M; no consensus posted, so no beat/miss tag.
+**Reporting today (Sept 14):** None.
 
-**Reporting today (Sep 4):** Nothing on the oil & gas watchlist or peer set. KNOP carried a Sep 4 calendar date but its actuals are already posted.
+**Upcoming, next 7 days (Sept 14-21):**
 
-**Upcoming, next 7 days:**
+- **Tue Sept 15** — **EPM** (Evolution Petroleum), consensus EPS ~$0.01 on revenue ~$23.2M. Fiscal-year-end reporter; the only oil & gas name in the entire window.
 
-- **Mon Sep 7** — Dynagas LNG Partners (DLNG), EPS est. $0.28 on revenue est. $36.3M. GMRS, EPS est. $0.509 on revenue est. $1.589B. Kenon Holdings (KEN), no estimates posted.
-- **Tue Sep 8** — Castor Maritime (CTRM), no estimates posted.
-- **Thu Sep 10** — Tsakos Energy Navigation (TEN), EPS est. $2.93 on revenue est. $238.9M. The most informative print of the week for tanker rates, given Hormuz-driven ton-mile distortion.
-- **Fri Sep 11** — BP ADR line (BPTSY) carries a calendar entry; treat as a data artifact rather than a real report.
+That is the complete list. Mid-September sits in the dead zone between Q2 and Q3 reporting, and the FMP calendar for Sept 11-21 returns no other energy names across E&P, integrated, services, midstream, refining or drilling.
 
-**Majors and large E&Ps fall outside the window.** SLB opens Q3 season on **Oct 16**; KMI on **Oct 28**; XOM and CVX both on **Oct 30** (consensus $3.53 and $4.68 respectively). Expect a quiet six weeks on the fundamentals calendar — the sector will trade on Hormuz headlines and the crude strip until mid-October.
+**When the majors report:** Q3 season starts mid-to-late October and falls well outside this window. Services lead (SLB, then HAL and BKR in the third week of October), followed by the integrateds and large E&Ps (XOM, CVX, COP, EOG) in the final week of October and early November. Expect the calendar to stay empty until then — dates are not yet confirmed on the FMP feed.
 
 ## Today's movers
 
-Derived from Sep 3 vs. Sep 2 closes for the priced subset (all 19 watchlist names plus XLE/XOP/XES returned data).
+Markets were closed over the weekend, so these are Friday Sept 11 closes versus Thursday Sept 10. FMP's live quote endpoints are Premium-gated on the current Starter plan, so **all percentage changes below were derived from daily closes returned by the 200-day SMA endpoint** rather than from live quotes. Intraday Monday action is not reflected.
 
 **Up:**
 
 | Ticker | Close | 1-day |
 |---|---|---|
-| VLO | $370.69 | +1.26% |
-| MPC | $387.71 | +0.18% |
-| TRGP | $293.54 | +0.03% |
+| VLO | $390.42 | +1.29% |
+| MPC | $395.93 | +0.89% |
+| CVX | $214.06 | +0.61% |
 
 **Down:**
 
 | Ticker | Close | 1-day |
 |---|---|---|
-| EOG | $145.96 | −2.01% |
-| LNG | $290.85 | −1.69% |
-| BKR | $63.64 | −1.53% |
+| EPD | $38.90 | -1.09% |
+| ET | $21.55 | -0.83% |
+| HAL | $35.84 | -0.64% |
 
-Sector ETFs: XLE −0.74% ($64.62), XOP −0.43% ($192.33), XES −1.58% ($123.15). The day's shape was refiners up, everything else down — consistent with a session where crude softened slightly and crack spreads got the benefit. Note this was a mild pullback inside a strong week: from the Aug 28 close through Sep 3, XOM ran +3.5%, CVX +4.7%, COP +4.1% and VLO +5.2%.
+The one-day moves understate the week's real dispersion. Over Wednesday-to-Friday, BKR fell from $63.64 to $59.06 (-7.2%) and HAL from $37.13 to $35.84 (-3.5%) as Friday's crude drop revived the E&P capex-cut worry that hits service revenue two to three quarters out. Refiners went the other way. Sector ETFs were quiet: XLE +0.32%, XOP +0.13%, XES +0.44%.
+
+Positioning relative to trend is extreme in refining. MPC sits +61% above its 200-day, VLO +60%, PSX +48% — the rest of the watchlist clusters between +3% and +23%. KMI is the only name in the group trading *below* its 200-day, at -1.0%.
 
 ## Stocks to watch
 
-- **VLO** — the only watchlist name up more than a percent Thursday, and +55% above its 200-day. Refining margins are the clean way the market is expressing a crude-disruption view without taking barrel-price risk.
-- **EOG** — worst performer on the day at −2.0%, but the second-cheapest name in the group on EV/EBITDA (5.7x) with the lowest leverage (net debt/EBITDA 0.24x). Pullbacks in a balance sheet this clean are worth watching.
-- **LNG (Cheniere)** — −1.7% on the day despite Hormuz constraining roughly 19% of seaborne LNG. Worth understanding whether the drop reflects contract-structure limits on upside capture rather than a change in the export thesis.
-- **KMI** — the only watchlist name trading within 2% of its 200-day average (+1.75%), making it the sole technical laggard in a sector that has run hard. Also the most expensive on EV/EBITDA at 12.7x, which is the tension.
-- **TEN (Tsakos)** — reports Sep 10 and is the week's best read on whether tanker day-rates are still capturing the Hormuz reroute premium.
+- **VLO / MPC** — The WTI 3-2-1 crack has run to roughly $59/bbl against a 2010-2021 average near $19, and both are up over 100% YTD. Strength is real but the setup is now entirely about whether product supply stays broken; these are the highest-beta names to crack normalisation in either direction.
+- **BKR** — Down ~7% in three sessions on de-escalation and capex fear, but the weekend pipeline attack and rig-count uptick argue the sell-off was tied to a headline that has since reversed. Watch whether it holds its 200-day, which is now only 0.5% below spot.
+- **HAL** — Cheapest of the screened group at 8.7x EV/EBITDA, modestly levered at 1.5x net debt/EBITDA, and sitting just 2.4% above its 200-day.
+- **KMI** — The only watchlist name below its 200-day. Also carries the highest EV/EBITDA of the value-screened group at 12.5x, so the technical weakness is not obviously a valuation opportunity.
+- **XOM / CVX** — Straightforward Hormuz-premium exposure with the least single-asset risk if the supply disruption extends.
 
 ## Screen idea
 
-**Nothing on the watchlist is currently below its 200-day moving average** — all 19 names and all three ETFs closed above, with the group averaging roughly 19.5% above trend and the refiners 48–61% above. There is no oversold-value overlap to flag this morning.
+The intended screen — below the 200-day *and* cheap on EV/EBITDA — does not produce a clean hit today. KMI is the only watchlist name under its 200-day average (-1.0%), but at 12.5x EV/EBITDA it is the most expensive of the five names checked, and its net debt/EBITDA of 4.0x is the second-highest. The two conditions point in opposite directions.
 
-The closest thing to a technical laggard is **KMI**, just +1.75% above its 200-day, but it screens as the *most* expensive name tested on EV/EBITDA (12.7x TTM), so it fails the cheapness leg.
+The cheapest name on EV/EBITDA is **HAL at 8.7x**, followed by ET at 9.9x, EPD at 11.1x, BKR at 12.5x and KMI at 12.5x. HAL is 2.4% above its 200-day rather than below it, so it fails the technical leg by a small margin — but it pairs the lowest multiple with modest leverage at 1.5x net debt/EBITDA, against 3.2x for EPD, 4.0x for KMI and 4.8x for ET. BKR is the least levered of the five at 0.1x net debt/EBITDA but carries a 12.5x multiple. If the screen were relaxed from "below the 200-day" to "within 5% of it," HAL, BKR, WMB and KMI all qualify, and HAL is the cheapest of those on EV/EBITDA.
 
-On valuation alone, **OXY is the cheapest name in the group at 5.1x EV/EBITDA TTM**, with a 12.0% earnings yield, 8.8% free-cash-flow yield and net debt/EBITDA of 0.75x — comfortably better than DVN (7.3x, 1.22x leverage), ET (9.8x, 4.76x) or KMI (12.7x, 3.99x). EOG sits second at 5.7x with the sector's cleanest balance sheet. The screen this morning is therefore *cheap-and-strong* rather than *cheap-and-oversold*: OXY and EOG are inexpensive on cash-flow multiples while trading well above trend, which is a different setup than a mean-reversion candidate and carries different risks — chiefly that both multiples are being flattered by war-inflated trailing earnings that normalize if Hormuz reopens.
+Worth noting what this screen structurally misses: EV/EBITDA on trailing twelve-month figures flatters the refiners at the top of an extraordinary crack-spread cycle and penalises the capital-intensive midstream names whose EBITDA is contracted and stable. A low multiple on peak earnings is not the same signal as a low multiple on trough earnings.
 
 ---
 
-*Educational market monitoring only. Not investment advice. Figures derived from FMP daily closes through Sep 3, 2026 and TTM key metrics; live quote data unavailable on the current plan.*
-
-**Sources:** [Fortune — oil price Sep 3, 2026](https://fortune.com/article/price-of-oil-09-03-2026/) · [Rio Times oil wrap](https://www.riotimesonline.com/oil-markets-latam-thursday-september-3-2026/) · [EIA Short-Term Energy Outlook — natural gas](https://www.eia.gov/outlooks/steo/report/natgas.php) · [EIA Today in Energy — Henry Hub](https://www.eia.gov/todayinenergy/detail.php?id=67004) · [Energy Connects — OPEC+ September hike](https://www.energyconnects.com/news/oil/2026/august/opecplus-completes-rollback-of-oil-production-cuts-with-september-hike/) · [World Oil — OPEC+ final 2026 quota increase](https://worldoil.com/news/2026/8/2/opec-approves-final-production-quota-increase-of-2026/) · [Al Jazeera — Hormuz outlook](https://www.aljazeera.com/economy/2026/8/10/oil-prices-climb-as-iranian-demands-cloud-outlook-for-strait-of-hormuz) · [Brookings — Strait of Hormuz and global oil markets](https://www.brookings.edu/articles/from-chokepoint-to-crisis-the-strait-of-hormuz-and-global-oil-markets/)
+**Notes.** Educational summary only — not investment advice, and no recommendation to buy or sell any security. Prices are Friday Sept 11 closes derived from FMP daily-close data via the 200-day SMA endpoint, since live quote endpoints require a Premium plan. Valuation metrics are FMP key-metrics-TTM. HES was removed from the watchlist after Chevron closed its acquisition and returns no data; no other watchlist ticker returned a not-found error this run.
