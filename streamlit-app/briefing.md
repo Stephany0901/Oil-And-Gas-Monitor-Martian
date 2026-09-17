@@ -1,82 +1,71 @@
-# Oil & Gas Equity Monitor — Wednesday, September 16, 2026
+# Oil & Gas Equity Monitor — Thursday, September 17, 2026
+
+*Prices reflect the Wednesday, September 16 close. Educational use only — not investment advice.*
 
 ## Market
 
-Crude pushed higher again and the equity complex finally followed. Brent closed Sept 15 at $109.21, up 3.3%, its highest in more than four months; WTI settled near $105.80. The driver is unchanged from Friday but worse in the details: Saudi Arabia's East–West Crude Oil Pipeline remains shut after the Sept 11 drone strikes on pumping stations, and Aramco has now notified European customers that several September cargoes are cancelled. That converts a headline risk into a physical loss of barrels. Estimates for repair time run from days to eight weeks, and Riyadh has published neither a damage assessment nor a restart date. With the Strait of Hormuz effectively throttled by Red Sea and Gulf shipping risk, the market has lost both outlets at once — roughly 4% of global supply is exposed. Analysts quoted this week see little chance of Brent back below $100 near-term. Crude eased about 0.8% to near $105 Wednesday morning ahead of the Fed.
+Crude gave back part of a violent two-session rally on Wednesday. Brent settled near $108/bbl and WTI around $104–105 after falling roughly 3% on the day, having climbed about 4% over the prior two sessions. The move down was inventory- and macro-driven rather than a change in the supply picture: the API reported a surprise build of about 7.1 million barrels in US crude stockpiles, with gasoline and distillates also higher, and traders de-risked ahead of the Federal Reserve's rate decision.
 
-Equities caught up. Unlike Monday, the sector participated on Sept 15: XLE +2.2%, XOP +3.2%, XES +2.8%. Refiners led everything, and that is the more durable story — the WTI 3-2-1 crack spread sits near $59/bbl against a 2010–2021 average of roughly $19, because the true shortage is refined product, not crude, with over 7 mb/d of Middle Eastern and Russian product flows offline.
+The supply story underneath remains the dominant variable. Saudi Arabia shut its East–West desert pipeline after drone strikes the kingdom has blamed on Iraqi militia, and suspended crude loadings at the Red Sea port of Yanbu. That line moves roughly 4 million b/d across the Arabian Peninsula and had been the main workaround for the Strait of Hormuz closure of the past six months, so losing it removes the system's principal relief valve rather than adding a marginal outage. Vortexa satellite tracking shows no Saudi crude leaving Red Sea ports since the weekend. Some September-loading European cargoes have been cancelled, with buyers chasing replacement barrels above $120/bbl, and Saudi output has fallen to its lowest since 1990. Brent is up about 20% over the past month and roughly 60% year over year.
 
-The macro overhang is today's FOMC decision. Markets price roughly a 90% chance of a 25bp hike to 4.00%, with August CPI at 3.4% y/y and long yields at multi-decade highs. A hawkish energy-driven Fed caps multiples even as cash flows rise.
+Natural gas is the mirror image: ample, not scarce. Henry Hub sits near $2.80/MMBtu after the EIA reported a 40 Bcf injection versus roughly 31 Bcf expected, lifting working stocks to 3.254 Tcf — about 4.8% above the five-year average. The EIA cut its Henry Hub forecasts last month and the strip stays below $3.00 through the autumn. The result is an unusually wide split inside the sector: oil-levered names are trading a geopolitical premium while gas-levered names trade a domestic glut.
 
-Natural gas remains the quiet market. The October contract closed near $2.77 and opened Sept 16 around $2.87. Storage is still above the five-year average after a 40 Bcf injection for the week ended Sept 4, and Lower 48 output is near records. LNG feedgas to the nine major export terminals at 18.3 Bcf/d, up from 17.2 in August, is the one bullish thread.
+That split shows up in equity performance. US refiners have been the standout of 2026 — Valero, Marathon Petroleum and Phillips 66 have more than doubled on record fuel cracks, with the global product squeeze rewarding anyone who can turn a barrel into diesel. Exxon and Chevron are each up roughly 40% year to date, solid but well behind the refiners.
 
 ## Earnings
 
-**Data note:** FMP's earnings calendar was pulled for Sept 15–23 and filtered to the watchlist plus sector peers across E&P, integrated, services, midstream, refining and drilling. Two OTC tickers that screened on size (TRPCF, NXGPF) were checked and are not energy names — Trip.com and Next plc. The window is genuinely empty for oil & gas; mid-September falls between reporting seasons.
+**Reported in the last 24 hours:** No oil & gas companies in the watchlist or the broader E&P, integrated, services, midstream, refining and drilling peer set reported. The FMP earnings calendar for September 16 returned only unrelated names (Lennar, Hub Group and a long tail of OTC listings).
 
-**(a) Reported in the last ~24h:** **Evolution Petroleum (EPM)** — fiscal Q4. EPS $0.13 actual vs. $0.01 estimated; revenue $24.21M vs. $23.24M estimated. **Beat on both lines.** Takeaway: a large percentage beat on a tiny absolute number, and the cleanest available read that higher realized prices are flowing straight through to non-operated working-interest economics with no cost offset. Too small to move the sector.
+**Reporting today (September 17):** None in the sector.
 
-**(b) Reporting today (Sept 16):** No oil & gas names.
+**Upcoming, next 7 days (through September 24):** None. The calendar window is empty of oil & gas names — mid-to-late September falls between reporting seasons.
 
-**(c) Upcoming, Sept 17–23:** No oil & gas names of consequence scheduled on any date in the window.
+**When the sector does report.** Q3 season opens with oilfield services in mid-October and runs through the majors at month-end:
 
-**Just outside the window:** Q3 reporting for the majors and large E&Ps does not begin until late October. SLB typically opens the sector in the third week of October, followed by HAL and BKR, then XOM, CVX, COP and the large-cap E&Ps in the final week. Those calls will be the first structured look at how the Hormuz constraint and the East–West shutdown are flowing through Middle East service revenue and upstream realizations — and, for the refiners, whether a $59 crack is being hedged or banked.
+- **Oct 16** — SLB (cons. EPS $0.62, rev ~$9.27B)
+- **Oct 20** — HAL (cons. EPS $0.58, rev ~$5.58B)
+- **Oct 22** — BKR (cons. EPS $0.62, rev ~$7.28B)
+- **Oct 28** — KMI (cons. EPS $0.33, rev ~$4.42B)
+- **Oct 30** — XOM (cons. EPS $3.54, rev ~$106.8B)
+
+Services report first and will be the first read on whether the Middle East disruption is translating into international activity and pricing, or whether customers are sitting on their hands until the supply picture settles.
 
 ## Today's movers
 
-**Methodology note:** FMP's live quote endpoints (quote / batch-quote / quote-short) are gated to Premium and returned ACCESS DENIED on the current Starter plan. One-day percentage changes below are derived from daily closes returned by the 200-day simple-moving-average endpoint, comparing the Sept 15 close to the Sept 14 close — the most recent completed session, since Sept 16 data is not yet available. All 22 tickers priced successfully; no symbol returned not_found this run. (Hess/HES remains off the watchlist following Chevron's completed acquisition.)
+**Data note:** FMP's live quote endpoints are gated to Premium on the current Starter plan, so one-day changes below are derived from consecutive daily closes returned by the 200-day SMA endpoint (Sept 15 close → Sept 16 close). They are close-to-close and exclude any after-hours move. Hess (HES) remains off the watchlist following Chevron's completed acquisition.
 
-**Up:**
+**Down the most:**
 
-- VLO +3.68% ($382.95 → $397.04)
-- MPC +3.63% ($396.45 → $410.84)
-- EOG +3.50% ($148.54 → $153.74)
+| Ticker | Close | 1-day |
+|---|---|---|
+| FANG | $194.54 | **−8.03%** |
+| OXY | $59.36 | **−6.55%** |
+| COP | $132.54 | **−6.15%** |
 
-**Down:**
+Diamondback was the sector's worst performer and the second-biggest decliner in the S&P 500, gapping down at the open on a combination of the crude pullback, a Morgan Stanley downgrade and a disclosed multi-million-dollar insider sale. Volume ran roughly 7x its recent average, so this was a repricing rather than drift. OXY and COP fell in sympathy with crude, both high-beta to the oil tape with no company-specific news.
 
-- LNG −1.20% ($274.28 → $270.98)
-- ET −0.74% ($21.49 → $21.33)
-- KMI −0.61% ($30.96 → $30.77)
+**Up the most:**
 
-**ETFs:** XLE +2.17%, XOP +3.22%, XES +2.76%.
+| Ticker | Close | 1-day |
+|---|---|---|
+| VLO | $403.28 | **+1.57%** |
+| MPC | $413.92 | **+0.75%** |
+| PSX | $264.63 | **−0.11%** |
 
-Yesterday's split inverted. The two refiners took the top two slots and PSX was close behind at +3.06%, because a crude spike that is smaller than the product spike widens the crack rather than compressing it — the opposite of the normal reflex. E&Ps came next (COP +3.33%, DVN +3.22%, FANG +2.82%, OXY +2.82%), and the integrateds participated (CVX +2.62%, XOM +2.57%). Services bounced but only partially: SLB +1.65% and HAL +1.89% recovered a fraction of Monday's Citi-driven selloff, while BKR was the sole services name still red at −0.11%. Every one of the six worst performers was gas-levered or midstream — LNG, ET, KMI, TRGP (−0.55%), WMB (−0.44%) — which is consistent with a crude-only shock and a Henry Hub curve that is not moving.
+Only two names in the watchlist closed green, and both are refiners — the clean expression of the day's logic. Cheaper crude input plus a global product shortage widens the crack spread, so a down day for oil is an up day for refining margin. PSX was essentially flat and is included as the third-best performer rather than a genuine gainer.
+
+For reference: XLE −2.88%, XOP −3.96%, XES −2.65%. E&P took the worst of it; the ETF spread confirms the day was about oil beta, not the sector broadly.
 
 ## Stocks to watch
 
-- **VLO** — Best watchlist performer and up roughly 111% year to date on a crack spread near three times its long-run average; the question is no longer whether margins are good but how much of the peak is already in the price.
-- **BKR** — The only watchlist name still below its 200-day average (−3.6%) and the only services name red on a day the group bounced; carries the most concentrated Middle East exposure of the three.
-- **LNG** — Worst performer on the day despite record feedgas flows, which is the cleanest illustration that the crude premium is not transmitting to gas.
-- **HAL** — Crossed back above its 200-day average on Sept 15 ($35.67 vs. $35.10) after sitting below it Monday; a one-day move, so worth watching rather than concluding anything from.
-- **OXY** — Cheapest name in the group on trailing EV/EBITDA at 5.3x, but now roughly 20% above its 200-day; the valuation case and the momentum case have separated.
+- **FANG** — An 8% single-day drawdown on a downgrade plus insider sale, with no change to the operating story. Worth watching whether it stabilizes or the downgrade marks the start of a de-rating for Permian pure-plays.
+- **VLO / MPC** — Refining cracks are at record levels and the two have more than doubled this year. The question is whether the product squeeze is structural or a disruption artifact that unwinds when Saudi flows resume.
+- **HAL** — Below its 200-day average and the cheapest of the below-trend names on EV/EBITDA; reports first among the majors on October 20.
+- **KMI** — The only midstream name below its 200-day. A gas-levered business in a gas glut, which explains the relative weakness while oil names ran.
+- **LNG (Cheniere)** — Cheap domestic gas and a scramble for non-Middle East energy supply is a favorable setup, yet it fell 1.19%. Watch whether that disconnect closes.
 
 ## Screen idea
 
-Cross "trading below its 200-day moving average" with "cheap on trailing EV/EBITDA." As of the Sept 15 close, only two watchlist names are below their 200-day: **BKR** ($56.72 vs. $58.83, −3.6%) and **KMI** ($30.77 vs. $31.21, −1.4%). HAL dropped out overnight by crossing back above trend.
+**Below the 200-day average and cheap on EV/EBITDA.** Only three watchlist names closed below their 200-day SMA: KMI (−1.6% below, 12.5x EV/EBITDA), BKR (−4.3% below, 11.9x) and HAL (−1.8% below, 8.4x). **HAL is the best combination of the two filters** — the furthest-along discount to trend at the cheapest multiple of the three, with a net-debt/EBITDA around 1.5x and ROIC near 10%.
 
-**The screen returns nothing this run, and that is the finding.** Neither sub-200-day name is cheap: BKR is 12.0x EV/EBITDA and KMI 12.5x, versus OXY 5.3x, DVN 7.6x and HAL 8.7x elsewhere on the watchlist. BKR is the cheaper of the two below trend, but 12x is not a value multiple for an oilfield services business. OXY is the cheapest name outright at 5.3x with net debt/EBITDA of 0.7x, and it fails the trend filter by a wide margin at roughly 20% above its 200-day.
-
-The educational point is what a two-condition screen does when a sector re-rates hard: after a 60%-plus year in crude, almost nothing is below trend, so the "cheap and out of favor" intersection empties out and the only names left below trend are there for a specific reason — in BKR's case, Saudi revenue concentration the market is actively repricing. A screen that returns an empty set is information, not a failure.
-
-*Educational use only. This is not investment advice, and none of the above is a recommendation to buy or sell any security.*
-
----
-
-### Sources
-
-- [Oil: What next as Saudi Arabia scrambles to restore East-West pipeline — CNBC](https://www.cnbc.com/2026/09/15/oil-prices-saudi-arabia-east-west-pipeline-iran.html)
-- [U.S. crude oil rises back above $104 as market awaits updates on Saudi pipeline outage — CNBC](https://www.cnbc.com/2026/09/15/oil-extends-gains-following-houthi-strikes-on-saudi-arabia.html)
-- [Oil prices climb as attacks, pipeline outage deepen Saudi supply concerns — BNN Bloomberg](https://www.bnnbloomberg.ca/markets/oil/2026/09/15/oil-prices-climb-as-attacks-pipeline-outage-deepen-saudi-supply-concerns/)
-- [Saudi Arabia has shut the East-West crude oil pipeline. Why does this matter? — CNN Business](https://www.cnn.com/2026/09/14/economy/saudi-east-west-pipeline-shut-oil-market)
-- [Oil Prices Extend Gains on Saudi Supply and Hormuz Concerns — Mansfield Energy](https://mansfield.energy/2026/09/15/oil-prices-extend-gains-on-saudi-supply-and-hormuz-concerns/)
-- [Brent crude oil price and historical data — Trading Economics](https://tradingeconomics.com/commodity/brent-crude-oil)
-- [Crude oil price and historical data — Trading Economics](https://tradingeconomics.com/commodity/crude-oil)
-- [Natural gas price and historical data — Trading Economics](https://tradingeconomics.com/commodity/natural-gas)
-- [Refining Stocks Soar As Crack Spread Hits Record High In 2026 — Forbes](https://www.forbes.com/sites/garthfriesen/2026/07/23/refining-stocks-soar-as-crack-spread-hits-record-high-in-2026/)
-- [Global Fuel Squeeze Triggers U.S. Refiners Stocks Rally — OilPrice.com](https://oilprice.com/Energy/Crude-Oil/Global-Fuel-Squeeze-Triggers-US-Refiners-Stocks-Rally.html)
-- [A 25-Basis-Point Move Is Now Expected: Why July's Hold Has 'Lowered the Bar' — Chase](https://www.chase.com/personal/investments/learning-and-insights/article/september-2026-rate-hike-now-expected-amid-energy-shocks)
-- [The stock market could do something strange this week after the Fed decision — CNBC](https://www.cnbc.com/2026/09/14/the-stock-market-could-do-something-strange-this-week-after-the-fed-decision.html)
-- [OPEC+ agrees September oil hike, completing rollback of voluntary cuts — CNBC](https://www.cnbc.com/2026/08/02/opec-agrees-september-oil-hike-completing-rollback-of-voluntary-cuts.html)
-- [US Natural Gas Storage Picture Likely to Tighten Even as Henry Hub Slides — Natural Gas Intelligence](https://naturalgasintel.com/news/us-natural-gas-storage-picture-likely-to-tighten-even-as-henry-hub-slides/)
-- [Morning Brief Sep 15: Oil Bid, Yields at 2007 High — Current Logic](https://currentlogic.substack.com/p/the-morning-brief-september-15-2026)
-- Price, 200-day SMA, EV/EBITDA and earnings-calendar data: Financial Modeling Prep (Starter plan)
+The caveat matters as much as the screen: services stocks are cheap because the market doubts the durability of activity, not because it has overlooked them, and a screen that ranks on trailing EBITDA will always flag the industry with the most cyclical earnings. Note too that OXY (5.0x) and DVN (7.2x) screen cheaper still on EV/EBITDA — they simply fail the below-trend filter, because both are well above their 200-day averages after the crude rally. Whether "below trend" is the right second filter, or just the one this screen happens to use, is the open question.
