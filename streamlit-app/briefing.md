@@ -1,90 +1,69 @@
-# Oil & Gas Equity Monitor — Friday, September 18, 2026
+# Oil & Gas Equity Monitor — Monday, September 21, 2026
 
-*Prices and movers reflect the last completed session, Thursday September 17. Friday's session had not opened when this ran.*
+*Briefing prepared pre-open. Latest completed session is Friday, September 18, 2026. Educational research only — not investment advice.*
 
 ## Market
 
-Crude is retracing a war premium rather than building one. Brent settled at $104.82 on Wednesday Sept 17, down 0.95% on the day and down 3.6% from Tuesday's $108.75 peak — the second straight session lower. The driver is the Saudi East-West Crude Oil Pipeline, shut on Sept 11 after drone strikes launched from Iraqi territory. That line had been carrying roughly 5 mb/d to the Red Sea port of Yanbu and was the kingdom's main workaround while the Strait of Hormuz remains effectively closed by Iran, so its loss took out something on the order of 4% of global supply and pushed Brent through $100 for the first time in months. Prices are now easing because Aramco is reported to be bypassing the damaged section, targeting about half of capacity within days and full operation in roughly six weeks. US Energy Secretary Chris Wright called the outage a brief interruption "measured in days." Independent analysts are less sure — satellite imagery reportedly shows significant damage to a pumping station, which argues for weeks. Riyadh is also offering Asian refiners extra cargoes via ship-to-ship transfer near Oman as a partial workaround.
+Crude spent last week dominated by a single story: the Houthi drone strikes that took out three pumping stations on Saudi Aramco's East-West pipeline, the artery that moves crude from the Eastern Province to the Red Sea. WTI briefly topped $105 mid-week as Aramco cancelled cargoes, but by Friday the market had decided the outage was more manageable than first feared. WTI settled down 1.6% at $100.30 and Brent fell 0.9% to $103.87, a third straight down session and a narrow loss for the week. The de-escalation came from Aramco itself: the company is offering prompt barrels loading from terminals outside the Strait of Hormuz, expects partial pipeline restarts within days and full capacity within roughly six weeks. The offset is that at least two European refining customers have been told they get no crude next month. Analysts at Rapidan see Saudi exports constrained through at least end-September, with risk skewed higher if the outage runs long or the Houthis strike again — they are believed to retain the drone inventory to do so.
 
-Two bearish inputs compounded the pullback. The IEA cut its global demand outlook on Sept 16, citing structural headwinds and sluggish growth, and EIA weekly data showed US crude stocks down only 640k bbl for the week ended Sept 11, far shallower than consensus expected. The structural tightness has not gone away: IEA put August global production at 100.1 mb/d, down 1.6 mb/d month-over-month, with more than 10 mb/d of Gulf output shut in. OPEC+ spare capacity sits mostly with Saudi Arabia and the UAE at roughly 2.5 mb/d, but Hormuz makes much of it unexportable, so the headline number overstates the cushion.
+OPEC+ has effectively taken itself out of the equation for now. The 188,000 bpd September increase completed the unwind of roughly 3.5 mmbpd of 2023-era cuts, and the group has signalled quotas hold steady through year-end. That matters mainly because it shifts the swing-supply question from policy to physical capability, and many members still cannot produce to quota. Saudi Arabia holds the only meaningful buffer, which is precisely the barrel now under attack.
 
-Natural gas moved the other way. Henry Hub traded above $2.90/MMBtu, the highest since Sept 4, after EIA reported a 44 Bcf injection for the week ended Sept 11 — well under the 74 Bcf five-year average and the 87 Bcf year-ago build. Lingering air-conditioning demand and forecasts for warmer-than-normal weather into early October are keeping power burn elevated.
+Natural gas is running its own cycle. Henry Hub pushed above $2.90/MMBtu, the highest since September 4, on a two-month low in Lower-48 output (about 108.4 bcfd) and an unusually warm end to the injection season. The EIA reported a 44 bcf build for the week ended September 11 versus 87 bcf a year ago and a 74 bcf five-year norm; inventories of 3.298 tcf sit 3.7% above the five-year average but 3.6% below last year. Forecasters expect above-normal temperatures through September 30, so the storage surplus should keep eroding.
+
+On the corporate side the notable weekend item was Diversified Energy's $1.8 billion acquisition of Birch — its largest deal in 25 years, adding operated Permian acreage with integrated infrastructure, closing in Q4. Carlyle and Diversified also widened their partnership framework from $2 billion to a potential $10 billion of PDP acquisitions.
 
 ## Earnings
 
-**Reported in the last 24 hours:** None. No oil & gas names appear in the FMP earnings calendar for Sept 17.
+**Reported in the last ~24 hours:** none. No oil & gas name on the watchlist or in the broader peer set reported between Friday's open and this morning.
 
-**Reporting today (Sept 18):** None in the sector.
+**Reporting today (Monday, September 21):** none in the sector.
 
-**Upcoming through Sept 25:** None. The full calendar window (Sept 17–25) returned 421 companies, none of them oil & gas — the sector sits in the gap between Q2 and Q3 reporting seasons, and the window is dominated by OTC and foreign micro-caps plus a handful of unrelated US names (AZO, COST, CTAS, DRI, GIS, KBH, PAYX).
+**Upcoming through September 28:** the FMP earnings calendar for September 18–28 returns no US-listed oil & gas names across E&P, integrated, services, midstream, refining or drilling. The only sector-adjacent entry is Lukoil's ADR (LKOLF) on September 25, a thinly traded OTC listing with no estimates attached — not actionable.
 
-**When the sector actually reports (just outside the window):**
+**Note on timing.** The window simply falls between reporting seasons. Q3 prints start the week of October 16 and cluster in the last two weeks of the month:
 
-- **Oct 16** — SLB opens Q3 season; consensus $0.62 EPS on $9.27B revenue
-- **Oct 28** — KMI; consensus $0.33 EPS on $4.42B revenue
-- **Oct 30** — XOM ($3.54 EPS on $106.8B) and CVX ($4.77 EPS on $57.7B) the same day
+- Oct 16 — SLB (est. EPS $0.62, rev $9.27B)
+- Oct 20 — HAL (est. $0.59, rev $5.58B)
+- Oct 22 — BKR (est. $0.62, rev $7.28B)
+- Oct 28 — KMI (est. $0.33, rev $4.42B)
+- Oct 30 — XOM (est. $3.54, rev $106.8B) and CVX (est. $4.77, rev $57.7B)
 
-Worth noting for context on the majors: CVX beat by 9% last quarter ($6.06 vs $5.55) while XOM narrowly missed on EPS ($3.52 vs $3.56) but beat handily on revenue ($116.0B vs $109.9B). SLB has beaten EPS estimates in each of the last three quarters.
+Services lead, as usual, so SLB on October 16 will be the first real read on North American activity and international spend under $100 oil. Worth remembering that Q2 was mostly a beat quarter: CVX came in at $6.06 against $5.55, BKR $0.64 against $0.50, SLB $0.55 against $0.51, KMI $0.37 against $0.32, HAL $0.55 against $0.54. XOM was the exception, $3.52 against $3.56 on revenue that still beat by $6B.
 
 ## Today's movers
 
-Derived from daily closes via the FMP 200-day SMA endpoint, which returns OHLC per date — the live quote and batch-quote endpoints were not available on this run (see Data notes). Changes are Sept 16 close to Sept 17 close.
+FMP's live quote endpoints (quote / batch-quote / quote-short) are gated to Premium on the current Starter plan and returned ACCESS DENIED. All price changes below are therefore **derived from daily closes returned by the 200-day simple-moving-average endpoint** — Friday, September 18 close versus Thursday, September 17 close. This is a true one-day change for the priced subset of the watchlist, not an intraday move.
 
 **Up:**
 
-| Ticker | Change | Close |
-|---|---|---|
-| PSX | +3.62% | $274.21 |
-| VLO | +2.29% | $412.53 |
-| MPC | +1.94% | $421.96 |
+- **TRGP +2.50%** ($292.19) — best day in the group, extending a run that has it 20% above its 200-day.
+- **KMI +1.69%** ($31.84) — nudged back above its 200-day average ($31.27) for the first time in a while.
+- **BKR +1.20%** ($57.25) — the only gainer still trading below its 200-day.
 
 **Down:**
 
-| Ticker | Change | Close |
-|---|---|---|
-| HAL | −1.39% | $34.03 |
-| SLB | −0.42% | $52.08 |
-| ET | −0.28% | $21.05 |
+- **FANG −2.30%** ($192.42) — largest decliner; gave back Thursday's gain as crude slipped.
+- **SLB −1.84%** ($51.12) — services led the sector lower, consistent with the pipeline-outage premium fading.
+- **HAL −1.15%** ($33.64) — third straight soft session, and the weakest name in the group on a 200-day basis.
 
-The pattern is clean and worth reading carefully: a refining sweep at the top, services at the bottom. Falling crude compresses refiners' feedstock cost while wartime product scarcity holds crack spreads wide, so PSX, VLO and MPC gain on exactly the news that hurts producers. All three now trade 55–69% above their 200-day averages — a very extended position that depends on crack spreads staying abnormal.
+Sector ETFs were quietly lower: XLE −0.26% ($64.31), XOP −1.03% ($190.61), XES −0.57% ($115.82). Midstream (TRGP, KMI, EPD, ET, WMB all green) clearly outperformed E&P and services, which is the shape you would expect when the crude risk premium deflates but gas and NGL volumes hold.
 
-Separately, FANG fell 8.0% close-to-close on Sept 16 (not in the table above, which covers Sept 17) on the IEA demand cut, a Morgan Stanley downgrade and a large insider sale, making it the S&P 500's second-worst performer that day. Volume was 15.4M shares against a typical 2M. It recovered +1.23% on Sept 17.
+Data note: Hess (HES) remains off the watchlist following Chevron's completed acquisition; FMP returns no data for it. No other watchlist ticker returned not_found this run.
 
 ## Stocks to watch
 
-- **HAL** — the only watchlist name that is both down on the session and below its 200-day average (−3.3%); services demand lags crude, so it has not participated in the war rally
-- **BKR** — furthest below its 200-day average of the whole watchlist (−4.0%), the other services name left behind
-- **PSX / VLO / MPC** — the refining complex is the sector's momentum trade right now, but at 55–69% above trend it is priced for crack spreads to stay wide
-- **LNG** (Cheniere) — +0.78%, 11% above its 200-day; a lean storage build and constrained Gulf flows both point at US export economics
-- **KMI** — closed at $31.31 against a $31.25 200-day average, sitting almost exactly on trend; a clean level to watch for direction in gas midstream
+- **HAL** — the only watchlist name meaningfully below its 200-day (−4.5%) while also trading at a below-sector EV/EBITDA of 8.3x. Either the market is right about North American pressure-pumping margins or this is the cheap end of a sector that has re-rated.
+- **BKR** — also below its 200-day (−2.9%), but at 12.1x EV/EBITDA it is the expensive one of the two services names. The gas-tech and LNG equipment backlog is the reason; watch whether that premium survives October 22.
+- **TRGP** — 20% above its 200-day after the 20-year ExxonMobil Permian gathering and processing agreements and three new Delaware plants. Momentum name; the question is how much of the build-out is already priced.
+- **OXY** — cheapest name in the group on EV/EBITDA at 4.9x with a 12.4% earnings yield, but trading 10.5% above its 200-day. Leverage to crude cuts both ways here given net debt/EBITDA of 0.75x.
+- **VLO / MPC** — refiners are the extreme of the sector, 66% and 69% above their respective 200-day averages. Crack spreads under a Saudi supply disruption have been extraordinary; these are the names most exposed if the East-West pipeline restarts on schedule.
 
 ## Screen idea
 
-**Screen: below the 200-day average, within an extended sector.** Of the 19 watchlist names and 3 ETFs, exactly two close below their 200-day moving average — **HAL** (−3.3%) and **BKR** (−4.0%), both oilfield services. Everything else trades above trend, most of it far above: refiners 55–69%, XOP +19.6%, TRGP +17.5%, COP +16.1%.
+**Below the 200-day and cheap on EV/EBITDA.** Only two of 19 watchlist names closed below their 200-day average on Friday — HAL (−4.5%) and BKR (−2.9%) — which tells you how thoroughly the sector has run. Of the two, **HAL** combines the deeper technical discount with the lower multiple (8.3x EV/EBITDA vs BKR's 12.1x), 15.1% ROE and net debt/EBITDA of 1.48x. That makes it the single name best fitting the screen this morning.
 
-That divergence is the educational point. Services revenue is driven by customer capex budgets, which are set on medium-term price decks rather than spot, so a geopolitical spike in crude does not flow through to HAL or BKR the way it flows to producers and refiners. Whether that is a lag worth owning or a signal that E&Ps will not raise budgets for a supply shock they expect to be temporary is the actual question — and the answer depends on how long the East-West pipeline stays impaired, which is precisely what the market is disagreeing about.
+Two honest caveats. First, "below the 200-day" in a sector where the median name sits 10–15% *above* its average is a signal of relative weakness, not cheapness — HAL and BKR are lagging because North American services pricing has not participated in the crude rally, and that may be a correct assessment rather than a mispricing. Second, if you drop the technical filter, **OXY is the cheapest name in the group outright at 4.9x EV/EBITDA** (vs HAL 8.3x, DVN 7.3x, BKR 12.1x) — it just happens to be trading above its own 200-day. A screen that requires both conditions is a narrow screen, and narrowness is worth noticing rather than treating as conviction.
 
-The valuation leg of this screen is incomplete: EV/EBITDA could not be pulled on this run (see Data notes), so the names above are identified on the technical criterion alone. Treat it as a starting list to research, not a conclusion.
+---
 
-*Educational content only — not investment advice.*
-
-## Data notes
-
-- **Three FMP endpoints were unavailable this run** because they required approval and no one was present to grant it during the scheduled execution: `quote / batch-quote` (live quotes), `key-metrics-ttm` (EV/EBITDA), and the Alpha Vantage WTI series. Movers were therefore derived from daily closes, and the screen has no valuation leg. Approving these for scheduled runs would restore both.
-- **WTI has no usable FMP series on the Starter plan** — `CLUSD` is Premium-gated and `WTIUSD` returns not_found. WTI levels referenced in the Market section come from news reporting (near $100), not from a data feed. Brent (`BZUSD`) works. Henry Hub (`NGUSD`) is also Premium-gated, so the gas price above is likewise from reporting.
-- **HES** remains delisted following Chevron's completed acquisition; not queried.
-- No other watchlist ticker returned not_found this run.
-
-## Sources
-
-- [Saudi Arabia shut down East-West crude oil pipeline after drone attacks — CNBC](https://www.cnbc.com/2026/09/11/saudi-arabia-shut-down-east-west-crude-oil-pipeline.html)
-- [Oil prices fall after U.S. says damaged Saudi pipeline will restart in days — CNBC](https://www.cnbc.com/2026/09/16/oil-prices-today-brent-wti-hormuz-iran-war.html)
-- [Why Saudi Arabia's East-West pipeline matters for global oil — Al Jazeera](https://www.aljazeera.com/news/2026/9/14/why-saudi-arabias-east-west-pipeline-matters-for-global-oil)
-- [Current price of oil as of September 17, 2026 — Fortune](https://fortune.com/article/price-of-oil-09-17-2026/)
-- [Oil Market Report, September 2026 — IEA](https://www.iea.org/reports/oil-market-report-september-2026)
-- [Strait of Hormuz — IEA](https://www.iea.org/about/oil-security-and-emergency-response/strait-of-hormuz)
-- [Natural gas price and storage data — Trading Economics](https://tradingeconomics.com/commodity/natural-gas)
-- [Natural Gas Weekly Update — EIA](https://www.eia.gov/naturalgas/weekly/)
-- [Diamondback Energy shares gap down — MarketBeat](https://www.marketbeat.com/instant-alerts/price-diamondback-energy-nasdaq-fang-shares-gap-down-heres-why-2026-09-16/)
-- [Diamondback leads broad losses in energy stocks — Seeking Alpha](https://seekingalpha.com/news/4643468-diamondback-leads-broad-losses-in-energy-stocks-alongside-falling-crude-prices)
-- Price, SMA and earnings-calendar data: Financial Modeling Prep (Starter plan)
+*Sources: CNBC, Bloomberg, Trading Economics, Natural Gas Intelligence, World Oil, OPEC, Oklahoma Energy Today, Targa Resources IR, Financial Modeling Prep.*
