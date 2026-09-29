@@ -1,42 +1,30 @@
-# September 27, 2026
+# Oil & Gas Briefing — Monday, September 28, 2026
 
 ## Market
+Crude ended last week lower on U.S.-Iran diplomacy. On Friday WTI settled near $92.41 (-2.3% on the day, roughly -7.9% on the week) and Brent near $104.30 (-2.1% on the day, roughly flat on the week). Reports that Washington and Tehran are exploring a phased path out of the conflict, possibly including a reopening of the Strait of Hormuz, took the risk premium out of prices after an intraday high just above $108. The Brent-WTI spread is about $12, the widest since May, because Brent still prices Middle East transport risk while WTI is weighed by U.S.-specific factors, including talk of a possible U.S. diesel export restriction. Some outlets showed WTI in the mid-$90s on Monday morning, so treat intraday levels as approximate.
 
-Crude sold off into the weekend: WTI settled Friday (9/25) near $93.28/bbl, down 2.33% on the day and roughly 7.4% for the week, as diplomatic signals pointed toward de-escalation in the Gulf. Iran's foreign minister publicly called on the U.S. to return to an interim peace deal and floated reopening the Strait of Hormuz within seven days, contingent on Washington lifting its naval blockade and unfreezing Iranian assets. Shipping through the Strait has been ticking back up (oil flows reached ~33.7 million bbls this week) but remains well below pre-crisis levels. This is the latest chapter of the Iran-war fuel crisis that began in March 2026: Brent spiked to $118/bbl at the end of March on the Hormuz closure, collapsed to ~$71 by early July after a ceasefire, then rebounded toward $97 in late July as shipping stayed constrained. Markets are now trading the on-again/off-again peace track, with added volatility from Houthi-linked attacks in the Red Sea/Gulf and chatter about possible U.S. diesel export restrictions.
+Supply risk remains elevated. Houthi missile and drone strikes on Saudi Arabia continue, and Saudi Arabia's 4 mb/d East-West pipeline was reported closed after September 10 drone attacks (one outlet says it has since restarted, so status is unclear). Hormuz traffic is still thin, with only 13 crossings reported on Thursday. Refined-product markets, especially diesel, remain very tight, which supports refiners. I found no new OPEC+ production decision in the past day.
 
-OPEC+ completed its unwind of "voluntary" production cuts with the September output hike agreed August 2, and delegates have signaled the group plans to pause further quota increases after September — a shift toward stabilizing supply growth rather than continuing to add barrels.
+Natural gas: I could not confirm a reliable Henry Hub print in today's searches (one aggregator showed roughly $3.08). Treat gas levels as unverified.
 
-Natural gas fell 3.06% to about $3.20/MMBtu (as of 9/25), giving back some of a recent run-up. TC Energy's Columbia Gas Transmission pipeline force majeure had driven the biggest single-day gas gain since January; since then, the EIA reported a 53 Bcf storage build for the week ended 9/18 (surplus narrowing to 95 Bcf above the five-year average), LNG feedgas demand ticked up to ~17.8 bcfd even with Cove Point offline for maintenance, and hot-weather cooling demand has offset some of the seasonal production drag out of Louisiana and West Virginia.
+Note: FMP live quote endpoints are gated on this plan, so no quotes were pulled. Company-specific headlines were thin. Williams announced its Q2 results and a Momentum Midstream acquisition linking the Haynesville to Gulf Coast LNG, and Talos closed a Gulf deepwater bolt-on.
 
 ## Earnings
-
-**Reported in the last ~24h:** None of the watchlist or sector-peer names (E&P, integrated, services, midstream, refining, drilling) show a report in FMP's earnings calendar for the Sept 24–Oct 4 window; the batch calendar for this window returned no oil & gas matches, confirmed against each watchlist name's own earnings history.
-
-**Reporting today (9/27):** None.
-
-**Upcoming (next 7 days, Sept 27–Oct 4):** None scheduled — the sector's Q3 reporting season doesn't kick off until mid-October.
-
-**Just outside the window — next earnings cluster:** SLB reports Oct 16; HAL and EQT on Oct 20; BKR on Oct 22; KMI on Oct 28; XOM on Oct 30. Among the majors/large E&Ps, COP and CNQ report Nov 5, DVN Nov 4, and Suncor (SU) Nov 3.
+FMP's earnings calendar for Sept 27 to Oct 5 returned 373 entries, and none were oil & gas names from the watchlist or the sector-peer list. That means nothing reported in the last 24 hours, nothing reports today, and nothing is scheduled over the next 7 days. Q3 reporting for the majors and large E&Ps normally begins in late October, so expect XOM, CVX, COP and the large service names after the window closes. No dates were verified.
 
 ## Today's movers
+Derived from daily closes (Sep 28 vs Sep 25) from the FMP SMA endpoint, because live quotes are gated. This covers the 19 watchlist names plus XLE, XOP and XES. HES is delisted (Chevron acquisition) and was not fetched.
 
-FMP's live quote endpoints (quote/batch-quote) are gated to Premium on the Starter plan, so movers below are derived from daily closes (Fri 9/25 vs Thu 9/24) via the SMA-200/1-day technical-indicator endpoint for the priced subset (19 watchlist names + XLE/XOP/XES).
-
-**Down:** DVN -3.78% (crude weakness hit E&Ps hardest), LNG -2.80% (soft gas prices weighing on the export/feedgas story), OXY -2.05% (oil-price-sensitive upstream name).
-
-**Up:** VLO +1.13%, BKR +0.94%, MPC +0.66% — refiners and a services name bucked the tape; refining margins benefit from cheaper crude feedstock even as WTI itself sold off.
+Up: XOM +1.2% ($162.53), CVX +0.9% ($206.37), VLO +0.6% ($389.57).
+Down: XES -1.4% ($110.99), OXY -1.3% ($56.10), BKR -1.2% ($57.12).
+Sector ETFs: XLE +0.1%, XOP -0.8%, XES -1.4%. The pattern is integrateds and refiners holding up while E&Ps and services slipped with crude's weekly decline.
 
 ## Stocks to watch
-
-- **HAL** — cheapest name in the group on EV/EBITDA (~8.1x) and trading ~7.3% below its 200-day average; see screen idea below.
-- **DVN** — Friday's biggest decliner (-3.78%), a leveraged read on crude direction into the Iran diplomacy headlines.
-- **LNG** — hit by the natural gas pullback; watch feedgas/export data given its price sensitivity to gas weakness.
-- **VLO** — Friday's top gainer (+1.13%) on refining-margin optics as crude fell.
-- **KMI** — trading ~2.0% below its 200-day average with EV/EBITDA near 12.5x; next earnings Oct 28.
+- HAL: trades about 8% below its 200-day average with the lowest EV/EBITDA in the group (about 8.0x), and it fell 1.0% today.
+- OXY: the largest E&P decliner today (-1.3%) and the most sensitive to a Hormuz de-escalation.
+- VLO: refiners are supported by tight diesel markets, and VLO gained 0.6% while crude fell.
+- BKR: about 3.5% below its 200-day average after a 1.2% drop, so watch for a reversal or a break lower.
+- XOM: the strongest large-cap gainer (+1.2%), well above its 200-day average.
 
 ## Screen idea
-
-Among names trading below their 200-day average (HAL, BKR, WMB, KMI), **HAL** best combines "below trend" with "cheap": it's ~7.3% under its 200-day SMA and carries the lowest EV/EBITDA of the group at ~8.1x, versus EPD ~10.7x, BKR ~12.2x, KMI ~12.5x, and WMB ~15.5x. Educational screen only, not investment advice.
-
----
-*Data notes: Live FMP quote/batch-quote endpoints are Premium-gated on the Starter plan; today's movers and %-change figures were derived from SMA-200/1-day closes instead. No watchlist tickers returned "not_found" in this run (HES was already dropped after the Chevron acquisition closed).*
+Halliburton (HAL) combines the deepest discount to its 200-day moving average (about -8.3%) with the cheapest EV/EBITDA of the names screened (about 8.0x, versus BKR 12.1x, KMI 12.4x, EPD 10.7x, WMB 15.4x). Cheap and below trend can signal either opportunity or a real problem, such as weak activity or margin pressure, so check the fundamentals before drawing conclusions. This is educational, not investment advice.
