@@ -1,30 +1,32 @@
-# Oil & Gas Briefing — Monday, September 28, 2026
+# Oil & Gas Briefing — Tuesday, September 29, 2026
 
 ## Market
-Crude ended last week lower on U.S.-Iran diplomacy. On Friday WTI settled near $92.41 (-2.3% on the day, roughly -7.9% on the week) and Brent near $104.30 (-2.1% on the day, roughly flat on the week). Reports that Washington and Tehran are exploring a phased path out of the conflict, possibly including a reopening of the Strait of Hormuz, took the risk premium out of prices after an intraday high just above $108. The Brent-WTI spread is about $12, the widest since May, because Brent still prices Middle East transport risk while WTI is weighed by U.S.-specific factors, including talk of a possible U.S. diesel export restriction. Some outlets showed WTI in the mid-$90s on Monday morning, so treat intraday levels as approximate.
+Crude fell on Tuesday as supply worries eased. Trading Economics had Brent near $102.83 (-2.6% on the day), citing a U.S. announcement of up to 40 million barrels from the SPR in an exchange, and Saudi Arabia restoring roughly half of its pipeline capacity after drone attacks. FMP's Brent daily series shows a larger drop, $105.28 to $96.16, so treat the exact level as approximate. U.S.-Iran talks over the Strait of Hormuz remain unresolved, and the geopolitical premium is still large; a CNBC headline from Monday said an Iran proposal was rejected and oil rose.
 
-Supply risk remains elevated. Houthi missile and drone strikes on Saudi Arabia continue, and Saudi Arabia's 4 mb/d East-West pipeline was reported closed after September 10 drone attacks (one outlet says it has since restarted, so status is unclear). Hormuz traffic is still thin, with only 13 crossings reported on Thursday. Refined-product markets, especially diesel, remain very tight, which supports refiners. I found no new OPEC+ production decision in the past day.
+On OPEC+, the group held October output policy unchanged after its early-September virtual meeting. Analysts quoted in coverage say it has limited power over physical supply while Middle East disruptions persist. The next meeting is October 4, with 2027 quotas the main topic. This is the only OPEC+ event inside the coming week.
 
-Natural gas: I could not confirm a reliable Henry Hub print in today's searches (one aggregator showed roughly $3.08). Treat gas levels as unverified.
+Natural gas: I could not retrieve a reliable Henry Hub print today (FMP commodity quotes for NG are gated on Starter and the news pages I tried were blocked). Coverage this month points to Henry Hub sliding while the storage picture tightens. Check the live dashboard for the level.
 
-Note: FMP live quote endpoints are gated on this plan, so no quotes were pulled. Company-specific headlines were thin. Williams announced its Q2 results and a Momentum Midstream acquisition linking the Haynesville to Gulf Coast LNG, and Talos closed a Gulf deepwater bolt-on.
+Equities: the sector sold off with crude. Oilfield services led the drop (SLB -3.2%, HAL -2.7%, BKR -2.1%). XLE fell 0.9% and XOP 0.8%, and XLE remains about 10% above its 200-day average.
 
 ## Earnings
-FMP's earnings calendar for Sept 27 to Oct 5 returned 373 entries, and none were oil & gas names from the watchlist or the sector-peer list. That means nothing reported in the last 24 hours, nothing reports today, and nothing is scheduled over the next 7 days. Q3 reporting for the majors and large E&Ps normally begins in late October, so expect XOM, CVX, COP and the large service names after the window closes. No dates were verified.
+The FMP earnings calendar for Sep 28 – Oct 6 was filtered against the watchlist and about 90 oil and gas peers (E&P, integrated, services, midstream, refining, drilling). **No oil and gas names are scheduled in this window and none reported in the last 24 hours.** The only reporters are non-energy (NKE, ACN, MKC, STZ, etc.), so there is nothing to tag as beat or miss.
+
+Outside the window, the majors and large E&Ps normally report in late October to early November, with midstream such as KMI typically mid-October. Confirm exact dates on the dashboard as they are posted.
 
 ## Today's movers
-Derived from daily closes (Sep 28 vs Sep 25) from the FMP SMA endpoint, because live quotes are gated. This covers the 19 watchlist names plus XLE, XOP and XES. HES is delisted (Chevron acquisition) and was not fetched.
+Method: live quote endpoints are gated on the Starter plan, so 1-day changes were derived from daily closes returned by the 200-day SMA endpoint (Sep 28 to Sep 29) for the 19 stocks and 3 ETFs.
 
-Up: XOM +1.2% ($162.53), CVX +0.9% ($206.37), VLO +0.6% ($389.57).
-Down: XES -1.4% ($110.99), OXY -1.3% ($56.10), BKR -1.2% ($57.12).
-Sector ETFs: XLE +0.1%, XOP -0.8%, XES -1.4%. The pattern is integrateds and refiners holding up while E&Ps and services slipped with crude's weekly decline.
+Down: SLB -3.15%, HAL -2.74%, BKR -2.10% (ETF XES -2.88%). Next worst: OXY -2.07%, EPD -1.72%, TRGP -1.42%.
+Up: MPC +0.67% was the only gainer. The rest of the priced list was down between 0.3% and 1.0%.
+Note: HES (delisted after the Chevron deal) is excluded; no other ticker returned not_found.
 
 ## Stocks to watch
-- HAL: trades about 8% below its 200-day average with the lowest EV/EBITDA in the group (about 8.0x), and it fell 1.0% today.
-- OXY: the largest E&P decliner today (-1.3%) and the most sensitive to a Hormuz de-escalation.
-- VLO: refiners are supported by tight diesel markets, and VLO gained 0.6% while crude fell.
-- BKR: about 3.5% below its 200-day average after a 1.2% drop, so watch for a reversal or a break lower.
-- XOM: the strongest large-cap gainer (+1.2%), well above its 200-day average.
+- HAL: services group led the selloff; trades about 11% below its 200-day average with EV/EBITDA near 7.8x.
+- SLB: worst mover today (-3.2%) and now below its 200-day average, but pricier at about 11.8x EV/EBITDA.
+- OXY: -2.1% on crude's drop; most oil-price-sensitive of the large E&Ps.
+- MPC: the only gainer, as cheaper crude helps refining margins; it sits well above its 200-day average.
+- KMI: below its 200-day average, and its earnings are likely mid-October.
 
 ## Screen idea
-Halliburton (HAL) combines the deepest discount to its 200-day moving average (about -8.3%) with the cheapest EV/EBITDA of the names screened (about 8.0x, versus BKR 12.1x, KMI 12.4x, EPD 10.7x, WMB 15.4x). Cheap and below trend can signal either opportunity or a real problem, such as weak activity or margin pressure, so check the fundamentals before drawing conclusions. This is educational, not investment advice.
+HAL is the best combination of a price below its 200-day average (31.54 vs about 35.38, roughly 11% below) and a low EV/EBITDA (7.8x TTM, versus FANG 9.0x, EPD 10.5x, SLB 11.8x, BKR 11.8x, KMI 12.4x). Its free-cash-flow yield is about 6.5% and net debt/EBITDA about 1.5x. Educational screen only, not investment advice; a stock can stay cheap for good reasons, such as weak services activity.
