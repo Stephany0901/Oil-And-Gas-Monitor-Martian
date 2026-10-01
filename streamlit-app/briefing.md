@@ -1,32 +1,30 @@
-# Oil & Gas Briefing — Tuesday, September 29, 2026
+# Wednesday, September 30, 2026
 
 ## Market
-Crude fell on Tuesday as supply worries eased. Trading Economics had Brent near $102.83 (-2.6% on the day), citing a U.S. announcement of up to 40 million barrels from the SPR in an exchange, and Saudi Arabia restoring roughly half of its pipeline capacity after drone attacks. FMP's Brent daily series shows a larger drop, $105.28 to $96.16, so treat the exact level as approximate. U.S.-Iran talks over the Strait of Hormuz remain unresolved, and the geopolitical premium is still large; a CNBC headline from Monday said an Iran proposal was rejected and oil rose.
+Crude is volatile and elevated on the Middle East conflict. Brent traded near $102.6 in early trading Wednesday, up about 2.4% from $100.19 the prior day and roughly 54% above a year ago. Tuesday's session went the other way: prices settled down about 2.5% as crude exports recovered at Saudi Arabia's Red Sea ports, easing some supply-disruption fears. Brent is still up around 14% for September, so the month's move is driven by the conflict and Hormuz/Red Sea supply risk rather than demand. I could not retrieve a reliable WTI print today; check the dashboard.
 
-On OPEC+, the group held October output policy unchanged after its early-September virtual meeting. Analysts quoted in coverage say it has limited power over physical supply while Middle East disruptions persist. The next meeting is October 4, with 2027 quotas the main topic. This is the only OPEC+ event inside the coming week.
+OPEC+ delegates told Bloomberg they are likely to stick with the current plan of steady quotas, and an earlier report says the group kept policy unchanged for October. There is no new supply lever from the group for now.
 
-Natural gas: I could not retrieve a reliable Henry Hub print today (FMP commodity quotes for NG are gated on Starter and the news pages I tried were blocked). Coverage this month points to Henry Hub sliding while the storage picture tightens. Check the live dashboard for the level.
+US natural gas fell on Sept 28 as a West Virginia pipeline returned to service, with Northeast spot prices at multi-year lows. Midstream and gas-weighted names are lagging: KMI, WMB and EPD all slipped today and sit below their 200-day averages.
 
-Equities: the sector sold off with crude. Oilfield services led the drop (SLB -3.2%, HAL -2.7%, BKR -2.1%). XLE fell 0.9% and XOP 0.8%, and XLE remains about 10% above its 200-day average.
+Equities were mixed and mostly softer despite higher crude. Oilfield services led the declines (SLB, BKR). Refiners were the strongest group (PSX, MPC).
 
 ## Earnings
-The FMP earnings calendar for Sep 28 – Oct 6 was filtered against the watchlist and about 90 oil and gas peers (E&P, integrated, services, midstream, refining, drilling). **No oil and gas names are scheduled in this window and none reported in the last 24 hours.** The only reporters are non-energy (NKE, ACN, MKC, STZ, etc.), so there is nothing to tag as beat or miss.
-
-Outside the window, the majors and large E&Ps normally report in late October to early November, with midstream such as KMI typically mid-October. Confirm exact dates on the dashboard as they are posted.
+The FMP earnings calendar for Sept 29 to Oct 7 (358 rows) contained none of the watchlist or peer oil and gas tickers, so there are no reported, same-day or upcoming-in-window names to list. Treat this as a data-coverage note rather than proof nothing reports. The majors and large E&Ps (XOM, CVX, COP, EOG, OXY and others) normally report late October to early November, outside this window. Hess (HES) is no longer tracked after Chevron closed its acquisition.
 
 ## Today's movers
-Method: live quote endpoints are gated on the Starter plan, so 1-day changes were derived from daily closes returned by the 200-day SMA endpoint (Sep 28 to Sep 29) for the 19 stocks and 3 ETFs.
+Movers were derived from daily closes (9/30 vs 9/29) returned by the FMP 200-day SMA endpoint, because live quote endpoints are not available on the current plan. All 19 names and the three ETFs were priced.
 
-Down: SLB -3.15%, HAL -2.74%, BKR -2.10% (ETF XES -2.88%). Next worst: OXY -2.07%, EPD -1.72%, TRGP -1.42%.
-Up: MPC +0.67% was the only gainer. The rest of the priced list was down between 0.3% and 1.0%.
-Note: HES (delisted after the Chevron deal) is excluded; no other ticker returned not_found.
+Up: PSX +1.21%, XOM +0.87%, MPC +0.86%.
+Down: SLB -2.31%, BKR -1.82%, EOG -1.36%.
+ETFs: XOP +0.39%, XLE -0.07%, XES -0.25%.
 
 ## Stocks to watch
-- HAL: services group led the selloff; trades about 11% below its 200-day average with EV/EBITDA near 7.8x.
-- SLB: worst mover today (-3.2%) and now below its 200-day average, but pricier at about 11.8x EV/EBITDA.
-- OXY: -2.1% on crude's drop; most oil-price-sensitive of the large E&Ps.
-- MPC: the only gainer, as cheaper crude helps refining margins; it sits well above its 200-day average.
-- KMI: below its 200-day average, and its earnings are likely mid-October.
+- SLB: largest decliner today, now below its 200-day average (48.72 vs about 50.39).
+- HAL: trades about 10% below its 200-day average at the lowest EV/EBITDA of the group checked.
+- PSX / MPC: refiners leading the tape while crude is firm.
+- EOG: second-weakest E&P today despite higher crude; above its 200-day.
+- KMI: midstream below its 200-day amid weak gas; a read on whether gas softness persists.
 
 ## Screen idea
-HAL is the best combination of a price below its 200-day average (31.54 vs about 35.38, roughly 11% below) and a low EV/EBITDA (7.8x TTM, versus FANG 9.0x, EPD 10.5x, SLB 11.8x, BKR 11.8x, KMI 12.4x). Its free-cash-flow yield is about 6.5% and net debt/EBITDA about 1.5x. Educational screen only, not investment advice; a stock can stay cheap for good reasons, such as weak services activity.
+HAL combines a price below its 200-day average (31.80 vs about 35.40, roughly 10% under) with the lowest EV/EBITDA of the five checked: HAL 7.9x, ET 9.4x, SLB 11.5x, BKR 11.6x, KMI 12.3x. Cheap on a screen can also mean the market expects weaker earnings, so check drilling activity and guidance. Educational only, not investment advice.
