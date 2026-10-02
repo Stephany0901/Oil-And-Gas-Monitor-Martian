@@ -1,30 +1,32 @@
-# Wednesday, September 30, 2026
+# Thursday, October 1, 2026
 
 ## Market
-Crude is volatile and elevated on the Middle East conflict. Brent traded near $102.6 in early trading Wednesday, up about 2.4% from $100.19 the prior day and roughly 54% above a year ago. Tuesday's session went the other way: prices settled down about 2.5% as crude exports recovered at Saudi Arabia's Red Sea ports, easing some supply-disruption fears. Brent is still up around 14% for September, so the month's move is driven by the conflict and Hormuz/Red Sea supply risk rather than demand. I could not retrieve a reliable WTI print today; check the dashboard.
+Crude rebounded on Wednesday as US-Iran talks stalled. WTI settled at $90.42 (+1.2%) and the December Brent contract at $98.03 (+1.9%); the expiring November Brent finished at $103.50. President Trump denied reports of offering Iran sanctions relief, which kept the geopolitical "war premium" in the market and pushed back hopes that more Iranian barrels reach buyers soon. Earlier in the week Brent had slid on signs that Middle East exports were recovering, so the tape remains headline-driven.
 
-OPEC+ delegates told Bloomberg they are likely to stick with the current plan of steady quotas, and an earlier report says the group kept policy unchanged for October. There is no new supply lever from the group for now.
+The latest US inventory data was mixed. Crude stocks built by about 0.9 million barrels, but gasoline fell 1.7 million and distillates fell 2.3 million. That tightness in products is the key theme for refiners (see movers).
 
-US natural gas fell on Sept 28 as a West Virginia pipeline returned to service, with Northeast spot prices at multi-year lows. Midstream and gas-weighted names are lagging: KMI, WMB and EPD all slipped today and sit below their 200-day averages.
+Natural gas: I could not retrieve a reliable Henry Hub print from the sources reachable this run. Reporting from Sept 28 points to end-of-season US storage heading for a three-year low in October, a supportive backdrop for gas-weighted names and LNG exporters.
 
-Equities were mixed and mostly softer despite higher crude. Oilfield services led the declines (SLB, BKR). Refiners were the strongest group (PSX, MPC).
+OPEC+ held its October output policy unchanged at the early-September meeting and is next due to meet October 4, with targets expected to stay flat.
+
+Company headlines: refiners outran the integrated majors as fuel margins widened; MPC and VLO gained 4-5% on the day while XOM was roughly flat in the reports I found. Pure-play refiners are up sharply year to date.
 
 ## Earnings
-The FMP earnings calendar for Sept 29 to Oct 7 (358 rows) contained none of the watchlist or peer oil and gas tickers, so there are no reported, same-day or upcoming-in-window names to list. Treat this as a data-coverage note rather than proof nothing reports. The majors and large E&Ps (XOM, CVX, COP, EOG, OXY and others) normally report late October to early November, outside this window. Hess (HES) is no longer tracked after Chevron closed its acquisition.
+The FMP earnings calendar (Sept 30 to Oct 8) returned no watchlist or oil and gas sector peers inside the window; the listed names were non-energy or small foreign OTC tickers. So there are no reported-in-24h, today, or next-7-days energy results to flag. I did not confirm this against company IR calendars. Majors and large E&Ps (XOM, CVX, COP, EOG, OXY, KMI, SLB, HAL, MPC, VLO, PSX and others) normally report from mid to late October, just outside the window. Verify exact dates with each company.
 
 ## Today's movers
-Movers were derived from daily closes (9/30 vs 9/29) returned by the FMP 200-day SMA endpoint, because live quote endpoints are not available on the current plan. All 19 names and the three ETFs were priced.
+Derived from 1-day closes in the FMP SMA endpoint (live quote endpoints are gated on the Starter plan). Covers the full watchlist and ETFs. HES was removed after Chevron closed its acquisition.
 
-Up: PSX +1.21%, XOM +0.87%, MPC +0.86%.
-Down: SLB -2.31%, BKR -1.82%, EOG -1.36%.
-ETFs: XOP +0.39%, XLE -0.07%, XES -0.25%.
+Biggest up: MPC +6.3% ($420.15), VLO +5.4% ($408.46), OXY +4.6% ($57.84). Also PSX +3.5%, TRGP +3.3%.
+Weakest: SLB -0.1%, EPD +0.2%, HAL +0.3% (no watchlist name fell more than 0.1%; the whole group closed green).
+ETFs: XOP +2.8%, XLE +2.0%, XES +1.5%.
 
 ## Stocks to watch
-- SLB: largest decliner today, now below its 200-day average (48.72 vs about 50.39).
-- HAL: trades about 10% below its 200-day average at the lowest EV/EBITDA of the group checked.
-- PSX / MPC: refiners leading the tape while crude is firm.
-- EOG: second-weakest E&P today despite higher crude; above its 200-day.
-- KMI: midstream below its 200-day amid weak gas; a read on whether gas softness persists.
+- MPC: leads refiners on widening crack spreads; extended after a big run, so volatile.
+- VLO: same refining-margin theme, with product inventories drawing.
+- OXY: top E&P mover (+4.6%) on firmer crude.
+- TRGP: midstream strength (+3.3%), trading far above its 200-day average.
+- HAL: below its 200-day average with a low multiple for services.
 
 ## Screen idea
-HAL combines a price below its 200-day average (31.80 vs about 35.40, roughly 10% under) with the lowest EV/EBITDA of the five checked: HAL 7.9x, ET 9.4x, SLB 11.5x, BKR 11.6x, KMI 12.3x. Cheap on a screen can also mean the market expects weaker earnings, so check drilling activity and guidance. Educational only, not investment advice.
+HAL: closed $31.88, about 10% below its 200-day average ($35.41), with the lowest EV/EBITDA of the names under their 200-day (about 7.9x TTM versus SLB 11.5x, BKR 11.7x, EPD 10.5x, KMI 12.4x, WMB 15.5x). Cheap on a trailing basis and technically weak, which could mean value or a real slowdown in activity. Educational screen only, not investment advice.
