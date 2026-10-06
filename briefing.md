@@ -1,27 +1,40 @@
-# Oil & Gas Briefing — July 17, 2026
+# Oil & Gas Briefing — Monday, October 5, 2026
 
 ## Market
 
-Crude is holding near a one-month high. Brent traded around $84–86 and WTI near $79 as escalating Middle East tensions kept a supply-risk premium in the market — renewed US strikes on Iran, a reinstated naval blockade near the Strait of Hormuz, and reports that Washington is weighing seizure of Iran's Kharg Island export terminal. Continued Ukrainian attacks on Russian fuel facilities and tankers added to tightness worries, and a 1.7M-barrel draw in US crude inventories lent support. On supply, seven OPEC+ members (Saudi Arabia, Russia, Iraq, Kuwait, Kazakhstan, Algeria, Oman) agreed to a modest 188k b/d hike for August — the fifth straight monthly increase — though actual output remains constrained by Hormuz shipping disruptions. Global supply did rebound ~4.1M b/d to 98.8M b/d in June as Gulf flows partially resumed.
+Crude is holding at elevated levels as Strait of Hormuz disruption keeps the physical market tight. Brent is around $102/bbl (roughly flat on the day), Murban near $110, and WTI edged lower, leaving the Brent–WTI spread above $11 because seaborne Gulf barrels carry the freight, insurance and tanker-shortage premium. Overnight softness came from the IEA's announcement of a coordinated 100-million-barrel strategic reserve release over four months (including front-loaded diesel), partly offset by Iran-related incidents near Hormuz and Houthi attacks on Saudi Aramco facilities. Saudi Aramco cut its November Arab Light OSP to Asia by $5 below benchmark, the lowest since 2020, a surprise to traders who expected an increase; Aramco's CEO has also said the Hormuz squeeze could take up to two years to ease and that available global inventory is under 10%.
 
-Natural gas is the outlier, sliding to a two-month low near $2.85/MMBtu. Ample US supply — a larger-than-expected 41 Bcf storage build, Lower-48 production around 110 Bcf/d, and Freeport LNG offline for maintenance until late August — is insulating the domestic market from export pressure.
+Natural gas was flat near $3.01–$3.03/MMBtu after Friday's $3.035 settle. A 64 bcf storage injection, shoulder-season weather and strong output cap upside, while LNG feedgas demand is the main support; Thursday's EIA storage report is the next catalyst.
 
-Equities skewed higher today, led decisively by refiners on strong crack spreads, while oilfield services lagged ahead of Q2 earnings. Halliburton reports July 21 (consensus ~$0.54 EPS, down slightly YoY) and recently won a multi-year Aramco unconventional-gas contract.
+OPEC+ made no new announcement today. The group held output policy unchanged for October at its early-September meeting after a series of quota hikes earlier this year; the next decision is due at its early-November meeting.
+
+Equities: the energy complex firmed on the day, led by refiners and oil services (see movers). Exxon and Chevron report Q3 on Oct 30; consensus is about $3.40 EPS (XOM) and $4.32 (CVX). Chevron's themes are Venezuela expansion (about $7B planned) and Hess integration synergies; Exxon's are LNG growth (Rovuma, Papua).
+
+## Earnings
+
+Data source: FMP earnings calendar, Oct 4–12, filtered to oil & gas. Result: no watchlist names or listed oil & gas peers appear in the window (matches were only unrelated OTC/foreign tickers or non-energy names, e.g. "NG" is NovaGold, not natural gas).
+
+- Reported in the last ~24h: none among oil & gas names.
+- Reporting today: none.
+- Upcoming over the next 7 days (Oct 6–12): none among oil & gas names.
+- Timing note: the Q3 reporting season for the sector starts later in October. Exxon and Chevron report Oct 30 (per Benzinga); refiners (VLO, MPC, PSX), services (SLB, HAL, BKR), and large E&Ps (COP, EOG, OXY, DVN, FANG) typically report mid-October to early November, and midstream (KMI, WMB, EPD, ET, TRGP) around mid/late October. Confirm exact dates on the dashboard as they are posted.
 
 ## Today's movers
 
-Up: **PSX +2.6%**, **VLO +2.6%**, **MPC +2.2%** — refiners at fresh 52-week highs on wide margins. Down: **BKR −1.2%**, **SLB −1.0%**, **HAL −0.6%** (services ETF **XES −1.4%**) — equipment & services soft into earnings. (HES quote was stale/untraded at check time.)
+Movers were derived from daily closes returned by the FMP simple-moving-average endpoint (live quote endpoints are gated on the Starter plan), comparing the Oct 5 bar with the Oct 2 close. The Oct 5 bar may be partial if pulled before the close. Subset priced: XOM, CVX, COP, EOG, OXY, DVN, FANG, SLB, HAL, BKR, MPC, VLO, PSX, WMB, EPD, ET, KMI, LNG, TRGP, XLE, XOP, XES. HES is delisted (Chevron acquisition) and was dropped.
 
-## Screen idea
-
-The strict "below 200-day average AND cheap on EV/EBITDA" filter again returns nothing — every monitored name sits above its 200-day after this year's rally, a broadly bullish tape. On valuation alone, **DVN** is the cheapest of the group at ~4.7x trailing EV/EBITDA (vs. OXY ~5.7x, HES ~7.5x, SLB ~10.8x, BKR ~11.3x), with net-debt/EBITDA ~1.0x and a ~10% free-cash-flow yield. It trades only ~4% above its 200-day ($41.26) — the closest to support among the cheap names. A low multiple can reflect commodity or balance-sheet risk rather than a bargain. Educational observation, not investment advice.
+Biggest up: VLO +3.2% (419.33), SLB +3.2% (50.28), HAL +2.9% (32.78). XES (services ETF) +3.0%, MPC +2.6%, BKR +2.5%.
+Biggest down (barely negative; the tape was broadly up): FANG -0.3% (184.08), CVX -0.1% (206.47), XOM 0.0% (164.00).
+Sector ETFs: XLE +1.0%, XOP +1.4%, XES +3.0%.
 
 ## Stocks to watch
 
-- **VLO / MPC / PSX** — refiners at 52-week highs on wide crack spreads; momentum into earnings.
-- **HAL** — reports July 21; watch North America completions commentary and the Aramco ramp.
-- **LNG (Cheniere)** — up ~1.2%; leverage to tight global gas/LNG demand despite soft Henry Hub.
-- **DVN** — cheapest upstream name on EV/EBITDA, low leverage, high FCF yield.
-- **SLB** — services laggard down ~1%; a value/turnaround watch ahead of sector earnings.
+- HAL — oil services leader on the day, still about 8% below its 200-day average and the cheapest on EV/EBITDA of those screened.
+- SLB — +3.2% on the day, sitting right at its 200-day average (50.28 vs 50.55); a reclaim would be a technical tell for services.
+- VLO — top mover (+3.2%) with refiners strong on tight diesel markets and the IEA's diesel-weighted stock release.
+- FANG — only name in the Permian group slightly below its 200-day average (184.08 vs 184.80) with the lowest EV/OCF of those screened.
+- KMI — slightly below its 200-day (31.41 vs 31.49) ahead of Q3 results; EV/EBITDA about 12.7x with net debt/EBITDA near 4.0x.
 
-*Data: FMP quotes/key-metrics (as of last close) and web news (July 16–17, 2026). Not investment advice.*
+## Screen idea
+
+HAL combines the largest discount to its 200-day average (32.78 vs 35.46, about 7.6% below) with the lowest EV/EBITDA of the five names checked (8.1x TTM vs BKR 12.1x, SLB 11.8x, KMI 12.7x, FANG 9.0x). Net debt/EBITDA is about 1.5x and FCF yield about 6.3%. Educational screen only, not investment advice; low multiples can reflect cyclical earnings risk in services.
