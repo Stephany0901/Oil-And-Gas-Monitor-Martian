@@ -15,6 +15,7 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
 from universe import UNIVERSE
+import vlo_tab
 
 st.set_page_config(page_title="Oil & Gas Equity Monitor", layout="wide", page_icon="🛢️")
 
@@ -442,7 +443,7 @@ if _no_quote:
 
 tabs = st.tabs(["1 · Price", "2 · Peers", "3 · Hist. Val", "4 · Technical",
                 "5 · Crude/Gas", "6 · News", "7 · Sector", "📰 Briefing",
-                "🔎 Screeners"])
+                "🔎 Screeners", "⛽ VLO Model"])
 
 
 # ============================= 1 · PRICE =============================
@@ -1278,3 +1279,8 @@ with tabs[8]:
             st.markdown(f"**{_pick} — top 10**")
             ogtable(_df, _cols)
         st.caption(_note + " Educational screen, not investment advice.")
+
+
+# ============================= 10 · VLO MODEL =============================
+with tabs[9]:
+    vlo_tab.render()
