@@ -82,7 +82,8 @@ def render_eqt_hybrid(height: int = DEFAULT_HEIGHT,
     view = default_view if default_view in views else views[0]
     if len(views) > 1:
         view = st.radio("View", views, index=views.index(view),
-                        horizontal=True, label_visibility="collapsed")
+                        horizontal=True, label_visibility="collapsed",
+                        key="eqt_hybrid_view_radio")
 
     if view == "Interactive":
         components.html(html, height=height, scrolling=True)
