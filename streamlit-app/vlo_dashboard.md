@@ -1,30 +1,29 @@
 # VLO Crack-Spread Trading Model
 
-**Data through 2026-10-05** · 1936 bars · generated 2026-10-06 01:41 UTC
+**Data through 2026-10-06** · 1937 bars · generated 2026-10-07 02:42 UTC
 
 > Long-only refinery-margin mean reversion on Valero. Buy when the de-RINs Profit Index is statistically high *and* rising; exit after three consecutive signal-free sessions.
 
 ---
 
-## Live signal — 2026-10-05
+## Live signal — 2026-10-06
 
 | | |
 |---|---|
 | Signal | ⚪ **not firing** |
 | Position | **FLAT** |
-| VLO close | **$419.33** |
-| Profit Index | **42.69** $/bbl (RBOB 14.80 · HO 70.58) |
-| Z-score | **-0.55** (entry > +1.0) — fail |
-| Momentum (30d) | **-4.71** $/bbl (entry > +0.5) — fail |
-| Crack → VLO linkage | 0.23 (120d corr, diagnostic only) |
+| VLO close | **$419.22** |
+| Profit Index | **43.30** $/bbl (RBOB 15.26 · HO 71.33) |
+| Z-score | **-0.34** (entry > +1.0) — fail |
+| Momentum (30d) | **-2.09** $/bbl (entry > +0.5) — fail |
+| Crack → VLO linkage | 0.24 (120d corr, diagnostic only) |
 
 ## Last 10 sessions
 
-Profit Index `█▆▃▂▂▃▆▃▁▂`  55.02 → 42.69
+Profit Index `█▄▂▂▄█▄▁▂▃`  50.77 → 43.30
 
 | Date | Profit Index | RBOB | HO | M1−M2 | z | Momentum | VLO | Signal |
 |---|---:|---:|---:|---:|---:|---:|---:|:--:|
-| 2026-09-22 | 55.02 | 22.68 | 87.36 | +5.94 | +2.15 | +10.89 | 377.14 | 🟢 |
 | 2026-09-23 | 50.77 | 23.61 | 77.92 | +3.06 | +1.11 | +6.78 | 375.84 | 🟢 |
 | 2026-09-24 | 45.00 | 19.91 | 70.10 | +0.90 | -0.24 | -0.28 | 382.86 | · |
 | 2026-09-25 | 42.84 | 16.08 | 69.61 | -0.74 | -0.75 | -2.98 | 387.18 | · |
@@ -34,6 +33,7 @@ Profit Index `█▆▃▂▂▃▆▃▁▂`  55.02 → 42.69
 | 2026-10-01 | 45.48 | 17.80 | 73.15 | +1.64 | +0.62 | -1.55 | 408.46 | · |
 | 2026-10-02 | 41.12 | 14.97 | 67.28 | +1.21 | -1.20 | -5.52 | 406.30 | · |
 | 2026-10-05 | 42.69 | 14.80 | 70.58 | +1.64 | -0.55 | -4.71 | 419.33 | · |
+| 2026-10-06 | 43.30 | 15.26 | 71.33 | +1.62 | -0.34 | -2.09 | 419.22 | · |
 
 ## Performance
 
@@ -41,7 +41,7 @@ Locked window (2022-07-01 onward), costs 7 bps per side:
 
 | | Strategy | Buy & hold |
 |---|---:|---:|
-| Compound return | **+292.5%** | +288.3% |
+| Compound return | **+292.5%** | +288.2% |
 | CAGR | **+37.8%** | — |
 | Sharpe | **1.63** | — |
 | Annualised vol | 21% | — |
@@ -88,7 +88,7 @@ direction  long only        execution  signal-day close
 cost       7 bps per side
 ```
 
-**Data integrity checks run on every refresh:** de-RINs reconstruction asserted against the workbook (worst diff 0.0e+00 over 1938 rows); RVO outlier quarantine (|ΔRVO| > 0.15); permanent archive union so the panel can only grow; date-aligned revision check against the prior panel.
+**Data integrity checks run on every refresh:** de-RINs reconstruction asserted against the workbook (worst diff 0.0e+00 over 1939 rows); RVO outlier quarantine (|ΔRVO| > 0.15); permanent archive union so the panel can only grow; date-aligned revision check against the prior panel.
 
 ### Caveats
 

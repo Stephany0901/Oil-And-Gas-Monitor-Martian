@@ -1,40 +1,34 @@
-# Oil & Gas Briefing — Monday, October 5, 2026
+# Oil & Gas Briefing — Tuesday, October 6, 2026
 
 ## Market
+Crude remains elevated but eased at the latest settle: Brent closed near $100.30 (-1.9%) and WTI near $89.18 (-0.3%), with Murban at $109.10. Brent had topped $102 on Oct 5. Prices are still roughly 40% above pre-war levels because of the ongoing US-Israel/Iran conflict and tanker attacks around the Strait of Hormuz, which keep insurance and routing costs high.
 
-Crude is holding at elevated levels as Strait of Hormuz disruption keeps the physical market tight. Brent is around $102/bbl (roughly flat on the day), Murban near $110, and WTI edged lower, leaving the Brent–WTI spread above $11 because seaborne Gulf barrels carry the freight, insurance and tanker-shortage premium. Overnight softness came from the IEA's announcement of a coordinated 100-million-barrel strategic reserve release over four months (including front-loaded diesel), partly offset by Iran-related incidents near Hormuz and Houthi attacks on Saudi Aramco facilities. Saudi Aramco cut its November Arab Light OSP to Asia by $5 below benchmark, the lowest since 2020, a surprise to traders who expected an increase; Aramco's CEO has also said the Hormuz squeeze could take up to two years to ease and that available global inventory is under 10%.
+The pullback was driven by supply-side relief. Middle East exports have exceeded 18 million b/d on several days, above pre-war levels. The G7 announced a release of 100 million barrels of crude and fuel from emergency reserves over four months. Saudi Arabia also cut November official selling prices for Asian buyers, which signals a competition for market share.
 
-Natural gas was flat near $3.01–$3.03/MMBtu after Friday's $3.035 settle. A 64 bcf storage injection, shoulder-season weather and strong output cap upside, while LNG feedgas demand is the main support; Thursday's EIA storage report is the next catalyst.
+OPEC+ paused its monthly output increases after four straight hikes and held the October quota at September levels. No new policy change surfaced in the past 24 hours.
 
-OPEC+ made no new announcement today. The group held output policy unchanged for October at its early-September meeting after a series of quota hikes earlier this year; the next decision is due at its early-November meeting.
+Natural gas: I could not retrieve a reliable Henry Hub settle for Oct 5. The only related headline was that the EIA cut its Henry Hub price forecast even as the storage outlook tightens. Treat gas levels as unverified today. Gas-linked equities were firm: KMI, WMB and EPD led the sector.
 
-Equities: the energy complex firmed on the day, led by refiners and oil services (see movers). Exxon and Chevron report Q3 on Oct 30; consensus is about $3.40 EPS (XOM) and $4.32 (CVX). Chevron's themes are Venezuela expansion (about $7B planned) and Hess integration synergies; Exxon's are LNG growth (Rovuma, Papua).
+No single major company headline (earnings, M&A) from the past 24h surfaced in searches. Data caveat: the Oct 6 bars below may be intraday.
 
 ## Earnings
+FMP's calendar for Oct 5–13 shows no oil & gas names (E&P, integrated, services, midstream, refining, drilling) on the watchlist or among the peers checked. Nothing reported in the last 24h, nothing reports today, and nothing is scheduled over the next 7 days. (The only hits were non-energy names such as STZ, RPM, DAL, JPM, WFC, GS, C, UNH, JNJ.)
 
-Data source: FMP earnings calendar, Oct 4–12, filtered to oil & gas. Result: no watchlist names or listed oil & gas peers appear in the window (matches were only unrelated OTC/foreign tickers or non-energy names, e.g. "NG" is NovaGold, not natural gas).
-
-- Reported in the last ~24h: none among oil & gas names.
-- Reporting today: none.
-- Upcoming over the next 7 days (Oct 6–12): none among oil & gas names.
-- Timing note: the Q3 reporting season for the sector starts later in October. Exxon and Chevron report Oct 30 (per Benzinga); refiners (VLO, MPC, PSX), services (SLB, HAL, BKR), and large E&Ps (COP, EOG, OXY, DVN, FANG) typically report mid-October to early November, and midstream (KMI, WMB, EPD, ET, TRGP) around mid/late October. Confirm exact dates on the dashboard as they are posted.
+The majors and large E&Ps and services names typically report Q3 results in late October through early November (services names such as SLB and HAL usually report earlier, in mid/late October). Check the calendar again next week for confirmed dates.
 
 ## Today's movers
+Method: FMP live quote endpoints are gated on the Starter plan, so 1-day % changes were derived from daily closes (Oct 6 vs Oct 5) returned by the 200-day SMA endpoint. ET returned no Oct 6 bar, so it is excluded. HES was removed from the watchlist after Chevron closed its acquisition and returns no data.
 
-Movers were derived from daily closes returned by the FMP simple-moving-average endpoint (live quote endpoints are gated on the Starter plan), comparing the Oct 5 bar with the Oct 2 close. The Oct 5 bar may be partial if pulled before the close. Subset priced: XOM, CVX, COP, EOG, OXY, DVN, FANG, SLB, HAL, BKR, MPC, VLO, PSX, WMB, EPD, ET, KMI, LNG, TRGP, XLE, XOP, XES. HES is delisted (Chevron acquisition) and was dropped.
-
-Biggest up: VLO +3.2% (419.33), SLB +3.2% (50.28), HAL +2.9% (32.78). XES (services ETF) +3.0%, MPC +2.6%, BKR +2.5%.
-Biggest down (barely negative; the tape was broadly up): FANG -0.3% (184.08), CVX -0.1% (206.47), XOM 0.0% (164.00).
-Sector ETFs: XLE +1.0%, XOP +1.4%, XES +3.0%.
+Top 3 up: KMI +2.39% (32.16), WMB +2.23% (72.39), EPD +1.25% (37.26).
+Top 3 down (stocks): TRGP -0.58% (285.72), SLB -0.56% (50.00), BKR -0.44% (57.13).
+Other: COP +0.74%, CVX +0.54%, FANG +0.49%, XOM +0.29%, LNG +0.12%. ETFs: XLE +0.47% (63.75), XOP +0.54% (188.46), XES -0.68% (111.64).
 
 ## Stocks to watch
-
-- HAL — oil services leader on the day, still about 8% below its 200-day average and the cheapest on EV/EBITDA of those screened.
-- SLB — +3.2% on the day, sitting right at its 200-day average (50.28 vs 50.55); a reclaim would be a technical tell for services.
-- VLO — top mover (+3.2%) with refiners strong on tight diesel markets and the IEA's diesel-weighted stock release.
-- FANG — only name in the Permian group slightly below its 200-day average (184.08 vs 184.80) with the lowest EV/OCF of those screened.
-- KMI — slightly below its 200-day (31.41 vs 31.49) ahead of Q3 results; EV/EBITDA about 12.7x with net debt/EBITDA near 4.0x.
+- KMI: biggest gainer today (+2.4%); gas-infrastructure strength, trades near its 200-day (about 2% above).
+- WMB: +2.2%, above its 200-day; midstream/gas demand theme.
+- HAL: furthest below its 200-day average (about -7.8%) with EV/EBITDA near 8.1x.
+- SLB: services, sitting right at its 200-day (50.00 vs 50.61), pulled back today.
+- OXY: lowest EV/EBITDA in the group (about 4.9x) and a high FCF yield (about 9%).
 
 ## Screen idea
-
-HAL combines the largest discount to its 200-day average (32.78 vs 35.46, about 7.6% below) with the lowest EV/EBITDA of the five names checked (8.1x TTM vs BKR 12.1x, SLB 11.8x, KMI 12.7x, FANG 9.0x). Net debt/EBITDA is about 1.5x and FCF yield about 6.3%. Educational screen only, not investment advice; low multiples can reflect cyclical earnings risk in services.
+Names below their 200-day average: HAL (-7.8%), BKR (-4.0%), SLB (-1.2%). Of those, HAL combines the biggest discount to its 200-day with the lowest EV/EBITDA (HAL 8.1x vs SLB 11.8x vs BKR 12.1x), so it is today's screen idea. For reference OXY is cheapest overall at 4.9x but trades well above its 200-day, and DVN is 7.2x. Educational only, not investment advice.
