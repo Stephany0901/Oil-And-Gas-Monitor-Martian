@@ -1,352 +1,108 @@
+"""EQT Hybrid Strategy dashboard as a Streamlit tab or page.
+
+Drop this file next to your app.py, put eqt_hybrid_dashboard.html and
+eqt_dashboard_summary.md beside it (or one level up), then call render():
+
+    import eqt_hybrid_tab
+    with tab:
+        eqt_hybrid_tab.render_eqt_hybrid()
+
+Both deliverables are regenerated together by run_backtest.py, so the HTML
+and the Markdown always describe the same panel.
 """
-EQT Hybrid Strategy Tab
------------------------
-Loads a pre-computed JSON produced by run_backtest.py (run locally) and
-renders the full dashboard.  No backtest computation happens here — the
-server only reads a JSON file and draws charts.
-
-Drop this file and eqt_backtest.json into your Streamlit app:
-
-    tab1, tab2 = st.tabs(["VLO", "EQT Hybrid"])
-    with tab2:
-        from eqt_hybrid_tab import render_eqt_hybrid
-        render_eqt_hybrid(json_path="data/eqt_backtest.json")
-
-Dependencies: streamlit, plotly, pandas, numpy, yfinance
-"""
-
-import json
-import datetime
-import numpy as np
-import pandas as pd
-import streamlit as st
-import plotly.graph_objects as go
 from pathlib import Path
+from typing import Optional
+
+import streamlit as st
+import streamlit.components.v1 as components
+
+HERE = Path(__file__).resolve().parent
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# 1. DATA LOADING  (reads pre-computed JSON)
-# ─────────────────────────────────────────────────────────────────────────────
-
-@st.cache_data(ttl=3600, show_spinner="Loading EQT backtest data…")
-def _load_json(json_path: str) -> dict:
-    """Load the pre-computed backtest JSON and reconstruct typed objects."""
-    with open(json_path, "r") as f:
-        raw = json.load(f)
-
-    # Reconstruct weekly DataFrame with DatetimeIndex
-    weekly_df = pd.DataFrame(raw["weekly"])
-    weekly_df["date"] = pd.to_datetime(weekly_df["date"])
-    weekly_df = weekly_df.set_index("date")
-
-    return {
-        "stats":   raw["stats"],
-        "current": raw["current"],
-        "annual":  raw["annual"],
-        "weekly":  weekly_df,
-        "daily":   raw.get("daily", []),
-        "generated": raw.get("generated", ""),
-    }
+def _find(name: str) -> Path:
+    """Look beside this module first, then one level up (repo root)."""
+    here = HERE / name
+    return here if here.exists() else HERE.parent / name
 
 
-def _get_live_eqt_price() -> tuple[float | None, str]:
-    """Fetch live EQT price via yfinance (best-effort)."""
-    try:
-        import yfinance as yf
-        info = yf.Ticker("EQT").fast_info
-        price = getattr(info, "last_price", None)
-        if price:
-            return round(float(price), 2), datetime.datetime.now().strftime("%H:%M ET")
-    except Exception:
-        pass
-    return None, ""
+HTML = _find("eqt_hybrid_dashboard.html")
+MD   = _find("eqt_dashboard_summary.md")
+
+# The rendered dashboard measures roughly 2,600px tall.
+# Give it a generous height and let the page scroll normally.
+DEFAULT_HEIGHT = 2800
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# 2. CHART BUILDERS
-# ─────────────────────────────────────────────────────────────────────────────
-
-def _equity_chart(weekly: pd.DataFrame, annual: list[dict]) -> go.Figure:
-    seasonal_bands = []
-    for yr in range(2016, 2028):
-        start = pd.Timestamp(f"{yr}-12-01")
-        end   = pd.Timestamp(f"{yr+1}-05-31")
-        if start <= weekly.index[-1]:
-            seasonal_bands.append((start, min(end, weekly.index[-1])))
-
-    fig = go.Figure()
-    for s, e in seasonal_bands:
-        fig.add_vrect(x0=s, x1=e, fillcolor="rgba(255,215,0,0.08)",
-                      layer="below", line_width=0)
-
-    fig.add_trace(go.Scatter(
-        x=weekly.index, y=weekly["bh"],
-        name="EQT B&H", line=dict(color="#94a3b8", width=1.5, dash="dot"),
-        hovertemplate="B&H: %{y:.2f}x<extra></extra>",
-    ))
-    fig.add_trace(go.Scatter(
-        x=weekly.index, y=weekly["equity"],
-        name="Hybrid Strategy", line=dict(color="#7c3aed", width=2.5),
-        hovertemplate="Hybrid: %{y:.2f}x<extra></extra>",
-    ))
-
-    fig.update_layout(
-        title=dict(text="EQT Hybrid Strategy — Equity Curve (2016–Present)",
-                   font=dict(size=15)),
-        xaxis=dict(title="", showgrid=False),
-        yaxis=dict(title="Growth of $1", tickformat=".1f", showgrid=True,
-                   gridcolor="rgba(128,128,128,0.15)"),
-        legend=dict(orientation="h", yanchor="bottom", y=1.01, x=0),
-        hovermode="x unified",
-        height=380,
-        margin=dict(l=10, r=10, t=50, b=10),
-        plot_bgcolor="rgba(0,0,0,0)",
-        paper_bgcolor="rgba(0,0,0,0)",
-    )
-    return fig
+@st.cache_data(show_spinner=False)
+def _read(path_str: str, mtime: float) -> str:
+    """mtime is part of the cache key — redeploying new data busts the cache."""
+    return Path(path_str).read_text(encoding="utf-8")
 
 
-def _annual_chart(annual: list[dict]) -> go.Figure:
-    years       = [a["year"]   for a in annual]
-    hybrid_vals = [a["hybrid"] for a in annual]
-    bh_vals     = [a["bh"]     for a in annual]
-
-    fig = go.Figure()
-    fig.add_trace(go.Bar(
-        y=years, x=bh_vals, orientation="h",
-        name="EQT B&H", marker_color="#94a3b8",
-        hovertemplate="%{y}: %{x:.1f}%<extra>B&H</extra>",
-    ))
-    fig.add_trace(go.Bar(
-        y=years, x=hybrid_vals, orientation="h",
-        name="Hybrid",
-        marker_color=["#7c3aed" if v >= 0 else "#dc2626" for v in hybrid_vals],
-        hovertemplate="%{y}: %{x:.1f}%<extra>Hybrid</extra>",
-    ))
-
-    fig.update_layout(
-        title=dict(text="Annual Returns", font=dict(size=13)),
-        barmode="group",
-        xaxis=dict(title="Return (%)", zeroline=True, zerolinecolor="#666",
-                   ticksuffix="%"),
-        yaxis=dict(type="category", autorange="reversed", tickfont=dict(size=11)),
-        legend=dict(orientation="h", yanchor="bottom", y=1.01, x=0),
-        height=380,
-        margin=dict(l=10, r=10, t=50, b=10),
-        plot_bgcolor="rgba(0,0,0,0)",
-        paper_bgcolor="rgba(0,0,0,0)",
-    )
-    return fig
+def _load(path: Path) -> Optional[str]:
+    if not path.exists():
+        return None
+    return _read(str(path), path.stat().st_mtime)
 
 
-def _z_gauge(z_value: float) -> go.Figure:
-    fig = go.Figure(go.Indicator(
-        mode="gauge+number",
-        value=z_value,
-        number={"suffix": "σ", "font": {"size": 28}},
-        gauge={
-            "axis": {
-                "range": [-3, 3], "tickwidth": 1,
-                "tickvals": [-3, -2, -1, -0.25, 0, 1, 2, 3],
-                "ticktext": ["-3", "-2", "-1", "-0.25", "0", "1", "2", "3"],
-            },
-            "bar": {"color": "#7c3aed", "thickness": 0.25},
-            "bgcolor": "white",
-            "steps": [
-                {"range": [-3, -0.25], "color": "rgba(124,58,237,0.15)"},
-                {"range": [-0.25, 3],  "color": "rgba(200,200,200,0.1)"},
-            ],
-            "threshold": {
-                "line": {"color": "#dc2626", "width": 3},
-                "thickness": 0.75,
-                "value": -0.25,
-            },
-        },
-        title={"text": "HH Z-Score (20d M2-aware)", "font": {"size": 12}},
-    ))
-    fig.update_layout(
-        height=220,
-        margin=dict(l=20, r=20, t=30, b=10),
-        paper_bgcolor="rgba(0,0,0,0)",
-    )
-    return fig
+def _as_of(md: Optional[str]) -> Optional[str]:
+    if not md:
+        return None
+    for line in md.splitlines():
+        if line.startswith("**Data through "):
+            return line.split("**Data through ")[1].split("**")[0].strip()
+    return None
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# 3. MAIN RENDER FUNCTION
-# ─────────────────────────────────────────────────────────────────────────────
+def render_eqt_hybrid(height: int = DEFAULT_HEIGHT,
+                      default_view: str = "Interactive") -> None:
+    md   = _load(MD)
+    html = _load(HTML)
 
-def render_eqt_hybrid(json_path: str | None = None):
-    """
-    Call this inside a Streamlit tab (or directly as a page).
-
-    Parameters
-    ----------
-    json_path : str | None
-        Path to the pre-computed JSON produced by run_backtest.py.
-        If None, a sidebar file uploader is shown.
-    """
-
-    st.markdown("## EQT Hybrid Strategy")
-    st.caption("Seasonal (Dec→May) + Z-score off-season | HH M2-aware Z-score | TC: 0.20%/side")
-
-    # ── resolve JSON source ──────────────────────────────────────────────────
-    if json_path is None:
-        with st.sidebar:
-            st.markdown("### 📂 EQT Backtest JSON")
-            uploaded = st.file_uploader(
-                "Upload eqt_backtest.json",
-                type=["json"],
-                key="eqt_json_upload",
-                help="Generated locally by running: python run_backtest.py",
-            )
-        if uploaded is None:
-            st.info(
-                "No backtest data found. Run `python run_backtest.py` locally "
-                "to generate `data/eqt_backtest.json`, then commit & push — "
-                "or upload the JSON via the sidebar."
-            )
-            return
-        import tempfile, os
-        with tempfile.NamedTemporaryFile(suffix=".json", delete=False) as tmp:
-            tmp.write(uploaded.read())
-            tmp_path = tmp.name
-        results = _load_json(tmp_path)
-        os.unlink(tmp_path)
-    else:
-        if not Path(json_path).exists():
-            st.warning(
-                f"`{json_path}` not found. Run `python run_backtest.py` locally "
-                "to generate it, then commit & push."
-            )
-            return
-        results = _load_json(json_path)
-
-    stats   = results["stats"]
-    current = results["current"]
-    annual  = results["annual"]
-    weekly  = results["weekly"]
-    daily   = results["daily"]
-    gen     = results["generated"]
-
-    # ── live price ───────────────────────────────────────────────────────────
-    live_price, live_time = _get_live_eqt_price()
-
-    # ── signal badge ─────────────────────────────────────────────────────────
-    sig       = current["signal"]
-    sig_color = {"SEASONAL": "#f59e0b", "ZSCORE": "#7c3aed", "FLAT": "#64748b"}[sig]
-    sig_icon  = {"SEASONAL": "🌿", "ZSCORE": "⚡", "FLAT": "⏸"}[sig]
-
-    display_price = (
-        f"${live_price:.2f}"
-        if live_price
-        else f"${current['eqt_last']:.2f}"
-    )
-    live_label = (
-        f"<span style='font-size:0.7rem;color:#888'>&nbsp;live {live_time}</span>"
-        if live_price
-        else f"<span style='font-size:0.7rem;color:#888'>&nbsp;as of {current['eqt_date']}</span>"
-    )
-
-    st.markdown(f"""
-    <div style="display:flex;align-items:center;gap:12px;padding:12px 18px;
-                border-radius:10px;background:rgba(0,0,0,0.04);
-                border-left:4px solid {sig_color};margin-bottom:4px">
-      <span style="font-size:1.6rem">{sig_icon}</span>
-      <div>
-        <div style="font-size:0.75rem;color:#888;text-transform:uppercase;letter-spacing:.08em">Current Signal</div>
-        <div style="font-size:1.3rem;font-weight:700;color:{sig_color}">{sig}</div>
-      </div>
-      <div style="margin-left:auto;text-align:right">
-        <div style="font-size:0.75rem;color:#888">EQT Last</div>
-        <div style="font-size:1.1rem;font-weight:600">{display_price}{live_label}</div>
-      </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-    if gen:
-        st.caption(f"Backtest data generated: {gen[:16].replace('T', ' ')}")
-
-    # ── stat cards ───────────────────────────────────────────────────────────
-    c1, c2, c3, c4, c5, c6 = st.columns(6)
-    c1.metric("Hybrid Return",  f"+{stats['hybrid']['ret']}%")
-    c2.metric("Hybrid Sharpe",  f"{stats['hybrid']['sharpe']}",
-              delta=f"vs B&H {stats['bh']['sharpe']}")
-    c3.metric("Max Drawdown",   f"{stats['hybrid']['maxdd']}%")
-    c4.metric("B&H Return",     f"+{stats['bh']['ret']}%")
-    c5.metric("B&H Sharpe",     f"{stats['bh']['sharpe']}")
-    c6.metric("HH Z-Score",     f"{current['z']:.3f}σ")
-
-    st.divider()
-
-    # ── charts ───────────────────────────────────────────────────────────────
-    col_left, col_right = st.columns([3, 1])
-
-    with col_left:
-        st.plotly_chart(_equity_chart(weekly, annual), use_container_width=True)
-
-    with col_right:
-        st.plotly_chart(_z_gauge(current["z"]), use_container_width=True)
-        st.markdown("""
-        <div style="font-size:0.78rem;color:#888;padding:8px 0">
-        <b>Entry trigger:</b><br>
-        Z-score &lt; −0.25 <b>AND</b><br>
-        1-day HH momentum &lt; −$0.20<br><br>
-        <b>Exit:</b> 10 consecutive days without signal<br><br>
-        <b>Seasonal window:</b><br>
-        Dec 1 → May 31 (buy last TD Dec, sell last TD May)<br><br>
-        <b>Transaction costs:</b><br>
-        Z-score: 0.20%/side&nbsp;&nbsp;Seasonal: 0.40% RT<br><br>
-        <b>Z-score lookback:</b><br>
-        20-day, M2-aware (prior-month days use M2 futures to avoid roll distortion)
-        </div>
-        """, unsafe_allow_html=True)
-
-    st.plotly_chart(_annual_chart(annual), use_container_width=True)
-
-    # ── annual returns table ─────────────────────────────────────────────────
-    with st.expander("📊 Annual returns table"):
-        ann_df = pd.DataFrame(annual).rename(columns={
-            "year": "Year", "hybrid": "Hybrid (%)", "bh": "B&H (%)"
-        })
-        ann_df = ann_df.sort_values("Year", ascending=False).reset_index(drop=True)
-        st.dataframe(
-            ann_df.style
-                  .format({"Hybrid (%)": "{:.1f}", "B&H (%)": "{:.1f}"})
-                  .background_gradient(subset=["Hybrid (%)"], cmap="RdYlGn", vmin=-50, vmax=100)
-                  .background_gradient(subset=["B&H (%)"],    cmap="RdYlGn", vmin=-50, vmax=100),
-            use_container_width=True,
+    st.subheader("EQT — Henry Hub mean-reversion hybrid")
+    asof = _as_of(md)
+    if asof:
+        st.caption(
+            f"Data through {asof} · seasonal Dec→May + Z-score off-season "
+            f"(entry Z < −0.25 & momentum < −$0.20, exit 10 signal-free bars) · "
+            f"0.20%/side TC"
         )
 
-    # ── data download ────────────────────────────────────────────────────────
-    if daily:
-        with st.expander("⬇️ Download daily backtest data"):
-            dl_df = pd.DataFrame(daily)
-            st.download_button(
-                "Download CSV",
-                dl_df.to_csv(index=False),
-                file_name=f"eqt_hybrid_backtest_{datetime.date.today()}.csv",
-                mime="text/csv",
-            )
+    if html is None and md is None:
+        st.error(
+            "Neither `eqt_hybrid_dashboard.html` nor `eqt_dashboard_summary.md` was found "
+            f"next to `eqt_hybrid_tab.py` (looked in `{HERE}`). "
+            "Run `python run_backtest.py` locally to generate both files, "
+            "then commit them alongside this module."
+        )
+        return
 
+    views = [v for v, ok in (("Interactive", html is not None),
+                              ("Summary",     md   is not None)) if ok]
+    view = default_view if default_view in views else views[0]
+    if len(views) > 1:
+        view = st.radio("View", views, index=views.index(view),
+                        horizontal=True, label_visibility="collapsed")
 
-# ─────────────────────────────────────────────────────────────────────────────
-# 4. STANDALONE MODE  (streamlit run eqt_hybrid_tab.py)
-# ─────────────────────────────────────────────────────────────────────────────
+    if view == "Interactive":
+        components.html(html, height=height, scrolling=True)
+        st.caption(
+            "Self-contained dashboard — all charts run client-side. "
+            "If the CSV button does nothing, your browser is blocking downloads "
+            "from the embedded frame — use the Summary view instead."
+        )
+    else:
+        st.markdown(md)
+
+    if html is not None:
+        st.download_button(
+            "Download the interactive dashboard (.html)",
+            html,
+            file_name="eqt_hybrid_dashboard.html",
+            mime="text/html",
+        )
+
 
 if __name__ == "__main__":
-    st.set_page_config(
-        page_title="EQT Hybrid Strategy",
-        page_icon="⛽",
-        layout="wide",
-    )
-    import pathlib
-    _json = None
-    for _cand in [
-        pathlib.Path(__file__).parent / "data" / "eqt_backtest.json",
-        pathlib.Path(__file__).parent / "data" / "backtest_output.json",
-    ]:
-        if _cand.exists():
-            _json = str(_cand)
-            break
-    render_eqt_hybrid(json_path=_json)
+    st.set_page_config(page_title="EQT Hybrid Strategy", layout="wide", page_icon="⛽")
+    render_eqt_hybrid()
