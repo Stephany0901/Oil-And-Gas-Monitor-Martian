@@ -1,222 +1,442 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-palette="#2a78d6,#eb6834">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>EQT Hybrid Strategy — Oil &amp; Gas Monitor</title>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-<style>
-  :root {
-    --bg: #0f1117; --card: #1a1d27; --border: #2d3250;
-    --purple: #7c3aed; --gold: rgba(255,215,0,0.12);
-    --text: #e2e8f0; --muted: #94a3b8; --red: #ef4444; --green: #22c55e;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; padding: 24px; }
-  h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: 4px; }
-  .subtitle { color: var(--muted); font-size: 0.82rem; margin-bottom: 24px; }
-  .badge {
-    display: inline-flex; align-items: center; gap: 10px;
-    padding: 12px 20px; border-radius: 10px;
-    background: var(--card); border-left: 4px solid var(--sig-color);
-    margin-bottom: 24px;
-  }
-  .badge .icon { font-size: 1.8rem; }
-  .badge .label { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
-  .badge .val { font-size: 1.3rem; font-weight: 700; color: var(--sig-color); }
-  .badge .price { margin-left: auto; font-size: 1.1rem; font-weight: 600; }
-  .stats { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px,1fr)); gap: 14px; margin-bottom: 28px; }
-  .stat { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
-  .stat .s-label { font-size: 0.72rem; color: var(--muted); margin-bottom: 4px; }
-  .stat .s-val { font-size: 1.4rem; font-weight: 700; }
-  .stat .s-delta { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
-  .charts { display: grid; grid-template-columns: 3fr 1fr; gap: 18px; margin-bottom: 28px; }
-  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
-  .card h3 { font-size: 0.9rem; color: var(--muted); margin-bottom: 14px; }
-  .annual-chart { margin-bottom: 28px; }
-  .rules { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; font-size: 0.82rem; color: var(--muted); line-height: 1.7; }
-  .rules strong { color: var(--text); }
-  .gauge-wrap { display: flex; flex-direction: column; align-items: center; gap: 10px; }
-  .gauge-svg { width: 100%; max-width: 240px; }
-  .gauge-val { font-size: 1.6rem; font-weight: 700; }
-  .gauge-label { font-size: 0.75rem; color: var(--muted); }
-  footer { text-align: center; color: var(--muted); font-size: 0.75rem; margin-top: 30px; }
-  @media(max-width:700px) { .charts { grid-template-columns: 1fr; } }
-</style>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>EQT — Henry Hub Mean-Reversion Hybrid</title>
 </head>
 <body>
-<h1>⛽ EQT Hybrid Strategy</h1>
-<p class="subtitle">Seasonal (Dec→May) + Z-score off-season | HH M2-aware 20-day Z-score | TC 0.20%/side | Data 2016–Oct 2026</p>
+<style>
+  :root{
+    color-scheme: light;
+    --surface-0:#f6f5f2; --surface-1:#fcfcfb; --surface-2:#efeee9;
+    --border:#dedcd4; --border-strong:#c6c4ba;
+    --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#7c7a73;
+    --series-1:#2a78d6; --series-2:#eb6834;
+    --good:#0ca30c; --critical:#d03b3b; --warning:#fab219;
+    --long-fill:rgba(12,163,12,.10); --short-fill:rgba(208,59,59,.10);
+    --grid:#e6e4dd;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:where(:not([data-theme="light"])){
+      color-scheme: dark;
+      --surface-0:#121211; --surface-1:#1a1a19; --surface-2:#232322;
+      --border:#343430; --border-strong:#4a4a45;
+      --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#8d8b81;
+      --series-1:#3987e5; --series-2:#d95926;
+      --good:#0ca30c; --critical:#d03b3b;
+      --long-fill:rgba(12,163,12,.16); --short-fill:rgba(208,59,59,.16);
+      --grid:#2c2c2a;
+    }
+  }
+  :root[data-theme="dark"]{
+    color-scheme: dark;
+    --surface-0:#121211; --surface-1:#1a1a19; --surface-2:#232322;
+    --border:#343430; --border-strong:#4a4a45;
+    --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#8d8b81;
+    --series-1:#3987e5; --series-2:#d95926;
+    --good:#0ca30c; --critical:#d03b3b;
+    --long-fill:rgba(12,163,12,.16); --short-fill:rgba(208,59,59,.16);
+    --grid:#2c2c2a;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--surface-0);color:var(--text-primary);
+    font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size:14px;line-height:1.45}
+  .wrap{max-width:1240px;margin:0 auto;padding:28px 20px 64px}
+  header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:6px}
+  h1{font-size:21px;margin:0 0 4px;letter-spacing:-.01em}
+  .sub{color:var(--text-secondary);font-size:13px;max-width:820px}
+  .card{background:var(--surface-1);border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin-top:16px}
+  .card h2{font-size:12px;margin:0 0 2px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary);font-weight:600}
+  .card .note{font-size:12px;color:var(--text-muted);margin:0 0 12px}
+  button{background:var(--surface-2);color:var(--text-primary);border:1px solid var(--border-strong);border-radius:6px;
+    padding:7px 12px;font:inherit;font-size:13px;cursor:pointer}
+  button:hover{border-color:var(--text-muted)}
+  .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:16px}
+  .tile{background:var(--surface-1);border:1px solid var(--border);border-radius:10px;padding:13px 15px}
+  .tile .k{font-size:11px;color:var(--text-secondary);letter-spacing:.03em;text-transform:uppercase}
+  .tile .v{font-size:23px;font-weight:600;letter-spacing:-.02em;margin-top:3px;font-variant-numeric:tabular-nums}
+  .tile .d{font-size:11.5px;color:var(--text-muted);margin-top:2px;font-variant-numeric:tabular-nums}
+  .pos{color:var(--good)}.neg{color:var(--critical)}.neu{color:var(--text-muted)}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--text-secondary);margin:0 0 8px}
+  .legend span{display:inline-flex;align-items:center;gap:6px}
+  .sw{width:14px;height:3px;border-radius:2px;display:inline-block}
+  .badge-wrap{margin-top:16px}
+  .callout{border:1px solid var(--border-strong);border-left-width:4px;border-radius:8px;padding:13px 16px;
+    background:var(--surface-1);font-size:13px;line-height:1.5}
+  .callout.flat{border-left-color:var(--text-muted)}
+  .callout.long{border-left-color:var(--good)}
+  .callout.zscore{border-left-color:var(--series-1)}
+  .callout.seasonal{border-left-color:var(--warning)}
+  .callout b{font-size:14px}
+  .callout .kv{color:var(--text-secondary);font-variant-numeric:tabular-nums;font-size:12.5px}
+  table{border-collapse:collapse;width:100%;font-size:12.5px;font-variant-numeric:tabular-nums}
+  th,td{text-align:right;padding:6px 9px;border-bottom:1px solid var(--border)}
+  th{color:var(--text-secondary);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.03em;
+     position:sticky;top:0;background:var(--surface-1)}
+  td:first-child,th:first-child{text-align:left}
+  .scroll{overflow:auto;border:1px solid var(--border);border-radius:8px}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:860px){.two{grid-template-columns:1fr}}
+  .foot{color:var(--text-muted);font-size:11.5px;margin-top:24px;line-height:1.6}
+  canvas{display:block;width:100%!important}
+  .sig-badge{display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:999px;
+    font-size:11.5px;font-weight:600;border:1px solid;white-space:nowrap}
+  .sig-pass{color:var(--good);border-color:var(--good);background:var(--long-fill)}
+  .sig-caution{color:var(--warning);border-color:var(--warning);background:rgba(250,178,25,.10)}
+  .sig-bearish{color:var(--critical);border-color:var(--critical);background:var(--short-fill)}
+  .sig-dot{width:7px;height:7px;border-radius:50%;background:currentColor;flex-shrink:0}
+  td.dp{font-weight:600;font-size:13px;color:var(--text-primary);text-align:left}
+  td.reading{color:var(--text-secondary);font-size:12.5px;text-align:left}
+  td.thresh{color:var(--text-muted);font-size:12px;text-align:left}
+  td.sigcell{text-align:left}
+  .sig-detail{display:block;font-size:11px;color:var(--text-muted);margin-top:2px;font-weight:400}
+</style>
 
-<div id="badge" class="badge"></div>
-
-<div class="stats" id="stats"></div>
-
-<div class="charts">
-  <div class="card">
-    <h3>Equity Curve — Growth of $1 (weekly)</h3>
-    <canvas id="equityChart" height="220"></canvas>
+<div class="wrap">
+<header>
+  <div>
+    <h1>EQT — Henry Hub Mean-Reversion Hybrid</h1>
+    <div class="sub">
+      <b>Long only, two-regime rules-based strategy.</b>
+      Seasonal window (Dec → May): buy last trading day of December, sell last trading day of May.
+      Off-season Z-score (Jun → Nov): enter when HH 20-day M2-aware Z-score &lt; −0.25 <em>and</em>
+      1-day HH momentum &lt; −$0.20; exit after 10 consecutive signal-free bars.
+      <b>M2-aware lookback:</b> prior-month days in the 20-day window use the second-month HH futures price
+      so the mean/σ window is roll-consistent.
+    </div>
   </div>
-  <div class="card">
-    <h3>HH Z-Score (20d M2-aware)</h3>
-    <div class="gauge-wrap">
-      <svg class="gauge-svg" viewBox="0 0 200 120" id="gaugeSvg"></svg>
-      <div class="gauge-val" id="gaugeVal"></div>
-      <div class="gauge-label">Entry threshold: −0.25σ</div>
+  <button id="theme">◐ Theme</button>
+</header>
+
+<!-- Signal callout -->
+<div class="badge-wrap">
+  <div class="callout" id="callout">
+    <b id="sig-label">—</b>
+    <div class="kv" id="sig-detail"></div>
+  </div>
+</div>
+
+<!-- Metric tiles -->
+<div class="tiles" id="tiles"></div>
+
+<!-- Equity curve -->
+<div class="card">
+  <h2>Strategy vs Buy &amp; Hold — Growth of $1 (weekly)</h2>
+  <p class="note">Both indexed to 1.0 at the first bar (2016-01-04). Transaction costs applied on every entry and exit.</p>
+  <div class="legend">
+    <span><span class="sw" style="background:var(--series-1)"></span>Hybrid strategy</span>
+    <span><span class="sw" style="background:var(--series-2)"></span>EQT buy &amp; hold</span>
+  </div>
+  <canvas id="equityChart"></canvas>
+</div>
+
+<!-- Annual returns + table -->
+<div class="two" style="margin-top:16px">
+  <div class="card" style="margin-top:0">
+    <h2>Annual Returns (%)</h2>
+    <p class="note">Calendar-year return for each regime.</p>
+    <canvas id="annualChart"></canvas>
+  </div>
+  <div class="card" style="margin-top:0">
+    <h2>Annual Breakdown</h2>
+    <p class="note">Year-by-year comparison, most recent first.</p>
+    <div class="scroll" style="max-height:340px">
+      <table id="annTable">
+        <thead><tr><th>Year</th><th>Hybrid</th><th>B&amp;H</th><th>Diff</th></tr></thead>
+        <tbody></tbody>
+      </table>
     </div>
   </div>
 </div>
 
-<div class="card annual-chart">
-  <h3>Annual Returns (%)</h3>
-  <canvas id="annualChart" height="120"></canvas>
+<!-- Natural Gas Outlook Scoreboard -->
+<div class="card" id="outlookCard">
+  <h2>Natural Gas Outlook Scoreboard</h2>
+  <p class="note">Fundamental checklist for the Dec→May seasonal entry. Updated manually alongside each backtest run.</p>
+  <div class="scroll" style="max-height:none">
+    <table id="outlookTable">
+      <thead>
+        <tr>
+          <th style="text-align:left;min-width:140px">Data Point</th>
+          <th style="text-align:left;min-width:220px">Current Reading</th>
+          <th style="text-align:left;min-width:160px">Threshold</th>
+          <th style="text-align:left;min-width:200px">Signal</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
 </div>
 
-<div class="rules">
-  <strong>Entry (Z-score, off-season):</strong> HH 20-day Z-score &lt; −0.25 AND 1-day HH momentum &lt; −$0.20<br>
-  <strong>Exit:</strong> 10 consecutive days without entry signal<br>
-  <strong>Seasonal window:</strong> Buy last trading day of December → Sell last trading day of May (0.40% RT cost)<br>
-  <strong>M2-aware lookback:</strong> Prior-month days in the 20-day window use M2 futures price to avoid roll distortion
+<!-- Strategy rules -->
+<div class="card">
+  <h2>Strategy Rules</h2>
+  <p class="note">Fixed rules — no parameters tuned in-sample on EQT data.</p>
+  <table>
+    <thead><tr><th>Regime</th><th style="text-align:left">Entry</th><th style="text-align:left">Exit</th><th style="text-align:left">Cost</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>Seasonal</b><br><span style="color:var(--text-muted);font-size:11px">Dec → May</span></td>
+        <td style="text-align:left">Last trading day of December</td>
+        <td style="text-align:left">Last trading day of May</td>
+        <td style="text-align:left">0.40% round-trip</td>
+      </tr>
+      <tr>
+        <td><b>Z-score</b><br><span style="color:var(--text-muted);font-size:11px">Jun → Nov</span></td>
+        <td style="text-align:left">HH 20-day M2-aware Z &lt; −0.25 <em>and</em> 1-day HH mom &lt; −$0.20</td>
+        <td style="text-align:left">10 consecutive bars without entry signal</td>
+        <td style="text-align:left">0.20% / side</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
-<footer>Last updated: 2026-10-06 · EQT adj. close $52.47</footer>
+<!-- Trade log -->
+<div class="card">
+  <h2>Last 10 Trades</h2>
+  <p class="note">Most recent closed positions and any currently open trade. Returns are net of transaction costs.</p>
+  <div class="scroll" style="max-height:400px">
+    <table id="tradeTable">
+      <thead>
+        <tr>
+          <th style="text-align:left">#</th>
+          <th style="text-align:left">Regime</th>
+          <th>Entry date</th>
+          <th>Entry px</th>
+          <th>Exit date</th>
+          <th>Exit px</th>
+          <th style="text-align:left">Entry signal</th>
+          <th style="text-align:left">Exit reason</th>
+          <th>Return</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
 
+<p class="foot" id="foot"></p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script>
 const WEEKLY  = [{"date":"2016-01-10","hybrid":1.0245,"bh":1.0245},{"date":"2016-01-17","hybrid":0.9878,"bh":0.9878},{"date":"2016-01-24","hybrid":1.092,"bh":1.092},{"date":"2016-01-31","hybrid":1.1616,"bh":1.1616},{"date":"2016-02-07","hybrid":1.1247,"bh":1.1247},{"date":"2016-02-14","hybrid":1.1121,"bh":1.1121},{"date":"2016-02-21","hybrid":1.108,"bh":1.108},{"date":"2016-02-28","hybrid":1.0683,"bh":1.0683},{"date":"2016-03-06","hybrid":1.06,"bh":1.06},{"date":"2016-03-13","hybrid":1.1516,"bh":1.1516},{"date":"2016-03-20","hybrid":1.2369,"bh":1.2369},{"date":"2016-03-27","hybrid":1.2147,"bh":1.2147},{"date":"2016-04-03","hybrid":1.2557,"bh":1.2557},{"date":"2016-04-10","hybrid":1.264,"bh":1.264},{"date":"2016-04-17","hybrid":1.2487,"bh":1.2487},{"date":"2016-04-24","hybrid":1.2882,"bh":1.2882},{"date":"2016-05-01","hybrid":1.3189,"bh":1.3189},{"date":"2016-05-08","hybrid":1.3082,"bh":1.3082},{"date":"2016-05-15","hybrid":1.3178,"bh":1.3178},{"date":"2016-05-22","hybrid":1.3067,"bh":1.3067},{"date":"2016-05-29","hybrid":1.3765,"bh":1.3765},{"date":"2016-06-05","hybrid":1.3742,"bh":1.3868},{"date":"2016-06-12","hybrid":1.3742,"bh":1.4207},{"date":"2016-06-19","hybrid":1.3742,"bh":1.4491},{"date":"2016-06-26","hybrid":1.3742,"bh":1.4427},{"date":"2016-07-03","hybrid":1.3742,"bh":1.4926},{"date":"2016-07-10","hybrid":1.3742,"bh":1.4615},{"date":"2016-07-17","hybrid":1.3742,"bh":1.4216},{"date":"2016-07-24","hybrid":1.3742,"bh":1.4122},{"date":"2016-07-31","hybrid":1.3742,"bh":1.3708},{"date":"2016-08-07","hybrid":1.3742,"bh":1.3157},{"date":"2016-08-14","hybrid":1.3742,"bh":1.2854},{"date":"2016-08-21","hybrid":1.3742,"bh":1.3422},{"date":"2016-08-28","hybrid":1.3742,"bh":1.3486},{"date":"2016-09-04","hybrid":1.3742,"bh":1.3513},{"date":"2016-09-11","hybrid":1.3742,"bh":1.3648},{"date":"2016-09-18","hybrid":1.3742,"bh":1.3266},{"date":"2016-09-25","hybrid":1.3742,"bh":1.3859},{"date":"2016-10-02","hybrid":1.3742,"bh":1.3663},{"date":"2016-10-09","hybrid":1.3742,"bh":1.3612},{"date":"2016-10-16","hybrid":1.3742,"bh":1.2692},{"date":"2016-10-23","hybrid":1.3742,"bh":1.2107},{"date":"2016-10-30","hybrid":1.3742,"bh":1.242},{"date":"2016-11-06","hybrid":1.3742,"bh":1.1917},{"date":"2016-11-13","hybrid":1.3742,"bh":1.2361},{"date":"2016-11-20","hybrid":1.3742,"bh":1.2632},{"date":"2016-11-27","hybrid":1.3742,"bh":1.3197},{"date":"2016-12-04","hybrid":1.3591,"bh":1.3392},{"date":"2016-12-11","hybrid":1.4263,"bh":1.4055},{"date":"2016-12-18","hybrid":1.2424,"bh":1.2243},{"date":"2016-12-25","hybrid":1.2678,"bh":1.2493},{"date":"2017-01-01","hybrid":1.2487,"bh":1.2305},{"date":"2017-01-08","hybrid":1.2474,"bh":1.2292},{"date":"2017-01-15","hybrid":1.1867,"bh":1.1693},{"date":"2017-01-22","hybrid":1.2002,"bh":1.1827},{"date":"2017-01-29","hybrid":1.2252,"bh":1.2073},{"date":"2017-02-05","hybrid":1.2424,"bh":1.2243},{"date":"2017-02-12","hybrid":1.2287,"bh":1.2107},{"date":"2017-02-19","hybrid":1.1851,"bh":1.1678},{"date":"2017-02-26","hybrid":1.1445,"bh":1.1278},{"date":"2017-03-05","hybrid":1.1321,"bh":1.1155},{"date":"2017-03-12","hybrid":1.0899,"bh":1.0739},{"date":"2017-03-19","hybrid":1.104,"bh":1.0879},{"date":"2017-03-26","hybrid":1.0941,"bh":1.0781},{"date":"2017-04-02","hybrid":1.1666,"bh":1.1496},{"date":"2017-04-09","hybrid":1.2029,"bh":1.1853},{"date":"2017-04-16","hybrid":1.1956,"bh":1.1782},{"date":"2017-04-23","hybrid":1.2,"bh":1.1825},{"date":"2017-04-30","hybrid":1.1101,"bh":1.0939},{"date":"2017-05-07","hybrid":1.1116,"bh":1.0954},{"date":"2017-05-14","hybrid":1.0849,"bh":1.069},{"date":"2017-05-21","hybrid":1.0773,"bh":1.0615},{"date":"2017-05-28","hybrid":1.0824,"bh":1.0666},{"date":"2017-06-04","hybrid":1.067,"bh":1.0309},{"date":"2017-06-11","hybrid":1.067,"bh":1.0628},{"date":"2017-06-18","hybrid":1.067,"bh":1.1057},{"date":"2017-06-25","hybrid":1.067,"bh":1.0572},{"date":"2017-07-02","hybrid":1.067,"bh":1.1024},{"date":"2017-07-09","hybrid":1.067,"bh":1.1052},{"date":"2017-07-16","hybrid":1.067,"bh":1.1643},{"date":"2017-07-23","hybrid":1.067,"bh":1.1842},{"date":"2017-07-30","hybrid":1.067,"bh":1.2436},{"date":"2017-08-06","hybrid":1.067,"bh":1.1752},{"date":"2017-08-13","hybrid":1.067,"bh":1.184},{"date":"2017-08-20","hybrid":1.067,"bh":1.1336},{"date":"2017-08-27","hybrid":1.067,"bh":1.1488},{"date":"2017-09-03","hybrid":1.067,"bh":1.178},{"date":"2017-09-10","hybrid":1.067,"bh":1.1415},{"date":"2017-09-17","hybrid":1.067,"bh":1.2203},{"date":"2017-09-24","hybrid":1.067,"bh":1.209},{"date":"2017-10-01","hybrid":1.067,"bh":1.2275},{"date":"2017-10-08","hybrid":1.067,"bh":1.1968},{"date":"2017-10-15","hybrid":1.067,"bh":1.1855},{"date":"2017-10-22","hybrid":1.067,"bh":1.1919},{"date":"2017-10-29","hybrid":1.067,"bh":1.1912},{"date":"2017-11-05","hybrid":1.067,"bh":1.1812},{"date":"2017-11-12","hybrid":1.067,"bh":1.2263},{"date":"2017-11-19","hybrid":1.067,"bh":1.1106},{"date":"2017-11-26","hybrid":1.067,"bh":1.0847},{"date":"2017-12-03","hybrid":1.067,"bh":1.1208},{"date":"2017-12-10","hybrid":1.0099,"bh":1.0608},{"date":"2017-12-17","hybrid":0.9799,"bh":1.0294},{"date":"2017-12-24","hybrid":0.981,"bh":1.0305},{"date":"2017-12-31","hybrid":1.0195,"bh":1.0709},{"date":"2018-01-07","hybrid":1.0355,"bh":1.0877},{"date":"2018-01-14","hybrid":1.0471,"bh":1.0999},{"date":"2018-01-21","hybrid":1.0036,"bh":1.0542},{"date":"2018-01-28","hybrid":1.0521,"bh":1.1052},{"date":"2018-02-04","hybrid":0.9298,"bh":0.9767},{"date":"2018-02-11","hybrid":0.8191,"bh":0.8604},{"date":"2018-02-18","hybrid":0.9413,"bh":0.9887},{"date":"2018-02-25","hybrid":0.9328,"bh":0.9799},{"date":"2018-03-04","hybrid":0.9013,"bh":0.9468},{"date":"2018-03-11","hybrid":0.9393,"bh":0.9866},{"date":"2018-03-18","hybrid":0.9036,"bh":0.9492},{"date":"2018-03-25","hybrid":0.8637,"bh":0.9072},{"date":"2018-04-01","hybrid":0.851,"bh":0.8939},{"date":"2018-04-08","hybrid":0.8401,"bh":0.8824},{"date":"2018-04-15","hybrid":0.875,"bh":0.9191},{"date":"2018-04-22","hybrid":0.8483,"bh":0.8911},{"date":"2018-04-29","hybrid":0.8949,"bh":0.94},{"date":"2018-05-06","hybrid":0.871,"bh":0.915},{"date":"2018-05-13","hybrid":0.9099,"bh":0.9558},{"date":"2018-05-20","hybrid":0.9429,"bh":0.9904},{"date":"2018-05-27","hybrid":0.8997,"bh":0.9451},{"date":"2018-06-03","hybrid":0.9255,"bh":0.9767},{"date":"2018-06-10","hybrid":0.9255,"bh":0.9994},{"date":"2018-06-17","hybrid":0.9255,"bh":1.0435},{"date":"2018-06-24","hybrid":0.9255,"bh":1.01},{"date":"2018-07-01","hybrid":0.9255,"bh":1.0382},{"date":"2018-07-08","hybrid":0.9255,"bh":1.0521},{"date":"2018-07-15","hybrid":0.9255,"bh":1.0446},{"date":"2018-07-22","hybrid":0.9255,"bh":1.0476},{"date":"2018-07-29","hybrid":0.9255,"bh":0.9379},{"date":"2018-08-05","hybrid":0.9255,"bh":0.9475},{"date":"2018-08-12","hybrid":0.9255,"bh":0.9372},{"date":"2018-08-19","hybrid":0.9255,"bh":0.9319},{"date":"2018-08-26","hybrid":0.9255,"bh":0.9624},{"date":"2018-09-02","hybrid":0.9255,"bh":0.9599},{"date":"2018-09-09","hybrid":0.9255,"bh":0.876},{"date":"2018-09-16","hybrid":0.9255,"bh":0.8946},{"date":"2018-09-23","hybrid":0.9255,"bh":0.9076},{"date":"2018-09-30","hybrid":0.9255,"bh":0.8322},{"date":"2018-10-07","hybrid":0.9255,"bh":0.8436},{"date":"2018-10-14","hybrid":0.9255,"bh":0.8542},{"date":"2018-10-21","hybrid":0.9255,"bh":0.8726},{"date":"2018-10-28","hybrid":0.9255,"bh":0.6124},{"date":"2018-11-04","hybrid":0.9255,"bh":0.6139},{"date":"2018-11-11","hybrid":0.9255,"bh":0.6754},{"date":"2018-11-18","hybrid":0.9255,"bh":0.5748},{"date":"2018-11-25","hybrid":0.9255,"bh":0.626},{"date":"2018-12-02","hybrid":0.9255,"bh":0.6467},{"date":"2018-12-09","hybrid":0.9011,"bh":0.6363},{"date":"2018-12-16","hybrid":0.9495,"bh":0.6705},{"date":"2018-12-23","hybrid":0.9138,"bh":0.6453},{"date":"2018-12-30","hybrid":0.9392,"bh":0.6633},{"date":"2019-01-06","hybrid":0.9554,"bh":0.6747},{"date":"2019-01-13","hybrid":0.997,"bh":0.7041},{"date":"2019-01-20","hybrid":1.0366,"bh":0.7321},{"date":"2019-01-27","hybrid":0.9774,"bh":0.6902},{"date":"2019-02-03","hybrid":0.9622,"bh":0.6795},{"date":"2019-02-10","hybrid":0.8707,"bh":0.6149},{"date":"2019-02-17","hybrid":0.9265,"bh":0.6543},{"date":"2019-02-24","hybrid":0.9451,"bh":0.6674},{"date":"2019-03-03","hybrid":0.9539,"bh":0.6737},{"date":"2019-03-10","hybrid":0.8986,"bh":0.6346},{"date":"2019-03-17","hybrid":0.95,"bh":0.6709},{"date":"2019-03-24","hybrid":0.9549,"bh":0.6743},{"date":"2019-03-31","hybrid":1.0151,"bh":0.7169},{"date":"2019-04-07","hybrid":1.0577,"bh":0.7469},{"date":"2019-04-14","hybrid":1.044,"bh":0.7373},{"date":"2019-04-21","hybrid":1.0004,"bh":0.7065},{"date":"2019-04-28","hybrid":1.0273,"bh":0.7255},{"date":"2019-05-05","hybrid":0.9975,"bh":0.7044},{"date":"2019-05-12","hybrid":1.0303,"bh":0.7276},{"date":"2019-05-19","hybrid":1.0185,"bh":0.7193},{"date":"2019-05-26","hybrid":0.951,"bh":0.6716},{"date":"2019-06-02","hybrid":0.8957,"bh":0.6325},{"date":"2019-06-09","hybrid":0.8978,"bh":0.6114},{"date":"2019-06-16","hybrid":0.8978,"bh":0.5465},{"date":"2019-06-23","hybrid":0.8978,"bh":0.5264},{"date":"2019-06-30","hybrid":0.8978,"bh":0.5465},{"date":"2019-07-07","hybrid":0.8978,"bh":0.5347},{"date":"2019-07-14","hybrid":0.8978,"bh":0.5468},{"date":"2019-07-21","hybrid":0.8978,"bh":0.534},{"date":"2019-07-28","hybrid":0.8978,"bh":0.4946},{"date":"2019-08-04","hybrid":0.8978,"bh":0.4614},{"date":"2019-08-11","hybrid":0.8978,"bh":0.4179},{"date":"2019-08-18","hybrid":0.8978,"bh":0.4272},{"date":"2019-08-25","hybrid":0.8978,"bh":0.3577},{"date":"2019-09-01","hybrid":0.8978,"bh":0.3515},{"date":"2019-09-08","hybrid":0.8978,"bh":0.3691},{"date":"2019-09-15","hybrid":0.8978,"bh":0.4203},{"date":"2019-09-22","hybrid":0.8978,"bh":0.3961},{"date":"2019-09-29","hybrid":0.8978,"bh":0.3882},{"date":"2019-10-06","hybrid":0.8978,"bh":0.3422},{"date":"2019-10-13","hybrid":0.8978,"bh":0.3339},{"date":"2019-10-20","hybrid":0.8978,"bh":0.3356},{"date":"2019-10-27","hybrid":0.8978,"bh":0.328},{"date":"2019-11-03","hybrid":0.8978,"bh":0.365},{"date":"2019-11-10","hybrid":0.8978,"bh":0.4006},{"date":"2019-11-17","hybrid":0.8978,"bh":0.3577},{"date":"2019-11-24","hybrid":0.8978,"bh":0.3132},{"date":"2019-12-01","hybrid":0.8978,"bh":0.3017},{"date":"2019-12-08","hybrid":0.934,"bh":0.3035},{"date":"2019-12-15","hybrid":0.9893,"bh":0.3214},{"date":"2019-12-22","hybrid":1.1212,"bh":0.3643},{"date":"2019-12-29","hybrid":1.1117,"bh":0.3612},{"date":"2020-01-05","hybrid":1.1,"bh":0.3574},{"date":"2020-01-12","hybrid":0.9404,"bh":0.3055},{"date":"2020-01-19","hybrid":0.8766,"bh":0.2848},{"date":"2020-01-26","hybrid":0.7074,"bh":0.2299},{"date":"2020-02-02","hybrid":0.6436,"bh":0.2091},{"date":"2020-02-09","hybrid":0.5638,"bh":0.1832},{"date":"2020-02-16","hybrid":0.5627,"bh":0.1828},{"date":"2020-02-23","hybrid":0.6181,"bh":0.2008},{"date":"2020-03-01","hybrid":0.6244,"bh":0.2029},{"date":"2020-03-08","hybrid":0.6798,"bh":0.2209},{"date":"2020-03-15","hybrid":1.0138,"bh":0.3294},{"date":"2020-03-22","hybrid":0.7925,"bh":0.2575},{"date":"2020-03-29","hybrid":0.734,"bh":0.2385},{"date":"2020-04-05","hybrid":0.9329,"bh":0.3031},{"date":"2020-04-12","hybrid":1.151,"bh":0.374},{"date":"2020-04-19","hybrid":1.4223,"bh":0.4621},{"date":"2020-04-26","hybrid":1.4244,"bh":0.4628},{"date":"2020-05-03","hybrid":1.5287,"bh":0.4967},{"date":"2020-05-10","hybrid":1.4882,"bh":0.4836},{"date":"2020-05-17","hybrid":1.3553,"bh":0.4403},{"date":"2020-05-24","hybrid":1.4617,"bh":0.4749},{"date":"2020-05-31","hybrid":1.4191,"bh":0.4611},{"date":"2020-06-07","hybrid":1.3655,"bh":0.5195},{"date":"2020-06-14","hybrid":1.3655,"bh":0.5119},{"date":"2020-06-21","hybrid":1.3655,"bh":0.4466},{"date":"2020-06-28","hybrid":1.3655,"bh":0.3681},{"date":"2020-07-05","hybrid":1.3655,"bh":0.4379},{"date":"2020-07-12","hybrid":1.3655,"bh":0.45},{"date":"2020-07-19","hybrid":1.3655,"bh":0.4314},{"date":"2020-07-26","hybrid":1.3655,"bh":0.4898},{"date":"2020-08-02","hybrid":1.3655,"bh":0.5019},{"date":"2020-08-09","hybrid":1.3655,"bh":0.5935},{"date":"2020-08-16","hybrid":1.3655,"bh":0.5862},{"date":"2020-08-23","hybrid":1.3655,"bh":0.5544},{"date":"2020-08-30","hybrid":1.3655,"bh":0.5537},{"date":"2020-09-06","hybrid":1.3655,"bh":0.5309},{"date":"2020-09-13","hybrid":1.3655,"bh":0.4849},{"date":"2020-09-20","hybrid":1.3655,"bh":0.5233},{"date":"2020-09-27","hybrid":1.251,"bh":0.4794},{"date":"2020-10-04","hybrid":1.1481,"bh":0.44},{"date":"2020-10-11","hybrid":1.2085,"bh":0.5077},{"date":"2020-10-18","hybrid":1.1773,"bh":0.5084},{"date":"2020-10-25","hybrid":1.2926,"bh":0.5582},{"date":"2020-11-01","hybrid":1.2413,"bh":0.5233},{"date":"2020-11-08","hybrid":1.2413,"bh":0.4891},{"date":"2020-11-15","hybrid":1.2413,"bh":0.5264},{"date":"2020-11-22","hybrid":1.2663,"bh":0.5088},{"date":"2020-11-29","hybrid":1.3118,"bh":0.5271},{"date":"2020-12-06","hybrid":1.2201,"bh":0.4922},{"date":"2020-12-13","hybrid":1.1952,"bh":0.4822},{"date":"2020-12-20","hybrid":1.1584,"bh":0.4673},{"date":"2020-12-27","hybrid":1.1918,"bh":0.4808},{"date":"2021-01-03","hybrid":1.089,"bh":0.4393},{"date":"2021-01-10","hybrid":1.2441,"bh":0.5019},{"date":"2021-01-17","hybrid":1.5851,"bh":0.6394},{"date":"2021-01-24","hybrid":1.4043,"bh":0.5665},{"date":"2021-01-31","hybrid":1.3974,"bh":0.5637},{"date":"2021-02-07","hybrid":1.4351,"bh":0.5789},{"date":"2021-02-14","hybrid":1.5131,"bh":0.6104},{"date":"2021-02-21","hybrid":1.5748,"bh":0.6353},{"date":"2021-02-28","hybrid":1.5242,"bh":0.6149},{"date":"2021-03-07","hybrid":1.5405,"bh":0.6215},{"date":"2021-03-14","hybrid":1.6065,"bh":0.6481},{"date":"2021-03-21","hybrid":1.5825,"bh":0.6384},{"date":"2021-03-28","hybrid":1.6887,"bh":0.6813},{"date":"2021-04-04","hybrid":1.6245,"bh":0.6553},{"date":"2021-04-11","hybrid":1.4728,"bh":0.5942},{"date":"2021-04-18","hybrid":1.5037,"bh":0.6066},{"date":"2021-04-25","hybrid":1.5182,"bh":0.6125},{"date":"2021-05-02","hybrid":1.6365,"bh":0.6602},{"date":"2021-05-09","hybrid":1.7727,"bh":0.7151},{"date":"2021-05-16","hybrid":1.8327,"bh":0.7393},{"date":"2021-05-23","hybrid":1.9175,"bh":0.7735},{"date":"2021-05-30","hybrid":1.789,"bh":0.7217},{"date":"2021-06-06","hybrid":1.8603,"bh":0.7414},{"date":"2021-06-13","hybrid":1.8603,"bh":0.7957},{"date":"2021-06-20","hybrid":1.8603,"bh":0.6685},{"date":"2021-06-27","hybrid":1.8603,"bh":0.7614},{"date":"2021-07-04","hybrid":1.8603,"bh":0.7469},{"date":"2021-07-11","hybrid":1.8603,"bh":0.7504},{"date":"2021-07-18","hybrid":1.8603,"bh":0.655},{"date":"2021-07-25","hybrid":1.8603,"bh":0.6989},{"date":"2021-08-01","hybrid":1.8603,"bh":0.6356},{"date":"2021-08-08","hybrid":1.8603,"bh":0.6412},{"date":"2021-08-15","hybrid":1.8603,"bh":0.6201},{"date":"2021-08-22","hybrid":1.8603,"bh":0.5596},{"date":"2021-08-29","hybrid":1.8603,"bh":0.6436},{"date":"2021-09-05","hybrid":1.8603,"bh":0.7096},{"date":"2021-09-12","hybrid":1.8603,"bh":0.6705},{"date":"2021-09-19","hybrid":1.8603,"bh":0.6508},{"date":"2021-09-26","hybrid":1.8603,"bh":0.6909},{"date":"2021-10-03","hybrid":1.8603,"bh":0.7127},{"date":"2021-10-10","hybrid":1.8603,"bh":0.7217},{"date":"2021-10-17","hybrid":1.8584,"bh":0.6847},{"date":"2021-10-24","hybrid":2.0076,"bh":0.7397},{"date":"2021-10-31","hybrid":1.8678,"bh":0.6882},{"date":"2021-11-07","hybrid":1.9306,"bh":0.7113},{"date":"2021-11-14","hybrid":2.0038,"bh":0.7383},{"date":"2021-11-21","hybrid":1.9532,"bh":0.7196},{"date":"2021-11-28","hybrid":1.9691,"bh":0.7255},{"date":"2021-12-05","hybrid":1.828,"bh":0.6764},{"date":"2021-12-12","hybrid":1.9485,"bh":0.721},{"date":"2021-12-19","hybrid":1.9858,"bh":0.7348},{"date":"2021-12-26","hybrid":2.0671,"bh":0.7649},{"date":"2022-01-02","hybrid":2.0372,"bh":0.7538},{"date":"2022-01-09","hybrid":2.1306,"bh":0.7884},{"date":"2022-01-16","hybrid":2.2221,"bh":0.8223},{"date":"2022-01-23","hybrid":1.9204,"bh":0.7106},{"date":"2022-01-30","hybrid":1.9746,"bh":0.7307},{"date":"2022-02-06","hybrid":2.0138,"bh":0.7452},{"date":"2022-02-13","hybrid":2.1418,"bh":0.7926},{"date":"2022-02-20","hybrid":2.0848,"bh":0.7715},{"date":"2022-02-27","hybrid":2.1259,"bh":0.7867},{"date":"2022-03-06","hybrid":2.4622,"bh":0.9111},{"date":"2022-03-13","hybrid":2.522,"bh":0.9332},{"date":"2022-03-20","hybrid":2.5332,"bh":0.9374},{"date":"2022-03-27","hybrid":3.2066,"bh":1.1866},{"date":"2022-04-03","hybrid":3.3654,"bh":1.2453},{"date":"2022-04-10","hybrid":3.5784,"bh":1.3241},{"date":"2022-04-17","hybrid":3.9567,"bh":1.4641},{"date":"2022-04-24","hybrid":3.712,"bh":1.3736},{"date":"2022-05-01","hybrid":3.7129,"bh":1.3739},{"date":"2022-05-08","hybrid":3.8343,"bh":1.4189},{"date":"2022-05-15","hybrid":3.5681,"bh":1.3203},{"date":"2022-05-22","hybrid":3.8157,"bh":1.4119},{"date":"2022-05-29","hybrid":4.5237,"bh":1.6739},{"date":"2022-06-05","hybrid":4.6448,"bh":1.6587},{"date":"2022-06-12","hybrid":4.6448,"bh":1.6577},{"date":"2022-06-19","hybrid":4.0479,"bh":1.2422},{"date":"2022-06-26","hybrid":3.9521,"bh":1.2129},{"date":"2022-07-03","hybrid":3.8598,"bh":1.1845},{"date":"2022-07-10","hybrid":3.8519,"bh":1.1821},{"date":"2022-07-17","hybrid":4.1244,"bh":1.2657},{"date":"2022-07-24","hybrid":4.7563,"bh":1.4596},{"date":"2022-07-31","hybrid":5.0992,"bh":1.5219},{"date":"2022-08-07","hybrid":5.0992,"bh":1.4614},{"date":"2022-08-14","hybrid":5.0992,"bh":1.5965},{"date":"2022-08-21","hybrid":5.0992,"bh":1.6487},{"date":"2022-08-28","hybrid":5.0992,"bh":1.7168},{"date":"2022-09-04","hybrid":5.0992,"bh":1.6342},{"date":"2022-09-11","hybrid":5.427,"bh":1.6712},{"date":"2022-09-18","hybrid":5.17,"bh":1.592},{"date":"2022-09-25","hybrid":4.6312,"bh":1.4261},{"date":"2022-10-02","hybrid":4.5739,"bh":1.4085},{"date":"2022-10-09","hybrid":4.8456,"bh":1.4921},{"date":"2022-10-16","hybrid":4.6166,"bh":1.4216},{"date":"2022-10-23","hybrid":4.2518,"bh":1.3093},{"date":"2022-10-30","hybrid":4.3416,"bh":1.3369},{"date":"2022-11-06","hybrid":4.611,"bh":1.4199},{"date":"2022-11-13","hybrid":4.7838,"bh":1.4731},{"date":"2022-11-20","hybrid":4.6054,"bh":1.4182},{"date":"2022-11-27","hybrid":4.8299,"bh":1.4873},{"date":"2022-12-04","hybrid":4.5853,"bh":1.3801},{"date":"2022-12-11","hybrid":4.0961,"bh":1.2329},{"date":"2022-12-18","hybrid":4.2764,"bh":1.2872},{"date":"2022-12-25","hybrid":4.1582,"bh":1.2516},{"date":"2023-01-01","hybrid":3.8848,"bh":1.1693},{"date":"2023-01-08","hybrid":3.8286,"bh":1.1524},{"date":"2023-01-15","hybrid":3.9974,"bh":1.2032},{"date":"2023-01-22","hybrid":3.8986,"bh":1.1734},{"date":"2023-01-29","hybrid":3.7815,"bh":1.1382},{"date":"2023-02-05","hybrid":3.5897,"bh":1.0805},{"date":"2023-02-12","hybrid":3.6368,"bh":1.0946},{"date":"2023-02-19","hybrid":3.5886,"bh":1.0801},{"date":"2023-02-26","hybrid":3.9882,"bh":1.2004},{"date":"2023-03-05","hybrid":3.9446,"bh":1.1873},{"date":"2023-03-12","hybrid":3.4921,"bh":1.0511},{"date":"2023-03-19","hybrid":3.3727,"bh":1.0151},{"date":"2023-03-26","hybrid":3.5093,"bh":1.0563},{"date":"2023-04-02","hybrid":3.6644,"bh":1.1029},{"date":"2023-04-09","hybrid":3.6885,"bh":1.1102},{"date":"2023-04-16","hybrid":3.8056,"bh":1.1455},{"date":"2023-04-23","hybrid":3.7425,"bh":1.1264},{"date":"2023-04-30","hybrid":4.0008,"bh":1.2042},{"date":"2023-05-07","hybrid":3.7149,"bh":1.1181},{"date":"2023-05-14","hybrid":3.8412,"bh":1.1562},{"date":"2023-05-21","hybrid":4.1605,"bh":1.2523},{"date":"2023-05-28","hybrid":4.1444,"bh":1.2474},{"date":"2023-06-04","hybrid":4.0116,"bh":1.2633},{"date":"2023-06-11","hybrid":4.0116,"bh":1.3324},{"date":"2023-06-18","hybrid":4.0116,"bh":1.3701},{"date":"2023-06-25","hybrid":4.0116,"bh":1.3542},{"date":"2023-07-02","hybrid":4.0116,"bh":1.4216},{"date":"2023-07-09","hybrid":4.0116,"bh":1.3725},{"date":"2023-07-16","hybrid":4.0116,"bh":1.3207},{"date":"2023-07-23","hybrid":4.0116,"bh":1.3791},{"date":"2023-07-30","hybrid":4.0116,"bh":1.4614},{"date":"2023-08-06","hybrid":4.0116,"bh":1.4448},{"date":"2023-08-13","hybrid":4.0116,"bh":1.488},{"date":"2023-08-20","hybrid":4.0116,"bh":1.5025},{"date":"2023-08-27","hybrid":4.0116,"bh":1.4531},{"date":"2023-09-03","hybrid":4.0116,"bh":1.5284},{"date":"2023-09-10","hybrid":4.0116,"bh":1.4683},{"date":"2023-09-17","hybrid":4.0116,"bh":1.4354},{"date":"2023-09-24","hybrid":4.0116,"bh":1.329},{"date":"2023-10-01","hybrid":4.0116,"bh":1.4026},{"date":"2023-10-08","hybrid":4.0116,"bh":1.479},{"date":"2023-10-15","hybrid":4.0116,"bh":1.499},{"date":"2023-10-22","hybrid":4.0116,"bh":1.4638},{"date":"2023-10-29","hybrid":4.0116,"bh":1.45},{"date":"2023-11-05","hybrid":4.0116,"bh":1.5457},{"date":"2023-11-12","hybrid":3.8512,"bh":1.3525},{"date":"2023-11-19","hybrid":3.9732,"bh":1.3954},{"date":"2023-11-26","hybrid":3.9227,"bh":1.4119},{"date":"2023-12-03","hybrid":3.9227,"bh":1.3909},{"date":"2023-12-10","hybrid":3.6196,"bh":1.2834},{"date":"2023-12-17","hybrid":3.7473,"bh":1.3286},{"date":"2023-12-24","hybrid":3.8009,"bh":1.3477},{"date":"2023-12-31","hybrid":3.7687,"bh":1.3362},{"date":"2024-01-07","hybrid":3.7736,"bh":1.338},{"date":"2024-01-14","hybrid":3.6868,"bh":1.3072},{"date":"2024-01-21","hybrid":3.4441,"bh":1.2211},{"date":"2024-01-28","hybrid":3.4977,"bh":1.2402},{"date":"2024-02-04","hybrid":3.4158,"bh":1.2111},{"date":"2024-02-11","hybrid":3.3466,"bh":1.1866},{"date":"2024-02-18","hybrid":3.3827,"bh":1.1994},{"date":"2024-02-25","hybrid":3.6079,"bh":1.2792},{"date":"2024-03-03","hybrid":3.6079,"bh":1.2792},{"date":"2024-03-10","hybrid":3.6576,"bh":1.2968},{"date":"2024-03-17","hybrid":3.2589,"bh":1.1555},{"date":"2024-03-24","hybrid":3.3495,"bh":1.1876},{"date":"2024-03-31","hybrid":3.6137,"bh":1.2813},{"date":"2024-04-07","hybrid":3.5562,"bh":1.2609},{"date":"2024-04-14","hybrid":3.6313,"bh":1.2875},{"date":"2024-04-21","hybrid":3.5728,"bh":1.2668},{"date":"2024-04-28","hybrid":3.9588,"bh":1.4036},{"date":"2024-05-05","hybrid":3.9257,"bh":1.3919},{"date":"2024-05-12","hybrid":3.795,"bh":1.3456},{"date":"2024-05-19","hybrid":4.0134,"bh":1.423},{"date":"2024-05-26","hybrid":3.914,"bh":1.3877},{"date":"2024-06-02","hybrid":4.0056,"bh":1.4202},{"date":"2024-06-09","hybrid":3.9792,"bh":1.4012},{"date":"2024-06-16","hybrid":3.9792,"bh":1.3597},{"date":"2024-06-23","hybrid":3.9792,"bh":1.2778},{"date":"2024-06-30","hybrid":3.9792,"bh":1.2782},{"date":"2024-07-07","hybrid":3.9792,"bh":1.2554},{"date":"2024-07-14","hybrid":3.9792,"bh":1.2861},{"date":"2024-07-21","hybrid":3.9792,"bh":1.2402},{"date":"2024-07-28","hybrid":3.9792,"bh":1.1859},{"date":"2024-08-04","hybrid":3.9792,"bh":1.0912},{"date":"2024-08-11","hybrid":3.9792,"bh":1.0749},{"date":"2024-08-18","hybrid":3.9792,"bh":1.1112},{"date":"2024-08-25","hybrid":3.9792,"bh":1.1627},{"date":"2024-09-01","hybrid":3.9792,"bh":1.1582},{"date":"2024-09-08","hybrid":3.9792,"bh":1.1185},{"date":"2024-09-15","hybrid":3.9792,"bh":1.1472},{"date":"2024-09-22","hybrid":3.9792,"bh":1.2039},{"date":"2024-09-29","hybrid":3.9792,"bh":1.2626},{"date":"2024-10-06","hybrid":3.9792,"bh":1.2768},{"date":"2024-10-13","hybrid":3.9792,"bh":1.293},{"date":"2024-10-20","hybrid":3.9792,"bh":1.2612},{"date":"2024-10-27","hybrid":3.9792,"bh":1.2955},{"date":"2024-11-03","hybrid":3.7989,"bh":1.2312},{"date":"2024-11-10","hybrid":4.3962,"bh":1.4247},{"date":"2024-11-17","hybrid":4.6533,"bh":1.4762},{"date":"2024-11-24","hybrid":4.6533,"bh":1.5872},{"date":"2024-12-01","hybrid":4.6533,"bh":1.5706},{"date":"2024-12-08","hybrid":4.5279,"bh":1.4977},{"date":"2024-12-15","hybrid":4.7641,"bh":1.5758},{"date":"2024-12-22","hybrid":4.4924,"bh":1.4859},{"date":"2024-12-29","hybrid":4.6314,"bh":1.5319},{"date":"2025-01-05","hybrid":4.9135,"bh":1.6252},{"date":"2025-01-12","hybrid":5.1204,"bh":1.6936},{"date":"2025-01-19","hybrid":5.5342,"bh":1.8305},{"date":"2025-01-26","hybrid":5.6095,"bh":1.8554},{"date":"2025-02-02","hybrid":5.342,"bh":1.7669},{"date":"2025-02-09","hybrid":5.3409,"bh":1.7666},{"date":"2025-02-16","hybrid":5.5833,"bh":1.8468},{"date":"2025-02-23","hybrid":5.25,"bh":1.7365},{"date":"2025-03-02","hybrid":5.0337,"bh":1.6649},{"date":"2025-03-09","hybrid":4.9114,"bh":1.6245},{"date":"2025-03-16","hybrid":5.3002,"bh":1.7531},{"date":"2025-03-23","hybrid":5.5259,"bh":1.8277},{"date":"2025-03-30","hybrid":5.5395,"bh":1.8322},{"date":"2025-04-06","hybrid":4.8184,"bh":1.5937},{"date":"2025-04-13","hybrid":5.1883,"bh":1.7161},{"date":"2025-04-20","hybrid":5.3273,"bh":1.7621},{"date":"2025-04-27","hybrid":5.25,"bh":1.7365},{"date":"2025-05-04","hybrid":5.4182,"bh":1.7921},{"date":"2025-05-11","hybrid":5.8122,"bh":1.9225},{"date":"2025-05-18","hybrid":5.8373,"bh":1.9307},{"date":"2025-05-25","hybrid":5.8111,"bh":1.9221},{"date":"2025-06-01","hybrid":5.761,"bh":1.9055},{"date":"2025-06-08","hybrid":5.9023,"bh":1.9491},{"date":"2025-06-15","hybrid":5.9023,"bh":1.9646},{"date":"2025-06-22","hybrid":5.9023,"bh":2.0891},{"date":"2025-06-29","hybrid":5.9023,"bh":2.0154},{"date":"2025-07-06","hybrid":5.8588,"bh":1.9117},{"date":"2025-07-13","hybrid":5.8609,"bh":1.9124},{"date":"2025-07-20","hybrid":6.2452,"bh":2.0458},{"date":"2025-07-27","hybrid":5.9981,"bh":1.8039},{"date":"2025-08-03","hybrid":6.0153,"bh":1.8091},{"date":"2025-08-10","hybrid":5.9156,"bh":1.7728},{"date":"2025-08-17","hybrid":5.9156,"bh":1.8267},{"date":"2025-08-24","hybrid":5.9156,"bh":1.7963},{"date":"2025-08-31","hybrid":5.9156,"bh":1.7918},{"date":"2025-09-07","hybrid":5.9156,"bh":1.7835},{"date":"2025-09-14","hybrid":5.9156,"bh":1.7607},{"date":"2025-09-21","hybrid":5.9156,"bh":1.7002},{"date":"2025-09-28","hybrid":5.9156,"bh":1.8685},{"date":"2025-10-05","hybrid":5.9156,"bh":1.9366},{"date":"2025-10-12","hybrid":5.9156,"bh":1.836},{"date":"2025-10-19","hybrid":5.9156,"bh":1.8692},{"date":"2025-10-26","hybrid":5.9156,"bh":1.8561},{"date":"2025-11-02","hybrid":5.9156,"bh":1.8519},{"date":"2025-11-09","hybrid":5.9156,"bh":2.0037},{"date":"2025-11-16","hybrid":5.9156,"bh":2.0704},{"date":"2025-11-23","hybrid":5.9156,"bh":1.9712},{"date":"2025-11-30","hybrid":5.9156,"bh":2.1036},{"date":"2025-12-07","hybrid":5.9313,"bh":2.0973},{"date":"2025-12-14","hybrid":5.4318,"bh":1.9207},{"date":"2025-12-21","hybrid":5.2656,"bh":1.862},{"date":"2025-12-28","hybrid":5.2715,"bh":1.864},{"date":"2026-01-04","hybrid":5.2255,"bh":1.8478},{"date":"2026-01-11","hybrid":4.9939,"bh":1.7659},{"date":"2026-01-18","hybrid":4.9401,"bh":1.7469},{"date":"2026-01-25","hybrid":5.4269,"bh":1.919},{"date":"2026-02-01","hybrid":5.6429,"bh":1.9954},{"date":"2026-02-08","hybrid":5.551,"bh":1.9629},{"date":"2026-02-15","hybrid":5.7377,"bh":2.0289},{"date":"2026-02-22","hybrid":5.9137,"bh":2.0911},{"date":"2026-03-01","hybrid":6.0036,"bh":2.1229},{"date":"2026-03-08","hybrid":6.0564,"bh":2.1416},{"date":"2026-03-15","hybrid":6.2919,"bh":2.2249},{"date":"2026-03-22","hybrid":6.3213,"bh":2.2353},{"date":"2026-03-29","hybrid":6.6028,"bh":2.3348},{"date":"2026-04-05","hybrid":5.8355,"bh":2.0635},{"date":"2026-04-12","hybrid":5.7358,"bh":2.0282},{"date":"2026-04-19","hybrid":5.7162,"bh":2.0213},{"date":"2026-04-26","hybrid":5.7582,"bh":2.0362},{"date":"2026-05-03","hybrid":5.7338,"bh":2.0275},{"date":"2026-05-10","hybrid":5.4699,"bh":1.9342},{"date":"2026-05-17","hybrid":5.4953,"bh":1.9432},{"date":"2026-05-24","hybrid":5.6615,"bh":2.0019},{"date":"2026-05-31","hybrid":5.3692,"bh":1.8986},{"date":"2026-06-07","hybrid":5.3778,"bh":1.8578},{"date":"2026-06-14","hybrid":5.3778,"bh":1.7953},{"date":"2026-06-21","hybrid":5.3778,"bh":1.7531},{"date":"2026-06-28","hybrid":5.3778,"bh":1.8215},{"date":"2026-07-05","hybrid":5.3778,"bh":1.8184},{"date":"2026-07-12","hybrid":5.3778,"bh":1.6885},{"date":"2026-07-19","hybrid":5.456,"bh":1.713},{"date":"2026-07-26","hybrid":5.8165,"bh":1.8329},{"date":"2026-08-02","hybrid":5.8165,"bh":1.8419},{"date":"2026-08-09","hybrid":5.8165,"bh":1.7866},{"date":"2026-08-16","hybrid":5.8165,"bh":1.881},{"date":"2026-08-23","hybrid":5.8165,"bh":1.8568},{"date":"2026-08-30","hybrid":5.8165,"bh":1.8862},{"date":"2026-09-06","hybrid":5.8165,"bh":1.9069},{"date":"2026-09-13","hybrid":5.8165,"bh":1.8689},{"date":"2026-09-20","hybrid":5.8165,"bh":1.7282},{"date":"2026-09-27","hybrid":5.8165,"bh":1.7562},{"date":"2026-10-04","hybrid":5.8165,"bh":1.7341},{"date":"2026-10-11","hybrid":5.8165,"bh":1.8136}];
 const ANNUAL  = [{"year":2016,"hybrid":24.9,"bh":23.0},{"year":2017,"hybrid":-16.7,"bh":-11.2},{"year":2018,"hybrid":-11.9,"bh":-40.8},{"year":2019,"hybrid":19.1,"bh":-45.2},{"year":2020,"hybrid":-1.2,"bh":22.7},{"year":2021,"hybrid":77.3,"bh":62.6},{"year":2022,"hybrid":90.6,"bh":55.0},{"year":2023,"hybrid":3.1,"bh":21.5},{"year":2024,"hybrid":27.0,"bh":18.5},{"year":2025,"hybrid":5.9,"bh":13.2},{"year":2026,"hybrid":11.3,"bh":-1.9}];
 const STATS   = {"hybrid":{"ret":481.6,"sharpe":0.608,"maxdd":-63.0},"bh":{"ret":81.4,"sharpe":0.353,"maxdd":-88.5}};
 const CURRENT = {"signal":"FLAT","z":0.154,"eqt_last":52.47,"eqt_date":"2026-10-06"};
+const OUTLOOK = [{"point":"EQT YTD return","reading":"−6.7% (as of Sep 28)","threshold":"> −10% = Pass","signal":"PASS","detail":"Thin margin — 3 months left in year"},{"point":"HH 252-day Z-score","reading":"−0.286 ($3.12 vs 252d avg $3.34)","threshold":"< 1.5 = Pass","signal":"PASS","detail":"HH is actually below its 1-year mean"},{"point":"EIA storage vs 5yr avg","reading":"+5% above 5yr avg (3,969 Bcf forecast end-Oct)","threshold":"< −5% = Bullish  /  > +5% = Caution","signal":"CAUTION","detail":"Sitting right at the bearish threshold"},{"point":"NOAA Dec–Feb HDD","reading":"~2% below normal (3,392 HDDs vs 3,460 avg)","threshold":"Above-normal = Bullish","signal":"BEARISH","detail":"Warmer-than-normal winter expected"},{"point":"LNG export run-rate","reading":"~17.3 Bcf/day (H1 avg 17.4, H2 fcst 17.3)","threshold":"> 13.5 = Pass","signal":"STRONG PASS","detail":"LNG capacity well above threshold"},{"point":"Iran nuclear deal","reading":"June MOU signed; indirect talks active Sep–Oct; no deal yet","threshold":"No deal / stalled = Bullish","signal":"CAUTION","detail":"Risk of announcement during Dec–May window"}];
+const TRADES  = [{"entry_date":"2026-07-10","entry_px":48.85,"regime":"ZSCORE","exit_date":"2026-07-24","exit_px":53.03,"exit_reason":"10-bar signal drought","ret":8.16},{"entry_date":"2025-12-01","entry_px":60.52,"regime":"SEASONAL","exit_date":"2026-06-01","exit_px":55.26,"exit_reason":"May window end","ret":-9.09},{"entry_date":"2025-07-22","entry_px":54.34,"regime":"ZSCORE","exit_date":"2025-08-05","exit_px":51.69,"exit_reason":"10-bar signal drought","ret":-5.28},{"entry_date":"2025-07-01","entry_px":55.72,"regime":"ZSCORE","exit_date":"2025-07-16","exit_px":59.18,"exit_reason":"10-bar signal drought","ret":5.81},{"entry_date":"2024-12-02","entry_px":44.53,"regime":"SEASONAL","exit_date":"2025-06-02","exit_px":56.66,"exit_reason":"May window end","ret":26.84},{"entry_date":"2024-10-29","entry_px":37.31,"regime":"ZSCORE","exit_date":"2024-11-12","exit_px":43.78,"exit_reason":"10-bar signal drought","ret":16.94},{"entry_date":"2023-12-01","entry_px":40.24,"regime":"SEASONAL","exit_date":"2024-06-03","exit_px":40.98,"exit_reason":"May window end","ret":1.44},{"entry_date":"2023-11-07","entry_px":40.76,"regime":"ZSCORE","exit_date":"2023-11-21","exit_px":40.02,"exit_reason":"10-bar signal drought","ret":-2.22},{"entry_date":"2022-12-01","entry_px":41.52,"regime":"SEASONAL","exit_date":"2023-06-01","exit_px":35.1,"exit_reason":"May window end","ret":-15.86},{"entry_date":"2022-09-06","entry_px":45.43,"regime":"ZSCORE","exit_date":"2022-11-29","exit_px":42.66,"exit_reason":"10-bar signal drought","ret":-6.5},{"entry_date":"2022-06-15","entry_px":41.24,"regime":"ZSCORE","exit_date":"2022-07-27","exit_px":45.44,"exit_reason":"10-bar signal drought","ret":9.78},{"entry_date":"2021-12-01","entry_px":18.36,"regime":"SEASONAL","exit_date":"2022-06-01","exit_px":49.8,"exit_reason":"May window end","ret":170.84},{"entry_date":"2021-10-12","entry_px":19.83,"regime":"ZSCORE","exit_date":"2021-12-01","exit_px":18.36,"exit_reason":"Seasonal window opened","ret":-7.81},{"entry_date":"2020-12-01","entry_px":14.48,"regime":"SEASONAL","exit_date":"2021-06-01","exit_px":21.77,"exit_reason":"May window end","ret":49.95},{"entry_date":"2020-11-17","entry_px":14.43,"regime":"ZSCORE","exit_date":"2020-12-01","exit_px":14.48,"exit_reason":"Seasonal window opened","ret":-0.05},{"entry_date":"2020-10-15","entry_px":15.1,"regime":"ZSCORE","exit_date":"2020-10-29","exit_px":15.57,"exit_reason":"10-bar signal drought","ret":2.71},{"entry_date":"2020-09-18","entry_px":15.14,"regime":"ZSCORE","exit_date":"2020-10-06","exit_px":13.46,"exit_reason":"10-bar signal drought","ret":-11.5},{"entry_date":"2019-12-02","entry_px":8.44,"regime":"SEASONAL","exit_date":"2020-06-01","exit_px":12.87,"exit_reason":"May window end","ret":52.09},{"entry_date":"2018-12-03","entry_px":18.91,"regime":"SEASONAL","exit_date":"2019-06-03","exit_px":18.42,"exit_reason":"May window end","ret":-2.99},{"entry_date":"2017-12-01","entry_px":32.43,"regime":"SEASONAL","exit_date":"2018-06-01","exit_px":28.26,"exit_reason":"May window end","ret":-13.27},{"entry_date":"2016-12-01","entry_px":39.18,"regime":"SEASONAL","exit_date":"2017-06-01","exit_px":30.58,"exit_reason":"May window end","ret":-22.36},{"entry_date":"2016-01-04","entry_px":28.93,"regime":"SEASONAL","exit_date":"2016-06-01","exit_px":39.87,"exit_reason":"May window end","ret":37.43}];
 
-// ── Signal badge ──────────────────────────────────────────────────────────
+// ── Theme toggle ──────────────────────────────────────────────────────────────
+document.getElementById('theme').addEventListener('click', () => {
+  const r = document.documentElement;
+  const cur = r.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  r.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+});
+
+// ── Resolve CSS variable at runtime for chart colors ──────────────────────────
+function cssVar(name) {
+  return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+}
+
+// ── Signal callout ─────────────────────────────────────────────────────────────
 const SIG_META = {
-  FLAT:     { icon:'⏸', color:'#64748b', label:'No Active Signal' },
-  SEASONAL: { icon:'🌿', color:'#f59e0b', label:'Seasonal Window' },
-  ZSCORE:   { icon:'⚡', color:'#7c3aed', label:'Z-Score Entry' },
+  FLAT:     { icon:'⏸', label:'FLAT — no active position', cls:'flat' },
+  SEASONAL: { icon:'🌿', label:'SEASONAL — long EQT (winter window active)', cls:'seasonal' },
+  ZSCORE:   { icon:'⚡', label:'ZSCORE — long EQT (HH mean-reversion trade on)', cls:'zscore' },
 };
-const sm = SIG_META[CURRENT.signal];
-const badge = document.getElementById('badge');
-badge.style.setProperty('--sig-color', sm.color);
-badge.innerHTML = `
-  <span class="icon">${sm.icon}</span>
-  <div><div class="label">Current Signal</div><div class="val">${CURRENT.signal}</div></div>
-  <div style="margin-left:auto;text-align:right">
-    <div class="label">EQT Last</div>
-    <div class="price">$${CURRENT.eqt_last.toFixed(2)}</div>
-  </div>`;
+const sm = SIG_META[CURRENT.signal] || SIG_META.FLAT;
+const callout = document.getElementById('callout');
+callout.className = 'callout ' + sm.cls;
+document.getElementById('sig-label').textContent = sm.icon + '  ' + sm.label;
+document.getElementById('sig-detail').innerHTML =
+  `HH Z-Score: <b>${CURRENT.z.toFixed(3)}σ</b> &nbsp;·&nbsp; ` +
+  `Entry threshold: −0.25σ &nbsp;·&nbsp; ` +
+  `EQT last: <b>$${CURRENT.eqt_last.toFixed(2)}</b> &nbsp;·&nbsp; ` +
+  `As of ${CURRENT.eqt_date}`;
 
-// ── Stats cards ────────────────────────────────────────────────────────────
-const statsEl = document.getElementById('stats');
-const cards = [
-  { label:'Hybrid Return', val:`+${STATS.hybrid.ret}%`, delta:'' },
-  { label:'Hybrid Sharpe', val:`${STATS.hybrid.sharpe}`, delta:`vs B&H ${STATS.bh.sharpe}` },
-  { label:'Max Drawdown',  val:`${STATS.hybrid.maxdd}%`, delta:'' },
-  { label:'B&H Return',    val:`+${STATS.bh.ret}%`, delta:'' },
-  { label:'B&H Sharpe',   val:`${STATS.bh.sharpe}`, delta:'' },
-  { label:'HH Z-Score',   val:`${CURRENT.z.toFixed(3)}σ`, delta:'' },
+// ── Metric tiles ──────────────────────────────────────────────────────────────
+const zDistToEntry = (CURRENT.z - (-0.25)).toFixed(3);
+const zClass = CURRENT.z < -0.25 ? 'pos' : CURRENT.z < 0 ? '' : 'neu';
+const tilesData = [
+  { k:'Hybrid total return', v:`+${STATS.hybrid.ret}%`, d:`vs B&H +${STATS.bh.ret}%`, vc:'pos' },
+  { k:'Hybrid Sharpe ratio',  v:`${STATS.hybrid.sharpe}`, d:`B&H Sharpe ${STATS.bh.sharpe}`, vc:'' },
+  { k:'Hybrid max drawdown',  v:`${STATS.hybrid.maxdd}%`, d:`B&H max DD ${STATS.bh.maxdd}%`, vc:'neg' },
+  { k:'EQT last price',       v:`$${CURRENT.eqt_last.toFixed(2)}`, d:CURRENT.eqt_date, vc:'' },
+  { k:'HH Z-Score (20d M2)',  v:`${CURRENT.z.toFixed(3)}σ`, d:`${zDistToEntry > 0 ? '+' : ''}${zDistToEntry}σ from −0.25 entry`, vc:zClass },
+  { k:'Signal state',         v:CURRENT.signal, d:sm.label, vc: CURRENT.signal==='FLAT'?'neu':'pos' },
 ];
-statsEl.innerHTML = cards.map(c => `
-  <div class="stat">
-    <div class="s-label">${c.label}</div>
-    <div class="s-val">${c.val}</div>
-    ${c.delta ? `<div class="s-delta">${c.delta}</div>` : ''}
-  </div>`).join('');
+document.getElementById('tiles').innerHTML = tilesData.map(t =>
+  `<div class="tile">
+    <div class="k">${t.k}</div>
+    <div class="v ${t.vc}">${t.v}</div>
+    <div class="d">${t.d}</div>
+  </div>`
+).join('');
 
-// ── Equity chart ───────────────────────────────────────────────────────────
-const dates   = WEEKLY.map(w => w.date);
-const hybrid  = WEEKLY.map(w => w.hybrid);
-const bh      = WEEKLY.map(w => w.bh);
+// ── Chart.js shared defaults ──────────────────────────────────────────────────
+function chartDefaults() {
+  const grid = cssVar('--grid') || '#e6e4dd';
+  const muted = cssVar('--text-muted') || '#7c7a73';
+  return {
+    axisColor: muted,
+    gridColor: grid,
+  };
+}
 
-const ctx1 = document.getElementById('equityChart').getContext('2d');
-new Chart(ctx1, {
-  type: 'line',
-  data: {
-    labels: dates,
-    datasets: [
-      { label:'EQT B&H', data:bh, borderColor:'#475569', borderWidth:1.5,
-         borderDash:[5,4], pointRadius:0, tension:0.3 },
-      { label:'Hybrid', data:hybrid, borderColor:'#7c3aed', borderWidth:2.5,
-         pointRadius:0, tension:0.3,
-         fill: { target:'origin', above:'rgba(124,58,237,0.07)' } },
-    ]
-  },
-  options: {
-    responsive:true, animation:false,
-    interaction:{ mode:'index', intersect:false },
-    plugins:{ legend:{ labels:{ color:'#94a3b8', boxWidth:14 } },
-               tooltip:{ callbacks:{ label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y.toFixed(2)}x` } } },
-    scales:{
-      x:{ ticks:{ color:'#64748b', maxTicksLimit:10, maxRotation:0 }, grid:{ color:'#1e2435' } },
-      y:{ ticks:{ color:'#64748b', callback: v => v.toFixed(1)+'x' }, grid:{ color:'#1e2435' } }
+// ── Equity chart ──────────────────────────────────────────────────────────────
+(function buildEquity() {
+  const { axisColor, gridColor } = chartDefaults();
+  const s1 = cssVar('--series-1') || '#2a78d6';
+  const s2 = cssVar('--series-2') || '#eb6834';
+  const ctx = document.getElementById('equityChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: WEEKLY.map(w => w.date),
+      datasets: [
+        { label:'EQT B&H', data:WEEKLY.map(w=>w.bh),
+          borderColor:s2, borderWidth:1.5, borderDash:[5,4],
+          pointRadius:0, tension:0.3 },
+        { label:'Hybrid', data:WEEKLY.map(w=>w.hybrid),
+          borderColor:s1, borderWidth:2.5,
+          pointRadius:0, tension:0.3,
+          fill:{ target:'origin', above: s1.replace(')', ', 0.08)').replace('rgb', 'rgba') } },
+      ]
+    },
+    options: {
+      responsive:true, animation:false,
+      interaction:{ mode:'index', intersect:false },
+      plugins:{
+        legend:{ labels:{ color:axisColor, boxWidth:14, font:{size:12} } },
+        tooltip:{ callbacks:{ label: c => ` ${c.dataset.label}: ${c.parsed.y.toFixed(2)}x` } }
+      },
+      scales:{
+        x:{ ticks:{ color:axisColor, maxTicksLimit:10, maxRotation:0, font:{size:11} }, grid:{ color:gridColor } },
+        y:{ ticks:{ color:axisColor, callback:v=>v.toFixed(1)+'x', font:{size:11} }, grid:{ color:gridColor } }
+      }
     }
-  }
-});
+  });
+})();
 
-// ── Annual chart ───────────────────────────────────────────────────────────
-const ctx2 = document.getElementById('annualChart').getContext('2d');
-new Chart(ctx2, {
-  type: 'bar',
-  data: {
-    labels: ANNUAL.map(a => a.year),
-    datasets: [
-      { label:'B&H', data:ANNUAL.map(a=>a.bh), backgroundColor:'rgba(100,116,139,0.6)', borderRadius:3 },
-      { label:'Hybrid', data:ANNUAL.map(a=>a.hybrid),
-         backgroundColor: ANNUAL.map(a => a.hybrid>=0 ? 'rgba(124,58,237,0.75)' : 'rgba(239,68,68,0.75)'),
-         borderRadius:3 },
-    ]
-  },
-  options: {
-    responsive:true, animation:false,
-    plugins:{ legend:{ labels:{ color:'#94a3b8', boxWidth:14 } },
-               tooltip:{ callbacks:{ label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y>0?'+':''}${ctx.parsed.y.toFixed(1)}%` } } },
-    scales:{
-      x:{ ticks:{ color:'#64748b' }, grid:{ color:'#1e2435' } },
-      y:{ ticks:{ color:'#64748b', callback: v => v+'%' }, grid:{ color:'#1e2435' },
-           afterDataLimits: sc => { sc.min = Math.min(sc.min,-5); } }
+// ── Annual chart ──────────────────────────────────────────────────────────────
+(function buildAnnual() {
+  const { axisColor, gridColor } = chartDefaults();
+  const s1 = cssVar('--series-1') || '#2a78d6';
+  const s2 = cssVar('--series-2') || '#eb6834';
+  const good = cssVar('--good') || '#0ca30c';
+  const crit = cssVar('--critical') || '#d03b3b';
+  const ctx = document.getElementById('annualChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ANNUAL.map(a => a.year),
+      datasets: [
+        { label:'B&H', data:ANNUAL.map(a=>a.bh),
+          backgroundColor: s2 + '80', borderRadius:3 },
+        { label:'Hybrid', data:ANNUAL.map(a=>a.hybrid),
+          backgroundColor: ANNUAL.map(a => a.hybrid >= 0 ? good + 'cc' : crit + 'cc'),
+          borderRadius:3 },
+      ]
+    },
+    options: {
+      responsive:true, animation:false,
+      plugins:{
+        legend:{ labels:{ color:axisColor, boxWidth:12, font:{size:12} } },
+        tooltip:{ callbacks:{ label: c => ` ${c.dataset.label}: ${c.parsed.y>0?'+':''}${c.parsed.y.toFixed(1)}%` } }
+      },
+      scales:{
+        x:{ ticks:{ color:axisColor, font:{size:11} }, grid:{ color:gridColor } },
+        y:{ ticks:{ color:axisColor, callback:v=>v+'%', font:{size:11} }, grid:{ color:gridColor },
+            afterDataLimits: sc => { sc.min = Math.min(sc.min, -5); } }
+      }
     }
+  });
+})();
+
+// ── Annual table ──────────────────────────────────────────────────────────────
+(function buildTable() {
+  const sorted = [...ANNUAL].sort((a,b) => b.year - a.year);
+  const tbody = document.querySelector('#annTable tbody');
+  tbody.innerHTML = sorted.map(a => {
+    const diff = (a.hybrid - a.bh).toFixed(1);
+    const hc = a.hybrid >= 0 ? 'pos' : 'neg';
+    const bc = a.bh >= 0 ? 'pos' : 'neg';
+    const dc = parseFloat(diff) >= 0 ? 'pos' : 'neg';
+    return `<tr>
+      <td>${a.year}</td>
+      <td class="${hc}">${a.hybrid>0?'+':''}${a.hybrid.toFixed(1)}%</td>
+      <td class="${bc}">${a.bh>0?'+':''}${a.bh.toFixed(1)}%</td>
+      <td class="${dc}">${parseFloat(diff)>0?'+':''}${diff}pp</td>
+    </tr>`;
+  }).join('');
+})();
+
+// ── Outlook scoreboard ────────────────────────────────────────────────────────
+(function buildOutlook() {
+  const SIG = {
+    'PASS':        { cls:'sig-pass',    icon:'✓' },
+    'STRONG PASS': { cls:'sig-pass',    icon:'✓✓' },
+    'CAUTION':     { cls:'sig-caution', icon:'⚠' },
+    'BEARISH':     { cls:'sig-bearish', icon:'✕' },
+  };
+  const tbody = document.querySelector('#outlookTable tbody');
+  tbody.innerHTML = OUTLOOK.map(row => {
+    const s = SIG[row.signal] || { cls:'sig-caution', icon:'?' };
+    return `<tr>
+      <td class="dp">${row.point}</td>
+      <td class="reading">${row.reading}</td>
+      <td class="thresh">${row.threshold}</td>
+      <td class="sigcell">
+        <span class="sig-badge ${s.cls}"><span class="sig-dot"></span>${row.signal}</span>
+        <span class="sig-detail">${row.detail}</span>
+      </td>
+    </tr>`;
+  }).join('');
+})();
+
+// ── Trade log ─────────────────────────────────────────────────────────────────
+(function buildTrades() {
+  const tbody = document.querySelector('#tradeTable tbody');
+  if (!TRADES || TRADES.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="9" style="color:var(--text-muted);text-align:center;padding:18px">No trade data — run python run_backtest.py to generate</td></tr>';
+    return;
   }
-});
 
-// ── Gauge SVG ─────────────────────────────────────────────────────────────
-(function drawGauge() {
-  const z = CURRENT.z;
-  const svg = document.getElementById('gaugeSvg');
-  document.getElementById('gaugeVal').textContent = z.toFixed(3) + 'σ';
-  document.getElementById('gaugeVal').style.color =
-    z < -0.25 ? '#7c3aed' : z < 0 ? '#f59e0b' : '#64748b';
-
-  // Arc parameters
-  const cx=100, cy=100, r=75, sa=Math.PI, ea=0;
-  const polarX = (a,rr) => cx + rr*Math.cos(Math.PI - a);
-  const polarY = (a,rr) => cy - rr*Math.sin(Math.PI - a);
-
-  const zClipped = Math.max(-3, Math.min(3, z));
-  const angle = ((zClipped+3)/6) * Math.PI;  // 0=left(z=-3), π=right(z=+3)
-  const entryAngle = (((-0.25)+3)/6) * Math.PI;
-
-  const arcPath = (a1,a2,rr,color,w) => {
-    const laf = (a2-a1) > Math.PI ? 1 : 0;
-    return `<path d="M${polarX(a1,rr)},${polarY(a1,rr)} A${rr},${rr} 0 ${laf},1 ${polarX(a2,rr)},${polarY(a2,rr)}" fill="none" stroke="${color}" stroke-width="${w}" stroke-linecap="round"/>`;
+  const ENTRY_SIGNAL = {
+    SEASONAL: 'Last TD of December',
+    ZSCORE:   'HH Z < −0.25 & mom < −$0.20',
   };
 
-  // Background track
-  let paths = arcPath(0, Math.PI, r, '#2d3250', 14);
-  // Entry zone (purple tint)
-  paths += arcPath(0, entryAngle, r, 'rgba(124,58,237,0.35)', 14);
-  // Needle
-  const nx = polarX(angle, r-2);
-  const ny = polarY(angle, r-2);
-  const tip = `M${cx},${cy} L${nx},${ny}`;
-  paths += `<path d="${tip}" stroke="${z<-0.25?'#7c3aed':'#94a3b8'}" stroke-width="3" stroke-linecap="round"/>`;
-  // Entry threshold tick
-  paths += `<line x1="${polarX(entryAngle,r-18)}" y1="${polarY(entryAngle,r-18)}" x2="${polarX(entryAngle,r+3)}" y2="${polarY(entryAngle,r+3)}" stroke="#ef4444" stroke-width="2.5"/>`;
-  // Labels
-  paths += `<text x="${polarX(0,r+14)}" y="${polarY(0,r+14)+4}" fill="#64748b" font-size="11" text-anchor="middle">+3</text>`;
-  paths += `<text x="${polarX(Math.PI,r+14)}" y="${polarY(Math.PI,r+14)+4}" fill="#64748b" font-size="11" text-anchor="middle">−3</text>`;
-  paths += `<text x="${cx}" y="${cy-r-8}" fill="#64748b" font-size="10" text-anchor="middle">0</text>`;
-  paths += `<text x="${polarX(entryAngle,r-30)}" y="${polarY(entryAngle,r-30)+4}" fill="#ef4444" font-size="9" text-anchor="middle">−0.25</text>`;
+  const shown = TRADES.slice(0, 10);
+  const total = TRADES.length;
 
-  svg.innerHTML = paths;
+  tbody.innerHTML = shown.map((t, idx) => {
+    const rc = t.ret >= 0 ? 'pos' : 'neg';
+    const isOpen = t.exit_reason === 'Open';
+    const regimeColor = t.regime === 'SEASONAL' ? 'var(--warning)' : 'var(--series-1)';
+    const tradeNum = total - idx;  // descending count
+    return `<tr>
+      <td style="text-align:left;color:var(--text-muted)">#${tradeNum}</td>
+      <td style="text-align:left"><span style="color:${regimeColor};font-weight:600">${t.regime}</span></td>
+      <td>${t.entry_date}</td>
+      <td>$${t.entry_px.toFixed(2)}</td>
+      <td>${isOpen ? '<em style="color:var(--good)">Open</em>' : t.exit_date}</td>
+      <td>${isOpen ? '<em>—</em>' : '$' + t.exit_px.toFixed(2)}</td>
+      <td style="text-align:left;color:var(--text-secondary)">${ENTRY_SIGNAL[t.regime] || '—'}</td>
+      <td style="text-align:left;color:var(--text-secondary)">${isOpen ? '<em style="color:var(--good)">Still open</em>' : t.exit_reason}</td>
+      <td class="${rc}">${t.ret >= 0 ? '+' : ''}${t.ret.toFixed(2)}%</td>
+    </tr>`;
+  }).join('');
 })();
+
+// ── Footer ────────────────────────────────────────────────────────────────────
+document.getElementById('foot').innerHTML =
+  `EQT adj. close $${CURRENT.eqt_last.toFixed(2)} &nbsp;·&nbsp; ` +
+  `Data through ${CURRENT.eqt_date} &nbsp;·&nbsp; ` +
+  `Backtest results are hypothetical and do not reflect actual trading. Not investment advice.`;
 </script>
 </body>
 </html>
