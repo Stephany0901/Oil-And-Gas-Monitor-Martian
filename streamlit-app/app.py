@@ -16,6 +16,7 @@ from plotly.subplots import make_subplots
 
 from universe import UNIVERSE
 import vlo_tab
+import eqt_hybrid_tab   # ← NEW
 
 st.set_page_config(page_title="Oil & Gas Equity Monitor", layout="wide", page_icon="🛢️")
 
@@ -443,7 +444,7 @@ if _no_quote:
 
 tabs = st.tabs(["1 · Price", "2 · Peers", "3 · Hist. Val", "4 · Technical",
                 "5 · Crude/Gas", "6 · News", "7 · Sector", "📰 Briefing",
-                "🔎 Screeners", "⛽ VLO Model"])
+                "🔎 Screeners", "⛽ VLO Model", "🛢️ EQT Hybrid"])   # ← NEW tab added
 
 
 # ============================= 1 · PRICE =============================
@@ -1284,3 +1285,18 @@ with tabs[8]:
 # ============================= 10 · VLO MODEL =============================
 with tabs[9]:
     vlo_tab.render()
+
+
+# ============================= 11 · EQT HYBRID =============================
+with tabs[10]:
+    # Looks for data/hh eqt.xlsx (or hh_eqt.xlsx) inside the streamlit-app folder.
+    # If the file isn't found locally, falls back to a sidebar uploader inside the module.
+    _eqt_xlsx = None
+    for _cand in [
+        pathlib.Path(__file__).parent / "data" / "hh eqt.xlsx",
+        pathlib.Path(__file__).parent / "data" / "hh_eqt.xlsx",
+    ]:
+        if _cand.exists():
+            _eqt_xlsx = str(_cand)
+            break
+    eqt_hybrid_tab.render_eqt_hybrid(xlsx_path=_eqt_xlsx)
