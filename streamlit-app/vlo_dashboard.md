@@ -1,30 +1,29 @@
 # VLO Crack-Spread Trading Model
 
-**Data through 2026-10-12** · 1941 bars · generated 2026-10-13 02:52 UTC
+**Data through 2026-10-13** · 1942 bars · generated 2026-10-14 03:56 UTC
 
 > Long-only refinery-margin mean reversion on Valero. Buy when the de-RINs Profit Index is statistically high *and* rising; exit after three consecutive signal-free sessions.
 
 ---
 
-## Live signal — 2026-10-12
+## Live signal — 2026-10-13
 
 | | |
 |---|---|
-| Signal | ⚪ **not firing** |
-| Position | **FLAT** |
-| VLO close | **$436.00** |
-| Profit Index | **42.65** $/bbl (RBOB 12.91 · HO 72.39) |
-| Z-score | **-0.70** (entry > +1.0) — fail |
-| Momentum (30d) | **-7.13** $/bbl (entry > +0.5) — fail |
-| Crack → VLO linkage | 0.25 (120d corr, diagnostic only) |
+| Signal | 🟢 **FIRING** |
+| Position | **LONG** since 2026-10-13 @ $456.46 · **+0.0%** open |
+| VLO close | **$456.46** |
+| Profit Index | **47.24** $/bbl (RBOB 12.74 · HO 81.74) |
+| Z-score | **+1.17** (entry > +1.0) — pass |
+| Momentum (30d) | **+2.09** $/bbl (entry > +0.5) — pass |
+| Crack → VLO linkage | 0.27 (120d corr, diagnostic only) |
 
 ## Last 10 sessions
 
-Profit Index `▄█▄▁▂▃▄▆▄▂`  44.59 → 42.65
+Profit Index `█▄▁▂▃▄▆▄▂▆`  50.20 → 47.24
 
 | Date | Profit Index | RBOB | HO | M1−M2 | z | Momentum | VLO | Signal |
 |---|---:|---:|---:|---:|---:|---:|---:|:--:|
-| 2026-09-29 | 44.59 | 15.66 | 73.52 | +1.21 | -0.37 | -3.20 | 387.72 | · |
 | 2026-09-30 | 50.20 | 20.22 | 80.18 | +2.78 | +0.90 | +1.68 | 387.61 | · |
 | 2026-10-01 | 45.48 | 17.80 | 73.15 | +1.64 | +0.62 | -1.55 | 408.46 | · |
 | 2026-10-02 | 41.12 | 14.97 | 67.28 | +1.21 | -1.20 | -5.52 | 406.30 | · |
@@ -34,6 +33,7 @@ Profit Index `▄█▄▁▂▃▄▆▄▂`  44.59 → 42.65
 | 2026-10-08 | 47.76 | 15.06 | 80.45 | +1.24 | +1.46 | -1.74 | 443.80 | · |
 | 2026-10-09 | 44.50 | 14.36 | 74.63 | +0.67 | +0.06 | -3.98 | 433.75 | · |
 | 2026-10-12 | 42.65 | 12.91 | 72.39 | +0.22 | -0.70 | -7.13 | 436.00 | · |
+| 2026-10-13 | 47.24 | 12.74 | 81.74 | +1.37 | +1.17 | +2.09 | 456.46 | 🟢 |
 
 ## Performance
 
@@ -41,7 +41,7 @@ Locked window (2022-07-01 onward), costs 7 bps per side:
 
 | | Strategy | Buy & hold |
 |---|---:|---:|
-| Compound return | **+292.5%** | +303.8% |
+| Compound return | **+292.3%** | +322.7% |
 | CAGR | **+37.6%** | — |
 | Sharpe | **1.63** | — |
 | Annualised vol | 21% | — |
@@ -54,10 +54,10 @@ Locked window (2022-07-01 onward), costs 7 bps per side:
 
 | Window | Period | Sharpe | Compound | Max DD | Trades |
 |---|---|---:|---:|---:|---:|
-| **doc** | in-sample, the locked window | **1.63** | +293% | -19% | 32 |
+| **doc** | in-sample, the locked window | **1.63** | +292% | -19% | 32 |
 | **oos** | out-of-sample 2019-02 to 2022-06 | **1.07** | +163% | -28% | 32 |
 | **live** | live regime | **1.64** | +240% | -19% | 27 |
-| **full** | all history | **1.31** | +931% | -28% | 64 |
+| **full** | all history | **1.31** | +930% | -28% | 64 |
 
 Worst window Sharpe: **1.07**. `oos` is the only window disjoint from the one the parameters were chosen on.
 
@@ -73,6 +73,7 @@ Worst window Sharpe: **1.07**. `oos` is the only window disjoint from the one th
 | 2026-04-21 | $233.39 | 2026-04-29 | $251.30 | 6 | **+7.53%** | expire |
 | 2026-02-19 | $199.24 | 2026-04-20 | $226.28 | 41 | **+13.43%** | expire |
 | 2026-01-30 | $181.43 | 2026-02-04 | $197.41 | 3 | **+8.67%** | expire |
+| 2026-10-13 | $456.46 | *open* | $456.46 | 0 | **+0.00%** | open |
 
 ## Model specification
 
@@ -88,7 +89,7 @@ direction  long only        execution  signal-day close
 cost       7 bps per side
 ```
 
-**Data integrity checks run on every refresh:** de-RINs reconstruction asserted against the workbook (worst diff 0.0e+00 over 1943 rows); RVO outlier quarantine (|ΔRVO| > 0.15); permanent archive union so the panel can only grow; date-aligned revision check against the prior panel.
+**Data integrity checks run on every refresh:** de-RINs reconstruction asserted against the workbook (worst diff 0.0e+00 over 1944 rows); RVO outlier quarantine (|ΔRVO| > 0.15); permanent archive union so the panel can only grow; date-aligned revision check against the prior panel.
 
 ### Caveats
 
