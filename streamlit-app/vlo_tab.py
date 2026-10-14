@@ -40,11 +40,11 @@ HTML = _find("vlo_crack_dashboard.html")
 MD = _find("vlo_dashboard.md")
 
 # Streamlit's component iframe does NOT auto-size to its content. The rendered
-# dashboard measures ~5,240px tall, so anything shorter forces a scrollbar inside the
-# iframe and the reader ends up scrolling two things at once. Give it the full height
-# and let the ordinary Streamlit page scroll. scrolling=True is kept as insurance so a
-# longer trade log can never be clipped.
-DEFAULT_HEIGHT = 5400
+# dashboard measures ~5,390px tall (it grew by the distance-to-signal tile), so anything
+# shorter forces a scrollbar inside the iframe and the reader ends up scrolling two things
+# at once. Give it the full height and let the ordinary Streamlit page scroll.
+# scrolling=True is kept as insurance so a longer trade log can never be clipped.
+DEFAULT_HEIGHT = 5600
 
 
 @st.cache_data(show_spinner=False)

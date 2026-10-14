@@ -17,6 +17,22 @@
 | Z-score | **+1.17** (entry > +1.0) — pass |
 | Momentum (30d) | **+2.09** $/bbl (entry > +0.5) — pass |
 | Crack → VLO linkage | 0.27 (120d corr, diagnostic only) |
+| **Next bar** | PI must **rise to 47.93** (+0.69) to keep the signal alive — *momentum leg binds* |
+
+### Distance to the signal boundary
+
+Entry needs z > +1.0 **and** momentum > +0.5. Both rise monotonically with the next bar's
+Profit Index, so a single level separates signal from no signal, and the binding leg sets it.
+
+| Leg | Level the next bar needs | Why |
+|---|---:|---|
+| z-score | 47.01 | the 30-bar window's mean and sd move with the trial value |
+| momentum | **47.93** | 30d-ago bar steps to 2026-09-01 at 47.43, plus the 0.5 minimum |
+| **Binding** | **47.93** | +0.69 from today's 47.24 |
+
+Today's signal is on, but the momentum window's back end steps forward tomorrow: an
+**unchanged** Profit Index print would kill it. Three consecutive signal-free bars then
+close the position — 0 of 3 used.
 
 ## Last 10 sessions
 
