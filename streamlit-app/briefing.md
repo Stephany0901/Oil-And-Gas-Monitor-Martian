@@ -1,33 +1,31 @@
-# Monday, October 12, 2026
+# Tuesday, October 13, 2026
 
 ## Market
-Crude slipped on the day but stays historically elevated. Brent fell about 1.5% to roughly $103/bbl and WTI about 1.8% to roughly $90/bbl (HDFC Sky, Oct 12; intraday-style figures, not official settlements). The main downward driver was President Trump's claim that Russia and Ukraine agreed to an energy ceasefire, plus a promise of Russian diesel supply (300k+ tonnes initially, 500k in November). Zelenskiy said details were still needed and Russia had not publicly confirmed, so the move is fragile. Offsetting risk: Houthi claims of a strike on Riyadh's airport, a drone-hit tanker near Oman's Sohar anchorage, and a vessel damaged in the Strait of Hormuz keep a geopolitical premium in prices.
+Crude is roughly flat to slightly lower but remains historically elevated. Brent is quoted around $105-106/bbl and WTI around $92-93 (HDFC Sky and 5paisa, Oct 13; indicative quotes, not official settlements), with the two benchmarks diverging slightly: Brent slipped below $106 while WTI edged up. The main drag is Trump's announced Russia-Ukraine "energy ceasefire" and a deal to import Russian diesel after lifting sanctions on it, which is pushing gasoil cracks lower. Moscow has not publicly confirmed the truce and Zelenskiy says details are missing, so the move is fragile.
 
-Backdrop from last week (EnergyNow, Oct 2): the tightness is in refined products more than crude. Chinese refiners suspended product exports for October, a G7/IEA plan covers roughly 100M barrels of diesel and other emergency stocks released over several months, and Brent-WTI sits near an unusually wide ~$11. OPEC trimmed its 2026 demand-growth forecast to ~400k bpd. US rig count was reported above 600, led by oil. A hurricane was reported to have shut in about 70% of Gulf offshore output, a supply risk to monitor.
+Offsetting risk is Middle East escalation: Houthi strikes on Riyadh's airport over the weekend (14 killed, per OilPrice), with concern about the Bab el-Mandeb Strait, plus earlier reports of a tanker hit near Oman and a damaged vessel in the Strait of Hormuz. ING notes Persian Gulf flows are at their highest since the US-Iran war began, but risks remain. Tightness is concentrated in refined products (diesel) more than crude; the OPEC basket price jumped about 4% (Gulf News).
 
-Natural gas: no reliable current-day price or driver turned up in searches, so none is reported here. OPEC+ supply decisions: nothing specific found in the past 24 hours. Company headlines: none major found beyond BP pulling out of a Riyadh energy congress after the airport incident.
+Natural gas: only a ticker reference (~$3.18/MMBtu) was found; no reliable driver for the past 24h, so none is reported. OPEC+: no new decision found in the past 24h; OPEC has trimmed its 2026 demand-growth outlook (to ~400k bpd per earlier reports). Company headlines: nothing major found beyond what was in yesterday's briefing.
 
 ## Earnings
-The FMP earnings calendar for Oct 11-19 contained no oil & gas names from the watchlist or sector-peer list (it is dominated by banks and others; the energy season mostly starts the week of Oct 26 onward).
+FMP earnings calendar (Oct 12-20), filtered to oil & gas symbols: only two names appear.
 - Reported in last ~24h: none found.
-- Reporting today: none found.
-- Next 7 days: none found.
-- Note: majors and large E&Ps (XOM, CVX, COP, EOG, OXY, DVN, KMI, SLB, HAL, BKR) typically report from late October through early November, i.e. outside this window; SLB, KMI and HAL often come first (mid/late Oct). Confirm dates when they are posted.
+- Reporting today (Oct 13): none found.
+- Upcoming, next 7 days: Tue Oct 20 - HAL (EPS est. $0.58, revenue est. ~$5.58B); WFRD (EPS est. $1.30, revenue est. ~$1.13B).
+- Note: SLB and KMI typically report in the following days/weeks and most majors and large E&Ps (XOM, CVX, COP, EOG, OXY, DVN, BKR) report from late October into early November, outside this window. Dates are not yet confirmed in FMP; the calendar may be incomplete, so verify with company announcements.
 
 ## Today's movers
-Movers were derived from daily closes returned by the SMA-200 endpoint (live quote endpoints are gated on the Starter plan), covering 19 of 22 names (EQT-type peers not included; ET returned only 2 days of data and is excluded from ranking).
-Up: COP +2.6% (137.56), WMB +2.1% (74.17), XOM +1.9% (172.15), KMI +1.8%, OXY +1.7%.
-Down: BKR -0.9% (56.18), EPD -0.5%, XES -0.4%, SLB -0.4%, HAL +0.2% (flat).
-Top 3 up: COP, WMB, XOM. Top 3 down: BKR, EPD, SLB (the only decliners, services and an MLP; all small).
-Sector ETFs: XLE +1.4%, XOP +1.5%, XES -0.4%. Producers outperformed oilfield services despite lower crude, with the services group (SLB, HAL, BKR) and XES trading below their 200-day averages.
-HES: delisted after Chevron's acquisition; no data. 
+Movers are derived from daily closes returned by the FMP SMA-200 endpoint (live quote endpoints are gated on the Starter plan), Oct 13 vs Oct 12, for all 19 watchlist names plus XLE/XOP/XES (HES is delisted after Chevron's acquisition; no data). Figures may reflect an intraday print for today.
+Up: VLO +4.7% ($456.46), PSX +4.0% ($292.73), MPC +4.0% ($476.98). Next: DVN +2.6%, COP +2.4%.
+Down: none; the weakest were SLB 0.0%, ET +0.3%, EPD +0.4% (essentially flat). The tape is broadly green.
+ETFs: XOP +2.8%, XLE +1.8%, XES +0.6%. Refiners lead on the diesel-crack theme; services (SLB, HAL, BKR) and XES still trade below their 200-day averages.
 
 ## Stocks to watch
-- COP: top daily gainer (+2.6%), ~17% above its 200-day; high-beta E&P to the oil price.
-- WMB: +2.1%, nat-gas midstream near its 200-day average (+3.6%), a steadier read on gas demand.
-- HAL: lagging services name, 8% below its 200-day with EV/EBITDA near 8x.
-- BKR: biggest decliner (-0.9%), 6% below its 200-day.
-- VLO / MPC: refiners, ~60-70% above 200-day; diesel tightness is the driver, so watch for ceasefire/diesel-supply headlines.
+- VLO / MPC / PSX: refiners surging (+4-5%) and ~55-75% above their 200-day averages; very extended, so headline-sensitive to diesel-supply/ceasefire news.
+- COP: +2.4%, ~19% above its 200-day; high-beta E&P to crude.
+- HAL: ~8% below its 200-day, reports Oct 20.
+- WFRD: also reports Oct 20 (not priced here); a read on international/offshore services.
+- DVN: +2.6%, strongest of the large E&Ps today.
 
 ## Screen idea
-HAL: trades ~8% below its 200-day average ($32.60 vs ~$35.57) with the lowest EV/EBITDA among sub-200-day names (~8.0x vs SLB ~11.5x, BKR ~11.1x, EPD ~10.7x). Educational screen only, not investment advice.
+HAL: ~8% below its 200-day average ($32.79 vs ~$35.60) with the lowest EV/EBITDA of the below-200-day names (~8.1x vs SLB ~11.5x, BKR ~11.1x, EPD ~10.8x), and it reports Oct 20. Educational screen only, not investment advice.
