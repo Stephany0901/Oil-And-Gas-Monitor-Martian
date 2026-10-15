@@ -1,95 +1,93 @@
 # VLO Crack-Spread Trading Model
 
-**Data through 2026-10-13** · 1942 bars · generated 2026-10-14 03:56 UTC
+**Data through 2026-10-14** · 1943 bars · generated 2026-10-15 02:10 UTC
 
-> Long-only refinery-margin mean reversion on Valero. Buy when the de-RINs Profit Index is statistically high *and* rising; exit after three consecutive signal-free sessions.
+> Long-only refinery-margin mean reversion on Valero. Buy when the de-RINs Profit Index is statistically high *and* rising; exit after three consecutive signal-free sessions. **Signal is read off the previous session’s close; the position is filled at the next morning’s open.**
 
 ---
 
-## Live signal — 2026-10-13
+## Live signal — 2026-10-14
 
 | | |
 |---|---|
-| Signal | 🟢 **FIRING** |
-| Position | **LONG** since 2026-10-13 @ $456.46 · **+0.0%** open |
-| VLO close | **$456.46** |
-| Profit Index | **47.24** $/bbl (RBOB 12.74 · HO 81.74) |
-| Z-score | **+1.17** (entry > +1.0) — pass |
-| Momentum (30d) | **+2.09** $/bbl (entry > +0.5) — pass |
+| Signal | ⚪ no signal |
+| Position | **LONG** — booked **2026-10-14 @ $459.79** · **-0.07%** open |
+| | *model entry matches the booked fill exactly* |
+| VLO close | **$459.78** |
+| VLO open | $459.79 |
+| Profit Index | **46.71** $/bbl (RBOB 12.92 · HO 80.49) |
+| Z-score | **+0.88** (entry > +1.0) — fail |
+| Momentum (30d) | **-0.72** $/bbl (entry > +0.5) — fail |
 | Crack → VLO linkage | 0.27 (120d corr, diagnostic only) |
-| **Next bar** | PI must **rise to 47.93** (+0.69) to keep the signal alive — *momentum leg binds* |
-
-### Distance to the signal boundary
-
-Entry needs z > +1.0 **and** momentum > +0.5. Both rise monotonically with the next bar's
-Profit Index, so a single level separates signal from no signal, and the binding leg sets it.
-
-| Leg | Level the next bar needs | Why |
-|---|---:|---|
-| z-score | 47.01 | the 30-bar window's mean and sd move with the trial value |
-| momentum | **47.93** | 30d-ago bar steps to 2026-09-01 at 47.43, plus the 0.5 minimum |
-| **Binding** | **47.93** | +0.69 from today's 47.24 |
-
-Today's signal is on, but the momentum window's back end steps forward tomorrow: an
-**unchanged** Profit Index print would kill it. Three consecutive signal-free bars then
-close the position — 0 of 3 used.
+| Exit countdown | **1 of 3** signal-free bars used — exit on the next open after 2 more |
 
 ## Last 10 sessions
 
-Profit Index `█▄▁▂▃▄▆▄▂▆`  50.20 → 47.24
+Profit Index `▆▁▂▃▅█▅▂█▇`  45.48 → 46.71
 
-| Date | Profit Index | RBOB | HO | M1−M2 | z | Momentum | VLO | Signal |
+| Date | Open | Close | Profit Index | RBOB | HO | z | Momentum | Signal |
 |---|---:|---:|---:|---:|---:|---:|---:|:--:|
-| 2026-09-30 | 50.20 | 20.22 | 80.18 | +2.78 | +0.90 | +1.68 | 387.61 | · |
-| 2026-10-01 | 45.48 | 17.80 | 73.15 | +1.64 | +0.62 | -1.55 | 408.46 | · |
-| 2026-10-02 | 41.12 | 14.97 | 67.28 | +1.21 | -1.20 | -5.52 | 406.30 | · |
-| 2026-10-05 | 42.69 | 14.80 | 70.58 | +1.64 | -0.55 | -4.71 | 419.33 | · |
-| 2026-10-06 | 43.30 | 15.26 | 71.33 | +1.62 | -0.34 | -2.09 | 419.22 | · |
-| 2026-10-07 | 44.78 | 15.27 | 74.30 | +1.51 | +0.27 | -2.65 | 424.10 | · |
-| 2026-10-08 | 47.76 | 15.06 | 80.45 | +1.24 | +1.46 | -1.74 | 443.80 | · |
-| 2026-10-09 | 44.50 | 14.36 | 74.63 | +0.67 | +0.06 | -3.98 | 433.75 | · |
-| 2026-10-12 | 42.65 | 12.91 | 72.39 | +0.22 | -0.70 | -7.13 | 436.00 | · |
-| 2026-10-13 | 47.24 | 12.74 | 81.74 | +1.37 | +1.17 | +2.09 | 456.46 | 🟢 |
+| 2026-10-01 | 387.25 | 408.46 | 45.48 | 17.80 | 73.15 | +0.62 | -1.55 | · |
+| 2026-10-02 | 403.79 | 406.30 | 41.12 | 14.97 | 67.28 | -1.20 | -5.52 | · |
+| 2026-10-05 | 404.99 | 419.33 | 42.69 | 14.80 | 70.58 | -0.55 | -4.71 | · |
+| 2026-10-06 | 416.25 | 419.22 | 43.30 | 15.26 | 71.33 | -0.34 | -2.09 | · |
+| 2026-10-07 | 423.24 | 424.10 | 44.78 | 15.27 | 74.30 | +0.27 | -2.65 | · |
+| 2026-10-08 | 429.92 | 443.80 | 47.76 | 15.06 | 80.45 | +1.46 | -1.74 | · |
+| 2026-10-09 | 440.50 | 433.75 | 44.50 | 14.36 | 74.63 | +0.06 | -3.98 | · |
+| 2026-10-12 | 440.26 | 436.00 | 42.65 | 12.91 | 72.39 | -0.70 | -7.13 | · |
+| 2026-10-13 | 440.00 | 456.46 | 47.24 | 12.74 | 81.74 | +1.17 | +2.09 | 🟢 |
+| 2026-10-14 | 459.79 | 459.78 | 46.71 | 12.92 | 80.49 | +0.88 | -0.72 | · |
 
 ## Performance
 
-Locked window (2022-07-01 onward), costs 7 bps per side:
+Locked window (2022-07-01 onward), **next-day-open fill**, costs 7 bps per side:
 
 | | Strategy | Buy & hold |
 |---|---:|---:|
-| Compound return | **+292.3%** | +322.7% |
-| CAGR | **+37.6%** | — |
-| Sharpe | **1.63** | — |
-| Annualised vol | 21% | — |
-| Max drawdown | **-18.9%** | — |
-| Win rate | 75.0% | — |
+| Compound return | **+239.3%** | +325.8% |
+| CAGR | **+33.0%** | +40.2% |
+| Sharpe | **1.45** | 1.13 |
+| Annualised vol | 21% | 36% |
+| Max drawdown | **-17.8%** | -42.9% |
+| Win rate | 62.5% | — |
 | Closed trades | 32 | — |
 | Average hold | 12.4 bars | — |
 
-### Four windows
+### Execution sensitivity
+
+Same signal, same bars, same 32 trades — only the price moves.
+
+| Execution | Sharpe | Compound | Max DD | Win rate |
+|---|---:|---:|---:|---:|
+| **Next-day open** *(adopted)* | 1.45 | +239.3% | -17.8% | 62.5% |
+| Signal-day close *(the doc)* | 1.64 | +295.1% | -18.9% | 75.0% |
+| Next-day close | 1.21 | +169.1% | -18.0% | 65.6% |
+
+VLO gaps up the morning after a signal — the overnight close→open return averages **+0.27%** on entry bars against +0.07% on all bars — so the open fill pays up on entry and gives back on exit, **0.42% per trade** in all.
+
+### Four windows — next-day-open fill
 
 | Window | Period | Sharpe | Compound | Max DD | Trades |
 |---|---|---:|---:|---:|---:|
-| **doc** | in-sample, the locked window | **1.63** | +292% | -19% | 32 |
-| **oos** | out-of-sample 2019-02 to 2022-06 | **1.07** | +163% | -28% | 32 |
-| **live** | live regime | **1.64** | +240% | -19% | 27 |
-| **full** | all history | **1.31** | +930% | -28% | 64 |
+| **doc** | in-sample, the locked window | **1.45** | +239% | -18% | 32 |
+| **oos** | out-of-sample 2019-02 to 2022-06 | **1.02** | +146% | -28% | 32 |
+| **live** | live regime | **1.49** | +205% | -18% | 27 |
+| **full** | all history | **1.20** | +735% | -28% | 64 |
 
-Worst window Sharpe: **1.07**. `oos` is the only window disjoint from the one the parameters were chosen on.
+Worst window Sharpe: **1.02**. `oos` is the only window disjoint from the one the parameters were chosen on. Circular-shift placebo on the open fill: **p = 0.021**.
 
 ## Recent trades
 
 | Entry | Price | Exit | Price | Bars | Net | Why |
 |---|---:|---|---:|---:|---:|---|
-| 2026-09-15 | $397.04 | 2026-09-28 | $389.57 | 9 | **-2.02%** | expire |
-| 2026-08-10 | $314.95 | 2026-09-10 | $385.43 | 22 | **+22.24%** | expire |
-| 2026-06-24 | $242.43 | 2026-08-04 | $308.73 | 28 | **+27.21%** | expire |
-| 2026-05-07 | $236.35 | 2026-05-22 | $246.96 | 11 | **+4.35%** | expire |
-| 2026-04-30 | $252.58 | 2026-05-05 | $253.45 | 3 | **+0.20%** | expire |
-| 2026-04-21 | $233.39 | 2026-04-29 | $251.30 | 6 | **+7.53%** | expire |
-| 2026-02-19 | $199.24 | 2026-04-20 | $226.28 | 41 | **+13.43%** | expire |
-| 2026-01-30 | $181.43 | 2026-02-04 | $197.41 | 3 | **+8.67%** | expire |
-| 2026-10-13 | $456.46 | *open* | $456.46 | 0 | **+0.00%** | open |
+| 2026-09-16 | $391.68 | 2026-09-29 | $381.57 | 9 | **-2.72%** | expire |
+| 2026-08-11 | $315.25 | 2026-09-11 | $388.00 | 22 | **+22.94%** | expire |
+| 2026-06-25 | $240.70 | 2026-08-05 | $315.00 | 28 | **+30.73%** | expire |
+| 2026-05-08 | $235.21 | 2026-05-26 | $243.26 | 11 | **+3.28%** | expire |
+| 2026-05-01 | $250.40 | 2026-05-06 | $242.72 | 3 | **-3.21%** | expire |
+| 2026-04-22 | $236.40 | 2026-04-30 | $245.88 | 6 | **+3.87%** | expire |
+| 2026-02-20 | $198.54 | 2026-04-21 | $226.70 | 41 | **+14.04%** | expire |
+| 2026-02-02 | $178.07 | 2026-02-05 | $192.63 | 3 | **+8.04%** | expire |
 
 ## Model specification
 
@@ -101,19 +99,20 @@ z-score    month-aware, lookback 30, alignment capped at M2
 momentum   PI(t) - PI(t-30), raw front month
 entry      z > +1.0 AND momentum > +0.5
 exit       signal absent for 3 consecutive bars
-direction  long only        execution  signal-day close
+direction  long only        execution  NEXT-DAY OPEN
 cost       7 bps per side
 ```
 
-**Data integrity checks run on every refresh:** de-RINs reconstruction asserted against the workbook (worst diff 0.0e+00 over 1944 rows); RVO outlier quarantine (|ΔRVO| > 0.15); permanent archive union so the panel can only grow; date-aligned revision check against the prior panel.
+**Data integrity checks run on every refresh:** de-RINs reconstruction asserted against the workbook (worst diff 0.0e+00); RVO outlier quarantine (|ΔRVO| > 0.15); permanent archive union with cell-wise precedence so the panel can only grow; date-aligned revision check against the prior panel; open-price coverage check.
 
 ### Caveats
 
 - The panel is **RVO-limited**: RVO CY01 prints one business day behind the raw cracks, so the last bar is normally T−1 of the crack data.
-- The **newest bar is provisional**. Measured against later settles, the last bar's Profit Index carries ~$1.9/bbl of typical error and up to $6.6, biased high on the distillate leg. Do not act on a same-day print.
+- The **newest bar is provisional**. The last bar’s Profit Index carries ~$1.9/bbl of typical error and up to $6.6, biased high on the distillate leg. Do not act on a same-day print.
+- The next-day-open fill needs an **Open column in the VLO export**. The daily export carries closes only; opens currently come from a one-off file and the archive.
 - Returns are **price only** — no dividends, financing or borrow.
 - Linkage is a **displayed diagnostic, not a gate**. Tested as an entry filter and rejected (selection-aware placebo p = 0.295).
 
 ---
 
-*Generated by `mkmd.py` from `engine4.py`. Numbers match the interactive dashboard by construction — both read the same engine.*
+*Generated by `mkmd.py` from `engine5.py`. Numbers match the interactive dashboard by construction — both read the same panel.*
