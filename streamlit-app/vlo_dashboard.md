@@ -1,33 +1,33 @@
 # VLO Crack-Spread Trading Model
 
-**Data through 2026-10-15** · 1944 bars · generated 2026-10-16 01:51 UTC
+**Data through 2026-10-16** · 1945 bars · generated 2026-10-19 02:34 UTC
 
 > Long-only refinery-margin mean reversion on Valero. Buy when the de-RINs Profit Index is statistically high *and* rising; exit after three consecutive signal-free sessions. **Signal is read off the previous session’s close; the position is filled at the next morning’s open.**
 
 ---
 
-## Live signal — 2026-10-15
+## Live signal — 2026-10-16
 
 | | |
 |---|---|
 | Signal | ⚪ no signal |
-| Position | **LONG** — booked **2026-10-14 @ $459.79** · **-3.49%** open |
+| Position | **LONG** — booked **2026-10-14 @ $459.79** · **-3.35%** open |
 | | *model entry matches the booked fill exactly* |
-| VLO close | **$444.06** |
-| VLO open | $456.50 |
-| Profit Index | **44.03** $/bbl (RBOB 10.96 · HO 77.10) |
-| Z-score | **-0.30** (entry > +1.0) — fail |
-| Momentum (30d) | **-2.08** $/bbl (entry > +0.5) — fail |
+| | **⚠ EXIT TRIGGERED 2026-10-16** — fills at the next open, which has not printed |
+| VLO close | **$444.71** |
+| VLO open | *not published yet* |
+| Profit Index | **43.22** $/bbl (RBOB 10.06 · HO 76.37) |
+| Z-score | **-0.68** (entry > +1.0) — fail |
+| Momentum (30d) | **-2.25** $/bbl (entry > +0.5) — fail |
 | Crack → VLO linkage | 0.28 (120d corr, diagnostic only) |
-| Exit countdown | **2 of 3** signal-free bars used — exit on the next open after 1 more |
+| Exit countdown | **3 of 3 — complete.** The exit is decided; only the fill price is outstanding. |
 
 ## Last 10 sessions
 
-Profit Index `▁▂▃▅█▅▂█▇▄`  41.12 → 44.03
+Profit Index `▁▂▄█▃▁█▇▃▁`  42.69 → 43.22
 
 | Date | Open | Close | Profit Index | RBOB | HO | z | Momentum | Signal |
 |---|---:|---:|---:|---:|---:|---:|---:|:--:|
-| 2026-10-02 | 403.79 | 406.30 | 41.12 | 14.97 | 67.28 | -1.20 | -5.52 | · |
 | 2026-10-05 | 404.99 | 419.33 | 42.69 | 14.80 | 70.58 | -0.55 | -4.71 | · |
 | 2026-10-06 | 416.25 | 419.22 | 43.30 | 15.26 | 71.33 | -0.34 | -2.09 | · |
 | 2026-10-07 | 423.24 | 424.10 | 44.78 | 15.27 | 74.30 | +0.27 | -2.65 | · |
@@ -37,6 +37,7 @@ Profit Index `▁▂▃▅█▅▂█▇▄`  41.12 → 44.03
 | 2026-10-13 | 440.00 | 456.46 | 47.24 | 12.74 | 81.74 | +1.17 | +2.09 | 🟢 |
 | 2026-10-14 | 459.79 | 459.78 | 46.71 | 12.92 | 80.49 | +0.88 | -0.72 | · |
 | 2026-10-15 | 456.50 | 444.06 | 44.03 | 10.96 | 77.10 | -0.30 | -2.08 | · |
+| 2026-10-16 | — | 444.71 | 43.22 | 10.06 | 76.37 | -0.68 | -2.25 | · |
 
 ## Performance
 
@@ -44,8 +45,8 @@ Locked window (2022-07-01 onward), **next-day-open fill**, costs 7 bps per side:
 
 | | Strategy | Buy & hold |
 |---|---:|---:|
-| Compound return | **+227.7%** | +311.2% |
-| CAGR | **+31.9%** | +39.0% |
+| Compound return | **+228.1%** | +311.8% |
+| CAGR | **+31.9%** | +39.1% |
 | Sharpe | **1.41** | 1.11 |
 | Annualised vol | 22% | 36% |
 | Max drawdown | **-17.8%** | -42.9% |
@@ -59,9 +60,9 @@ Same signal, same bars, same 32 trades — only the price moves.
 
 | Execution | Sharpe | Compound | Max DD | Win rate |
 |---|---:|---:|---:|---:|
-| **Next-day open** *(adopted)* | 1.41 | +227.7% | -17.8% | 62.5% |
-| Signal-day close *(the doc)* | 1.59 | +281.6% | -18.9% | 75.0% |
-| Next-day close | 1.16 | +159.9% | -18.0% | 65.6% |
+| **Next-day open** *(adopted)* | 1.41 | +228.1% | -17.8% | 62.5% |
+| Signal-day close *(the doc)* | 1.59 | +281.9% | -18.9% | 72.7% |
+| Next-day close | 1.17 | +160.3% | -18.0% | 65.6% |
 
 VLO gaps up the morning after a signal — the overnight close→open return averages **+0.27%** on entry bars against +0.07% on all bars — so the open fill pays up on entry and gives back on exit, **0.42% per trade** in all.
 
@@ -72,7 +73,7 @@ VLO gaps up the morning after a signal — the overnight close→open return ave
 | **doc** | in-sample, the locked window | **1.41** | +228% | -18% | 32 |
 | **oos** | out-of-sample 2019-02 to 2022-06 | **1.02** | +146% | -28% | 32 |
 | **live** | live regime | **1.44** | +195% | -18% | 27 |
-| **full** | all history | **1.18** | +706% | -28% | 64 |
+| **full** | all history | **1.19** | +708% | -28% | 64 |
 
 Worst window Sharpe: **1.02**. `oos` is the only window disjoint from the one the parameters were chosen on. Circular-shift placebo on the open fill: **p = 0.021**.
 
