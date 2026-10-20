@@ -1,34 +1,31 @@
 # VLO Crack-Spread Trading Model
 
-**Data through 2026-10-16** · 1945 bars · generated 2026-10-19 02:34 UTC
+**Data through 2026-10-19** · 1946 bars · generated 2026-10-20 02:50 UTC
 
 > Long-only refinery-margin mean reversion on Valero. Buy when the de-RINs Profit Index is statistically high *and* rising; exit after three consecutive signal-free sessions. **Signal is read off the previous session’s close; the position is filled at the next morning’s open.**
 
 ---
 
-## Live signal — 2026-10-16
+## Live signal — 2026-10-19
 
 | | |
 |---|---|
 | Signal | ⚪ no signal |
-| Position | **LONG** — booked **2026-10-14 @ $459.79** · **-3.35%** open |
-| | *model entry matches the booked fill exactly* |
-| | **⚠ EXIT TRIGGERED 2026-10-16** — fills at the next open, which has not printed |
-| VLO close | **$444.71** |
-| VLO open | *not published yet* |
-| Profit Index | **43.22** $/bbl (RBOB 10.06 · HO 76.37) |
-| Z-score | **-0.68** (entry > +1.0) — fail |
-| Momentum (30d) | **-2.25** $/bbl (entry > +0.5) — fail |
+| Position | **FLAT** |
+| Last trade | 2026-10-14 @ $459.79 → 2026-10-19 @ $445.76 · 3 bars · **-3.19%** (expire) |
+| VLO close | **$433.31** |
+| VLO open | $445.76 |
+| Profit Index | **43.09** $/bbl (RBOB 9.05 · HO 77.14) |
+| Z-score | **-0.78** (entry > +1.0) — fail |
+| Momentum (30d) | **-1.90** $/bbl (entry > +0.5) — fail |
 | Crack → VLO linkage | 0.28 (120d corr, diagnostic only) |
-| Exit countdown | **3 of 3 — complete.** The exit is decided; only the fill price is outstanding. |
 
 ## Last 10 sessions
 
-Profit Index `▁▂▄█▃▁█▇▃▁`  42.69 → 43.22
+Profit Index `▂▄█▃▁█▇▃▁▁`  43.30 → 43.09
 
 | Date | Open | Close | Profit Index | RBOB | HO | z | Momentum | Signal |
 |---|---:|---:|---:|---:|---:|---:|---:|:--:|
-| 2026-10-05 | 404.99 | 419.33 | 42.69 | 14.80 | 70.58 | -0.55 | -4.71 | · |
 | 2026-10-06 | 416.25 | 419.22 | 43.30 | 15.26 | 71.33 | -0.34 | -2.09 | · |
 | 2026-10-07 | 423.24 | 424.10 | 44.78 | 15.27 | 74.30 | +0.27 | -2.65 | · |
 | 2026-10-08 | 429.92 | 443.80 | 47.76 | 15.06 | 80.45 | +1.46 | -1.74 | · |
@@ -37,7 +34,8 @@ Profit Index `▁▂▄█▃▁█▇▃▁`  42.69 → 43.22
 | 2026-10-13 | 440.00 | 456.46 | 47.24 | 12.74 | 81.74 | +1.17 | +2.09 | 🟢 |
 | 2026-10-14 | 459.79 | 459.78 | 46.71 | 12.92 | 80.49 | +0.88 | -0.72 | · |
 | 2026-10-15 | 456.50 | 444.06 | 44.03 | 10.96 | 77.10 | -0.30 | -2.08 | · |
-| 2026-10-16 | — | 444.71 | 43.22 | 10.06 | 76.37 | -0.68 | -2.25 | · |
+| 2026-10-16 | 447.34 | 444.71 | 43.22 | 10.06 | 76.37 | -0.68 | -2.25 | · |
+| 2026-10-19 | 445.76 | 433.31 | 43.09 | 9.05 | 77.14 | -0.78 | -1.90 | · |
 
 ## Performance
 
@@ -45,24 +43,24 @@ Locked window (2022-07-01 onward), **next-day-open fill**, costs 7 bps per side:
 
 | | Strategy | Buy & hold |
 |---|---:|---:|
-| Compound return | **+228.1%** | +311.8% |
-| CAGR | **+31.9%** | +39.1% |
-| Sharpe | **1.41** | 1.11 |
+| Compound return | **+228.7%** | +301.3% |
+| CAGR | **+31.9%** | +38.1% |
+| Sharpe | **1.41** | 1.09 |
 | Annualised vol | 22% | 36% |
 | Max drawdown | **-17.8%** | -42.9% |
-| Win rate | 62.5% | — |
-| Closed trades | 32 | — |
-| Average hold | 12.4 bars | — |
+| Win rate | 60.6% | — |
+| Closed trades | 33 | — |
+| Average hold | 12.1 bars | — |
 
 ### Execution sensitivity
 
-Same signal, same bars, same 32 trades — only the price moves.
+Same signal, same bars, same 33 trades — only the price moves.
 
 | Execution | Sharpe | Compound | Max DD | Win rate |
 |---|---:|---:|---:|---:|
-| **Next-day open** *(adopted)* | 1.41 | +228.1% | -17.8% | 62.5% |
+| **Next-day open** *(adopted)* | 1.41 | +228.7% | -17.8% | 60.6% |
 | Signal-day close *(the doc)* | 1.59 | +281.9% | -18.9% | 72.7% |
-| Next-day close | 1.17 | +160.3% | -18.0% | 65.6% |
+| Next-day close | 1.13 | +153.4% | -18.0% | 63.6% |
 
 VLO gaps up the morning after a signal — the overnight close→open return averages **+0.27%** on entry bars against +0.07% on all bars — so the open fill pays up on entry and gives back on exit, **0.42% per trade** in all.
 
@@ -70,10 +68,10 @@ VLO gaps up the morning after a signal — the overnight close→open return ave
 
 | Window | Period | Sharpe | Compound | Max DD | Trades |
 |---|---|---:|---:|---:|---:|
-| **doc** | in-sample, the locked window | **1.41** | +228% | -18% | 32 |
+| **doc** | in-sample, the locked window | **1.41** | +229% | -18% | 33 |
 | **oos** | out-of-sample 2019-02 to 2022-06 | **1.02** | +146% | -28% | 32 |
-| **live** | live regime | **1.44** | +195% | -18% | 27 |
-| **full** | all history | **1.19** | +708% | -28% | 64 |
+| **live** | live regime | **1.45** | +196% | -18% | 28 |
+| **full** | all history | **1.19** | +709% | -28% | 65 |
 
 Worst window Sharpe: **1.02**. `oos` is the only window disjoint from the one the parameters were chosen on. Circular-shift placebo on the open fill: **p = 0.021**.
 
@@ -81,6 +79,7 @@ Worst window Sharpe: **1.02**. `oos` is the only window disjoint from the one th
 
 | Entry | Price | Exit | Price | Bars | Net | Why |
 |---|---:|---|---:|---:|---:|---|
+| 2026-10-14 | $459.79 | 2026-10-19 | $445.76 | 3 | **-3.19%** | expire |
 | 2026-09-16 | $391.68 | 2026-09-29 | $381.57 | 9 | **-2.72%** | expire |
 | 2026-08-11 | $315.25 | 2026-09-11 | $388.00 | 22 | **+22.94%** | expire |
 | 2026-06-25 | $240.70 | 2026-08-05 | $315.00 | 28 | **+30.73%** | expire |
@@ -88,7 +87,6 @@ Worst window Sharpe: **1.02**. `oos` is the only window disjoint from the one th
 | 2026-05-01 | $250.40 | 2026-05-06 | $242.72 | 3 | **-3.21%** | expire |
 | 2026-04-22 | $236.40 | 2026-04-30 | $245.88 | 6 | **+3.87%** | expire |
 | 2026-02-20 | $198.54 | 2026-04-21 | $226.70 | 41 | **+14.04%** | expire |
-| 2026-02-02 | $178.07 | 2026-02-05 | $192.63 | 3 | **+8.04%** | expire |
 
 ## Model specification
 
