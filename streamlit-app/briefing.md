@@ -1,53 +1,44 @@
-# Wednesday, October 21, 2026 — Oil & Gas Briefing
+# Oil & Gas Briefing — Thursday, October 22, 2026
 
 ## Market
-Crude remains in a headline-driven, war-premium regime. Brent touched a five-month high of $111.99 on Tuesday (Oct 20) before settling around $108.79, and was near $109.6 early Wednesday. WTI's November contract was about $101.8 and December about $98.6 (the ~$3 gap is mostly contract roll). The swing factor is diplomacy: Iran–Pakistan mediation took some risk premium out of prices intraday, but nothing formal has de-escalated. Kpler counts at least 18 vessel attacks in two weeks, a supertanker reportedly hit a mine south of Hormuz, and unverified Houthi claims of strikes on Aramco sites add noise.
+Crude is trading near five-month highs on Middle East supply risk. Brent was up about 1.2% intraday on Oct 22 to roughly $110.1 after settling at $108.82 on Oct 21; WTI was about $98.1, up roughly 1%. The main driver is escalating regional conflict: the US ordered some diplomats and family members out of missions in Saudi Arabia after Houthi attacks (a drone strike on an oilfield and an airport attack in Dammam on Oct 21), and Kpler counted at least 18 attacks on shipping in two weeks, with Iran reportedly targeting tankers beyond the Strait of Hormuz. A bullish inventory print added support: US crude stocks fell 3.06 million barrels, more than expected, although distillate stocks rose. Offsetting pressure came from Ukraine peace-deal progress (seen as a potential release valve for tight diesel supply) and Pakistan-mediated US-Iran contacts that pushed prices lower on Oct 20. The US is also offering to lend nearly a third of its emergency heating-oil reserve to ease diesel shortages.
 
-Supply: the seven-country OPEC+ core group held November targets flat at its Oct 4 meeting. Actual output sits below quota because Hormuz disruption and constrained Russian flows are blocking planned increases. Inventories are tight on distillates: EIA data for the week ended Oct 9 showed stocks down 2.5 mb to 102.6 mb, about 12% below the five-year average. Morgan Stanley sees Brent near $105 in Q4 and $100 in Q1 2027; the EIA's 2026 Brent forecast is about $96.
+Natural gas: no reliable fresh Henry Hub quote was retrievable in this run; check the live dashboard. OPEC+: no new decision surfaced in the past 24 hours. Watch supply-policy headlines given the price level.
 
-Natural gas: front-month Henry Hub was about $3.26/MMBtu on the last data point found (Oct 16), supported by a below-forecast storage build (+67 Bcf vs. 76 expected) and Lower 48 output at a five-month low (~110.7 Bcf/d). LNG feedgas is ~17.6 Bcf/d in October versus a monthly record of 18.8 Bcf/d, and mild weather through month-end caps demand. I could not find a confirmed Oct 20–21 settle for gas.
-
-Corporate: a burst of deals Oct 5–8 — Cenovus/Athabasca (C$5.7B), Energy Transfer/Vaquero Midstream (~$2.6B), Chevron's DJ Basin midstream restructuring with Hess Midstream, and Crescent Energy buying Devon's Eagle Ford assets (~$3.85B). Bloomberg also reported Coterra exploring a merger with Devon. Hess (HES) is off the watchlist after Chevron closed its acquisition.
+Data note: FMP live quote endpoints are gated on the Starter plan, so prices and 1-day changes below were derived from daily closes (Oct 21 to Oct 22) from the 200-day SMA endpoint. The Oct 22 bar may be intraday/partial. ET returned only one data row and was excluded. HES remains removed (acquired by Chevron).
 
 ## Earnings
-**Reported in the last ~24h (per FMP; actual vs. estimate)**
+**Reported in the last ~24h (Oct 21)**
+- KMI: adj. EPS $0.35 vs $0.32 est; revenue $4.53B vs $4.37B est. BEAT. Adj. EBITDA $2.18B (+9% y/y); expansion backlog jumped to a record $14.4B (gas $13.2B) after FIDs on Southeast Connector and Permian Link. Management now sees 2026 adj. EPS more than 13% above its $1.36 budget and adj. EBITDA more than 6% above budget; year-end leverage 3.6x.
+- OII: EPS $0.50 vs $0.59 est (MISS); revenue $784.6M vs $775.9M (beat).
+- LBRT: EPS $0.06 vs $0.063 (slight MISS); revenue $1.196B vs $1.190B (beat).
+- MMLP: EPS -$0.10 vs -$0.10 (in line); revenue $231.7M vs $207.8M (beat).
 
-| Ticker | Date | EPS act / est | Revenue act / est | Tag |
-|---|---|---|---|---|
-| HAL | Oct 20 | 0.60 / 0.585 | $5.70B / $5.58B | Beat |
-| WFRD | Oct 20 | 1.66 / 1.33 | $1.143B / $1.134B | Beat |
-| KMI | Oct 21 | 0.35 / 0.3205 | $4.53B / $4.37B | Beat |
-| OII | Oct 21 | 0.50 / 0.593 | $785M / $776M | EPS miss, revenue beat |
-| LBRT | Oct 21 | 0.06 / 0.063 | $1.196B / $1.190B | EPS slight miss, revenue beat |
-| MMLP | Oct 21 | -0.10 / -0.10 | $232M / $208M | EPS in line, revenue beat |
+**Reporting / reported today (Oct 22)**
+- VLO: EPS $23.90 vs $21.17 est; revenue $46.10B vs $42.71B est. BEAT (per FMP calendar). Shares nonetheless fell about 2.4% on the day.
+- DOW: EPS $0.71 vs $0.64 est; revenue $11.27B vs $11.22B. BEAT.
+- XPRO: pending; est. EPS $0.27, revenue $442M.
 
-Takeaways: KMI (from its 8-K) reported adjusted EPS $0.35 (+21% y/y), adjusted EBITDA $2.18B (+9%), and raised the full-year outlook — adjusted EBITDA now >6% above budget and adjusted EPS >13% above budget, year-end net debt/EBITDA 3.6x vs. 3.8x budgeted. Expansion backlog rose to $14.4B ($13.2B gas), dividend $0.2975/qtr (+2% y/y). HAL beat on both lines (I could not retrieve management commentary). WFRD's EPS beat was large (~25%). OII missed on EPS despite the revenue beat.
+**Upcoming (next 7 days)**
+- Oct 23: SLB (est. EPS $0.62, rev $9.27B); E (Eni, est. $1.87)
+- Oct 26: NE (est. $0.23)
+- Oct 27: BKR (est. $0.61, rev $7.75B); EQT ($0.37); EXE ($1.29); RRC ($0.76); NOV ($0.25); OKE ($1.46); AROC ($0.45); NBR (-$0.16); PDS ($1.24)
+- Oct 28: PSX ($11.73, rev $44.9B); EQNR ($1.38); DINO ($7.81); AR ($0.98); AM ($0.30); PTEN ($0.04); HLX ($0.19); WHD ($0.77); CLB ($0.16); PUMP (-$0.004)
+- Oct 29: TTE ($3.84); EPD ($0.75); LNG ($4.22); WKC ($0.96); FTI ($0.88); CQP ($1.07); DTM ($1.12)
 
-**Reporting today (pending):** none of the tracked names remain pending — FMP already shows actuals for all Oct 21 reporters above.
+Not in the window per FMP's calendar: XOM, CVX, COP, EOG, OXY, DVN, FANG, HAL, MPC, WMB, ET, TRGP (typically report late Oct to early Nov; confirm dates on the dashboard).
 
-**Upcoming (next 7 days; FMP estimates, EPS / revenue)**
-- Oct 22: VLO 21.12 / $42.7B; DOW 0.638 / $11.2B; XPRO 0.269 / $442M
-- Oct 23: SLB 0.617 / $9.27B; E 1.87 / $25.9B
-- Oct 26: NE 0.230 / $714M; ARLP 0.85 / $586M
-- Oct 27: BKR 0.605 / $7.75B; EQT 0.375 / $1.77B; EXE 1.29 / $2.85B; RRC 0.763 / $798M; OKE 1.46 / $10.5B; NOV 0.255 / $2.20B; NBR -0.159 / $859M; PDS 1.24 / $374M; AROC 0.451 / $386M
-- Oct 28: PSX 11.74 / $44.8B; DINO 7.74 / $8.89B; EQNR 1.38 / $33.3B; AR 0.977 / $1.57B; PTEN 0.038 / $1.31B; HLX 0.19 / $353M; WHD 0.769 / $438M; AM 0.297 / $341M; CLB 0.162 / $132M; PUMP -0.004 / $320M
-
-**Just outside the window:** XOM, CVX, COP, EOG, OXY, DVN, FANG, MPC, WMB, EPD, ET, LNG and TRGP do not appear on FMP's calendar through Oct 28; majors and large E&Ps typically report from about Oct 30 into early November (dates unconfirmed). Shell has said it reports Oct 29.
-
-## Today's movers
-Method: FMP live quote endpoints are gated on the Starter plan, so 1-day % changes were derived from daily closes (200-day SMA endpoint), Oct 21 vs. Oct 20, for the priced subset. The Oct 21 bar may be intraday. ET returned data only through Oct 19, so it is excluded. HES returns not_found (acquired) and was not retried.
-
-Up: WMB +3.5% ($72.80), SLB +2.2% ($51.10), KMI +1.2% ($33.97; HAL +1.2% is a tie after its beat). ETF XES +2.3%.
-Down: MPC -1.5% ($467.98), EPD -1.0% ($36.59), DVN -1.0% ($49.87). XOP -0.5%; XLE +0.3% ($68.16).
-
-Pattern: services and midstream led while refiner MPC and a few E&Ps lagged despite $100+ Brent.
+## Today's movers (priced subset, derived from daily closes)
+Up: LNG +1.0%, XOM +0.1%, EOG +0.1% (only a few names rose).
+Down: BKR -4.3%, SLB -3.0%, WMB -3.0% (HAL -2.4%, VLO -2.4%). Among ETFs, XES (services) -4.9%, XOP -1.1%, XLE -0.9%.
+Takeaway: with crude up, producers were flat while oilfield services sold off sharply, with SLB and BKR heading into earnings next week.
 
 ## Stocks to watch
-- **SLB** — reports Oct 23 (est. EPS 0.617); trades just below its 200-day average, sector read-through after HAL's beat.
-- **BKR** — reports Oct 27; ~7% below its 200-day with low net leverage.
-- **VLO** — reports Oct 22 (est. EPS 21.12); refining margins and tight distillates are the swing factor.
-- **KMI** — raised 2026 outlook and a $14.4B backlog; trading above its 200-day.
-- **DVN** — down ~1% as Coterra merger talk and its Eagle Ford sale to Crescent are in focus.
+- KMI — record $14.4B backlog and raised outlook after Q3 beat.
+- SLB — reports Oct 23; services group is under pressure and trades below its 200-day average.
+- BKR — largest decline in the priced set and reports Oct 27.
+- VLO — large Q3 beat on refining margins, yet shares fell; watch follow-through.
+- LNG — only notable gainer, a pure play on gas export demand.
 
 ## Screen idea
-Below its 200-day average and cheap on EV/EBITDA: **HAL** — $33.99 vs. a 200-day SMA of $35.72 (~5% below) at 8.6x TTM EV/EBITDA, the lowest among the below-200-day names checked (SLB 12.0x, BKR 11.0x, EPD 10.9x). It just beat on EPS and revenue. A starting point for research, not a recommendation; this is educational, not investment advice.
+HAL: closed about 7% below its 200-day average ($33.19 vs $35.73) with the lowest EV/EBITDA of the five below-200-day names checked (HAL 8.4x, BKR 10.6x, EPD 10.9x, SLB 11.7x, WMB 15.2x). Educational screen only, not investment advice; a cheap multiple near a downtrend can reflect real earnings risk.
