@@ -1,32 +1,31 @@
 # VLO Crack-Spread Trading Model
 
-**Data through 2026-10-22** · 1949 bars · generated 2026-10-23 01:45 UTC
+**Data through 2026-10-23** · 1950 bars · generated 2026-10-26 02:56 UTC
 
 > Long-only refinery-margin mean reversion on Valero. Buy when the de-RINs Profit Index is statistically high *and* rising; exit after three consecutive signal-free sessions. **Signal is read off the previous session’s close; the position is filled at the next morning’s open.**
 
 ---
 
-## Live signal — 2026-10-22
+## Live signal — 2026-10-23
 
 | | |
 |---|---|
 | Signal | 🔴 short condition — *not traded, long only* |
 | Position | **FLAT** |
 | Last trade | 2026-10-14 @ $459.79 → 2026-10-19 @ $445.76 · 3 bars · **-3.19%** (expire) |
-| VLO close | **$426.28** |
-| VLO open | $439.55 |
-| Profit Index | **39.92** $/bbl (RBOB 5.32 · HO 74.51) |
-| Z-score | **-1.92** (entry > +1.0) — fail |
-| Momentum (30d) | **-7.48** $/bbl (entry > +0.5) — fail |
-| Crack → VLO linkage | 0.27 (120d corr, diagnostic only) |
+| VLO close | **$419.28** |
+| VLO open | *not published yet* |
+| Profit Index | **37.87** $/bbl (RBOB 3.04 · HO 72.70) |
+| Z-score | **-2.40** (entry > +1.0) — fail |
+| Momentum (30d) | **-9.23** $/bbl (entry > +0.5) — fail |
+| Crack → VLO linkage | 0.28 (120d corr, diagnostic only) |
 
 ## Last 10 sessions
 
-Profit Index `▆▃██▅▄▄▃▁▁`  44.50 → 39.92
+Profit Index `▅██▆▅▅▅▂▂▁`  42.65 → 37.87
 
 | Date | Open | Close | Profit Index | RBOB | HO | z | Momentum | Signal |
 |---|---:|---:|---:|---:|---:|---:|---:|:--:|
-| 2026-10-09 | 440.50 | 433.75 | 44.50 | 14.36 | 74.63 | +0.06 | -3.98 | · |
 | 2026-10-12 | 440.26 | 436.00 | 42.65 | 12.91 | 72.39 | -0.70 | -7.13 | · |
 | 2026-10-13 | 440.00 | 456.46 | 47.24 | 12.74 | 81.74 | +1.17 | +2.09 | 🟢 |
 | 2026-10-14 | 459.79 | 459.78 | 46.71 | 12.92 | 80.49 | +0.88 | -0.72 | · |
@@ -36,6 +35,7 @@ Profit Index `▆▃██▅▄▄▃▁▁`  44.50 → 39.92
 | 2026-10-20 | 433.58 | 433.42 | 42.62 | 7.55 | 77.69 | -1.04 | -2.44 | · |
 | 2026-10-21 | 433.64 | 436.75 | 40.07 | 7.77 | 72.37 | -2.05 | -5.73 | · |
 | 2026-10-22 | 439.55 | 426.28 | 39.92 | 5.32 | 74.51 | -1.92 | -7.48 | · |
+| 2026-10-23 | — | 419.28 | 37.87 | 3.04 | 72.70 | -2.40 | -9.23 | · |
 
 ## Performance
 
@@ -43,9 +43,9 @@ Locked window (2022-07-01 onward), **next-day-open fill**, costs 7 bps per side:
 
 | | Strategy | Buy & hold |
 |---|---:|---:|
-| Compound return | **+228.7%** | +294.8% |
-| CAGR | **+31.8%** | +37.5% |
-| Sharpe | **1.41** | 1.08 |
+| Compound return | **+228.7%** | +288.3% |
+| CAGR | **+31.8%** | +37.0% |
+| Sharpe | **1.41** | 1.07 |
 | Annualised vol | 21% | 36% |
 | Max drawdown | **-17.8%** | -42.9% |
 | Win rate | 60.6% | — |
