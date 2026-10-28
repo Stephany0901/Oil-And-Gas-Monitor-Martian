@@ -1,53 +1,57 @@
-# Oil & Gas Briefing — Monday, October 26, 2026
+# Oil & Gas Briefing — Tuesday, October 27, 2026
 
 ## Market
+Crude is still elevated but eased on Monday. Brent settled near $115.8 (about $114–114.7 in Asia Tuesday; FMP shows $113.98, off a $119.40 year high) and WTI near $101–102, giving back part of last week's ~6% gain. The main drivers are geopolitical. Unconfirmed Houthi claims of strikes on Saudi infrastructure (Yanbu, Rabigh) keep a risk premium in the market, while Qatari mediators in Tehran and profit-taking pulled prices down. Murban trades above Brent, which suggests buyers are paying up for barrels that avoid Hormuz and the Red Sea. Macro matters this week: the Fed is expected to hold Oct 28 (markets reportedly price a December hike), and September PCE is due Oct 29. A hawkish surprise is the main downside risk; one source puts the bear case near $108 and the bull case near $120.
 
-**Crude.** Oil slipped on Monday but is still sitting near six-month highs. Around midday Brent was about $115.15 (-1.35%) and WTI about $101.16 (-2.0%) (Reuters via Yahoo Finance), after a week in which Brent gained roughly 6% and WTI about 2.3%. The dip was driven by hopes of US–Iran de-escalation: Qatari mediators traveled to Tehran, and Saudi Arabia, Turkey and Pakistan planned talks with Iranian officials. Losses were limited by renewed supply-risk headlines. The Houthis reportedly struck pumping stations on Saudi Arabia's East-West crude pipeline and Riyadh airport (Saudi Arabia says it intercepted further missiles and drones), and October was the worst month yet for attacks on commercial shipping in and around the Strait of Hormuz. The Iran conflict, ongoing since February 28, keeps a large risk premium in the curve; the IEA's Birol doesn't expect a return to pre-war conditions in 2027.
+Natural gas is split by region. US Henry Hub is soft, around $2.60–3.00 per MMBtu depending on source (spot $3.02 in EIA's latest weekly), down sharply on the week on mild weather. Storage was 3,644 Bcf at Oct 16, 1% above the five-year average, with an injection (77 Bcf) below normal. LNG feedgas is rising. Europe is tight: TTF near €97/MWh and UK NBP above 235p/therm on Norwegian outages and disrupted Hormuz LNG shipping, with EU storage about 75% full.
 
-**OPEC+.** The core group (Saudi Arabia, Russia, Iraq, Kuwait, Kazakhstan, Algeria, Oman) held November targets flat on October 4, a second straight pause after raising targets for much of 2026. In practice the quotas are not the binding constraint: Hormuz export disruption and limits on Russian flows keep actual output below target.
+OPEC+: my searches turned up no confirmed new decision for this week, so I am not reporting one.
 
-**Natural gas.** I could not find a reliable, dated Henry Hub settlement for today from the sources reachable in this run (FMP commodity quotes are gated on the Starter plan), so no price is quoted here. Check the live dashboard for gas-linked equities (EQT, RRC, AR report this week).
-
-**Equities.** Energy equities were firm. XLE +0.5%, XOP +1.6%, XES +1.8% on the day (derived, see Today's movers). Refiners led, services and E&Ps were green, and the only notable large-cap laggard was KMI.
-
-**Company headlines.** Kinder Morgan (reported Oct 21) lifted its 2026 outlook: adjusted EBITDA now expected to exceed its $8.6B budget by more than 6%, adjusted EPS to exceed the $1.36 budget by more than 13%, and the expansion backlog rose to $14.4B (mostly natural gas projects). NE (Noble) reported today and missed (see Earnings).
+Energy equities fell on the day (XLE -2.0%, XOP -2.4%) while services rose (XES +1.4%). Refiners were hit hardest. Reported reasons are pre-earnings caution about peak margins, analyst downgrades to neutral, talk of possible diesel export curbs, and profit-taking after a big 2026 run. These are media explanations, not confirmed causes.
 
 ## Earnings
+Source: FMP earnings calendar, filtered to oil & gas names. Window Oct 26 – Nov 3. Calendar data may omit some reports or mislabel timing.
 
-*Estimates and actuals from the FMP earnings calendar; window Oct 25 – Nov 2.*
+**Reported in the last ~24h (actual vs. estimate)**
+- **BKR** — EPS $0.70 vs $0.61, revenue $8.03B vs $7.75B. BEAT. Record-level IET orders ($5.9B booked) and raised IET order guidance on data-center, LNG and gas demand; shares rallied about 5%.
+- **EXE** — EPS $1.46 vs $1.29, revenue $3.29B vs $2.85B. BEAT.
+- **OKE** — EPS $2.13 vs $1.50, revenue $10.60B vs $10.54B. BEAT.
+- **EQT** — EPS $0.42 vs $0.37, revenue $1.77B vs $1.76B. BEAT.
+- **RRC** — EPS $0.81 vs $0.75, revenue $843M vs $795M. BEAT.
+- **NOV** — EPS $0.25 vs $0.25, revenue $2.23B vs $2.20B. IN LINE on EPS, small revenue beat.
+- **PDS** — EPS $1.18 vs $1.24. MISS (revenue actual not provided).
+- **NBR** — EPS -$1.24 vs -$0.14, revenue $872M vs $859M. MISS on EPS.
+- **NE** (Oct 26) — EPS -$0.57 vs $0.23, revenue $729M vs $714M. MISS on EPS.
+- Context: **KMI** reported Oct 21 (outside the 24h window): adj. EPS $0.35 (+21% y/y), adj. EBITDA $2.18B (+9%), and it now expects full-year adj. EPS more than 13% above budget and year-end leverage of 3.6x vs 3.8x budgeted.
 
-**(a) Reported in the last ~24h**
-- **NE (Noble Corp), Oct 26** — EPS -$0.57 vs +$0.23 est. (**MISS**); revenue $728.8M vs $713.8M est. (**beat**). Takeaway: top line ahead, but the bottom line was well short of estimates, likely on one-time items. Verify in the release before reading into it.
-- *Recent context (outside the window): KMI reported Oct 21 — EPS $0.35 vs $0.32 est. (**BEAT**), revenue $4.53B vs $4.37B est. (**BEAT**); raised full-year guidance as above.*
+**Reporting today (pending):** none found in the filtered calendar; the names listed for Oct 27 have already printed.
 
-**(b) Reporting today (Oct 26)**
-- No other tracked oil & gas names are scheduled besides NE (already reported).
+**Upcoming (next 7 days)**
+- **Oct 28:** PSX (est. EPS $11.73), DINO ($7.83), EQNR ($1.38), AR ($0.97), WHD ($0.77), AM ($0.30), CLB ($0.16), HLX ($0.19), PTEN ($0.04), PUMP (-$0.01)
+- **Oct 29:** TTE ($3.84), SHEL ($3.60), LNG ($4.28), PBF ($11.12), EPD ($0.75), WKC ($0.96), CNX ($0.59), DTM ($1.13)
+- **Oct 30:** XOM ($4.10), CVX ($4.86), BP ($2.66), CVE ($1.12), IMO ($3.43), HESM ($0.72)
+- **Nov 2:** FANG ($5.72), WMB ($0.54), CRC ($1.00), CRGY ($0.60), RIG ($0.02), VAL ($1.06)
+- **Nov 3:** MPC ($25.37), ET ($0.40), SU ($2.45), OVV ($2.03), MTDR ($1.81), SM ($2.01), CVI ($2.91), MPLX ($1.13), KGS, AROC, TALO, XPRO
 
-**(c) Upcoming (EPS est. / revenue est.)**
-- **Tue Oct 27:** BKR $0.61 / $7.75B; EQT $0.36 / $1.77B; EXE $1.29 / $2.85B; NBR -$0.16 / $859M; NOV $0.25 / $2.20B; OKE $1.46 / $10.54B; PDS $1.24 / $374M; RRC $0.76 / $798M.
-- **Wed Oct 28:** AM $0.30 / $341M; AR $0.97 / $1.57B; CLB $0.16 / $132M; DINO $7.81 / $8.89B; EQNR $1.38 / $33.3B; HLX $0.19 / $353M; **PSX $11.73 / $44.9B**; PTEN $0.04 / $1.31B; PUMP -$0.00 / $320M; WHD $0.77 / $438M.
-- **Thu Oct 29:** CQP $1.07 / $2.56B; DTM $1.12 / $330M; **EPD $0.75 / $14.98B**; FTI $0.88 / $2.79B; **LNG $4.27 / $5.41B**; PBF $11.04 / $10.60B; TGS $0.67 / $340M; TTE $3.84 / $55.4B; WKC $0.96 / $12.34B.
-- **Fri Oct 30:** CVE $1.12 / $11.85B; **CVX $4.86 / $61.3B**; IMO $3.43 / $12.42B; **XOM $4.10 / $105.4B**.
-- **Mon Nov 2:** CRGY $0.61 / $1.24B; **FANG $5.72 / $4.60B**; HESM $0.72 / $405M; KOS $0.11 / $423M; RIG $0.02 / $944M; VAL $1.06 / $563M; **WMB $0.54 / $2.99B**.
-
-**Just outside the window:** MPC, VLO, COP, EOG, OXY, DVN, SLB, HAL, KMI, ET, TRGP and others were not on the calendar for Oct 25 – Nov 2 (several have already reported or are set for later dates). Check the dashboard before assuming a date. Note FMP has not yet published a calendar entry for some names, so this list may be incomplete.
+Note: XOM and CVX report Friday Oct 30, inside the window. COP, EOG, OXY, DVN, VLO, HAL, SLB and TRGP were not in the calendar for this window (SLB, HAL, VLO typically reported earlier in the cycle; check for COP/EOG/OXY/DVN dates in the coming days). Refiners PSX (Oct 28) and MPC (Nov 3) are in focus after Monday's selloff.
 
 ## Today's movers
+Method: FMP live quotes worked on this plan today, so 1-day % changes are from live quotes (no 200-day-SMA workaround needed). 22 symbols priced. ET's quote timestamp looked stale (earlier session), so I excluded it from rankings.
 
-*Method: FMP live quote endpoints are gated on the Starter plan, so 1-day % changes were derived from daily closes returned by the technicalIndicators SMA endpoint (Oct 26 close vs Oct 23 close) for the priced subset. ET's data stopped at Oct 22, so it is excluded. HES was removed after Chevron closed its acquisition (no FMP data).*
+**Up:** BKR +5.34% (earnings beat) · WMB +3.26% · SLB +1.88%
+**Down:** VLO -9.24% · MPC -7.36% · PSX -7.03%
 
-**Up:** MPC +2.9% ($470.64); PSX +2.0% ($288.85); XES +1.8% ($111.12) — VLO +1.8% and XOP +1.6% close behind.
-**Down:** KMI -1.4% ($33.94); CVX -0.5% ($232.01); EPD -0.2% ($37.00).
-Few names were red; the "down" list is the weakest of a mostly positive tape. Others: HAL +1.5%, XOM +0.7%, FANG +0.7%, LNG +0.6%, TRGP +0.8%, XLE +0.5%.
+Others: XOM -2.53%, OXY -2.09%, COP -2.25%, CVX -1.63%, EOG -1.58%, FANG -1.28%, DVN -0.79%, TRGP -0.68%, LNG -0.28%, KMI -0.27%, EPD +0.46%, HAL +0.51%. ETFs: XLE -2.05%, XOP -2.37%, XES +1.43%.
+Delisted/no data: HES (removed after Chevron deal closed). No other ticker returned not_found.
 
 ## Stocks to watch
-
-- **PSX** — reports Wed Oct 28 (est. EPS $11.73) after a +2% day; refining margins are the swing factor.
-- **XOM / CVX** — both report Fri Oct 30 with crude near $100+; watch realized-price leverage, buyback pace and any Hormuz commentary.
-- **HAL** — services name trading just under its 200-day average at a lower EV/EBITDA than most of the group; BKR and NOV report Tuesday and will set the tone for services.
-- **LNG** — reports Thu Oct 29 (est. EPS $4.27); a high-multiple name trading well above its 200-day.
-- **KMI** — slipped 1.4% despite a beat-and-raise last week; a read on whether midstream strength is already priced in.
+- **PSX** — reports Oct 28 after a ~7% drop; first read on whether refining margins are peaking.
+- **XOM / CVX** — report Oct 30; both fell on the day but trade above their 200-day averages.
+- **BKR** — beat plus strong IET orders; watch follow-through on the AI-power and LNG theme.
+- **WMB** — +3.3% on the day, reports Nov 2.
+- **OXY** — cheapest on EV/EBITDA among those checked, still above its 200-day.
 
 ## Screen idea
+Nothing in the screened set is below its 200-day average (all names checked trade above it). Cheapest on EV/EBITDA (TTM): **OXY at ~5.2x** (price $62.73 vs 200-day ~$55.67), followed by VLO ~6.6x, DVN ~7.6x, ET ~8.4x, MPC ~8.5x, HAL ~8.9x. Worth studying OXY, but low multiples on cyclical earnings at $100+ crude can reflect peak-earnings expectations. Educational screen only, not investment advice.
 
-**HAL**: the only large service/E&P name in the priced subset that is both **below its 200-day average** ($35.44 vs about $35.77) and has a modest valuation (**EV/EBITDA ~8.9x** TTM, FCF yield ~5.4%, net debt/EBITDA ~1.6x). Others below their 200-day: BKR (11.0x EV/EBITDA), WMB (15.4x), EPD (11.0x), all pricier. CVX (8.8x) is similar in multiple but trades well above its 200-day. Educational screen only, not investment advice; check the Q3 print and guidance before drawing conclusions.
+Sources: FMP (quotes, key-metrics-ttm, earnings calendar); financefeeds.com Brent note (Oct 26/27); Prestige Business energy report (Oct 27); EIA-based weekly natural gas update (week ending Oct 23); StockStory and Newsquawk on BKR; KMI Q3 release (Oct 21); TradingKey on PSX.

@@ -1,10 +1,10 @@
-**Data through 2026-10-26** · Generated 2026-10-27 05:40
+**Data through 2026-10-27** · Generated 2026-10-28 02:27
 
 ## EQT Hybrid Strategy
 
 **Signal:** ⏸ FLAT — no active trade
-**HH Z-Score:** -2.679σ (entry threshold −0.25σ)
-**EQT Last:** $54.85
+**HH Z-Score:** -1.747σ (entry threshold −0.25σ)
+**EQT Last:** $56.27
 
 ---
 
@@ -12,8 +12,8 @@
 
 | Metric | Hybrid | EQT B&H |
 |--------|--------|---------|
-| Total Return | **+481.6%** | +89.6% |
-| Ann. Sharpe | **0.607** | 0.361 |
+| Total Return | **+481.6%** | +94.5% |
+| Ann. Sharpe | **0.607** | 0.366 |
 | Max Drawdown | **-63.0%** | -88.5% |
 
 ---
@@ -22,7 +22,7 @@
 
 | Year | Hybrid | B&H |
 |------|--------|-----|
-| 2026 | +11.3% | +2.6% |
+| 2026 | +11.3% | +5.3% |
 | 2025 | +5.9% | +13.2% |
 | 2024 | +27.0% | +18.5% |
 | 2023 | +3.1% | +21.5% |
