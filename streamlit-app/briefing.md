@@ -1,50 +1,63 @@
-# Tuesday, November 10, 2026
+# Oil & Gas Market Briefing — Thursday, November 12, 2026
+
+*Covers the Wed Nov 11 session (Veterans Day: equities open, US federal offices closed). Educational summary, not investment advice.*
 
 ## Market
-Crude kept falling on Tuesday as hopes for a US-Iran deal continued to drain the war premium. Brent traded around $90-92 and fell below $90 intraday for the first time since August, per Oilprice.com headlines. WTI was quoted around $85-86, down roughly 0.7-1% on the day. Snapshots from Forbes (7:17 a.m. ET: WTI $85.08, Brent $90.38) and Oilprice.com (WTI $86.28, Brent $91.86) were taken at different times, and official settlements were not confirmed. Headlines blamed Trump signaling restraint on Iran and a reported Hormuz deal heading to his desk. That outweighed fresh risk events, including another attack on a Saudi pipeline and US naval coordination on tanker transits through Hormuz. Brent is now down about 13% from its Nov 3 close of $103.60.
 
-Natural gas: an Oilprice.com ticker showed front-month Henry Hub near $3.31, up about 3%, but the contract month and timestamp were not stated, so treat it as unconfirmed.
+Crude bounced back on Wednesday from two-month lows. In post-market trade Brent was around $93.5 (+2.2%) and WTI around $87.3 (+1.4%). That partly reverses Monday's sell-off, when Dec WTI fell 3.7% to about $87.4 and Jan Brent fell 4.4% to about $94.0. Brent had also slipped below $90 intraday for the first time since August. The tug-of-war is unchanged. On one side are hopes for de-escalation with Iran. On the other, attacks on shipping in the Strait of Hormuz keep going (Reuters counted 37 ships attacked in October and 10 so far in November), and Gulf producers such as Saudi Arabia, Kuwait and Iraq are still pumping well below quota because export routes are constrained. The Brent–WTI spread is about $6, wide by historical standards, which reflects the Middle East risk premium sitting on waterborne crude.
 
-OPEC+: there was no new decision this week. December targets were held flat on Nov 1, and reports say OPEC output has recovered to about 90% of pre-war levels. Supply disruption in the Gulf, not OPEC+ policy, remains the swing factor.
+On supply, the seven-country OPEC+ core group kept December required production at September levels at its Nov 1 meeting and meets again on Nov 29. Because of the federal holiday, this week's EIA inventory report moves to Thursday, Nov 12. The prior week showed commercial crude stocks of about 409.8 MMbbl, down 0.9 MMbbl.
 
-Equities held up even as crude fell, a second day of divergence. XLE rose 0.4% and XOP 0.8%, while services slipped (XES -0.4%). Gas and LNG exposure led: TRGP and LNG both gained, helped by Venture Global's strong print. OXY extended its post-earnings gain after reporting debt cut to about $10B and Q3 operating cash flow of $4.1B. ET still returns not_found from FMP and stays excluded; HES remains removed after the Chevron deal.
+US natural gas futures are holding near three-week highs. Support comes from near-record LNG feedgas (NGI reports around 21 Bcf/d) and a colder late-week weather outlook, which a short-covering rally has amplified. Storage is still comfortably above normal, so the bullish case depends on winter weather actually arriving.
+
+Equities followed crude and then outran it: XLE +1.9%, XOP +2.6%, XES +3.1%. Every name on the watchlist closed higher. Refiners and gas/LNG-linked names led, helped by wide crack spreads and record LNG exports.
 
 ## Earnings
-**Reported in the last ~24h**
-- VG (Venture Global, pre-market Nov 10): EPS $0.96 vs $0.50 est (BEAT); revenue $4.76B vs $4.71B (BEAT). Swung to a profit on record LNG cargoes (+42%), with EBITDA up 79% to about $2.5B, but it trimmed its full-year EBITDA outlook. The stock rose pre-market.
-- NESR (Nov 9 AMC): EPS $0.38 vs $0.36 (BEAT); revenue $505M vs $496M (BEAT).
-- NGS (Nov 9 AMC): EPS $0.48 vs $0.44 (BEAT); revenue $61.3M vs $56.4M (BEAT).
-- WTTR (Nov 9 AMC): EPS $0.16 vs $0.18 (MISS); revenue $412M vs $398M (BEAT).
-- NINE (Nov 9 AMC): EPS -$0.36 vs -$0.41 (BEAT, smaller loss); revenue $142M vs $139M (BEAT).
-- AMPY (Nov 9 AMC): EPS -$0.46 vs +$0.03 (MISS); revenue $51.4M vs $43.7M (BEAT).
-- SOC (Sable Offshore): EPS -$1.37 vs -$0.16 (MISS); revenue $154M vs $157M (slight miss).
-- EPM (Evolution Petroleum): EPS -$0.01 vs +$0.01 (MISS); revenue in line at $22.6M.
-- GEVO (renewable fuels): EPS $0.09 vs $0.04 (BEAT); revenue $83M vs $56M (BEAT).
-- Covered yesterday: OXY (EPS beat, slight revenue miss), KGS, HPK and DHT beat, while TDW and RNGR missed.
 
-**Reporting today (pending):** PBR (Petrobras), after the close: EPS est $1.38, revenue est $33.1B.
+**Reported in the last ~24h**
+
+- **PBR (Petrobras)**: EPS $1.20 vs $1.32 est. (**miss**); revenue $32.96B vs $33.09B est. (**slight miss**). Record Q3 output (about 3.51 MMboe/d as Búzios and Mero FPSOs ramped) helped offset lower realized oil prices, and the company raised its dividend.
+- **VG (Venture Global)**: EPS $0.96 vs $0.50 est. (**beat**); revenue $4.76B vs $4.71B est. (**beat**). The company swung to a Q3 profit, with EBITDA up about 79% to about $2.5B on 42% cargo growth, but **trimmed its full-year EBITDA outlook**. The stock still traded up premarket.
+- **FLNG (FLEX LNG)**: EPS $0.65 vs $0.64 est. (**in line/beat**); revenue $97.4M vs $95.3M est. (**beat**). Steady charter-backed results.
+- **TNK (Teekay Tankers)**: EPS $5.04 vs $4.62 est. (**beat**); revenue $239.4M vs $263.6M est. (**miss**). Strong tanker rates on Hormuz-driven rerouting.
+
+*KMI is not reporting this week. It reported Q3 in October and the next report is January.*
+
+**Reporting today (Thu Nov 12, pending)**
+
+- **EC (Ecopetrol)**: est. EPS $0.64, revenue ~$10.45B
+- **NFE (New Fortress Energy)**: est. EPS $3.50, revenue ~$731M
+- **SPH (Suburban Propane)**: est. EPS –$0.58, revenue ~$217M
 
 **Upcoming (next 7 days)**
-- Nov 11: TNK (Teekay Tankers) EPS est $4.62, revenue est $264M; TK (Teekay) EPS est $0.09, revenue est $688M; UGP (Ultrapar) EPS est $0.28.
-- Nov 12: SPH (Suburban Propane) EPS est -$0.58, revenue est $217M.
-- Nov 13: KGEI (Kolibri Global Energy) EPS est $0.15.
-- Nov 16: PNRG (PrimeEnergy) EPS est $3.01, revenue est $42M.
-- No US majors or large E&Ps fall inside or just outside the window. XOM, CVX, COP, EOG, DVN, FANG, OXY, SLB, HAL and KMI have all reported Q3, and the next big-cap cycle is late January/early February 2027 (Q4).
+
+- **Fri Nov 13**: CSAN (Cosan), est. EPS $0.01
+- **Wed Nov 18**: HP (Helmerich & Payne), est. EPS $0.26 / rev ~$1.06B; BORR (Borr Drilling), est. EPS –$0.09; GLNG (Golar LNG), est. EPS $0.04
+- **Thu Nov 19**: Subsea7 (ACGYF/SUBCY), est. EPS ~$0.71 / rev ~$1.99B
+
+*The majors and large E&Ps (XOM, CVX, COP, EOG, OXY, DVN, FANG) and the big services names all reported Q3 in late October to early November. Q4 reports start in late January to early February 2027, so for the next couple of months the scheduled catalysts are mostly drillers, LNG names and smaller-cap stocks.*
 
 ## Today's movers
-1-day % changes come from daily closes in FMP's 200-day SMA endpoint (live quotes are gated on the Starter plan). They compare Nov 10 against Nov 9 for the priced subset, which excludes ET (not_found). The Nov 10 closes may be near-close prints.
-- Up: TRGP +2.8%, OXY +2.3%, LNG +1.9%. Next were EOG +1.0% and MPC +1.0%.
-- Down: BKR -1.4%, SLB -1.0%, WMB -0.4%. FANG was flat (-0.1%).
-- ETFs: XLE +0.4%, XOP +0.8%, XES -0.4%.
+
+*Movers were derived from FMP daily closes (Nov 11 vs Nov 10) via the 200-day SMA endpoint, because live quote endpoints are gated on the Starter plan. ET returned no Nov 11 bar, so it is excluded.*
+
+All 19 priced watchlist names closed higher.
+
+- **Top gainers:** LNG +3.8% ($304.51), TRGP +3.7% ($291.78), VLO +3.7% ($363.71)
+- **Laggards (smallest gains):** EPD +0.1% ($37.16), OXY +0.6% ($57.24), CVX +1.0% ($213.28)
+- **ETFs:** XES +3.1%, XOP +2.6%, XLE +1.9%
 
 ## Stocks to watch
-- PBR: reports after the close, a read-through on how a state-run major is handling volatile Brent.
-- OXY: second day of post-earnings strength as deleveraging progresses, and it is now back above its 200-day average (56.90 vs 56.57).
-- LNG / VG: LNG export momentum after VG's record cargoes, though VG's trimmed EBITDA guide is a caution flag.
-- BKR / SLB: services lagged again, and both sit well below their 200-day averages (BKR 47.77 vs 60.11).
-- TRGP: led the group, with gas and NGL midstream strength continuing.
+
+- **LNG (Cheniere)**: Top mover, 17% above its 200-day, with LNG feedgas near record and VG's results putting the LNG export trade in focus.
+- **VLO / MPC (refiners)**: Both up about 3.5–3.7% and 24–35% above their 200-day averages. Extended, and sensitive to any narrowing of crack spreads.
+- **BKR (Baker Hughes)**: Up 3.4% but still about 18% below its 200-day. Watch whether the services group (XES is 12.5% below its 200-day) starts to turn.
+- **DVN (Devon)**: One of the few E&Ps still below its 200-day, on a cheap TTM multiple (see Screen idea).
+- **EC (Ecopetrol)**: Reports today. A read-through for Latin American NOCs after Petrobras's miss.
 
 ## Screen idea
-DVN is the cheapest name on EV/EBITDA (about 5.8x TTM) among those trading below their 200-day average (close 43.41 vs 200-day 46.22, about 6% below). For comparison, other names below their 200-day: FANG 7.8x, HAL 8.1x, EPD 10.7x, SLB 11.6x. OXY dropped out of the screen after reclaiming its 200-day. This is an educational screen only, not investment advice. A low multiple can reflect commodity-price sensitivity, reserve quality or capex intensity, and DVN's TTM free-cash-flow yield is a modest ~3.9%.
 
-*Sources: FMP (prices, earnings calendar, key metrics TTM); Forbes Advisor oil prices page; Oilprice.com headlines; RTTNews and Panabee on Venture Global Q3.*
+Eight watchlist names closed below their 200-day average: DVN, FANG, SLB, HAL, BKR, WMB, EPD and KMI. Of the five checked on key-metrics-ttm, **DVN** combines the two screens best. It is about 2.8% below its 200-day ($44.95 vs ~$46.24) and trades at about **6.0x TTM EV/EBITDA** with net debt/EBITDA of about 1.1x. The comparisons were FANG at 7.8x, HAL at 8.3x, BKR at 12.4x and WMB at 15.1x. One caveat: its TTM free-cash-flow yield is only about 3.8% because capex is heavy, so the cheap EBITDA multiple doesn't fully carry through to free cash flow. *Educational screen output only, not a recommendation.*
+
+---
+*Sources: 5paisa (Nov 11 crude prices), Oil Market Daily via Finviz (Nov 9), WorldOil/OPEC (Nov 1 OPEC+ decision), NGI and Business Recorder (natural gas), RTTNews/Panabee (VG Q3), OilandGas360/WorldOil (Petrobras Q3), FMP (prices, SMA, key metrics, earnings calendar).*
